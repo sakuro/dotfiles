@@ -8,7 +8,7 @@ function build_path() {
     while read -u $paths path_component; do
       path_component=$(eval echo "$path_component")
       if [[ -d "$path_component" ]]; then
-        path=($path "$path_component")
+        path+="$path_component"
       fi
     done
     exec {paths}<&-
