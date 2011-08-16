@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-typeset -a chpwd_functions
-chpwd_functions+=update_bundle_path
