@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+setopt always_to_end
+setopt auto_cd
+setopt auto_pushd
+setopt auto_resume
+setopt correct
+unsetopt extended_glob
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_save_nodups
+setopt no_list_beep
+setopt list_packed
+setopt magic_equal_subst
+setopt numeric_glob_sort
+setopt print_eight_bit
+setopt prompt_subst
+setopt pushd_ignore_dups
+setopt pushd_silent
+setopt share_history

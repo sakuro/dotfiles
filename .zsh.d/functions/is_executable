@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+function is_executable()
+{
+  local whence='whence'
+  case $1 in
+  -p)
+    whence="$whence -p"
+    shift
+    ;;
+  esac
+  [[ -n "`${=whence} $1`" ]]
+}

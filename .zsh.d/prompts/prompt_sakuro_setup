@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+function prompt_sakuro_setup()
+{
+  autoload -Uz vcs_info
+  zstyle ':vcs_info:*'     formats       '%s%F{cyan}:%f%F{green}%b%f' '%S'
+  zstyle ':vcs_info:*'     actionformats '%s%F{cyan}:%f%b%F{cyan}:%F{red}%a%f'
+  zstyle ':vcs_info:svn:*' branchformat  '%F{green}%b%F{cyan}:%fr%r'
+
+  function precmd()
+  {
+    function bracket() { print "%F{white}[%f$*%F{white}]%f" }
+
+    # [pwd]
+    psvar=( "$(bracket "%F{yellow}%~")" )
+    if [[ -d .svn ]]; then
+      zstyle ':vcs_info:*' enable svn
+    else
+      zstyle ':vcs_info:*' enable git hg bzr cvs
+    fi
+    LANG=C vcs_info
+    if [[ -n "$vcs_info_msg_0_" ]]; then
+      # and [vcs]
+      if [[ "$vcs_info_msg_1_" = '.' ]]; then
+        psvar=( "$psvar[1] $(bracket $vcs_info_msg_0_)" )
+      else
+        # subdirectory part is show in different color
+        local base="$vcs_info_msg_1_"
+        local dir="${$(print -P '%~')%/$base}"
+        psvar=( "$(bracket "%F{yellow}$dir%f/%F{cyan}$base") $(bracket $vcs_info_msg_0_)" )
+      fi
+    fi
+
+    # host[window]$ 
+    psvar+="$(load_avg)%m%f${WINDOW:+[$WINDOW]}%F{cyan}%#%f "
+    PROMPT=${(F)psvar}
+  }
+}

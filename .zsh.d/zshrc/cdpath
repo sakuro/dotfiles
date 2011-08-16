@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+cdpath=(~)
+if [[ -d ~/Projects ]]; then
+  cdpath+=~/Projects
+  for server_repos in ~/Projects/*.*(/); do
+    cdpath+=$server_repos
+  done
+fi

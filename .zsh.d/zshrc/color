@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+is_executable dircolors && [[ -f ~/.dircolors ]] && {
+  eval $(dircolors -b ~/.dircolors)
+  autoload -U colors
+  colors
+
+  # color ls
+  alias ls='ls -F --color'
+
+  # color grep
+  GREP_COLOR=$color[cyan]
+  export GREP_COLOR
+  alias grep='grep --color=auto'
+  alias egrep='egrep --color=auto'
+  alias fgrep='fgrep --color=auto'
+}

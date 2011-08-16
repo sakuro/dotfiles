@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function is_set()
+{
+  eval '[[ -n "$'$1'" ]]'
+}

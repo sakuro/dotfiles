@@ -1,0 +1,4 @@
+.echo ON
+.explain ON
+.headers ON
+.nullvalue NULL

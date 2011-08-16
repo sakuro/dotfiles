@@ -1,0 +1,11 @@
+$HOME/bin
+$HOME/.gem/ruby/1.9.1/bin
+/usr/local/bin
+/opt/local/libexec/ccache
+/opt/local/libexec/gnubin
+/opt/local/bin
+/usr/bin
+/bin
+/usr/games
+/usr/sbin
+/sbin

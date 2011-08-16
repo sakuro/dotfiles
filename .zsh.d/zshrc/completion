@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+zstyle ':completion:*' completer _expand _complete _correct
+zstyle ':completion:*' ignore-parents parent pwd
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' cache-path $HOME/.zsh.d/compcache
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' matcher-list 'r:|[:]=*'
+
+autoload -U compinit
+compinit -u -d $HOME/.zsh.d/compdump

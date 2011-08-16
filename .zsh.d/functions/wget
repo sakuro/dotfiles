@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function wget()
+{
+  curl -O $*
+}
