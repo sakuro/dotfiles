@@ -6,7 +6,7 @@ function accept-line-open-uri-hook() {
     local url="${BUFFER%%\?*}"
     zle quote-line
     case "$url" in
-    *.gz|*.bz2|*.zip|*.dmg|*.lzh)
+    *.gz|*.bz2|*.tgz|*.zip|*.dmg|*.lzh)
       BUFFER="curl -O $BUFFER"
       ;;
     *)
