@@ -1,7 +1,7 @@
 $('head').append '''
   <style type="text/css">
     .vspib, #vpb, #vspb {
-      display: none;
+      display: none ! important;
     }
   </style>
   '''
