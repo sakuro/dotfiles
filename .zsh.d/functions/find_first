@@ -1,9 +1,11 @@
 #!/bin/zsh
 
-function find_first_available
+function find_first
 {
+  local op=$1
+  shift
   while [ $# -gt 0 ]; do
-    if is_executable $1; then
+    if $op $1; then
       echo $1
       break
     fi
