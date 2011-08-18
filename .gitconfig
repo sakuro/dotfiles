@@ -8,3 +8,4 @@
 	status = auto
 [alias]
 	sw = checkout
+	st = status -s
