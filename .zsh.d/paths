@@ -1,5 +1,6 @@
 $HOME/bin
-$HOME/.gem/ruby/1.9.1/bin
+$HOME/.rbenv/shims
+$HOME/.rbenv/bin
 /usr/local/bin
 /opt/local/libexec/ccache
 /opt/local/libexec/gnubin
