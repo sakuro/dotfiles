@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-EDITOR=$(find_first is_executable vim vi)
+EDITOR=$(find_first 'is_executable -p' vim vi)
 export EDITOR
