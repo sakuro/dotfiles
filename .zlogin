@@ -9,7 +9,7 @@
 
 is_executable screen && screen -list
 
-is_set SSH_AUTH_SOCK || {
+[[ -n "$SSH_AUTH_SOCK" ]] || {
   echo -n "Invoking SSH agent: "
   eval `ssh-agent`
   ssh-add
