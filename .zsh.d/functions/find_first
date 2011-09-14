@@ -5,7 +5,7 @@ function find_first
   local op=$1
   shift
   while [ $# -gt 0 ]; do
-    if $op $1; then
+    if eval "$op $1"; then
       echo $1
       break
     fi

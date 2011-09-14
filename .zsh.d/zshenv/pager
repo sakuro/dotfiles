@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-PAGER=$(find_first is_executable lv jless less more)
+PAGER=$(find_first 'is_executable -p' lv jless less more)
 export PAGER
 case $PAGER in
 lv)
