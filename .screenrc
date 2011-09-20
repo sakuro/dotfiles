@@ -7,6 +7,6 @@ bind y paste .
 nethack off
 termcapinfo xterm* ti@:te@
 hardstatus alwayslastline
-hardstatus string "%{= wk}%{=  b}%-w%{=  c}[%n] %t%{-}%+w %{=  b}%Y/%m/%d(%D) %02c %{=  r}%l"
+hardstatus string "%{= wk}%{=  b}%-w%{=  c}[%n] %t%{-}%+w %{=  b}%Y/%m/%d %02c %{=  r}%l"
 
 shell /bin/zsh
