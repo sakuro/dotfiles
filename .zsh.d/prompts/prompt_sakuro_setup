@@ -32,7 +32,11 @@ function prompt_sakuro_setup()
     fi
 
     # host[window]$ 
-    psvar+="$(load_avg)%m%f${WINDOW:+[$WINDOW]}%F{cyan}%#%f "
+    if in_screen; then
+      psvar+="%F{cyan}%#%f "
+    else
+      psvar+="$(load_avg)%m%f${WINDOW:+[$WINDOW]}%F{cyan}%#%f "
+    fi
     PROMPT=${(F)psvar}
   }
 }
