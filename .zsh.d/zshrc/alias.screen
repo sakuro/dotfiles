@@ -2,6 +2,11 @@
 
 if in_screen; then
   alias irb='screen -t irb irb'
+  if is_executable vim; then
+    alias vi='screen vim'
+  else
+    alias vi='screen vi'
+  fi
   function man() { screen -t "man $1" man $* }
   function slogin() { screen -t '@'$1 command slogin $* }
 fi
