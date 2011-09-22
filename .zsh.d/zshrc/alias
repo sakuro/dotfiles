@@ -13,3 +13,4 @@ alias -g V='| view -'
 alias -g L='| lv'
 is_executable mysql5 && alias mysql=mysql5
 alias puts='print -l'
+alias wget='curl -O'
