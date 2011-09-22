@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if in_screen; then
+  alias irb='screen -t irb irb'
+  function man() { screen -t "man $1" man $* }
+  function slogin() { screen -t '@'$1 command slogin $* }
+fi
