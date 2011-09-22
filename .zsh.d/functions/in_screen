@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function in_screen()
+{
+  [[ "$TERM" = screen && -n "$WINDOW" ]]
+}
