@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function mate()
+{
+  open -a TextMate $*
+}
