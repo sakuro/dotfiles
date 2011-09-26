@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+function rs()
+{
+  local ruby="$(rbenv which ruby)"
+  local command="$ruby script/rails server"
+  if in_screen; then
+    screen -t "$PWD:t server" ${=command} $*
+  else
+    ${=command} $*
+  fi
+}
+
