@@ -2,6 +2,10 @@
 
 function new-screen()
 {
-  screen -X screen
+  if in_screen; then
+    screen -X screen
+  else
+    exec screen
+  fi
 }
 
