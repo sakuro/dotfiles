@@ -5,7 +5,7 @@ function new-screen()
   if in_screen; then
     screen -X screen
   else
-    exec screen
+    screen
   fi
 }
 
