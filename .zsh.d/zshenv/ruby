@@ -3,3 +3,6 @@
 # Always use rubygems
 RUBYOPT=-rubygems
 export RUBYOPT
+
+GEM_HOME=$HOME/.gem
+export GEM_HOME
