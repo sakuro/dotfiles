@@ -1,5 +1,5 @@
 $HOME/bin
-$HOME/.gem/ruby/1.8/bin
+$HOME/.gem/ruby/1.9.1/bin
 /usr/local/bin
 /opt/local/libexec/ccache
 /opt/local/libexec/gnubin
