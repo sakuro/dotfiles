@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+function load_avg()
+{
+  if [[ -r /proc/loadavg ]]; then
+    set -- $(< /proc/loadavg)
+  elif is_executable /usr/sbin/sysctl; then
+    set -- $(/usr/sbin/sysctl -n vm.loadavg)
+    shift
+  else
+    return 0
+  fi
+  case $1 in
+  0.*)
+    echo '%F{white}'
+    ;;
+  1.*)
+    echo '%F{yellow}'
+    ;;
+  2.*)
+    echo '%F{magenta}'
+    ;;
+  3.*)
+    echo '%F{red}'
+    ;;
+  *)
+    echo '%F{bold}%F{red}'
+    ;;
+  esac
+}
