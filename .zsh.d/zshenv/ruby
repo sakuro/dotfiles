@@ -3,6 +3,3 @@
 # Always use rubygems
 RUBYOPT=-rubygems
 export RUBYOPT
-
-GEM_HOME=$HOME/.gem/ruby/$(ruby -rrbconfig -e 'puts RbConfig::CONFIG[%q|ruby_version|]')
-export GEM_HOME
