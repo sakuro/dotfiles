@@ -17,7 +17,7 @@ function svn()
   case $subcmd in
   status|stat|st) command svn status --ignore-externals $* | grep -v '^X ' | colorize ;;
   diff|di|log) command svn $subcmd $* | colorize | $pager ;;
-  docdiff) command svn diff --diff-cmd=docdiff -x--tty $* | $pager ;;
+  docdiff) command svn diff --diff-cmd=docdiff -x'--tty --char' $* | $pager ;;
   help|annotate|ann|blame|praise) command svn $subcmd $* | $pager ;;
   url) command svn info | awk '/URL: / {print $2}' ;;
   root) command svn log --stop-on-copy | sed '/^r[0-9][0-9]* /h;$!d;$x;$s/ .*//' ;;
