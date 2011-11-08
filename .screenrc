@@ -8,5 +8,6 @@ nethack off
 termcapinfo xterm* ti@:te@
 hardstatus alwayslastline
 hardstatus string "%{= wk}%H %Y/%m/%d %02c %{= .r}%l %{= .b}%-w%{=b .b}[%n] %t%{-}%+w"
+defscrollback 100000
 
 shell /bin/zsh
