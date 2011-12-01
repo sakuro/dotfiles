@@ -1,5 +1,5 @@
 $ ->
-  url = document.location.href
+  url = decodeURI(document.location.href)
   if url.match(/\/search/)
     phrase = $('title').text().replace(/"/g, '&quot;')
     count = $('#resultStats').text().replace(/件.*/, '件')
