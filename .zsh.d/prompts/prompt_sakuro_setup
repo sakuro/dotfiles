@@ -9,7 +9,7 @@ function prompt_sakuro_setup()
 
   function precmd()
   {
-    function bracket() { print "%F{white}[%f$*%F{white}]%f" }
+    function bracket() { print "%F{gray}[%f$*%F{gray}]%f" }
 
     # [pwd]
     psvar=( "$(bracket "%F{yellow}%~")" )
