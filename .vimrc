@@ -8,7 +8,6 @@ set hlsearch
 colorscheme desert
 
 set modeline modelines=5
-set number
 set expandtab noautoindent tabstop=2 shiftwidth=2
 set list listchars=tab:>\ ,trail:_
 
