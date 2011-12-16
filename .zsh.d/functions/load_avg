@@ -12,7 +12,7 @@ function load_avg()
   fi
   case $1 in
   0.*)
-    echo '%F{white}'
+    echo '%F{gray}'
     ;;
   1.*)
     echo '%F{yellow}'
