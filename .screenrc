@@ -10,4 +10,4 @@ hardstatus alwayslastline
 hardstatus string "%{= wk}%H %Y/%m/%d %02c %{= .b}%-w%{=b .b}[%n] %t%{-}%+w"
 defscrollback 100000
 
-shell /bin/zsh
+shell -${SHELL}
