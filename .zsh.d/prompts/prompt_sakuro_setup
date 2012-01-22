@@ -12,24 +12,20 @@ function prompt_sakuro_setup()
   {
     local LB="%F{gray}[%f"
     local RB="%F{gray}]%f"
-    # [pwd]
-    psvar=( "$LB%F{yellow}%~$RB" )
+
     LANG=C vcs_info
-    if [[ -n "$vcs_info_msg_0_" ]]; then
-      # and [vcs]
-      if [[ "$vcs_info_msg_1_" = '.' ]]; then
-        psvar=( "$psvar[1] $LB$vcs_info_msg_0_$RB" )
-      else
-        # subdirectory part is show in different color
-        local base="$vcs_info_msg_1_"
-        local dir="${$(print -P '%~')%/$base}"
-        psvar=( "$LB%F{yellow}$dir%f/%F{cyan}$base$RB $LB$vcs_info_msg_0_$RB" )
-      fi
+    # [pwd]
+    if [[ -z "$vcs_info_msg_0_" || $vcs_info_msg_1_ = '.' ]]; then
+      psvar=( "%~" )
+    else
+      # subdirectory part is show in different color
+      psvar=( "${$(print -P '%~')%/$vcs_info_msg_1_}%f/%F{cyan}$vcs_info_msg_1_" )
     fi
-    # rvm
-    if is_executable rvm-prompt; then
-      psvar=( "$psvar[1] ${LB}rvm%F{cyan}:%F{green}$(rvm-prompt i v p g s)$RB" )
-    fi
+    psvar[1]="$LB%F{yellow}$psvar[1]$RB"
+    # +[vcs]
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" $LB$vcs_info_msg_0_$RB"
+    # +[rvm]
+    is_executable rvm-prompt && psvar[1]+=" ${LB}rvm%F{cyan}:%F{green}$(rvm-prompt i v p g s)$RB"
 
     local marker='%(?,%F{cyan},%F{red})%#%f'
     if in_screen; then
