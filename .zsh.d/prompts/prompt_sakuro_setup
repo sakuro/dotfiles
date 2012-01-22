@@ -31,10 +31,11 @@ function prompt_sakuro_setup()
       psvar=( "$psvar[1] ${LB}rvm%F{cyan}:%F{green}$(rvm-prompt i v p g s)$RB" )
     fi
 
-    # host[window]$ 
     if in_screen; then
+      # $ 
       psvar+="%F{cyan}%#%f "
     else
+      # host[window]$ 
       psvar+="$(load_avg)%m%f${WINDOW:+[$WINDOW]}%F{cyan}%#%f "
     fi
     PROMPT=${(F)psvar}
