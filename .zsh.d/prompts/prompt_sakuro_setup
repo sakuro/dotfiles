@@ -9,10 +9,10 @@ function prompt_sakuro_setup()
 
   function precmd()
   {
-    function bracket() { print "%F{gray}[%f$*%F{gray}]%f" }
-
+    local LB="%F{gray}[%f"
+    local RB="%F{gray}]%f"
     # [pwd]
-    psvar=( "$(bracket "%F{yellow}%~")" )
+    psvar=( "$LB%F{yellow}%~$RB" )
     if [[ -d .svn ]]; then
       zstyle ':vcs_info:*' enable svn
     else
@@ -22,17 +22,17 @@ function prompt_sakuro_setup()
     if [[ -n "$vcs_info_msg_0_" ]]; then
       # and [vcs]
       if [[ "$vcs_info_msg_1_" = '.' ]]; then
-        psvar=( "$psvar[1] $(bracket $vcs_info_msg_0_)" )
+        psvar=( "$psvar[1] $LB$vcs_info_msg_0_$RB" )
       else
         # subdirectory part is show in different color
         local base="$vcs_info_msg_1_"
         local dir="${$(print -P '%~')%/$base}"
-        psvar=( "$(bracket "%F{yellow}$dir%f/%F{cyan}$base") $(bracket $vcs_info_msg_0_)" )
+        psvar=( "$LB%F{yellow}$dir%f/%F{cyan}$base$RB $LB$vcs_info_msg_0_$RB" )
       fi
     fi
     # rvm
     if is_executable rvm-prompt; then
-      psvar=( "$psvar[1] $(bracket rvm%F{cyan}:%F{green}$(rvm-prompt i v p g s))" )
+      psvar=( "$psvar[1] ${LB}rvm%F{cyan}:%F{green}$(rvm-prompt i v p g s)$RB" )
     fi
 
     # host[window]$ 
