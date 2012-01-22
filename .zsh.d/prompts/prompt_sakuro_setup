@@ -6,6 +6,7 @@ function prompt_sakuro_setup()
   zstyle ':vcs_info:*'     formats       '%s%F{cyan}:%f%F{green}%b%f' '%S'
   zstyle ':vcs_info:*'     actionformats '%s%F{cyan}:%f%b%F{cyan}:%F{red}%a%f'
   zstyle ':vcs_info:svn:*' branchformat  '%F{green}%b%F{cyan}:%fr%r'
+  zstyle ':vcs_info:*' enable git svn hg bzr cvs
 
   function precmd()
   {
@@ -13,11 +14,6 @@ function prompt_sakuro_setup()
     local RB="%F{gray}]%f"
     # [pwd]
     psvar=( "$LB%F{yellow}%~$RB" )
-    if [[ -d .svn ]]; then
-      zstyle ':vcs_info:*' enable svn
-    else
-      zstyle ':vcs_info:*' enable git hg bzr cvs
-    fi
     LANG=C vcs_info
     if [[ -n "$vcs_info_msg_0_" ]]; then
       # and [vcs]
