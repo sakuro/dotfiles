@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if [[ Gemfile.lock -nt Gemfile ]]; then
+  for bin in $(ruby -rbundler/setup -e 'Bundler.setup' -e 'puts $:.map{|d| Dir["#{d}/../bin/*"] }.flatten.map{|f| File.basename(f)}'); do
+    [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
+  done
+else
+  for alias in $(alias | sed -n -e "s/='bundle exec .*'//p"); do
+    unalias "$alias"
+  done
+fi
