@@ -10,9 +10,6 @@ function prompt_sakuro_setup()
 
   function precmd()
   {
-    local LB="%F{gray}[%f"
-    local RB="%F{gray}]%f"
-
     LANG=C vcs_info
     # [pwd]
     if [[ -z "$vcs_info_msg_0_" || $vcs_info_msg_1_ = '.' ]]; then
@@ -21,20 +18,17 @@ function prompt_sakuro_setup()
       # subdirectory part is show in different color
       psvar=( "${$(print -P '%~')%/$vcs_info_msg_1_}%f/%F{cyan}$vcs_info_msg_1_" )
     fi
-    psvar[1]="$LB%F{yellow}$psvar[1]$RB"
+    psvar[1]="%F{gray}[%F{yellow}$psvar[1]%F{gray}]%f"
     # +[vcs]
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" $LB$vcs_info_msg_0_$RB"
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" %F{gray}[%f$vcs_info_msg_0_%F{gray}]%f"
     # +[rvm]
-    is_executable rvm-prompt && psvar[1]+=" ${LB}rvm%F{cyan}:%F{green}$(rvm-prompt i v p g s)$RB"
+    is_executable rvm-prompt && psvar[1]+=" %F{gray}[%frvm%F{cyan}:%F{green}$(rvm-prompt i v p g s)%F{gray}]%f"
 
-    local marker='%(?,%F{cyan},%F{red})%#%f'
-    if in_screen; then
-      # $ 
-      psvar+="$marker "
-    else
-      # host[window]$ 
-      psvar+="$(load_avg)%m%f${WINDOW:+[$WINDOW]}$marker "
-    fi
+    # %
+    psvar+='%(?,%F{cyan},%F{red})%#%f '
+    # host[window]+
+    in_screen || psvar[2]="$(load_avg)%m%f${WINDOW:+[$WINDOW]}$psvar[2]"
+
     PROMPT=${(F)psvar}
   }
 }
