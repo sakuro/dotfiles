@@ -7,8 +7,6 @@ function bundler_alias()
   setopt localoptions nullglob # ${~array[@]}(N) does not work as expected.
   local gemfile=$(upfind Gemfile)
 
-  echo "LAST_GEMFILE=$LAST_GEMFILE"
-  echo "gemfile=$gemfile"
   if [[ -z "$gemfile" ]]; then
     local alias_name
     for alias_name in ${(k)aliases}; do
