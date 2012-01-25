@@ -1,5 +1,3 @@
 #!/bin/zsh
 
 [[ -f $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-chpwd_functions+=bundler_alias

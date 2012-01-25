@@ -5,3 +5,7 @@ if [[ -d ~/Projects ]]; then
   cdpath+=~/Projects
   cdpath+=(~/Projects/*.*(-/))
 fi
+
+typeset -aU chpwd_functions
+
+chpwd_functions+=bundler_alias
