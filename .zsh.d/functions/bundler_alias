@@ -1,9 +1,8 @@
 #!/bin/zsh
 
-export LAST_GEMFILE
-
 function bundler_alias()
 {
+  export LAST_GEMFILE
   setopt localoptions nullglob # ${~array[@]}(N) does not work as expected.
   local gemfile=$(upfind Gemfile)
 
