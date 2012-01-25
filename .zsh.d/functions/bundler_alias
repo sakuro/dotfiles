@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+export LAST_GEMFILE
+
+function bundler_alias()
+{
+  local gemfile=$(upfind Gemfile)
+
+  echo "LAST_GEMFILE=$LAST_GEMFILE"
+  echo "gemfile=$gemfile"
+  if [[ -z "$gemfile" ]]; then
+    local alias_name
+    for alias_name in ${(k)aliases}; do
+      [[ $aliases[$alias_name] == "bundle exec $alias_name" ]] && unalias $alias_name
+    done
+  elif [[ "$gemfile" != "$LAST_GEMFILE" && $gemfile.lock -nt $gemfile ]]; then
+    local old_nullglob=$([[ -o nullglob ]] && echo nullglob || echo no_nullglob)
+    setopt nullglob
+
+    local -a bins
+    bins=( ${~${${(M)${(@f)"$(ruby -rbundler/setup -e 'Bundler.setup; puts $:')"}:#*lib}/%lib/bin\/*}[@]} )
+    local bin
+    for bin in ${bins:t}; do
+      [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
+    done
+
+    setopt $old_nullglob
+  fi
+
+  LAST_GEMFILE=$gemfile
+}
