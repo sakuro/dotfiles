@@ -5,7 +5,8 @@ filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 set encoding=utf-8
 set hlsearch
-colorscheme desert
+set background=dark
+colorscheme solarized
 
 set modeline modelines=5
 set expandtab noautoindent tabstop=2 shiftwidth=2
