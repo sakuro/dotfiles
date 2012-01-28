@@ -1,1 +1,2 @@
+typeset -U path
 build_path $HOME/.zsh.d/paths
