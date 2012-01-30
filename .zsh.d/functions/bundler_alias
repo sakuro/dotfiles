@@ -3,7 +3,6 @@
 function bundler_alias()
 {
   export LAST_GEMFILE
-  setopt localoptions nullglob # ${~array[@]}(N) does not work as expected.
   local gemfile=$(upfind Gemfile)
 
   if [[ -z "$gemfile" || "$gemfile" != "LAST_GEMFILE" ]]; then
@@ -11,11 +10,11 @@ function bundler_alias()
     for alias_name in ${(k)aliases}; do
       [[ $aliases[$alias_name] == "bundle exec $alias_name" ]] && unalias $alias_name
     done
-  elif [[ "$gemfile" != "$LAST_GEMFILE" && $gemfile.lock -nt $gemfile ]]; then
-    local -a bins
-    bins=( ${~${${(M)${(@f)"$(ruby -rbundler/setup -e 'Bundler.setup; puts $:')"}:#*lib}/%lib/bin\/*}[@]} )
+  fi
+
+  if [[ "$gemfile" != "$LAST_GEMFILE" && $gemfile.lock -nt $gemfile ]]; then
     local bin
-    for bin in ${bins:t}; do
+    for bin in ${(@f)"$(ruby -rbundler/setup -e 'Bundler.setup; puts Gem::Specification.map(&:executables).flatten.uniq')"}; do
       [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
     done
   fi
