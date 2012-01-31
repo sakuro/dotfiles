@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-function is_member_of()
-{
-  eval '[[ -n ${(M)'$1':#'$2'} ]]'
-}
