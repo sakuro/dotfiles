@@ -1,2 +1,4 @@
-typeset -U path
-build_path $HOME/.zsh.d/paths
+#!/bin/zsh
+
+typeset -aU path
+set -A path ${(@fe)"$(<~/.zsh.d/paths)"}

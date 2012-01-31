@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-function build_path() {
-  local path_component
-  path=()
-  for path_component in ${(@feu)"$(<~/.zsh.d/paths)"}; do
-    [[ -d "$path_component" ]] && path+=$path_component
-  done
-}
