@@ -1,18 +1,7 @@
 #!/bin/zsh
 
 unset LC_ALL
-
-LANG=ja_JP.UTF-8
-export LANG
-
-TIME_STYLE=long-iso
-export TIME_STYLE
-
-LC_TIME=C
-export LC_TIME
-
-LC_MESSAGES=C
-export LC_MESSAGES
-
-_JAVA_OPTIONS=-Dfile.encoding=UTF-8
-export _JAVA_OPTIONS
+export LANG=ja_JP.UTF-8
+export LC_TIME=C LC_MESSAGES=C
+export TIME_STYLE=long-iso
+export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
