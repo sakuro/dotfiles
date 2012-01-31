@@ -8,7 +8,7 @@ function bundler_alias()
   if [[ -z "$gemfile" || "$gemfile" != "LAST_GEMFILE" ]]; then
     local alias_name
     for alias_name in ${(k)aliases}; do
-      [[ $aliases[$alias_name] == "bundle exec $alias_name" ]] && unalias $alias_name
+      [[ $aliases[$alias_name] == bundle\ exec\ * ]] && unalias $alias_name
     done
   fi
 
