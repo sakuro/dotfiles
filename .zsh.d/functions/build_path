@@ -3,15 +3,7 @@
 function build_path() {
   local path_component
   path=()
-  while [[ $# -gt 0 ]]; do
-    exec {paths}< $1
-    while read -u $paths path_component; do
-      path_component=$(eval echo "$path_component")
-      if [[ -d "$path_component" ]]; then
-        path+="$path_component"
-      fi
-    done
-    exec {paths}<&-
-    shift
+  for path_component in ${(@feu)"$(<~/.zsh.d/paths)"}; do
+    [[ -d "$path_component" ]] && path+=$path_component
   done
 }
