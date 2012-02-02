@@ -27,7 +27,8 @@ function prompt_sakuro_setup()
     # %
     psvar+='%(?,%F{cyan},%F{red})%#%f '
     # host[window]+
-    in_screen || psvar[2]="$(load_avg)%m%f${WINDOW:+[$WINDOW]}$psvar[2]"
+    in_screen && psvar[2]="${WINDOW:+[$WINDOW]}$psvar[2]"
+    psvar[2]="$(load_avg)%m%f$psvar[2]"
 
     PROMPT=${(F)psvar}
   }
