@@ -9,3 +9,4 @@
 [alias]
 	sw = checkout
 	st = status -s
+	cdiff = diff --word-diff=color --word-diff-regex=.
