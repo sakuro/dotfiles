@@ -1,11 +1,7 @@
 #!/bin/zsh
 
-if [[ -n "$SSH_CLIENT" ]]; then
-  EDITOR=$(find_first 'is_executable -p' vim vi)
-else
-  EDITOR=$(find_first 'is_executable -p' mate vim vi)
-fi
+EDITOR=$(find_first 'is_executable -p' amate vim vi)
 case $EDITOR in
-mate) EDITOR="mate -w" ;;
+*mate) EDITOR="$EDITOR -w" ;;
 esac
 export EDITOR
