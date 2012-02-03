@@ -8,9 +8,10 @@ alias history='history -i 1'
 alias du='du -h'
 alias df='df -h'
 is_executable free && alias free='free -t -m'
-is_executable vim && alias vi='vim'
+[[ $EDITOR = vim ]] && alias vi='vim'
 alias -g V='| view -'
-alias -g L='| lv'
+alias -g L="| $PAGER"
+
 is_executable mysql5 && alias mysql=mysql5
 alias puts='print -l'
 alias wget='curl -O'
