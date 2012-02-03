@@ -1,13 +1,14 @@
 #!/bin/zsh
 
-PAGER=$(find_first 'is_executable -p' lv jless less more)
+if whence -p lv > /dev/null; then
+  PAGER=lv
+  LV=-dc
+elif whence -p less > /dev/null; then
+  PAGER=less
+  LESS=-im
+else
+  PAGER=more
+fi
+
 export PAGER
-case $PAGER in
-lv)
-  export LV=-dc
-  ;;
-less | jless)
-  export LESS=-im
-  ;;
-esac
 export READNULLCMD=$PAGER
