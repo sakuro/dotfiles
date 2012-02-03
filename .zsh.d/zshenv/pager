@@ -2,10 +2,10 @@
 
 if whence -p lv > /dev/null; then
   PAGER=lv
-  LV=-dc
+  export LV=-dc
 elif whence -p less > /dev/null; then
   PAGER=less
-  LESS=-im
+  export LESS=-im
 else
   PAGER=more
 fi
