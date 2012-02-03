@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Begin with EDITOR unset.
+unset EDITOR
+
 # Choose rmate if
 # - under ssh connection *and*
 # - rmate is listening at RMATE_HOST(default localhost) and RMATE_PORT(default 52698)
