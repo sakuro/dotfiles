@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-# Always use rubygems
-RUBYOPT=-rubygems
-export RUBYOPT
