@@ -1,5 +1,4 @@
 #!/bin/zsh
 
 # dlopen's search path
-DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
-export DYLD_FALLBACK_LIBRARY_PATH
+export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
