@@ -8,9 +8,8 @@ unset EDITOR
 # - rmate is executable *and*
 # - remote TextMate is listening at RMATE_HOST:RMATE_PORT(default localhost:52698)
 
-zmodload zsh/net/tcp
-
 if [[ -n "$SSH_CONNECTION" ]] && whence -p rmate > /dev/null; then
+  zmodload zsh/net/tcp
   REPLY=
   ztcp "${RMATE_HOST:-localhost}" "${RMATE_PORT:-52698}" 2>/dev/null
   if [[ -n "$REPLY" ]]; then
