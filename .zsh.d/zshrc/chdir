@@ -1,11 +1,6 @@
 #!/bin/zsh
 
-cdpath=(~)
-if [[ -d ~/Projects ]]; then
-  cdpath+=~/Projects
-  cdpath+=(~/Projects/*.*(-/))
-fi
-
+cdpath=( ~ ~/Projects(-/N) ~/Projects/*.*(-/N) )
 typeset -aU chpwd_functions
 
 chpwd_functions+=bundler_alias
