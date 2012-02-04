@@ -39,6 +39,9 @@ EXEC 01;32
 *.pdf 33
 *.ps 33
 *.eps 33
+*.pages 33
+*.numbers 33
+*.key 33
 *.jpeg 33
 *.jpg 33
 *.JPG 33
