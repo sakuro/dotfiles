@@ -7,7 +7,7 @@ bind y paste .
 nethack off
 termcapinfo xterm* ti@:te@
 hardstatus alwayslastline
-hardstatus string "%{= wk}%H %Y/%m/%d %02c %{= .b}%-w%{=b .b}[%n] %t%{-}%+w"
+hardstatus string "%{= wk}%H %Y/%m/%d %02c %{=b .b}%-w%{= .b}[%n] %t%{-}%+w"
 defscrollback 100000
 
 shell ${SHELL}
