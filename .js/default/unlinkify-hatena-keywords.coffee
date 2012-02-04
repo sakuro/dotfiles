@@ -1,3 +1,4 @@
 # Unlinkify keywords in Hatena::Diary pages.
 $ ->
-  $('a.keyword').each -> $(this).replaceWith($(this).text())
+  $('a[href^="http://d.hatena.ne.jp/keyword/"]').each ->
+    $(this).replaceWith($(this).text())
