@@ -1,6 +1,6 @@
 #!/bin/zsh
 
 fpath=(~/.zsh.d/*(/) $fpath)
-for f in ~/.zsh.d/functions/*(.); do
-  autoload $f:t
+for file in ~/.zsh.d/functions/*(.); do
+  autoload $file:t
 done
