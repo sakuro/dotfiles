@@ -18,5 +18,5 @@ alias wget='curl -O'
 
 alias rg='script/rails generate'
 alias rc='script/rails console'
-alias rs='script/rails sever'
+alias rs='script/rails server'
 alias rdb='script/rails dbconsole'
