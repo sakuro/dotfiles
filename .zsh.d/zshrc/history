@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-HISTFILE=$HOME/.zhistory
+HISTFILE=~/.zhistory
 typeset -i SAVEHIST=1000000
 typeset -i HISTSIZE=1100000
