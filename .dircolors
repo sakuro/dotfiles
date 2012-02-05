@@ -8,7 +8,7 @@ FIFO 04;32
 SOCK 04;32
 BLK 04;32
 CHR 04;32
-EXEC 01;32
+EXEC 32
 *.class 32
 *.elc 32
 *.o 32
