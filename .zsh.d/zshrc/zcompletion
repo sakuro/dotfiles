@@ -7,7 +7,7 @@ zstyle ':completion:*' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' cache-path $HOME/.zsh.d/compcache
 zstyle ':completion:*' use-cache true
-zstyle ':completion:*' matcher-list 'r:|[:]=*'
+zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
 autoload -U compinit
 compinit -u -d $HOME/.zsh.d/compdump
