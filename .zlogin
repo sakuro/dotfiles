@@ -1,17 +1,17 @@
 #!/bin/zsh
 
-[[ -t 0 ]] && is_executable fortune && {
+if [[ -t 0 ]] && is_executable fortune; then
   echo ""
   echo "Fortune of the day:"
   fortune -s
   echo ""
-}
+fi
 
 is_executable screen && screen -list
 
-[[ -n "$SSH_AUTH_SOCK" ]] || {
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
   echo -n "Invoking SSH agent: "
-  eval `ssh-agent`
+  eval $(ssh-agent)
   ssh-add
   echo ""
-}
+fi
