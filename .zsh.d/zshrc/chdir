@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-cdpath=( ~ ~/Projects(-/N) ~/Projects/*.*(-/N) )
-typeset -aU chpwd_functions
-
-chpwd_functions+=bundler_alias

@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-autoload run-help
-bindkey -e
-bindkey '^?' backward-delete-char
-bindkey '^M' accept-line-with-hooks
-bindkey '^r' history-incremental-pattern-search-backward

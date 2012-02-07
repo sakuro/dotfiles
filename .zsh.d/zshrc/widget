@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-for w in ~/.zsh.d/widgets/*(.); do
-  source $w
-  zle -N $w:t
-done

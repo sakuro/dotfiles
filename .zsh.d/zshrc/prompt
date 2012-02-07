@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-autoload -U promptinit
-promptinit
-prompt sakuro
