@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-typeset -aU path
-set -A path ${^${~${(@fe)"$(<~/.zsh.d/paths)"}}}(N)

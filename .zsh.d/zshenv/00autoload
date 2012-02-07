@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-fpath=(~/.zsh.d/*(/N) $fpath)
-autoload ${(e)${^$(echo ~/.zsh.d/functions/*(.N))}:t}
