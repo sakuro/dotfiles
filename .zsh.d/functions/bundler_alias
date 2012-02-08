@@ -3,7 +3,7 @@
 function bundler_alias()
 {
   export LAST_GEMFILE
-  local gemfile=$(upfind Gemfile)
+  local gemfile="$(upfind Gemfile)"
 
   if [[ -z "$gemfile" || "$gemfile" != "LAST_GEMFILE" ]]; then
     local alias_name
@@ -12,12 +12,12 @@ function bundler_alias()
     done
   fi
 
-  if [[ "$gemfile" != "$LAST_GEMFILE" && $gemfile.lock -nt $gemfile ]]; then
+  if [[ "$gemfile" != "$LAST_GEMFILE" && "$gemfile.lock" -nt "$gemfile" ]]; then
     local bin
     for bin in ${(@f)"$(ruby -rbundler/setup -e 'Bundler.setup; puts Gem::Specification.map(&:executables).flatten.uniq')"}; do
       [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
     done
   fi
 
-  LAST_GEMFILE=$gemfile
+  LAST_GEMFILE="$gemfile"
 }
