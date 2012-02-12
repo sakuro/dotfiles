@@ -94,7 +94,6 @@ if [[ -z "$EDITOR" ]]; then
     EDITOR='mate -w'
   elif whence -p vim > /dev/null; then
     EDITOR=vim
-    alias vi='vim'
   else
     EDITOR=vi
   fi
@@ -130,6 +129,8 @@ alias -g L="| $PAGER"
 is_executable mysql5 && alias mysql=mysql5
 alias puts='print -l'
 alias wget='curl -O'
+
+is_executable vim && alias vi=vim
 
 if is_executable dircolors && [[ -f ~/.dircolors ]]; then
   eval $(dircolors -b ~/.dircolors)
