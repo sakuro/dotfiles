@@ -94,9 +94,9 @@ if [[ -z "$EDITOR" ]]; then
     EDITOR='mate -w'
   elif whence -p vim > /dev/null; then
     EDITOR=vim
+    alias vi='vim'
   else
     EDITOR=vi
-    alias vi='vim'
   fi
 fi
 
