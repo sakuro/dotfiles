@@ -17,3 +17,6 @@ export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
 
 # dlopen's search path
 export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
+
+# rbenv
+is_executable rbenv && eval "$(rbenv init -)"

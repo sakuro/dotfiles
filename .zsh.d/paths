@@ -1,4 +1,5 @@
 ~/bin
+~/.rbenv/bin
 ~/.gem/ruby/1.9.1/bin
 ~/.gem/ruby/1.8/bin
 /usr/local/bin
