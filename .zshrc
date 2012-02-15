@@ -122,17 +122,17 @@ alias cp='cp -i'
 alias history='history -i 1'
 alias du='du -h'
 alias df='df -h'
-is_executable free && alias free='free -t -m'
+alias free='free -t -m'
 alias -g V='| view -'
 alias -g L="| $PAGER"
 
-is_executable mysql5 && alias mysql=mysql5
+whence mysql5 >/dev/null && alias mysql=mysql5
 alias puts='print -l'
 alias wget='curl -O'
 
-is_executable vim && alias vi=vim
+whence vim >/dev/null && alias vi=vim
 
-if is_executable dircolors && [[ -f ~/.dircolors ]]; then
+if whence dircolors >/dev/null && [[ -f ~/.dircolors ]]; then
   eval $(dircolors -b ~/.dircolors)
   alias ls='ls -F --color'
 fi

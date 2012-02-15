@@ -19,4 +19,4 @@ export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
 export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
 
 # rbenv
-is_executable rbenv && eval "$(rbenv init -)"
+whence rbenv >/dev/null && eval "$(rbenv init -)"

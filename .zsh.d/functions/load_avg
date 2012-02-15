@@ -4,7 +4,7 @@ function load_avg()
 {
   if [[ -r /proc/loadavg ]]; then
     set -- $(< /proc/loadavg)
-  elif is_executable /usr/sbin/sysctl; then
+  elif [[ -x /usr/sbin/sysctl ]]; then
     set -- $(/usr/sbin/sysctl -n vm.loadavg)
     shift
   else
