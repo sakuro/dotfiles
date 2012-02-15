@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-function prompt_simple_setup()
-{
-  unfunction precmd
-  PROMPT="%m%# "
-}
