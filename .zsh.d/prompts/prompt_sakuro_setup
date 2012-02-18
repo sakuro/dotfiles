@@ -26,11 +26,7 @@ function prompt_sakuro_precmd()
   # +[vcs]
   [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" %F{gray}[%f$vcs_info_msg_0_%F{gray}]%f"
   # +[rbenv]
-  typeset -a rbenv_info
-  set -A rbenv_info "$(rbenv version-name)" "$(rbenv gemset active 2> /dev/null)"
-  psvar[1]+=" %F{gray}[%frbenv%F{cyan}:%F{green}$rbenv_info[1]"
-  [[ -n "$rbenv_info[2]" ]] && psvar[1]+="%F{cyan}@%F{green}$rbenv_info[2]"
-  psvar[1]+="%F{gray}]%f"
+  psvar[1]+=" %F{gray}[%F{green}$(rbenv version-name)%F{gray}]%f"
 
   # $
   psvar+='%(?,%F{cyan},%F{red})%(#,#,$)%f '
