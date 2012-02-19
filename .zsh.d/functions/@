@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-function @()
-{
-  [[ $# = 1 ]] && screen -t "@${1#*@}" ssh "$1"
-}
-
