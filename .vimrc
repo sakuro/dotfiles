@@ -1,8 +1,12 @@
 set nocompatible
+
+set runtimepath+=/opt/local/share/vim/vimfiles
+
 syntax on             " Enable syntax highlighting
 filetype on           " Enable fieltype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
+
 set encoding=utf-8
 set hlsearch
 set background=dark
