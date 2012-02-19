@@ -21,9 +21,6 @@ set statusline=%y%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}
 
 set paste " to make paste work as expected
 
-highlight! fullwidth_whitespace ctermbg=grey ctermfg=grey guibg=black
-match fullwidth_whitespace /　/
-
 augroup filetypedetect
   au! BufRead,BufNewFile Gemfile setfiletype ruby
   au! BufRead,BufNewFile Guardfile setfiletype ruby
