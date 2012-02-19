@@ -24,7 +24,7 @@ function load_avg()
     echo '%F{red}'
     ;;
   *)
-    echo '%F{bold}%F{red}'
+    echo '%B%F{red}'
     ;;
   esac
 }
