@@ -6,10 +6,13 @@
 !/.gitconfig
 !/.gitignore
 !/.irbrc
+!/.js
 !/.macports
 !/.nethackrc
+!/.railsrc
 !/.screenrc
 !/.sqliterc
+!/.tmux.conf
 !/.vimrc
 !/.zlogin
 !/.zlogout
@@ -18,4 +21,3 @@
 /.zsh.d/compdump
 !/.zshenv
 !/.zshrc
-!/.js
