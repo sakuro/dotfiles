@@ -1,8 +1,6 @@
 #!/bin/zsh
 
-if [[ -t 0 ]] && whence fortune >/dev/null; then
-  echo ""
-  echo "Fortune of the day:"
+if whence fortune >/dev/null; then
   fortune -s
   echo ""
 fi
