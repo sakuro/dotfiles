@@ -15,14 +15,26 @@ function prompt_sakuro_precmd()
 
   local vcs_info_msg_0_ vcs_info_msg_1_
   LANG=C vcs_info
+
   # [pwd]
-  if [[ -z "$vcs_info_msg_0_" || $vcs_info_msg_1_ = '.' ]]; then
-    psvar=( "%~" )
-  else
-    # subdirectory part is show in different color
-    psvar=( "${$(print -P '%~')%/$vcs_info_msg_1_}%f/%F{cyan}$vcs_info_msg_1_" )
+  local base_path="$(print -P '%~')"
+  # remove repository_part($vcs_info_msg_1_)
+  [[ -n "$vcs_info_msg_0_" && $vcs_info_msg_1_ != '.' ]] && base_path="${base_path%/$vcs_info_msg_1_}"
+
+  typeset -la path_elements
+  set -A path_elements ${(s:/:)base_path}
+
+  if [[ $#path_elements -gt 2 ]]; then
+    local first="$path_elements[1]"
+    [[ "$first" = '~'* ]] || first="/$first"
+    local last="$path_elements[-1]"
+    base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
   fi
-  psvar[1]="%F{gray}[%F{yellow}$psvar[1]%F{gray}]%f"
+
+  psvar=( "%F{gray}[%F{yellow}$base_path" )
+  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && psvar[1]+="%f/%F{cyan}$vcs_info_msg_1_"
+  psvar[1]+="%F{gray}]%f"
+
   # +[vcs]
   [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" %F{gray}[%f$vcs_info_msg_0_%F{gray}]%f"
   # +[rbenv]
