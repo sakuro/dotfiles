@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+function rc()
+{
+  if [[ -x script/rails ]]; then
+    script/rails console "${@}"
+  else
+    script/console "${@}"
+  fi
+}

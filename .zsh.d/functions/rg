@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+function rg()
+{
+  if [[ -x script/rails ]]; then
+    script/rails generate "${@}"
+  else
+    script/generate "${@}"
+  fi
+}

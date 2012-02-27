@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+function rdb()
+{
+  if [[ -x script/rails ]]; then
+    script/rails dbconsole "${@}"
+  else
+    script/dbconsole "${@}"
+  fi
+}

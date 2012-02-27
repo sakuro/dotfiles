@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+function rs()
+{
+  if [[ -x script/rails ]]; then
+    script/rails server "${@}"
+  else
+    script/server "${@}"
+  fi
+}

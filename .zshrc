@@ -145,8 +145,3 @@ export GREP_COLOR=$color[cyan]
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-
-alias rg='script/rails generate'
-alias rc='script/rails console'
-alias rs='script/rails server'
-alias rdb='script/rails dbconsole'
