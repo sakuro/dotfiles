@@ -28,7 +28,6 @@ setopt pushd_silent
 cdpath=( ~ ~/Projects(-/N) ~/Projects/*.*(-/N) )
 
 typeset -aU chpwd_functions
-chpwd_functions+=bundler_alias
 chpwd_functions+=tmux_default_path
 
 setopt extended_history
