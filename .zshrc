@@ -29,6 +29,7 @@ cdpath=( ~ ~/Projects(-/N) ~/Projects/*.*(-/N) )
 
 typeset -aU chpwd_functions
 chpwd_functions+=bundler_alias
+chpwd_functions+=tmux_default_path
 
 setopt extended_history
 setopt hist_expire_dups_first
