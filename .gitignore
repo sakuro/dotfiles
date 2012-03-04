@@ -13,6 +13,7 @@
 !/.screenrc
 !/.sqliterc
 !/.tmux.conf
+!/.tmux.d
 !/.vimrc
 !/.zlogin
 !/.zlogout
