@@ -2,16 +2,17 @@
 
 function prompt_sakuro_setup()
 {
+  zstyle ':vcs_info:*'     formats       '%s%F{cyan}:%f%F{green}%b%f' '%S'
+  zstyle ':vcs_info:*'     actionformats '%s%F{cyan}:%f%b%F{cyan}:%F{red}%a%f'
+  zstyle ':vcs_info:svn:*' branchformat  '%F{green}%b%F{cyan}:%fr%r'
+  zstyle ':vcs_info:*' enable git svn hg bzr cvs
+
   add-zsh-hook precmd prompt_sakuro_precmd
 }
 
 function prompt_sakuro_precmd()
 {
   autoload -Uz vcs_info
-  zstyle ':vcs_info:*'     formats       '%s%F{cyan}:%f%F{green}%b%f' '%S'
-  zstyle ':vcs_info:*'     actionformats '%s%F{cyan}:%f%b%F{cyan}:%F{red}%a%f'
-  zstyle ':vcs_info:svn:*' branchformat  '%F{green}%b%F{cyan}:%fr%r'
-  zstyle ':vcs_info:*' enable git svn hg bzr cvs
 
   local vcs_info_msg_0_ vcs_info_msg_1_
   LANG=C vcs_info
