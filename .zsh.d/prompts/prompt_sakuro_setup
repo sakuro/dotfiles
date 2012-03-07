@@ -41,7 +41,7 @@ function prompt_sakuro_precmd()
   # +[rbenv]
   psvar[1]+=" %F{gray}[%F{green}$(rbenv version-name)%F{gray}]%f"
 
-  # host[window]+
+  # host+
   [[ -z "$TMUX_PANE" ]] && psvar[2]="$(load_avg)%m%b%f"
 
   # $
