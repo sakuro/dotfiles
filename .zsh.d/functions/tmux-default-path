@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-function tmux_default_path()
+function tmux-default-path()
 {
   [[ -n "$TMUX" ]] && [[ "$PWD" != "$OLDPWD" ]] && tmux set default-path "$PWD" >/dev/null
 }
