@@ -20,5 +20,6 @@
 !/.zsh.d
 /.zsh.d/compcache
 /.zsh.d/compdump
+/.zsh.d/history
 !/.zshenv
 !/.zshrc

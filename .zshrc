@@ -40,7 +40,7 @@ setopt hist_reduce_blanks
 setopt hist_save_nodups
 setopt share_history
 
-HISTFILE=~/.zhistory
+HISTFILE=~/.zsh.d/history
 typeset -i SAVEHIST=1000000
 typeset -i HISTSIZE=1100000
 
