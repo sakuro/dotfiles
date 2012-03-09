@@ -28,7 +28,7 @@ setopt pushd_silent
 cdpath=( ~ ~/Projects(-/N) ~/Projects/*.*(-/N) )
 
 typeset -aU chpwd_functions
-chpwd_functions+=tmux_default_path
+chpwd_functions+=tmux-default-path
 
 setopt extended_history
 setopt hist_expire_dups_first
