@@ -126,6 +126,8 @@ alias df='df -h'
 alias free='free -t -m'
 alias -g V='| view -'
 alias -g L="| $PAGER"
+alias -g uniq='LANG=C uniq'
+alias -g sort='LANG=C sort'
 
 whence mysql5 >/dev/null && alias mysql=mysql5
 alias puts='print -l'
