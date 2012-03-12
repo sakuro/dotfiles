@@ -2,7 +2,7 @@
 
 function tmux-default-path()
 {
-  [[ -n "$TMUX" ]] && [[ "$PWD" != "$OLDPWD" ]] && tmux set default-path "$PWD" >/dev/null
+  [[ -n "$TMUX" ]] && [[ "$PWD" != "$OLDPWD" ]] && tmux set default-path "$PWD"
 }
 
 
