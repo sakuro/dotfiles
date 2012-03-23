@@ -20,12 +20,3 @@ set laststatus=2
 set statusline=%y%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}
 
 set paste " to make paste work as expected
-
-augroup filetypedetect
-  au! BufRead,BufNewFile Gemfile setfiletype ruby
-  au! BufRead,BufNewFile Guardfile setfiletype ruby
-  au! BufRead,BufNewFile Thorfile setfiletype ruby
-  au! BufRead,BufNewFile config.ru setfiletype ruby
-  au! BufRead,BufNewFile *.thor setfiletype ruby
-  au! BufRead,BufNewFile *.md setfiletype markdown
-augroup END
