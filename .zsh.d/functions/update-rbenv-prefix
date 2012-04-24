@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function update-rbenv-prefix()
+{
+  whence rbenv >/dev/null && ruby=$(rbenv prefix)
+}
