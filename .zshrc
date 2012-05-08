@@ -151,3 +151,8 @@ alias fgrep='fgrep --color=auto'
 
 chpwd_functions+=update-rbenv-prefix
 cd .
+
+unset LC_ALL
+unset LC_COLLATE LC_CTYPE  LC_MONETARY LC_NUMERIC
+export LC_TIME=C LC_MESSAGES=C
+export LANG=ja_JP.UTF-8
