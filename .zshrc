@@ -72,33 +72,10 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 autoload -U compinit
 compinit -u -d ~/.zsh.d/compdump
 
-# Begin with EDITOR unset.
-unset EDITOR
-
-# Choose rmate if
-# - under ssh connection *and*
-# - rmate is executable *and*
-# - remote TextMate is listening at RMATE_HOST:RMATE_PORT(default localhost:52698)
-
-if [[ -n "$SSH_CONNECTION" ]] && whence -p rmate > /dev/null; then
-  zmodload zsh/net/tcp
-  REPLY=
-  ztcp "${RMATE_HOST:-localhost}" "${RMATE_PORT:-52698}" 2>/dev/null
-  if [[ -n "$REPLY" ]]; then
-    ztcp -c "$REPLY"
-    EDITOR='rmate -w'
-  fi
-fi
-
-# if EDITOR is still unset, choose mate or vi(m)
-if [[ -z "$EDITOR" ]]; then
-  if whence -p mate > /dev/null; then
-    EDITOR='mate -w'
-  elif whence -p vim > /dev/null; then
-    EDITOR=vim
-  else
-    EDITOR=vi
-  fi
+if whence -p vim > /dev/null; then
+  EDITOR=vim
+else
+  EDITOR=vi
 fi
 
 export EDITOR
