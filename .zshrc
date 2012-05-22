@@ -106,6 +106,9 @@ alias -g V='| view -'
 alias -g L="| $PAGER"
 alias -g uniq='LC_COLLATE=C uniq'
 alias -g sort='LC_COLLATE=C sort'
+alias -g grep='LC_COLLATE=C grep'
+alias -g egrep='LC_COLLATE=C egrep'
+alias -g fgrep='LC_COLLATE=C fgrep'
 
 whence mysql5 >/dev/null && alias mysql=mysql5
 alias puts='print -l'
