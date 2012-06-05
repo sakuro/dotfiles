@@ -1,2 +1,3 @@
+--quiet
 --skip-bundle
 --skip-test-unit
