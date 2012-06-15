@@ -2,7 +2,7 @@
 
 function accept-line-with-hooks() {
   local hook
-  if [[ $#accept_line_functions -gt 0 && -n "$BUFFER" ]]; then
+  if [[ $#accept_line_functions -gt 0 ]]; then
     for hook in $accept_line_functions; do
       zle $hook && break
     done
