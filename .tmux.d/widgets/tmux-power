@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+source ~/.tmux.d/widgets/tmux-bar
+
+set -- ${${(@f)"$(pmset -g ps|LC_ALL=C egrep --ignore-case -o '\w+ Power|[0-9]+%')"}}
+
+tmux-bar ${2%%\%} 20:40:60:80

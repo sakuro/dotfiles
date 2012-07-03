@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+function tmux-bar()
+{
+  local bars
+  bars=(▁ ▃ ▅ ▇)
+  local level=0
+  local t
+  for t in ${(s_:_)2}; do
+    [[ $1 -gt "$t" ]] && : $((++level))
+  done
+
+  echo "${(j::)bars[1,$level]}#[fg=default]${(j::)bars[$((level+1)),-1]}"
+}
