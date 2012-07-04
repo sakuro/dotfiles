@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+PATH=$HOME/.tmux.d/widgets:$PATH
+tmux source ~/.tmux.d/themes/solarized-$(tmux-terminal-brightness).conf
