@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+function port-orphan()
+{
+  for port in $(port installed | sed -ne '/@/s/ @.*//p'); do
+    [[ -z "$(port list dependentof:$port)" ]] && echo $port
+  done
+}
+
