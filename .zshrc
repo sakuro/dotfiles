@@ -111,7 +111,6 @@ alias -g fgrep='LC_COLLATE=C fgrep'
 
 whence mysql5 >/dev/null && alias mysql=mysql5
 alias puts='print -l'
-alias wget='curl -O'
 
 whence vim >/dev/null && alias vi=vim
 
