@@ -9,3 +9,4 @@ search: --remote
 :aliases:
   upgrade: update
   ls: list
+  lsd: ls -d
