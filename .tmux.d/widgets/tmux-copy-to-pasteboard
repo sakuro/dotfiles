@@ -1,0 +1,3 @@
+#!/bin/zsh -x
+
+tmux save-buffer - | pbcopy
