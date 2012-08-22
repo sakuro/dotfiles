@@ -12,8 +12,5 @@ umask 022
 export TIME_STYLE=long-iso
 export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
 
-# dlopen's search path
-export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
-
 # rbenv
 whence rbenv >/dev/null && eval "$(rbenv init -)"
