@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+function locate()
+{
+  mdfind "kMDItemFSName = $*"
+}
+
+
