@@ -13,6 +13,7 @@ autoload run-help
 bindkey -e
 bindkey '^?' backward-delete-char
 bindkey '^M' accept-line-with-hooks
+bindkey '^J' accept-line-and-open-in-pane
 bindkey '^r' history-incremental-pattern-search-backward
 
 for w in ~/.zsh.d/widgets/*(.); do
