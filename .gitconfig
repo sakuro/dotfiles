@@ -13,3 +13,11 @@
 	egrep = grep -E
 [log]
 	date = local
+[merge]
+	ff = false
+[push]
+	default = tracking
+[pull]
+	rebase = true
+[branch]
+	autosetuprebase = always
