@@ -11,6 +11,7 @@
 	st = status -s
 	cdiff = diff --word-diff=color --word-diff-regex=.
 	egrep = grep -E
+	ci = commit -v
 [log]
 	date = local
 [merge]
