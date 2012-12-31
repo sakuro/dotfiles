@@ -28,8 +28,6 @@ setopt pushd_silent
 
 cdpath=( ~ ~/Projects(-/N) ~/Projects/*.*(-/N) )
 
-typeset -aU chpwd_functions
-
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_all_dups
@@ -130,7 +128,9 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+typeset -aU chpwd_functions
 chpwd_functions+=update-rbenv-prefix
+chpwd_functions+=update-bundler-aliases
 cd .
 
 unset LC_ALL
