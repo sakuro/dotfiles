@@ -2,7 +2,9 @@
 
 function rdb()
 {
-  if [[ -x script/rails ]]; then
+  if [[ -x bin/rails ]]; then
+    bin/rails dbconsole "${@}"
+  elif [[ -x script/rails ]]; then
     script/rails dbconsole "${@}"
   else
     script/dbconsole "${@}"

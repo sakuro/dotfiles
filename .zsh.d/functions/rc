@@ -2,7 +2,9 @@
 
 function rc()
 {
-  if [[ -x script/rails ]]; then
+  if [[ -x bin/rails ]]; then
+    bin/rails console "${@}"
+  elif [[ -x script/rails ]]; then
     script/rails console "${@}"
   else
     script/console "${@}"
