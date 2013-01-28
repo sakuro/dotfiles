@@ -45,7 +45,8 @@ function prompt_sakuro_precmd()
   [[ -z "$TMUX_PANE" ]] && psvar[2]="$(load_avg)%m%b%f"
 
   # $
-  psvar[2]+='%(?,%F{cyan},%F{red})%(#,#,$)%f '
+  psvar[2]+='%(?,😄,😡)  '
+
   PROMPT=${(F)psvar}
 }
 
