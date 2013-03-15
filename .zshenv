@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+ZDOTDIR=$HOME/.zsh.d
 fpath=(~/.zsh.d/*(/N) $fpath)
 autoload ${(e)${^$(echo ~/.zsh.d/functions/*(.N))}:t}
 
