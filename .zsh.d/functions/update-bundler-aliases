@@ -2,8 +2,11 @@
 
 function update-bundler-aliases()
 {
-  if [[ Gemfile.lock -nt Gemfile ]]; then
-    for bin in $(ruby -rbundler/setup -e 'Bundler.setup' -e 'puts $:.map{|d| Dir["#{d}/../bin/*"] }.flatten.map{|f| File.basename(f)}'); do
+  if [[ -f Gemfile.lock ]]; then
+    if [[ Gemfile.lock -ot Gemfile ]]; then
+      echo "WARNING: Gemfile.lock needs update"
+    fi
+    for bin in $(ruby -rbundler/setup -e 'Bundler.setup' -e 'puts Dir["#{Bundler.bundle_path}/bin/*"].map{|f| File.basename(f)}'); do
       [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
     done
   else
