@@ -108,7 +108,6 @@ alias -g egrep='LC_COLLATE=C egrep'
 alias -g fgrep='LC_COLLATE=C fgrep'
 alias dirs='dirs -v'
 
-whence mysql5 >/dev/null && alias mysql=mysql5
 alias puts='print -l'
 
 whence vim >/dev/null && alias vi=vim
