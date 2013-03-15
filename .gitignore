@@ -12,11 +12,8 @@
 !/.tmux.conf
 !/.tmux.d
 !/.vimrc
-!/.zlogin
-!/.zlogout
 !/.zsh.d
 /.zsh.d/compcache
 /.zsh.d/compdump
 /.zsh.d/history
 !/.zshenv
-!/.zshrc
