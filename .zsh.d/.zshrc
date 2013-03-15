@@ -16,7 +16,7 @@ bindkey '^M' accept-line-with-hooks
 bindkey '^J' accept-line-and-open-in-pane
 bindkey '^r' history-incremental-pattern-search-backward
 
-for w in ~/.zsh.d/widgets/*(.); do
+for w in $ZDOTDIR/widgets/*(.); do
   source $w
   zle -N $w:t
 done
@@ -38,7 +38,7 @@ setopt hist_reduce_blanks
 setopt hist_save_nodups
 setopt share_history
 
-HISTFILE=~/.zsh.d/history
+HISTFILE=$ZDOTDIR/history
 typeset -i SAVEHIST=1000000
 typeset -i HISTSIZE=1100000
 
@@ -62,12 +62,12 @@ zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' cache-path ~/.zsh.d/compcache
+zstyle ':completion:*' cache-path $ZDOTDIR/compcache
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
 autoload -U compinit
-compinit -u -d ~/.zsh.d/compdump
+compinit -u -d $ZDOTDIR/compdump
 
 if whence -p vim > /dev/null; then
   EDITOR=vim
