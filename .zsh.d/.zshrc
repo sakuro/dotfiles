@@ -114,7 +114,7 @@ whence vim >/dev/null && alias vi=vim
 
 if whence dircolors >/dev/null && [[ -f ~/.dircolors ]]; then
   eval $(dircolors -b ~/.dircolors)
-  alias ls='ls -F --color'
+  alias ls='ls -F --color=auto'
 fi
 
 eval "$(hub alias -s)"
