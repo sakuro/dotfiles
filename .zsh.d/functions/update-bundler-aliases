@@ -3,7 +3,7 @@
 function update-bundler-aliases()
 {
   local alias
-  for alias in ${${(M)${(@f)"$(alias)"}:#bundle exec}%=*}; do
+  for alias in ${${(M)${(@f)"$(alias)"}:#*bundle exec*}%=*}; do
     unalias "$alias"
   done
 
