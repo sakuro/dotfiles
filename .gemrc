@@ -6,9 +6,5 @@
 :verbose: true
 :sources:
   - https://rubygems.org
-gem: --format-executable --no-ri --no-rdoc
+gem: --format-executable --document=ri
 search: --remote
-:aliases:
-  upgrade: update
-  ls: list
-  lsd: ls -d
