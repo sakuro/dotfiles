@@ -2,6 +2,6 @@
 
 function port-orphan()
 {
-  diff -u <(port installed | sed '1d;s/^ *//;s/ @.*//'|sort) <(port dependents installed | sed -n 's/.* on //p'|sort|uniq) | sed -n '1d;s/^-//p'
+  port dependents installed | sed -n 's/ has no dependents.//p'
 }
 
