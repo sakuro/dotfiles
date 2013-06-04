@@ -119,6 +119,8 @@ fi
 
 eval "$(hub alias -s)"
 
+[[ -n "$TMUX" ]] || alias tmux='tmux attach 2> /dev/null || tmux'
+
 autoload -U colors
 colors
 
