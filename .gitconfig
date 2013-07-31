@@ -15,8 +15,6 @@
 	unstage = rm --cached
 [log]
 	date = local
-[merge]
-	ff = false
 [push]
 	default = tracking
 [pull]
