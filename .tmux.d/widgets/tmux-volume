@@ -4,4 +4,5 @@ source ~/.tmux.d/widgets/tmux-bar
 
 set -- $(osascript -e 'output volume of (get volume settings)')
 
-tmux-bar $1 20:40:60:80
+icon="🔈"
+echo "$icon$(tmux-bar $1 20:40:60:80)"

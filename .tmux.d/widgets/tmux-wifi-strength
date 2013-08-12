@@ -7,5 +7,6 @@ AIRPORT_COMMAND=$AIRPORT_FRAMEWORK/Versions/Current/Resources/airport
 
 set -- ${${(@f)"$($AIRPORT_COMMAND -I| egrep "agrCtlRSSI|state|lastTxRate| SSID")"}#*:}
 
-tmux-bar ${1:--100} -94:-92:-86:-79
+icon="📶"
+echo "${icon}$(tmux-bar ${1:--100} -94:-92:-86:-79)"
 
