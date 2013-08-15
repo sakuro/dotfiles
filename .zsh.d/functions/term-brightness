@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+function term-brightness()
+{
+  # Brightness = max(Red, Green, Blue)
+
+  case "$TERM_PROGRAM" in
+  iTerm.app)
+    set -- ${(On)$(get-term 'foreground color')%,} ${(On)$(get-term 'background color')%,}
+    ;;
+  Apple_Terminal)
+    set -- ${(On)$(get-term 'normal text color')%,} ${(On)$(get-term 'background color')%,}
+    ;;
+  esac
+
+  if [[ $1 -gt $4 ]]; then
+    echo dark
+  else
+    echo light
+  fi
+}
