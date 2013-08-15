@@ -9,13 +9,7 @@ filetype plugin on    " Enable filetype-specific plugins
 
 set encoding=utf-8
 set hlsearch
-set background=dark
-let g:solarized_termcolors=16
-let g:solarized_termtrans=1
-let g:solarized_bold=0
-let g:solarized_underline=0
-let g:solarized_italic=0
-colorscheme solarized
+colorscheme github
 
 set modeline modelines=5
 set expandtab noautoindent tabstop=2 shiftwidth=2
