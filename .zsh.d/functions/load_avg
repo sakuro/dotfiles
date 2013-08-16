@@ -15,16 +15,13 @@ function load_avg()
     echo '%F{gray}'
     ;;
   1.*)
-    echo '%F{yellow}'
+    echo '%B%F{yellow}'
     ;;
   2.*)
-    echo '%F{magenta}'
+    echo '%BF{magenta}'
     ;;
   3.*)
     echo '%F{red}'
-    ;;
-  *)
-    echo '%B%F{red}'
     ;;
   esac
 }

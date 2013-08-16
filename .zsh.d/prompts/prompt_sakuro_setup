@@ -2,9 +2,9 @@
 
 function prompt_sakuro_setup()
 {
-  zstyle ':vcs_info:*'     formats       '%s%F{cyan}:%f%F{green}%b%f' '%S'
-  zstyle ':vcs_info:*'     actionformats '%s%F{cyan}:%f%b%F{cyan}:%F{red}%a%f'
-  zstyle ':vcs_info:svn:*' branchformat  '%F{green}%b%F{cyan}:%fr%r'
+  zstyle ':vcs_info:*'     formats       '%s%B%F{cyan}:%f%B%F{blue}%b%f' '%S'
+  zstyle ':vcs_info:*'     actionformats '%s%B%F{cyan}:%f%b%B%F{cyan}:%B%F{red}%a%f'
+  zstyle ':vcs_info:svn:*' branchformat  '%B%F{blue}%b%B%F{cyan}:%fr%r'
   zstyle ':vcs_info:*' enable git svn hg bzr cvs
 
   add-zsh-hook precmd prompt_sakuro_precmd
@@ -32,17 +32,17 @@ function prompt_sakuro_precmd()
     base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
   fi
 
-  psvar=( "%F{gray}[%F{yellow}$base_path" )
-  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && psvar[1]+="%f/%F{cyan}$vcs_info_msg_1_"
-  psvar[1]+="%F{gray}]%f"
+  psvar=( "%F{gray}[%B%F{magenta}$base_path" )
+  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && psvar[1]+="%f%b/%B%F{cyan}$vcs_info_msg_1_"
+  psvar[1]+="%f%b%F{gray}]%f%b"
 
   # +[vcs]
-  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" %F{gray}[%f$vcs_info_msg_0_%F{gray}]%f"
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" %F{gray}[%f%b$vcs_info_msg_0_%F{gray}]%f%b"
   # +[rbenv]
-  psvar[1]+=" %F{gray}[%F{green}$(rbenv version-name)%F{gray}]%f"
+  psvar[1]+=" %F{gray}[%B%F{blue}$(rbenv version-name)%f%b%F{gray}]%f%b"
 
   # host+
-  [[ -z "$TMUX_PANE" ]] && psvar[2]="$(load_avg)%m%b%f"
+  [[ -z "$TMUX_PANE" ]] && psvar[2]="$(load_avg)%m%f%b"
 
   # $
   psvar[2]+='%(?,😄,😡)  '
