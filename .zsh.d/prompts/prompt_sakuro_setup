@@ -42,7 +42,7 @@ function prompt_sakuro_precmd()
   psvar[1]+=" %F{gray}[%F{blue}$(rbenv version-name)%f%F{gray}]%f"
 
   # host+
-  [[ -z "$TMUX_PANE" ]] && psvar[2]="$(load_avg)%m%f"
+  [[ -z "$TMUX_PANE" ]] && psvar[2]="$(load-average-color)%m%f"
 
   # $
   psvar[2]+='%(?,😄,😡)  '
