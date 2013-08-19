@@ -10,18 +10,19 @@ function load_avg()
   else
     return 0
   fi
-  case $1 in
-  0.*)
-    echo '%F{gray}'
-    ;;
-  1.*)
-    echo '%B%F{yellow}'
-    ;;
-  2.*)
-    echo '%BF{magenta}'
-    ;;
+
+  case "$(term-brightness) $1" in
+  *0.*)
+    echo '%F{gray}' ;;
+  light*1.*)
+    echo '%F{cyan}' ;;
+  dark*1.*)
+    echo '%F{yellow}' ;;
+  light*2.*)
+    echo '%F{green}'   ;;
+  dark*2.*)
+    echo '%F{magenta}' ;;
   3.*)
-    echo '%F{red}'
-    ;;
+    echo '%F{red}' ;;
   esac
 }
