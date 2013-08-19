@@ -1,7 +1,3 @@
 #!/bin/zsh
 
-function port-orphan()
-{
-  port dependents installed | sed -n 's/ has no dependents.//p'
-}
-
+port dependents installed | sed -n 's/ has no dependents.//p'

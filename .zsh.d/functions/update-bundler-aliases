@@ -1,21 +1,17 @@
 #!/bin/zsh
 
-function update-bundler-aliases()
-{
-  local alias
-  for alias in ${${(M)${(@f)"$(alias)"}:#*bundle exec*}%=*}; do
-    unalias "$alias"
-  done
+local alias
+for alias in ${${(M)${(@f)"$(alias)"}:#*bundle exec*}%=*}; do
+  unalias "$alias"
+done
 
-  local gemfile=$(upfind Gemfile)
+local gemfile=$(upfind Gemfile)
 
-  [[ $? = 0 ]] || return 0
-  [[ -f "$gemfile.lock" ]] || return 0
-  if [[ "$gemfile.lock" -ot $gemfile ]]; then
-    echo "WARNING: Gemfile.lock needs update"
-  fi
-  for bin in $(ruby -rbundler/setup -e 'Bundler.setup' -e 'puts Gem::Specification.flat_map(&:executables)'); do
-    [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
-  done
-}
-
+[[ $? = 0 ]] || return 0
+[[ -f "$gemfile.lock" ]] || return 0
+if [[ "$gemfile.lock" -ot $gemfile ]]; then
+  echo "WARNING: Gemfile.lock needs update"
+fi
+for bin in $(ruby -rbundler/setup -e 'Bundler.setup' -e 'puts Gem::Specification.flat_map(&:executables)'); do
+  [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
+done

@@ -1,12 +1,9 @@
 #!/bin/zsh
 
-function rc()
-{
-  if [[ -x bin/rails ]]; then
-    bin/rails console "${@}"
-  elif [[ -x script/rails ]]; then
-    script/rails console "${@}"
-  else
-    script/console "${@}"
-  fi
-}
+if [[ -x bin/rails ]]; then
+  bin/rails console "${@}"
+elif [[ -x script/rails ]]; then
+  script/rails console "${@}"
+else
+  script/console "${@}"
+fi

@@ -1,28 +1,25 @@
 #!/bin/zsh
 
-function load_avg()
-{
-  if [[ -r /proc/loadavg ]]; then
-    set -- $(< /proc/loadavg)
-  elif [[ -x /usr/sbin/sysctl ]]; then
-    set -- $(/usr/sbin/sysctl -n vm.loadavg)
-    shift
-  else
-    return 0
-  fi
+if [[ -r /proc/loadavg ]]; then
+  set -- $(< /proc/loadavg)
+elif [[ -x /usr/sbin/sysctl ]]; then
+  set -- $(/usr/sbin/sysctl -n vm.loadavg)
+  shift
+else
+  return 0
+fi
 
-  case "$(term-brightness) $1" in
-  *0.*)
-    echo '%F{gray}' ;;
-  light*1.*)
-    echo '%F{cyan}' ;;
-  dark*1.*)
-    echo '%F{yellow}' ;;
-  light*2.*)
-    echo '%F{green}'   ;;
-  dark*2.*)
-    echo '%F{magenta}' ;;
-  3.*)
-    echo '%F{red}' ;;
-  esac
-}
+case "$(term-brightness) $1" in
+*0.*)
+  echo '%F{gray}' ;;
+light*1.*)
+  echo '%F{cyan}' ;;
+dark*1.*)
+  echo '%F{yellow}' ;;
+light*2.*)
+  echo '%F{green}'   ;;
+dark*2.*)
+  echo '%F{magenta}' ;;
+3.*)
+  echo '%F{red}' ;;
+esac

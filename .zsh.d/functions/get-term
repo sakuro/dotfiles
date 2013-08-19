@@ -1,17 +1,14 @@
 #!/bin/zsh
 
-function get-term()
-{
-  case "$TERM_PROGRAM" in
-  iTerm.app)
-    osascript -e 'tell application "iTerm" to get '$1' of current session of terminal 1'
-    ;;
-  Apple_Terminal)
-    osascript -e 'tell application "Terminal" to get '$1' of window 1'
-    ;;
-  *)
-    echo "Unknown terminal: $TERM_PROGRAM" 1>&2
-    exit 1
-    ;;
-  esac
-}
+case "$TERM_PROGRAM" in
+iTerm.app)
+  osascript -e 'tell application "iTerm" to get '$1' of current session of terminal 1'
+  ;;
+Apple_Terminal)
+  osascript -e 'tell application "Terminal" to get '$1' of window 1'
+  ;;
+*)
+  echo "Unknown terminal: $TERM_PROGRAM" 1>&2
+  exit 1
+  ;;
+esac

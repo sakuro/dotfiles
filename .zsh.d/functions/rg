@@ -1,12 +1,9 @@
 #!/bin/zsh
 
-function rg()
-{
-  if [[ -x bin/rails ]]; then
-    bin/rails generate "${@}"
-  elif [[ -x script/rails ]]; then
-    script/rails generate "${@}"
-  else
-    script/generate "${@}"
-  fi
-}
+if [[ -x bin/rails ]]; then
+  bin/rails generate "${@}"
+elif [[ -x script/rails ]]; then
+  script/rails generate "${@}"
+else
+  script/generate "${@}"
+fi

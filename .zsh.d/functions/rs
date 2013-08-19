@@ -1,12 +1,9 @@
 #!/bin/zsh
 
-function rs()
-{
-  if [[ -x bin/rails ]]; then
-    bin/rails server "${@}"
-  elif [[ -x script/rails ]]; then
-    script/rails server "${@}"
-  else
-    script/server "${@}"
-  fi
-}
+if [[ -x bin/rails ]]; then
+  bin/rails server "${@}"
+elif [[ -x script/rails ]]; then
+  script/rails server "${@}"
+else
+  script/server "${@}"
+fi

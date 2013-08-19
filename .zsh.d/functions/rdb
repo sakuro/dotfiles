@@ -1,12 +1,9 @@
 #!/bin/zsh
 
-function rdb()
-{
-  if [[ -x bin/rails ]]; then
-    bin/rails dbconsole "${@}"
-  elif [[ -x script/rails ]]; then
-    script/rails dbconsole "${@}"
-  else
-    script/dbconsole "${@}"
-  fi
-}
+if [[ -x bin/rails ]]; then
+  bin/rails dbconsole "${@}"
+elif [[ -x script/rails ]]; then
+  script/rails dbconsole "${@}"
+else
+  script/dbconsole "${@}"
+fi
