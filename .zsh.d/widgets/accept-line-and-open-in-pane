@@ -1,6 +1,8 @@
 function accept-line-and-open-in-pane()
 {
-  zle quote-line
-  BUFFER="tmux split-window -v $BUFFER"
+  if [[ -n "$TMUX" ]]; then
+    zle quote-line
+    BUFFER="tmux split-window -v $BUFFER"
+  fi
   zle accept-line
 }
