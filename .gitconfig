@@ -22,3 +22,5 @@
 	rebase = true
 [branch]
 	autosetuprebase = always
+[diff]
+	algorithm = histogram
