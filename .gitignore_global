@@ -3,3 +3,5 @@
 /.*.swp
 /*~
 /.idea
+/.rvmrc
+/.ruby-version
