@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function in-rubymine() {
+  ps -o command -p $PPID | grep -q rubymine
+}
+

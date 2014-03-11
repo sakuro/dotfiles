@@ -45,8 +45,11 @@ function prompt_sakuro_precmd()
   [[ -z "$TMUX_PANE" ]] && psvar[2]="$(load-average-color)%m%f"
 
   # $
-  psvar[2]+='%(?,😄,%(141?,😄,😡))  '
-
+  if in-rubymine; then
+    psvar[2]+='%# '
+  else
+    psvar[2]+='%(?,😄,%(141?,😄,😡))  '
+  fi
   PROMPT=${(F)psvar}
 }
 
