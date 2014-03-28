@@ -12,6 +12,6 @@ local gemfile=$(upfind Gemfile)
 if [[ "$gemfile.lock" -ot $gemfile ]]; then
   echo "WARNING: Gemfile.lock needs update"
 fi
-for bin in $(ruby -rbundler/setup -e 'Bundler.setup' -e 'puts Gem::Specification.flat_map(&:executables)'); do
+for bin in $(ruby -rbundler -e 'Bundler.setup' -e 'puts Gem::Specification.flat_map(&:executables)'); do
   [[ $bin = bundle ]] || alias $bin='bundle exec '$bin
 done
