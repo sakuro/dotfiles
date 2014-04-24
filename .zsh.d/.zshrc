@@ -90,6 +90,8 @@ fi
 export PAGER
 export READNULLCMD=$PAGER
 
+setopt completealiases
+
 unalias -m '*'
 
 alias rm='rm -i'
