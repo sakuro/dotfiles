@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+local command=$1
+shift
+local subcommand="$command-$1"
+
+if whence $subcommand >/dev/null; then
+  shift
+  $subcommand $*
+else
+  command $command $*
+fi

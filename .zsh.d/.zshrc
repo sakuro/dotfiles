@@ -111,6 +111,7 @@ alias -g fgrep='LC_COLLATE=C fgrep'
 alias dirs='dirs -v'
 
 alias puts='print -l'
+alias port='with-subcommand port'
 
 whence vim >/dev/null && alias vi=vim
 
