@@ -136,9 +136,6 @@ autoload -Uz add-zsh-hook
 add-zsh-hook chpwd update-rbenv-prefix
 add-zsh-hook chpwd update-bundler-aliases
 
-autoload -Uz chpwd_recent_dirs cdr 
-add-zsh-hook chpwd chpwd_recent_dirs
-
 cd .
 
 unset LC_ALL
