@@ -120,7 +120,9 @@ if whence dircolors >/dev/null && [[ -f ~/.dircolors ]]; then
   alias ls='ls -F --color=auto'
 fi
 
-eval "$(hub alias -s)"
+if whence hub >/dev/null; then
+  eval "$(hub alias -s)"
+fi
 
 autoload -U colors
 colors
