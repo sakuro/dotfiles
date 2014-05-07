@@ -27,4 +27,4 @@
 [diff]
 	algorithm = histogram
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.dotfiles/.gitignore_global
