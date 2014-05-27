@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+sudo port sync && \
+port outdated && \
+sudo port upgrade outdated && \
+sudo port uninstall inactive
