@@ -19,7 +19,7 @@
 	prs = !hub browse -- pulls
 	issues = !hub browse -- issues
 	wiki = !hub browse -- wiki
-  pr = pull-request
+	pr = pull-request
 [log]
 	date = local
 [push]
