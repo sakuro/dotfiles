@@ -8,5 +8,5 @@ if whence $subcommand >/dev/null; then
   shift
   $subcommand $*
 else
-  command $command $*
+  $command $*
 fi
