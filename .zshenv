@@ -15,3 +15,6 @@ export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
 
 # rbenv
 whence rbenv >/dev/null && eval "$(rbenv init -)"
+
+# go
+export GOPATH=$HOME/.go
