@@ -34,3 +34,5 @@
 	excludesfile = ~/.dotfiles/.gitignore_global
 [merge]
 	ff = false
+[ghq]
+	root = /Users/sakuro/Projects

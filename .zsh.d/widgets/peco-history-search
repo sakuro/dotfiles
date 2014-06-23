@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+function peco-history-search()
+{
+  BUFFER=$(builtin history 1 | sed 's/^ *[0-9][0-9]*  //' | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+}

@@ -14,7 +14,9 @@ bindkey -e
 bindkey '^?' backward-delete-char
 bindkey '^M' accept-line-with-hooks
 bindkey '^J' accept-line-and-open-in-pane
-bindkey '^r' history-incremental-pattern-search-backward
+bindkey '^r' peco-history-search
+bindkey '^x^v' peco-chdir-dirs
+bindkey '^x^g' peco-chdir-ghq-list
 
 for w in $ZDOTDIR/widgets/*(.); do
   source $w
