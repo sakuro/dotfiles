@@ -11,7 +11,6 @@ ulimit -c unlimited
 umask 022
 
 export TIME_STYLE=long-iso
-export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
 
 # rbenv
 whence rbenv >/dev/null && eval "$(rbenv init -)"
