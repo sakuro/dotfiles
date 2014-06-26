@@ -17,3 +17,6 @@ whence rbenv >/dev/null && eval "$(rbenv init -)"
 
 # go
 export GOPATH=$HOME/.go
+
+# direnv
+whence direnv >/dev/null && eval "$(direnv hook zsh)"

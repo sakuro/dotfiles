@@ -136,7 +136,6 @@ alias fgrep='fgrep --color=auto'
 
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd update-rbenv-prefix
-add-zsh-hook chpwd update-bundler-binstubs-path
 
 cd .
 
