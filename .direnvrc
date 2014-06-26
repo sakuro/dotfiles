@@ -1,0 +1,4 @@
+use_bundler() {
+  PATH_add vendor/bundle/bin
+  PATH_add $PWD/bin
+}
