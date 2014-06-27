@@ -1,4 +1,8 @@
 use_bundler() {
-  PATH_add vendor/bundle/bin
-  PATH_add bin
+  local dir
+  for dir in vendor/bundle/bin bin; do
+    if [[ -d "$(expand_path $dir)" ]]; then
+      PATH_add $dir
+    fi
+  done
 }
