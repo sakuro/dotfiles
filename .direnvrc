@@ -1,8 +1,14 @@
 use_bundler() {
   local dir
+  [[ -f Gemfile.lock ]] || return 0
   for dir in vendor/bundle/bin bin; do
-    if [[ -d "$(expand_path $dir)" ]]; then
-      PATH_add $dir
-    fi
+    PATH_add $dir
   done
+}
+
+use_ruby() {
+  local dir
+  PATH_add $HOME/.rubies/ruby-$1/bin
+  [[ -f Gemfile.lock ]] || return 0
+  use bundler
 }

@@ -1,5 +1,4 @@
 ~/bin
-~/.rbenv/bin
 ~/.go/bin
 /usr/local/bin
 /opt/local/libexec/ccache

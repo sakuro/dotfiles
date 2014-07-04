@@ -135,9 +135,6 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd update-rbenv-prefix
-
-cd .
 
 unset LC_ALL
 unset LC_COLLATE LC_CTYPE  LC_MONETARY LC_NUMERIC

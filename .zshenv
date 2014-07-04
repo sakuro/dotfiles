@@ -12,9 +12,6 @@ umask 022
 
 export TIME_STYLE=long-iso
 
-# rbenv
-whence rbenv >/dev/null && eval "$(rbenv init -)"
-
 # go
 export GOPATH=$HOME/.go
 
