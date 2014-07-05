@@ -36,3 +36,5 @@
 	ff = false
 [ghq]
 	root = /Users/sakuro/Projects
+[credential]
+	helper = osxkeychain
