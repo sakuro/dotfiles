@@ -11,7 +11,8 @@ setopt numeric_glob_sort
 
 autoload run-help
 bindkey -e
-bindkey '^?' backward-delete-char
+bindkey '^?' cd-up-at-bol-or-backward-delete-char
+bindkey '^H' cd-up-at-bol-or-backward-delete-char
 bindkey '^M' accept-line-with-hooks
 bindkey '^J' accept-line-and-open-in-pane
 bindkey '^r' peco-history-search
