@@ -33,6 +33,11 @@ function prompt_sakuro_precmd()
   # [time]
   psvar[1]+=" %F{gray}[%F{yellow}%D{%H:%M:%S}%F{gray}]%f"
 
+  psvar[1]+=" %F{gray}[%f"
+
+  # [vcs]
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+="$vcs_info_msg_0_%F{cyan}:%f"
+
   # [pwd]
   local base_path="$(print -P '%~')"
   # remove repository_part($vcs_info_msg_1_)
@@ -48,12 +53,9 @@ function prompt_sakuro_precmd()
     base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
   fi
 
-  psvar[1]+=" %F{gray}[%F{magenta}$base_path%f"
+  psvar[1]+="%F{magenta}$base_path%f"
   [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && psvar[1]+="/%F{cyan}$vcs_info_msg_1_%f"
   psvar[1]+="%F{gray}]%f"
-
-  # [vcs]
-  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" %F{gray}[%f$vcs_info_msg_0_%F{gray}]%f"
 
   # $
   if in-rubymine; then
