@@ -5,10 +5,3 @@ use_bundler() {
     PATH_add $dir
   done
 }
-
-use_ruby() {
-  local dir
-  PATH_add $HOME/.rubies/ruby-$1/bin
-  [[ -f Gemfile.lock ]] || return 0
-  use bundler
-}
