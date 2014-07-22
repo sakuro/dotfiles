@@ -20,6 +20,8 @@
 	issues = !hub browse -- issues
 	wiki = !hub browse -- wiki
 	pr = pull-request
+  track = checkout -t
+  bd = !git branch --merged | fgrep -v '*' | xargs -I % git branch -d %
 [log]
 	date = local
 [push]
