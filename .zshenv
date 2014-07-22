@@ -2,7 +2,7 @@
 
 ZDOTDIR=$HOME/.zsh.d
 fpath=($ZDOTDIR/*(/N) $fpath)
-autoload ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
+autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
 
 typeset -aU path
 set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
