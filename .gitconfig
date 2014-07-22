@@ -24,8 +24,6 @@
   bd = !git branch --merged | fgrep -v '*' | xargs -I % git branch -d %
 [log]
 	date = local
-[push]
-	default = tracking
 [pull]
 	rebase = true
 [branch]
@@ -40,3 +38,5 @@
 	root = /Users/sakuro/Projects
 [credential]
 	helper = osxkeychain
+[push]
+	default = simple
