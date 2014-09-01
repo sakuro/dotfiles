@@ -8,3 +8,4 @@
   - https://rubygems.org
 gem: --format-executable --no-ri --no-rdoc
 search: --remote
+gemsrc_use_ghq: true
