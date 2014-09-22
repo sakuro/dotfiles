@@ -2,6 +2,6 @@
 
 function peco-history-search()
 {
-  BUFFER=$(builtin history -r 1 | sed 's/^ *[0-9][0-9]*\**  //' | peco --query "$LBUFFER")
+  BUFFER=$(builtin history -r 1 | sed 's/^ *[0-9][0-9]*[* ] //' | peco --query "$LBUFFER")
   CURSOR=$#BUFFER
 }
