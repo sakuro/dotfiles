@@ -2,6 +2,7 @@
 	path = .gitconfig.local
 [user]
 	name = OZAWA Sakuro
+	email = sakuro@users.noreply.github.com
 [color]
 	branch = auto
 	diff = auto
