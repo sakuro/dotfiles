@@ -22,7 +22,7 @@
 	wiki = !hub browse -- wiki
 	pr = pull-request
   track = checkout -t
-  bd = !git branch --merged | fgrep -v '*' | xargs -I % git branch -d %
+  bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
 [log]
 	date = local
 [pull]
