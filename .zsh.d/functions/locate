@@ -1,3 +1,8 @@
 #!/bin/zsh
 
-mdfind "kMDItemFSName = $*"
+if [[ $# -ne 1 ]]; then
+  printf "Usage: $0 filename\n"
+  return 1
+fi
+
+mdfind -name $*
