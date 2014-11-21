@@ -72,10 +72,6 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 autoload -U compinit
 compinit -u -d $ZDOTDIR/compdump
 
-autoload -U predict-on
-predict-on
-zstyle ':predict' verbose true
-
 if whence -p vim > /dev/null; then
   EDITOR=vim
 else
