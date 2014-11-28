@@ -23,6 +23,7 @@
 	pr = pull-request
   track = checkout -t
   bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
+  pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
 [log]
 	date = local
 [pull]
