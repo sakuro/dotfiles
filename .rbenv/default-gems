@@ -5,3 +5,5 @@ rack
 rails
 rubocop
 yard
+sqlite3
+pg
