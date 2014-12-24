@@ -2,6 +2,6 @@ bundler
 nokogiri
 pry
 rack
-rails --pre
+rails
 rubocop
 yard
