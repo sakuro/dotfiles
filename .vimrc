@@ -9,7 +9,7 @@ filetype plugin on    " Enable filetype-specific plugins
 
 set encoding=utf-8
 set hlsearch
-colorscheme github
+set background=dark
 
 set modeline modelines=5
 set expandtab noautoindent tabstop=2 shiftwidth=2
