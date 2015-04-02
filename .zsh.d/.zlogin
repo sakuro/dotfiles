@@ -11,3 +11,11 @@ if tty --quiet && [[ -z "$SSH_AUTH_SOCK" ]]; then
   ssh-add
   echo ""
 fi
+
+[[ -z "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && {
+  if tmux ls >/dev/null; then
+    exec tmux attach
+  else
+    exec tmux
+  fi
+}
