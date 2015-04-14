@@ -44,3 +44,5 @@
 	helper = osxkeychain
 [push]
 	default = simple
+[fetch]
+	prune = true
