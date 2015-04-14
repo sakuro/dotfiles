@@ -17,6 +17,7 @@ bindkey '^M' accept-line-with-hooks
 bindkey '^J' accept-line-and-open-in-pane
 bindkey '^r' peco-history-search
 bindkey '^x^v' peco-chdir-dirs
+bindkey '^x^y' peco-chdir-bundle-show
 bindkey '^x^g' peco-chdir-ghq-list
 
 for w in $ZDOTDIR/widgets/*(.); do
