@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-while :; do
-  clear
-  echo "$*"
-  $*
-  sleep 5
-done
-
