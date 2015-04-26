@@ -19,8 +19,3 @@ set laststatus=2
 set statusline=%y%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}
 
 set paste " to make paste work as expected
-
-let g:netrw_liststyle=3
-let g:netrw_list_hide='.svn,.git'
-let g:netrw_altv=1
-let g:netrw_alto=1
