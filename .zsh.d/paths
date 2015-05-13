@@ -2,6 +2,7 @@
 ~/.rbenv/bin
 ~/.go/bin
 ~/Library/Python/2.7/bin
+~/.gem/ruby/2.0.0/bin
 /usr/local/bin
 /opt/local/libexec/ccache
 /opt/local/libexec/gnubin
