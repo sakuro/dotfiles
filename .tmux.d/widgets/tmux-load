@@ -5,4 +5,4 @@ source ~/.tmux.d/widgets/tmux-bar
 set -- $(sysctl -n vm.loadavg | tr -cd '0-9. ')
 
 icon="📈"
-echo "${icon}$(tmux-bar $1 0.05:0.5:1.0:2.0)"
+echo "${icon}$(tmux-bar $1 0.5:1.0:2.0:4.0)"
