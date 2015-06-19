@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-if [[ -x bin/rails ]]; then
-  bin/rails generate "${@}"
-elif [[ -x script/rails ]]; then
-  script/rails generate "${@}"
-else
-  script/generate "${@}"
-fi
