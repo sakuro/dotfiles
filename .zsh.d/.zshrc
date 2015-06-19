@@ -86,7 +86,7 @@ if whence -p lv > /dev/null; then
   export LV=-dc
 elif whence -p less > /dev/null; then
   PAGER=less
-  export LESS=-imFR
+  export LESS=-imR
 else
   PAGER=more
 fi
