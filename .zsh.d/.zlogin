@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-[[ -z "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && {
+[[ -n "$TERM_PROGRAM" ]] && [[ -z "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && {
   if tmux ls >/dev/null; then
     exec tmux attach
   else
