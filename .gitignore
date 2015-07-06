@@ -3,3 +3,4 @@
 /.zsh.d/history
 /.zsh.d/.chpwd-recent-dirs
 /.zsh.d/.zshrc.local
+/.vim/.netrwhist
