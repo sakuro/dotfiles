@@ -1,5 +1,4 @@
 ---
-BUNDLE_BIN: vendor/bundle/bin
 BUNDLE_PATH: vendor/bundle
 BUNDLE_JOBS: '4'
 BUNDLE_BUILD__MYSQL2: '--with-mysql-config=/opt/local/bin/mysql_config'
