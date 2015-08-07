@@ -26,6 +26,7 @@
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
   ds = diff --stat
   amend = commit --no-edit --amend
+  branches = branch
 [log]
 	date = local
 [pull]
