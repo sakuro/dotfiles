@@ -19,3 +19,5 @@ set laststatus=2
 set statusline=%y%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}
 
 set paste " to make paste work as expected
+
+set noswapfile nobackup viminfo=
