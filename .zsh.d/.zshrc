@@ -19,6 +19,7 @@ bindkey '^r' peco-history-search
 bindkey '^x^v' peco-chdir-dirs
 bindkey '^x^y' peco-chdir-bundle-show
 bindkey '^x^g' peco-chdir-project
+bindkey '^x^k' peco-rake-choose-task
 
 for w in $ZDOTDIR/widgets/*(.); do
   source $w

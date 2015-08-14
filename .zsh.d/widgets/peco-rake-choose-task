@@ -1,0 +1,9 @@
+function peco-rake-choose-task()
+{
+  local dir
+  task=$(rake -T | peco | sed 's/ *#.*$//')
+  if [[ -n "$task" ]]; then
+    BUFFER="$task"
+    zle accept-line
+  fi
+}
