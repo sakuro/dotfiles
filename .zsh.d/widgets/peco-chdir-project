@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+function peco-chdir-project()
+{
+  local dir=$(print -lD $(git config --get ghq.root)/*/*/*(/) | peco --query "$LBUFFER")
+  if [[ -n "$dir" ]]; then
+    BUFFER="cd $dir"
+    zle accept-line
+  fi
+}
