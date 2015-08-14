@@ -22,12 +22,12 @@
 	issues = !hub browse -- issues
 	wiki = !hub browse -- wiki
 	pr = pull-request
-  track = checkout -t
-  bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
-  pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
-  ds = diff --stat
-  amend = commit --no-edit --amend
-  branches = branch
+	track = checkout -t
+	bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
+	pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
+	ds = diff --stat
+	amend = commit --no-edit --amend
+	branches = branch
 [log]
 	date = local
 [pull]
