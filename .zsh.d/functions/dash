@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+open dash://$1:$2
