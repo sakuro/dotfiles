@@ -1,11 +1,4 @@
-bundler
-nokogiri
-pry
-rack
-rails
-rubocop
-yard
-sqlite3
-pg
-gem-orphan
 gem-changelog
+gem-orphan
+pry-rails
+rubocop
