@@ -1,7 +1,0 @@
-use_bundler() {
-  local dir
-  [[ -f Gemfile.lock ]] || return 0
-  for dir in vendor/bundle/bin bin; do
-    PATH_add $dir
-  done
-}
