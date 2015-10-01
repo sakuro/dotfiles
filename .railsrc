@@ -1,3 +1,4 @@
 --skip-test-unit
 --template /Users/sakuro/Projects/bitbucket.org/sakuro/yamadera/templates/yamadera.rb
 --force
+--skip-bundle
