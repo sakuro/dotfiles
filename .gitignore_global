@@ -5,4 +5,5 @@ Thumbs.db
 /.idea
 /.rvmrc
 /.ruby-version
-/.envrc
+.envrc
+node_modules
