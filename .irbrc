@@ -6,6 +6,7 @@ END { puts }
 # Invoke pry if available
 begin
   require 'pry'
+  puts 'Invoking pry'
   Pry.start
   exit
 rescue LoadError
