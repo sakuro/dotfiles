@@ -1,13 +1,5 @@
 #!/bin/zsh
 
-[[ -n "$TERM_PROGRAM" ]] && [[ -z "$SSH_CONNECTION" ]] && [[ -z "$TMUX" ]] && {
-  if tmux ls >/dev/null; then
-    exec tmux attach
-  else
-    exec tmux
-  fi
-}
-
 if whence fortune >/dev/null; then
   fortune -s
   echo ""
