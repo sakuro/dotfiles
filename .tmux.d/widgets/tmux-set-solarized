@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-PATH=$HOME/.tmux.d/widgets:$PATH
-tmux source ~/.tmux.d/themes/solarized-$(term-brightness).conf
