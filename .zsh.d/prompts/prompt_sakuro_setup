@@ -61,11 +61,8 @@ function prompt_sakuro_precmd()
   psvar[1]+=" %F{gray}[%F{blue}$(rbenv version-name)%f%F{gray}]%f"
 
   # $
-  if in-rubymine; then
-    psvar[2]+='%# '
-  else
-    psvar[2]+='%(?,😄,%(141?,😄,😡))  '
-  fi
+  psvar[2]+='%# '
+
   PROMPT=${(F)psvar}
 }
 
