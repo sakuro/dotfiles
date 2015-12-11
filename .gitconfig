@@ -28,6 +28,7 @@
 	ds = diff --stat
 	amend = commit --no-edit --amend
 	branches = branch
+	wip = commit -m wip
 [log]
 	date = local
 [pull]
