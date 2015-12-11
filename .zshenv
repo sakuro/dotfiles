@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+setopt no_global_rcs
+
 ZDOTDIR=$HOME/.zsh.d
 fpath=($ZDOTDIR/*(/N) $fpath)
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
