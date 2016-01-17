@@ -1,5 +1,5 @@
 --database postgresql
 --force
 --skip-bundle
---skip-test-unit
+--skip-test
 --template /Users/sakuro/.yamadera/template.rb
