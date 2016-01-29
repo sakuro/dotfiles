@@ -1,0 +1,23 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+curly_bracket_next_line = false
+space_around_operators = true
+space_around_brackets = inside
+indent_brace_style = K&R
+
+#max_line_length = 80
+#c_include_path = :
+#java_class_path = :
+
+[*.rb,*.js]
+quote_type = single
+
+[*.md]
+indent_size = 4
