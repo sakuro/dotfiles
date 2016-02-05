@@ -11,7 +11,7 @@ LINKED_FILES.include('Library/Preferences/RubyMine*/idea.vmoptions')
 
 task default: :links
 
-desc 'Make symbolinks to dotfiles'
+desc 'Make symlinks to dotfiles'
 task :links
 
 LINKED_FILES.each do |file|
