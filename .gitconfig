@@ -43,7 +43,7 @@
 [merge]
 	ff = false
 [ghq]
-	root = /Users/sakuro/Projects
+	root = /Users/sakuro
 [credential]
 	helper = osxkeychain
 [push]

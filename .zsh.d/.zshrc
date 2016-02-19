@@ -31,7 +31,7 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushd_silent
 
-cdpath=( ~ ~/Projects(-/N) ~/Projects/*.*/*(-/N) )
+cdpath=( ~ ~/*.*/*(-/N) )
 
 setopt extended_history
 setopt hist_expire_dups_first
