@@ -3,6 +3,7 @@
 [user]
 	name = OZAWA Sakuro
 	email = sakuro@users.noreply.github.com
+	signingkey = 243B9E7E
 [color]
 	branch = auto
 	diff = auto
@@ -50,3 +51,5 @@
 	default = simple
 [fetch]
 	prune = true
+[commit]
+	gpgsign = true
