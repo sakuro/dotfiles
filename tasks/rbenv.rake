@@ -7,10 +7,11 @@ RBENV_PLUGIN_REPOS = %w(
 )
 
 desc 'Install rbenv'
-task :rbenv => [ RBENV_DIR, :"rbenv:plugins" ]
+task :rbenv => RBENV_DIR
 
 directory RBENV_DIR do
   sh "git clone https://github.com/sstephenson/rbenv #{RBENV_DIR}"
+  Rake::Task[:"rbenv:plugins"].invoke
 end
 
 namespace :rbenv do
