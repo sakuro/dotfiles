@@ -24,7 +24,7 @@ namespace :rbenv do
 
   namespace :plugins do
     RBENV_PLUGIN_REPOS.each do |plugin_repo|
-      plugin_name = File.basename(plugin_repo)
+      _owner, plugin_name = plugin_repo.split('/')
       plugin_dir = File.join(RBENV_DIR, "plugins/#{plugin_name}")
 
       task plugin_name => plugin_dir
