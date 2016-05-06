@@ -1,5 +1,9 @@
 --database postgresql
+--dummy-path spec/dummy
 --force
+--javascript vanilla
+--skip-action-mailer
+--skip-action-cable
 --skip-bundle
 --skip-test
---template /Users/sakuro/.yamadera/template.rb
+--skip-turbolinks
