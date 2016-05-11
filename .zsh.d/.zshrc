@@ -146,7 +146,4 @@ unset LC_CTYPE LC_MONETARY LC_NUMERIC
 export LC_COLLATE=C LC_TIME=C LC_MESSAGES=C
 export LANG=ja_JP.UTF-8
 
-RUBY_CONFIGURE_OPTS="--disable-install-doc --enable-shared --with-out-ext=tk --with-opt-dir=/opt/local --with-readline-dir=/opt/local --with-openssl-dir=/opt/local --with-libyaml-dir=/opt/local"
-export RUBY_CONFIGURE_OPTS
-
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local
