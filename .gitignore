@@ -5,3 +5,4 @@
 /.zsh.d/.zshrc.local
 /.zsh.d/functions/svn-*
 /.vim/.netrwhist
+/.bundle/cache/
