@@ -1,0 +1,23 @@
+#!/bin/sh
+
+repo=$(git remote get-url origin | sed -e 's/.*github\.com://;s/\.git$//')
+base_url=https://github.com/$repo
+case $# in
+0)
+  branch=$(git rev-parse --abbrev-ref HEAD)
+  case $branch in
+  master) url=$base_url ;;
+  *)      url=$base_url/tree/$branch ;;
+  esac
+  ;;
+1)
+  case $1 in
+  --pulls|--wiki|--issues) url=$base_url/${1#--} ;;
+  --prs)                   url=$base_url/pulls ;;
+  *) echo Unknown option; exit 1 ;;
+  esac
+  ;;
+*) echo Too many arguments; exit 1 ;;
+esac
+
+open $url
