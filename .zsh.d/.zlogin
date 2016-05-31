@@ -5,7 +5,7 @@ if whence fortune >/dev/null; then
   echo ""
 fi
 
-if tty --quiet && [[ -z "$SSH_AUTH_SOCK" ]]; then
+if tty -s && [[ -z "$SSH_AUTH_SOCK" ]]; then
   echo -n "Invoking SSH agent: "
   eval $(ssh-agent)
   ssh-add
