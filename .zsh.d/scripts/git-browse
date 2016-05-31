@@ -5,18 +5,23 @@ base_url=https://github.com/$repo
 case $# in
 0)
   branch=$(git rev-parse --abbrev-ref HEAD)
-  case $branch in
-  master) url=$base_url ;;
-  *)      url=$base_url/tree/$branch ;;
-  esac
-  ;;
+  url=$base_url/tree/$branch ;;
 1)
   case $1 in
-  --pulls|--wiki|--issues) url=$base_url/${1#--} ;;
-  --prs)                   url=$base_url/pulls ;;
-  *) echo Unknown option; exit 1 ;;
-  esac
-  ;;
+  --pulls|--wiki|--issues)
+    url=$base_url/${1#--} ;;
+  --prs)
+    url=$base_url/pulls ;;
+  *)
+    echo Unknown option; exit 1 ;;
+  esac ;;
+2)
+  case $1 in
+  --branch)
+    url=$base_url/tree/$2 ;;
+  *)
+    echo Unknown option; exit 1 ;;
+  esac ;;
 *) echo Too many arguments; exit 1 ;;
 esac
 
