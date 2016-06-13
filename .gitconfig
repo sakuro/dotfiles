@@ -31,6 +31,7 @@
 	amend = commit --no-edit --amend
 	branches = branch
 	wip = commit -m wip
+	og = diff --cached
 [log]
 	date = local
 [pull]
