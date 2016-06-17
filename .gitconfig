@@ -11,23 +11,28 @@
 	status = auto
 [alias]
 	sw = checkout
-	st = status -s
-	cdiff = diff --word-diff=color --word-diff-regex=.
+  co = checkout
+  mkb = checkout -b
+	st = status -sb
+	cdiff = diff --word-diff=color --word-diff-regex=. -M
 	diff = diff -M
+	ds = diff --stat -M
+	og = diff --cached -M
 	egrep = grep -E
-	ci = commit -v
 	commit = commit -v
+	ci = commit -v
 	unstage = rm --cached
 	l = log --stat --pretty=format:'commit %C(green)%H%Creset%nAuthor: %C(blue)%an %x3c%ae%x3e%Creset%nDate:   %aD%n%n%C(cyan)    %s%Creset%n%n%w(0,4,4)%b'
 	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+	prs = !git browse --pulls
+	issues = !git browse --issues
+	wiki = !git browse --wiki
 	track = checkout -t
 	bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
 	pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
-	ds = diff --stat
 	amend = commit --no-edit --amend
 	branches = branch
 	wip = commit -m wip
-	og = diff --cached
 [log]
 	date = local
 [pull]
