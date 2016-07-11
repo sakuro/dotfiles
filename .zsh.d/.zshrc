@@ -82,10 +82,7 @@ fi
 
 export EDITOR
 
-if whence -p lv > /dev/null; then
-  PAGER=lv
-  export LV=-dc
-elif whence -p less > /dev/null; then
+if whence -p less > /dev/null; then
   PAGER=less
   export LESS=-imR
 else
