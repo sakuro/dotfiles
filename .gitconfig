@@ -44,7 +44,7 @@
 	compactionHeuristic = true
 [core]
 	excludesfile = ~/.dotfiles/.gitignore_global
-	pager = emojify | $PAGER
+	pager = diff-highlight | emojify | $PAGER
 [merge]
 	ff = false
 [ghq]
