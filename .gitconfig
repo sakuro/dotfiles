@@ -43,6 +43,7 @@
 	algorithm = histogram
 [core]
 	excludesfile = ~/.dotfiles/.gitignore_global
+	pager = emojify | $PAGER
 [merge]
 	ff = false
 [ghq]
