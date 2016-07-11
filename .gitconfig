@@ -41,6 +41,7 @@
 	autosetuprebase = always
 [diff]
 	algorithm = histogram
+	compactionHeuristic = true
 [core]
 	excludesfile = ~/.dotfiles/.gitignore_global
 	pager = emojify | $PAGER
