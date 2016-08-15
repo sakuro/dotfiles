@@ -8,3 +8,5 @@ Thumbs.db
 .envrc
 node_modules
 .editorconfig
+tags
+TAGS
