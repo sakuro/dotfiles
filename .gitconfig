@@ -11,13 +11,10 @@
 	status = auto
 [alias]
 	sw = checkout
-  co = checkout
-  mkb = checkout -b
+	co = checkout
+	mkb = checkout -b
 	st = status -sb
-	cdiff = diff --word-diff=color --word-diff-regex=. -M
 	diff = diff -M
-	ds = diff --stat -M
-	og = diff --cached -M
 	egrep = grep -E
 	commit = commit -v
 	ci = commit -v
@@ -47,14 +44,10 @@
 	pager = diff-highlight | emojify | $PAGER
 [merge]
 	ff = false
-[ghq]
-	root = /Users/sakuro
 [credential]
 	helper = osxkeychain
 [push]
 	default = simple
-[fetch]
-	prune = true
 [commit]
 	gpgsign = true
 [gpg]
