@@ -30,6 +30,7 @@
 	amend = commit --no-edit --amend
 	branches = branch
 	wip = commit -m wip
+	rebase = rebase --autosquash
 [log]
 	date = local
 [pull]
