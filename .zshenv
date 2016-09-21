@@ -13,6 +13,7 @@ ulimit -c unlimited
 umask 022
 
 export TIME_STYLE=long-iso
+export QUOTING_STYLE=literal
 
 # go
 export GOPATH=$HOME/.go
