@@ -117,6 +117,8 @@ alias port='with-subcommand port'
 
 alias open='reattach-to-user-namespace open'
 
+alias svn='with-subcommand svn'
+
 whence vim >/dev/null && alias vi=vim
 
 if whence dircolors >/dev/null && [[ -f ~/.dircolors ]]; then
