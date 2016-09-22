@@ -131,7 +131,7 @@ alias fgrep='fgrep --color=auto'
 autoload -Uz add-zsh-hook
 
 unset LC_ALL
-unset LC_CTYPE LC_MONETARY LC_NUMERIC
+unset LC_MONETARY LC_NUMERIC
 export LC_CTYPE=C LC_COLLATE=C LC_TIME=C LC_MESSAGES=C
 export LANG=ja_JP.UTF-8
 
