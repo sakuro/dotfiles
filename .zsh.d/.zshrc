@@ -105,11 +105,6 @@ alias df='df -h'
 alias free='free -t -m'
 alias -g V='| view -'
 alias -g L="| $PAGER"
-alias -g uniq='LC_CTYPE=C LC_COLLATE=C uniq'
-alias -g sort='LC_CTYPE=C LC_COLLATE=C sort'
-alias -g grep='LC_CTYPE=C LC_COLLATE=C grep'
-alias -g egrep='LC_CTYPE=C LC_COLLATE=C egrep'
-alias -g fgrep='LC_CTYPE=C LC_COLLATE=C fgrep'
 alias dirs='dirs -v'
 
 alias puts='print -l'
@@ -142,7 +137,7 @@ autoload -Uz add-zsh-hook
 
 unset LC_ALL
 unset LC_CTYPE LC_MONETARY LC_NUMERIC
-export LC_COLLATE=C LC_TIME=C LC_MESSAGES=C
+export LC_CTYPE=C LC_COLLATE=C LC_TIME=C LC_MESSAGES=C
 export LANG=ja_JP.UTF-8
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local
