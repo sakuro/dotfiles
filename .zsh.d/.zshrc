@@ -109,20 +109,15 @@ alias dirs='dirs -v'
 
 alias puts='print -l'
 alias port='with-subcommand port'
-
+alias svn='with-subcommand svn'
 alias open='reattach-to-user-namespace open'
 
-alias svn='with-subcommand svn'
-
 whence vim >/dev/null && alias vi=vim
+whence hub >/dev/null && eval "$(hub alias -s)"
 
 if whence dircolors >/dev/null && [[ -f ~/.dircolors ]]; then
   eval $(dircolors -b ~/.dircolors)
   alias ls='ls -F --color=auto'
-fi
-
-if whence hub >/dev/null; then
-  eval "$(hub alias -s)"
 fi
 
 autoload -U colors
