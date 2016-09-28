@@ -8,8 +8,8 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 curly_bracket_next_line = false
-space_around_operators = true
-space_around_brackets = inside
+spaces_around_operators = true
+spaces_around_brackets = inside
 indent_brace_style = K&R
 
 #max_line_length = 80
