@@ -84,7 +84,7 @@ export EDITOR
 
 if whence -p less > /dev/null; then
   PAGER=less
-  export LESS=-imR
+  export LESS="-imRz-4"
 else
   PAGER=more
 fi
