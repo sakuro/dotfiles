@@ -23,3 +23,5 @@ whence direnv >/dev/null && eval "$(direnv hook zsh)"
 
 # rbenv
 whence rbenv >/dev/null && eval "$(rbenv init -)"
+
+export TMPDIR=$HOME/tmp
