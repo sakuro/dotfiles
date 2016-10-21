@@ -7,6 +7,5 @@ Thumbs.db
 /.ruby-version
 .envrc
 node_modules
-.editorconfig
 tags
 TAGS
