@@ -40,8 +40,6 @@
 [diff]
 	algorithm = histogram
 	compactionHeuristic = true
-[core]
-	excludesfile = ~/.dotfiles/.gitignore_global
 	pager = diff-highlight | emojify | $PAGER
 [merge]
 	ff = false

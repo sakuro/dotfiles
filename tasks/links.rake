@@ -1,8 +1,8 @@
 LINKED_FILES = Rake::FileList.new
 LINKED_FILES.include('.*')
 LINKED_FILES.exclude('.', '..')
-LINKED_FILES.exclude('.git', '.gitignore_global', '.gitignore')
-
+LINKED_FILES.exclude('.git', '.gitignore', '.config')
+LINKED_FILES.include('.config/git/ignore')
 LINKED_FILES.exclude('.rbenv')
 LINKED_FILES.include('.rbenv/default-gems')
 
