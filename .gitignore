@@ -6,3 +6,4 @@
 /.zsh.d/functions/svn-*
 /.vim/.netrwhist
 /.bundle/cache/
+/.ssh/*
