@@ -4,7 +4,7 @@ repo=$(git remote get-url origin | sed -e 's/.*github\.com://;s/\.git$//')
 base_url=https://github.com/$repo
 case $# in
 0)
-  branch=$(git rev-parse --abbrev-ref HEAD)
+  branch=$(git rev-parse --abbrev-ref HEAD | sed 's/#/%23/g')
   url=$base_url/tree/$branch ;;
 1)
   case $1 in
