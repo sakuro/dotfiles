@@ -30,6 +30,7 @@
 	wip = commit -m wip
 [log]
 	date = local
+	abbrevCommit = true
 [pull]
 	rebase = true
 [branch]
