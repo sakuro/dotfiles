@@ -85,6 +85,9 @@ export EDITOR
 if whence -p less > /dev/null; then
   PAGER=less
   export LESS="-imRz-4"
+  if whence -p lesspipe.sh > /dev/null; then
+    eval $(lesspipe.sh)
+  fi
 else
   PAGER=more
 fi
