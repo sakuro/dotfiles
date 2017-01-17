@@ -6,7 +6,7 @@ END { puts }
 # Invoke pry if available
 begin
   require 'pry'
-  puts 'Invoking pry'
+  puts 'Invoking pry' if IRB.conf[:VERBOSE]
   Pry.start
   exit
 rescue LoadError
@@ -17,5 +17,5 @@ rescue LoadError
   IRB.conf[:SAVE_HISTORY] = 10000
   IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb.history')
   IRB.conf[:PROMPT_MODE] = :SIMPLE
-  puts 'Invoking irb'
+  puts 'Invoking irb' if IRB.conf[:VERBOSE]
 end
