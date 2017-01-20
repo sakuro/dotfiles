@@ -1,0 +1,3 @@
+[submodule "zplug"]
+	path = .zsh.d/zplug
+	url = https://github.com/zplug/zplug

@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+export ZPLUG_HOME=$ZDOTDIR/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug 'lukechilds/zsh-nvm'
+zplug 'mrowa44/emojify', as:command
+
+if ! zplug check --verbose; then
+  printf 'Install? [y/N]: '
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load --verbose
+
+

@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+source $ZDOTDIR/.zplugrc
+
 setopt auto_resume
 
 setopt correct
