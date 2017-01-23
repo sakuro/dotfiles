@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for keep in $(git ls-files | grep -F ${GIT_KEEPFILE:-.gitkeep}); do
+  [ $(git ls-files $(dirname $keep) | wc -l) -gt 1 ] && git rm $keep
+done
+
+
