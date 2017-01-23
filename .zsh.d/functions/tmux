@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+function tmux()
+{
+  wcwidth-cjk /opt/local/bin/tmux $*
+}
+
+
