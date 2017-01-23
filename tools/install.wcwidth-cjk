@@ -1,0 +1,7 @@
+#!/bin/sh
+
+tmpdir=$(mktemp -d)
+trap "rm -rf $tmpdir" EXIT
+
+cd $tmpdir
+git checkout osx && make -f Makefile.osx && sudo make -f Makefile.osx install
