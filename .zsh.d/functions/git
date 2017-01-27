@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function git()
+{
+  PATH=$ZDOTDIR/git:$PATH command git $*
+}
