@@ -2,5 +2,5 @@
 
 function git()
 {
-  PATH=$ZDOTDIR/git:$PATH command git $*
+  PATH=$ZDOTDIR/../git:$PATH command git $*
 }
