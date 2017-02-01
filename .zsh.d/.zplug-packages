@@ -1,0 +1,7 @@
+zplug 'lukechilds/zsh-nvm'
+zplug 'mrowa44/emojify', as:command
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'zsh-users/zsh-completions'
+zplug 'git/git', use:contrib/diff-highlight/diff-highlight, as:command
+zplug 'yuya-takeyama/ltsv2json', from:gh-r, as:command
+zplug 'mackerelio/mkr', from:gh-r, as:command
