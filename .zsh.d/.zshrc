@@ -76,7 +76,7 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 autoload -U compinit
 compinit -u -d $ZDOTDIR/compdump
 
-if whence -p vim > /dev/null; then
+if is-executable -p vim; then
   EDITOR=vim
 else
   EDITOR=vi
@@ -84,10 +84,10 @@ fi
 
 export EDITOR
 
-if whence -p less > /dev/null; then
+if is-executable -p less; then
   PAGER=less
   export LESS="-imRz-4"
-  if whence -p lesspipe.sh > /dev/null; then
+  if is-executable -p lesspipe.sh; then
     eval $(lesspipe.sh)
   fi
 else
@@ -117,10 +117,10 @@ alias port='with-subcommand port'
 alias svn='with-subcommand svn'
 alias open='reattach-to-user-namespace open'
 
-whence vim >/dev/null && alias vi=vim
-whence hub >/dev/null && eval "$(hub alias -s)"
+is-executable vim && alias vi=vim
+is-executable hub && eval "$(hub alias -s)"
 
-if whence dircolors >/dev/null && [[ -f ~/.dircolors ]]; then
+if is-executable dircolors && [[ -f ~/.dircolors ]]; then
   eval $(dircolors -b ~/.dircolors)
   alias ls='ls -F --color=auto'
 fi

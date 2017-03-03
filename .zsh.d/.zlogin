@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if whence fortune >/dev/null; then
+if is-executable fortune; then
   fortune -s
   echo ""
 fi

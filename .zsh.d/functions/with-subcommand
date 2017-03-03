@@ -4,7 +4,7 @@ local command=$1
 shift
 local subcommand="$command-$1"
 
-if whence $subcommand >/dev/null; then
+if is-executable $subcommand; then
   shift
   $subcommand $*
 else

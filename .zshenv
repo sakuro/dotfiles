@@ -19,9 +19,9 @@ export QUOTING_STYLE=literal
 export GOPATH=$HOME/.go
 
 # direnv
-whence direnv >/dev/null && eval "$(direnv hook zsh)"
+is-executable direnv && eval "$(direnv hook zsh)"
 
 # rbenv
-whence rbenv >/dev/null && eval "$(rbenv init -)"
+is-executable rbenv && eval "$(rbenv init -)"
 
 export TMPDIR=$HOME/tmp
