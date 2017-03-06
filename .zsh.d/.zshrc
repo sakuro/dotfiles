@@ -99,8 +99,6 @@ export READNULLCMD=$PAGER
 
 setopt completealiases
 
-unalias -m '*'
-
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
