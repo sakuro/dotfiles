@@ -123,8 +123,6 @@ if is-executable dircolors && [[ -f ~/.dircolors ]]; then
   alias ls='ls -F --color=auto'
 fi
 
-alias slogin=ssh
-
 autoload -U colors
 colors
 
