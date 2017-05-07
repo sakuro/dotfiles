@@ -6,3 +6,4 @@ zplug 'yuya-takeyama/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command
 zplug 'ssh0/dot', 'use:*.sh'
 zplug 'hokaccha/nodebrew', hook-build:'perl nodebrew setup'
+zplug 'takaaki-kasai/git-foresta', as:command
