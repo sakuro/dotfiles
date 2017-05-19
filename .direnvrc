@@ -1,0 +1,7 @@
+function use_yarn {
+  PATH_add /opt/local/libexec/yarn/bin
+}
+function use_binstubs {
+  PATH_add bin
+}
+

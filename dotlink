@@ -17,4 +17,4 @@
 .zshenv
 .config/git/ignore
 .rbenv/default-gems
-
+.direnvrc
