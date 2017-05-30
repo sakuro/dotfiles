@@ -115,6 +115,7 @@ alias port='with-subcommand port'
 alias svn='with-subcommand svn'
 alias open='reattach-to-user-namespace open'
 
+is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
 is-executable hub && eval "$(hub alias -s)"
 
