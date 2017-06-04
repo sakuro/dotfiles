@@ -3,3 +3,4 @@
 --force
 --skip-bundle
 --skip-test
+--skip-coffee
