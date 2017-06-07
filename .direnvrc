@@ -4,4 +4,7 @@ function use_yarn {
 function use_binstubs {
   PATH_add bin
 }
+function use_postgresql {
+  export PGHOST=localhost
+}
 
