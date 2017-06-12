@@ -9,6 +9,8 @@ postgresql:
   image: postgres:9.5-alpine
   ports:
     - "5432:5432"
+  volumes:
+    - pgdata:/var/lib/postgresql/data
   environment:
     POSTGRES_USER: "${USER}"
     POSTGRES_INITDB_ARGS: "--encoding UTF8 --no-locale"
