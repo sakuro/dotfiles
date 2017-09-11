@@ -11,10 +11,9 @@
 .ssh
 .tmux.conf
 .tmux.d
-.vim
-.vimrc
 .zsh.d
 .zshenv
 .config/git/ignore
+.config/nvim/init.vim
 .rbenv/default-gems
 .direnvrc
