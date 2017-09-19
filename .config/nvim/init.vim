@@ -9,6 +9,7 @@ filetype plugin on    " Enable filetype-specific plugins
 
 set encoding=utf-8
 set hlsearch
+set ambiwidth=double
 
 set modeline modelines=5
 set expandtab noautoindent tabstop=2 shiftwidth=2
