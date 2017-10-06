@@ -10,7 +10,7 @@ fi
 
 while [[ -d $current && $current != $previous ]]; do
   local target_path=$current/$1
-  if [[ -f $target_path ]]; then
+  if [[ -e $target_path ]]; then
     echo $target_path
     return 0
   else
