@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+case $# in
+0)
+  cd ..
+  ;;
+1)
+  cd ${$(upfind $1):h}
+  ;;
+*)
+  echo "Usage: cdup [file]"
+  ;;
+esac
