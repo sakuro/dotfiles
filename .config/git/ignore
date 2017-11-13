@@ -6,5 +6,6 @@ Thumbs.db
 /.rvmrc
 /.ruby-version
 .envrc
+.vscode
 tags
 TAGS
