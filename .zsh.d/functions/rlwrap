@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+function rlwrap()
+{
+  local command=$1
+  shift
+  alias $command="command rlwrap $command"
+}
+
