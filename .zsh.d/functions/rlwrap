@@ -2,8 +2,11 @@
 
 function rlwrap()
 {
+  [[ $# == 0 ]] && {
+    return 0;
+  }
   local command=$1
   shift
-  alias $command="command rlwrap $command"
+  alias $command="command rlwrap $command $*"
 }
 
