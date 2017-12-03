@@ -1,4 +1,4 @@
-zplug 'mrowa44/emojify', as:command
+zplug 'mrowa44/emojify', at:old_bash_support, as:command
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions'
 zplug 'git/git', use:contrib/diff-highlight/diff-highlight, as:command, hook-build:'make -C contrib/diff-highlight'
