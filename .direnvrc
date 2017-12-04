@@ -17,13 +17,10 @@ path_add() {
   export "$var_name=$path"
 }
 
-function use_yarn {
-  PATH_add /opt/local/libexec/yarn/bin
-}
-function use_binstubs {
-  PATH_add bin
-}
 function use_postgresql {
   export PGHOST=localhost
 }
 
+[ -d bin ] && [ -f Gemfile.lock ] && PATH_add bin || :
+[ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
+[ -x bin/yarn ] && PATH_add /opt/local/libexec/yarn/bin || :
