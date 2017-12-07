@@ -58,7 +58,7 @@ function prompt_sakuro_precmd()
   psvar[1]+="%F{gray}]%f"
 
   # [rbenv]
-  psvar[1]+=" %F{gray}[%F{blue}$(rbenv version-name)%f%F{gray}]%f"
+  psvar[1]+=" %F{gray}[ruby:%F{blue}$(rbenv version-name)%f%F{gray}]%f"
 
   # $
   psvar[2]+='%(!.#.$) '
