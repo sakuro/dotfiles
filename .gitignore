@@ -3,7 +3,6 @@
 /.zsh.d/history
 /.zsh.d/.chpwd-recent-dirs
 /.zsh.d/.zshrc.local
-/.zsh.d/functions/svn-*
 /.vim/.netrwhist
 /.bundle/cache/
 /.ssh/*
