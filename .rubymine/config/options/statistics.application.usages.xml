@@ -1,0 +1,11 @@
+<application>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="ide.settings.Appearance" count="3" />
+      <entry feature="ide.settings.Font" count="1" />
+      <entry feature="ideaapp.started" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.Configure" count="2" />
+      <entry feature="welcome.screen.WelcomeScreen.Settings" count="2" />
+    </counts>
+  </component>
+</application>

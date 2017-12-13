@@ -1,0 +1,8 @@
+CVS
+PerforceDirectPlugin
+Subversion
+com.intellij.lang.puppet
+com.jetbrains.restClient
+hg4idea
+org.jetbrains.plugins.ruby-puppet
+org.jetbrains.plugins.stylus

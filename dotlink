@@ -16,3 +16,4 @@
 .zshenv
 .rbenv/default-gems
 .direnvrc
+.rubymine
