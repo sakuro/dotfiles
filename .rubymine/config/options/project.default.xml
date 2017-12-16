@@ -1,12 +1,36 @@
 <application>
   <component name="ProjectManager">
     <defaultProject>
-      <component name="InspectionProjectProfileManager">
-        <option name="PROJECT_PROFILE" />
-        <version value="1.0" />
+      <component name="ProjectInspectionProfilesVisibleTreeState">
+        <entry key="Project Default">
+          <profile-state>
+            <expanded-state>
+              <State>
+                <id />
+              </State>
+              <State>
+                <id>Cucumber</id>
+              </State>
+              <State>
+                <id>Naming conventionsRuby</id>
+              </State>
+              <State>
+                <id>Rails</id>
+              </State>
+              <State>
+                <id>Ruby</id>
+              </State>
+            </expanded-state>
+            <selected-state>
+              <State>
+                <id>Rubocop</id>
+              </State>
+            </selected-state>
+          </profile-state>
+        </entry>
       </component>
       <component name="PropertiesComponent">
-        <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+        <property name="settings.editor.selected.configurable" value="Errors" />
       </component>
     </defaultProject>
   </component>

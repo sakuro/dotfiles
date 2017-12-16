@@ -1,0 +1,54 @@
+<application>
+  <component name="GemManagerSettings" libraryVersion="4">
+    <sdk2gems sdk="rbenv: 2.5.0-rc1">
+      <box url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems">
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/net-telnet-0.1.1" name="net-telnet" version="0.1.1" timestamp="1513300171381" parser_version="15" git="false">
+          <additional_info authors="&quot;SHIBATA Hiroshi&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze" homepage="https://github.com/ruby/net-telnet">
+            <summary>&quot;Provides telnet client functionality.&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/did_you_mean-1.2.0" name="did_you_mean" version="1.2.0" timestamp="1513300171839" parser_version="15" git="false">
+          <additional_info authors="&quot;Yuki Nishijima&quot;.freeze" email="&quot;mail@yukinishijima.net&quot;.freeze" homepage="https://github.com/yuki24/did_you_mean">
+            <summary>&quot;\&quot;Did you mean?\&quot; experience in Ruby&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/minitest-5.10.3" name="minitest" version="5.10.3" timestamp="1513300173051" parser_version="15" git="false">
+          <additional_info authors="&quot;Ryan Davis&quot;.freeze" email="&quot;ryand-ruby@zenspider.com&quot;.freeze" homepage="https://github.com/seattlerb/minitest">
+            <summary>&quot;minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/xmlrpc-0.3.0" name="xmlrpc" version="0.3.0" timestamp="1513300171998" parser_version="15" git="false">
+          <additional_info authors="&quot;SHIBATA Hiroshi&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze" homepage="https://github.com/ruby/xmlrpc">
+            <summary>&quot;XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP.&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/rake-12.3.0" name="rake" version="12.3.0" timestamp="1513300172784" parser_version="15" git="false">
+          <additional_info authors="&quot;Hiroshi SHIBATA&quot;.freeze, &quot;Eric Hodel&quot;.freeze, &quot;Jim Weirich&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze, &quot;drbrain@segment7.net&quot;.freeze, &quot;&quot;.freeze" homepage="https://github.com/ruby/rake">
+            <summary>&quot;Rake is a Make-like program implemented in Ruby&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/test-unit-3.2.7" name="test-unit" version="3.2.7" timestamp="1513300174180" parser_version="15" git="false">
+          <additional_info authors="&quot;Kouhei Sutou&quot;.freeze, &quot;Haruka Yoshihara&quot;.freeze" email="&quot;kou@cozmixng.org&quot;.freeze, &quot;yoshihara@clear-code.com&quot;.freeze" homepage="http://test-unit.github.io/">
+            <summary>&quot;An xUnit family unit testing framework for Ruby.&quot;.freeze</summary>
+          </additional_info>
+          <dependency name="power_assert" git="false" path="false" doRequire="true">
+            <bound version="0" bound="GREATER_OR_EQUAL" />
+          </dependency>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/power_assert-1.1.1" name="power_assert" version="1.1.1" timestamp="1513300171249" parser_version="15" git="false">
+          <additional_info authors="&quot;Kazuki Tsujimoto&quot;.freeze" email="&quot;kazuki@callcc.net&quot;.freeze" homepage="https://github.com/k-tsj/power_assert">
+            <summary>&quot;Power Assert for Ruby&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/gem-changelog-1.0.4" name="gem-changelog" version="1.0.4" timestamp="1513300186719" parser_version="15" git="false">
+          <additional_info authors="&quot;OZAWA Sakuro&quot;.freeze" email="&quot;sakuro@2238club.org&quot;.freeze" homepage="">
+            <summary>&quot;Show the changelog of given gem&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+      </box>
+      <box url="file://$USER_HOME$/.gem/ruby/2.5.0/gems" />
+      <box url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/bundler/gems" />
+      <box url="file://$USER_HOME$/.gem/ruby/2.5.0/bundler/gems" />
+    </sdk2gems>
+  </component>
+</application>
