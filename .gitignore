@@ -9,3 +9,4 @@
 /.rubymine/system
 /.rubymine/config/port.lock
 /.rubymine/config/rubymine.key
+/.rubymine/config/extensions/
