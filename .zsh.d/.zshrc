@@ -140,4 +140,6 @@ unset LC_CTYPE LC_MONETARY LC_NUMERIC
 export LC_COLLATE=C LC_TIME=C LC_MESSAGES=C
 export LANG=ja_JP.UTF-8
 
+limit coredumpsize 0
+
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
