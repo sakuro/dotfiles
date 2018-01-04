@@ -1,33 +1,158 @@
 <application>
   <component name="GemManagerSettings" libraryVersion="4">
-    <sdk2gems sdk="rbenv: 2.5.0-rc1">
-      <box url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems">
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/net-telnet-0.1.1" name="net-telnet" version="0.1.1" timestamp="1513300171381" parser_version="15" git="false">
-          <additional_info authors="&quot;SHIBATA Hiroshi&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze" homepage="https://github.com/ruby/net-telnet">
-            <summary>&quot;Provides telnet client functionality.&quot;.freeze</summary>
+    <sdk2gems sdk="rbenv: 2.5.0">
+      <box url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems">
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/csv" name="csv" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This csv is bundled with Ruby</summary>
           </additional_info>
         </gem>
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/did_you_mean-1.2.0" name="did_you_mean" version="1.2.0" timestamp="1513300171839" parser_version="15" git="false">
-          <additional_info authors="&quot;Yuki Nishijima&quot;.freeze" email="&quot;mail@yukinishijima.net&quot;.freeze" homepage="https://github.com/yuki24/did_you_mean">
-            <summary>&quot;\&quot;Did you mean?\&quot; experience in Ruby&quot;.freeze</summary>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/gem-changelog-1.0.4" name="gem-changelog" version="1.0.4" timestamp="1514382397178" parser_version="15" git="false">
+          <additional_info authors="&quot;OZAWA Sakuro&quot;.freeze" email="&quot;sakuro@2238club.org&quot;.freeze" homepage="">
+            <summary>&quot;Show the changelog of given gem&quot;.freeze</summary>
           </additional_info>
         </gem>
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/minitest-5.10.3" name="minitest" version="5.10.3" timestamp="1513300173051" parser_version="15" git="false">
-          <additional_info authors="&quot;Ryan Davis&quot;.freeze" email="&quot;ryand-ruby@zenspider.com&quot;.freeze" homepage="https://github.com/seattlerb/minitest">
-            <summary>&quot;minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking&quot;.freeze</summary>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/zlib" name="zlib" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This zlib is bundled with Ruby</summary>
           </additional_info>
         </gem>
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/xmlrpc-0.3.0" name="xmlrpc" version="0.3.0" timestamp="1513300171998" parser_version="15" git="false">
-          <additional_info authors="&quot;SHIBATA Hiroshi&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze" homepage="https://github.com/ruby/xmlrpc">
-            <summary>&quot;XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP.&quot;.freeze</summary>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/openssl" name="openssl" version="2.1.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This openssl is bundled with Ruby</summary>
           </additional_info>
         </gem>
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/rake-12.3.0" name="rake" version="12.3.0" timestamp="1513300172784" parser_version="15" git="false">
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/strscan" name="strscan" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This strscan is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/etc" name="etc" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This etc is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/sdbm" name="sdbm" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This sdbm is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/ipaddr" name="ipaddr" version="1.2.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This ipaddr is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/scanf" name="scanf" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This scanf is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/rake-12.3.0" name="rake" version="12.3.0" timestamp="1514382391557" parser_version="15" git="false">
           <additional_info authors="&quot;Hiroshi SHIBATA&quot;.freeze, &quot;Eric Hodel&quot;.freeze, &quot;Jim Weirich&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze, &quot;drbrain@segment7.net&quot;.freeze, &quot;&quot;.freeze" homepage="https://github.com/ruby/rake">
             <summary>&quot;Rake is a Make-like program implemented in Ruby&quot;.freeze</summary>
           </additional_info>
         </gem>
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/test-unit-3.2.7" name="test-unit" version="3.2.7" timestamp="1513300174180" parser_version="15" git="false">
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/cmath" name="cmath" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This cmath is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/xmlrpc-0.3.0" name="xmlrpc" version="0.3.0" timestamp="1514382391305" parser_version="15" git="false">
+          <additional_info authors="&quot;SHIBATA Hiroshi&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze" homepage="https://github.com/ruby/xmlrpc">
+            <summary>&quot;XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP.&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/psych" name="psych" version="3.0.2" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This psych is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/bundler-1.16.1" name="bundler" version="1.16.1" timestamp="1514382525546" parser_version="15" git="false">
+          <additional_info authors="&quot;Andr\u00E9 Arko&quot;.freeze, &quot;Samuel Giddins&quot;.freeze, &quot;Chris Morris&quot;.freeze, &quot;James Wen&quot;.freeze, &quot;Tim Moore&quot;.freeze, &quot;Andr\u00E9 Medeiros&quot;.freeze, &quot;Jessica Lynn Suttles&quot;.freeze, &quot;Terence Lee&quot;.freeze, &quot;Carl Lerche&quot;.freeze, &quot;Yehuda Katz&quot;.freeze" email="&quot;team@bundler.io&quot;.freeze" homepage="http://bundler.io">
+            <summary>&quot;The best way to manage your application's dependencies&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/date" name="date" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This date is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/io-console" name="io-console" version="0.4.6" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This io-console is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/net-telnet-0.1.1" name="net-telnet" version="0.1.1" timestamp="1514382390991" parser_version="15" git="false">
+          <additional_info authors="&quot;SHIBATA Hiroshi&quot;.freeze" email="&quot;hsbt@ruby-lang.org&quot;.freeze" homepage="https://github.com/ruby/net-telnet">
+            <summary>&quot;Provides telnet client functionality.&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/did_you_mean-1.2.0" name="did_you_mean" version="1.2.0" timestamp="1514382391231" parser_version="15" git="false">
+          <additional_info authors="&quot;Yuki Nishijima&quot;.freeze" email="&quot;mail@yukinishijima.net&quot;.freeze" homepage="https://github.com/yuki24/did_you_mean">
+            <summary>&quot;\&quot;Did you mean?\&quot; experience in Ruby&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/bigdecimal" name="bigdecimal" version="1.3.4" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This bigdecimal is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/fcntl" name="fcntl" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This fcntl is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/json" name="json" version="2.1.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This json is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/gdbm" name="gdbm" version="2.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This gdbm is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/dbm" name="dbm" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This dbm is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/power_assert-1.1.1" name="power_assert" version="1.1.1" timestamp="1514382390935" parser_version="15" git="false">
+          <additional_info authors="&quot;Kazuki Tsujimoto&quot;.freeze" email="&quot;kazuki@callcc.net&quot;.freeze" homepage="https://github.com/k-tsj/power_assert">
+            <summary>&quot;Power Assert for Ruby&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/fiddle" name="fiddle" version="1.0.0" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This fiddle is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/fileutils" name="fileutils" version="1.0.2" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This fileutils is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick" name="webrick" version="1.4.2" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This webrick is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/minitest-5.10.3" name="minitest" version="5.10.3" timestamp="1514382391700" parser_version="15" git="false">
+          <additional_info authors="&quot;Ryan Davis&quot;.freeze" email="&quot;ryand-ruby@zenspider.com&quot;.freeze" homepage="https://github.com/seattlerb/minitest">
+            <summary>&quot;minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking&quot;.freeze</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/rdoc" name="rdoc" version="6.0.1" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This rdoc is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/2.5.0/stringio" name="stringio" version="0.0.1" timestamp="0" parser_version="15" git="false">
+          <additional_info authors="N/A" email="N/A" homepage="N/A">
+            <summary>This stringio is bundled with Ruby</summary>
+          </additional_info>
+        </gem>
+        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/test-unit-3.2.7" name="test-unit" version="3.2.7" timestamp="1514382392229" parser_version="15" git="false">
           <additional_info authors="&quot;Kouhei Sutou&quot;.freeze, &quot;Haruka Yoshihara&quot;.freeze" email="&quot;kou@cozmixng.org&quot;.freeze, &quot;yoshihara@clear-code.com&quot;.freeze" homepage="http://test-unit.github.io/">
             <summary>&quot;An xUnit family unit testing framework for Ruby.&quot;.freeze</summary>
           </additional_info>
@@ -35,20 +160,39 @@
             <bound version="0" bound="GREATER_OR_EQUAL" />
           </dependency>
         </gem>
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/power_assert-1.1.1" name="power_assert" version="1.1.1" timestamp="1513300171249" parser_version="15" git="false">
-          <additional_info authors="&quot;Kazuki Tsujimoto&quot;.freeze" email="&quot;kazuki@callcc.net&quot;.freeze" homepage="https://github.com/k-tsj/power_assert">
-            <summary>&quot;Power Assert for Ruby&quot;.freeze</summary>
-          </additional_info>
-        </gem>
-        <gem url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/gems/gem-changelog-1.0.4" name="gem-changelog" version="1.0.4" timestamp="1513300186719" parser_version="15" git="false">
-          <additional_info authors="&quot;OZAWA Sakuro&quot;.freeze" email="&quot;sakuro@2238club.org&quot;.freeze" homepage="">
-            <summary>&quot;Show the changelog of given gem&quot;.freeze</summary>
-          </additional_info>
-        </gem>
       </box>
       <box url="file://$USER_HOME$/.gem/ruby/2.5.0/gems" />
-      <box url="file://$USER_HOME$/.rbenv/versions/2.5.0-rc1/lib/ruby/gems/2.5.0/bundler/gems" />
+      <box url="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/bundler/gems" />
       <box url="file://$USER_HOME$/.gem/ruby/2.5.0/bundler/gems" />
     </sdk2gems>
+  </component>
+  <component name="RubySdkGemsetsSettings">
+    <moduleSdks>
+      <map>
+        <entry key="ridgepole-rails">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.rbenv/versions/2.5.0/bin/ruby" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </moduleSdks>
+    <sdkGemsets>
+      <map>
+        <entry key="$USER_HOME$/.rbenv/versions/2.5.0/bin/ruby">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </sdkGemsets>
+  </component>
+  <component name="RubyStubsGeneratedCache">
+    <generated_stubs>
+      <entry key="bundler, 1.16.1" value="no" />
+      <entry key="minitest, 5.10.3" value="no" />
+      <entry key="rake, 12.3.0" value="no" />
+    </generated_stubs>
   </component>
 </application>

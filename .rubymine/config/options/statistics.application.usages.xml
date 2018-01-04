@@ -1,10 +1,64 @@
 <application>
+  <component name="StatisticsApplicationUsages">
+    <group name="file-type">
+      <project id="ridgepole-rails" values="HTML,UNKNOWN,SQL,Images,XML,PLAIN_TEXT,CSS,PATCH,XHTML,RHTML,RDOC,JavaScript,CoffeeScript,Markdown,JSON,C++,Ruby,SVG,DTD,YAML" collectionTime="1514707942694" />
+    </group>
+    <group name="Run Dashboard">
+      <project id="ridgepole-rails" values="run.dashboard.disabled" collectionTime="1514707942699" />
+    </group>
+    <group name="ruby-project-type">
+      <project id="ridgepole-rails" values="gem" collectionTime="1514707942710" />
+    </group>
+    <group name="ruby-not-empty-gemsets">
+      <project id="ridgepole-rails" values="rvm 0.0,rbenv 0.0" collectionTime="1514707942716" />
+    </group>
+    <group name="vcs">
+      <project id="ridgepole-rails" values="Git" collectionTime="1514707942689" />
+    </group>
+    <group name="ruby-all-sdks">
+      <project id="ridgepole-rails" values="1" collectionTime="1514707942711" />
+    </group>
+    <group name="ruby-sdk-version">
+      <project id="ridgepole-rails" values="rbenv  2.5.0" collectionTime="1514707942710" />
+    </group>
+    <group name="VCS Log 2">
+      <project id="ridgepole-rails" values="data.branches.count.1+,data.git.root.count.1,data.users.count.1+,data.commit.count.1+" collectionTime="1514707942707" />
+    </group>
+    <group name="vcs-options">
+      <project id="ridgepole-rails" values="commit.clear.initial.comment.disabled,commit.before.reformat.project.disabled,commit.before.rearrange.disabled,commit.before.check.code.smell.disabled,changelist.preselect.existing.disabled,perform.add_remove.in.background.enabled,perform.update.in.background.enabled,perform.rollback.in.background.disabled,offer.remove.empty.changelist.show_confirmation,changelist.make.new.active.disabled,perform.checkout.in.background.enabled,commit.before.check.code.cleanup.disabled,commit.show.unversioned.enabled,check.conflicts.in.background.disabled,commit.before.check.todo.enabled,commit.before.check.non.empty.comment.disabled,commit.before.optimize.imports.disabled,show.changes.preview.disabled,offer.move.partially.committed.disabled,commit.use.right.margin.enabled,perform.commit.in.background.enabled,offer.move.failed.committed.do_nothing_silently,perform.edit.in.background.enabled,include.text.into.shelf.enabled" collectionTime="1514707942690" />
+    </group>
+    <group name="Git">
+      <project id="ridgepole-rails" values="data.remotes.in.project.1,config.ssh.enabled,data.remote.servers.github.com.1,config.repo.sync.NOT_DECIDED,config.update.type.BRANCH_DEFAULT,config.save.policy.STASH,data.local.branches.count.1,config.push.autoupdate.disabled,config.warn.about.detached.enabled,config.cherry-pick.autocommit.disabled,version.2.14.3-UNIX,data.remote.branches.count.1,config.warn.about.crlf.enabled,config.force.push.enabled,config.push.update.all.roots.enabled" collectionTime="1514707942729" />
+    </group>
+    <group name="Docker Integration">
+      <project id="ridgepole-rails" values="docker.runConfigs.dockerfile=0,docker.fileType.dockerfile.patterns,docker.runConfigs.image=0,docker.runConfigs.entrypoint=0,docker.view.available,docker.accounts.machines=0,docker.runConfigs.command=0,docker.accounts.total.0,docker.runConfigs.compose=0,docker.runConfigs.debug=0,docker.view.total,docker.accounts.registry=0,docker.runConfigs.total.0,docker.accounts.registry.0,docker.runConfigs.publishAllPorts=0,docker.runConfigs.total=0,docker.fileType.dockerfile.patterns.1,docker.runConfigs.jsonFile=0,docker.accounts.total=0" collectionTime="1514707942756" />
+    </group>
+    <group name="ruby-gems-names">
+      <project id="ridgepole-rails" values="rake,bundler,minitest" collectionTime="1514707942710" />
+    </group>
+    <group name="javaScript Scope Usages">
+      <project id="ridgepole-rails" values="Project" collectionTime="1514707942730" />
+    </group>
+    <group name="ruby-version-managers">
+      <project id="ridgepole-rails" values="rbenv" collectionTime="1514707942711" />
+    </group>
+    <group name="module type">
+      <project id="ridgepole-rails" values="RUBY_MODULE" collectionTime="1514707942690" />
+    </group>
+    <group name="JavaScript versions">
+      <project id="ridgepole-rails" values="ECMAScript 5.1" collectionTime="1514707942730" />
+    </group>
+  </component>
   <component name="UsageTrigger">
     <counts>
+      <entry feature="StripeButton[Docker].hidden" count="1" />
+      <entry feature="StripeButton[Version Control].shown" count="1" />
       <entry feature="ide.settings.Appearance" count="4" />
       <entry feature="ide.settings.Font" count="1" />
-      <entry feature="ideaapp.started" count="4" />
+      <entry feature="ide.settings.Ruby SDK and Gems" count="1" />
+      <entry feature="ideaapp.started" count="5" />
       <entry feature="welcome.screen.WelcomeScreen.Configure" count="5" />
+      <entry feature="welcome.screen.WelcomeScreen.OpenDirectoryProject" count="1" />
       <entry feature="welcome.screen.WelcomeScreen.Settings" count="4" />
       <entry feature="welcome.screen.null" count="1" />
     </counts>

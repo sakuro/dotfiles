@@ -1,7 +1,31 @@
 <application>
   <component name="ActionsCollector">
     <counts>
-      <entry action="EditorBackSpace" count="2" />
+      <entry action="$Delete" count="1" />
+      <entry action="$SelectAll" count="7" />
+      <entry action="$Undo" count="38" />
+      <entry action="CommentByLineComment" count="1" />
+      <entry action="Configure Ruby Interpreter" count="2" />
+      <entry action="EditorBackSpace" count="115" />
+      <entry action="EditorCopy" count="6" />
+      <entry action="EditorCut" count="102" />
+      <entry action="EditorDown" count="157" />
+      <entry action="EditorDownWithSelection" count="131" />
+      <entry action="EditorEnter" count="54" />
+      <entry action="EditorEscape" count="9" />
+      <entry action="EditorLeft" count="71" />
+      <entry action="EditorLeftWithSelection" count="42" />
+      <entry action="EditorPaste" count="42" />
+      <entry action="EditorRight" count="165" />
+      <entry action="EditorRightWithSelection" count="67" />
+      <entry action="EditorTab" count="1" />
+      <entry action="EditorUp" count="121" />
+      <entry action="EditorUpWithSelection" count="117" />
+      <entry action="ExtractMethod" count="6" />
+      <entry action="IntroduceVariable" count="4" />
+      <entry action="NextTemplateVariable" count="3" />
+      <entry action="SaveAll" count="177" />
+      <entry action="SearchEverywhere" count="3" />
     </counts>
   </component>
 </application>
