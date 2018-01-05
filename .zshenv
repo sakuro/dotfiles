@@ -29,3 +29,4 @@ export DOT_REPO=https://github.com/skauro/dotfiles.git
 export DOT_DIR=$HOME/.dotfiles
 
 export TMPDIR=$HOME/tmp
+export TMUX_TMPDIR=$TMPDIR
