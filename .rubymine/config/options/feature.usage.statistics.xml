@@ -9,7 +9,7 @@
     <feature id="editing.completion.cancelByControlArrows" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.popup.symbol" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="find.recent.search" count="0" last-shown="0" last-used="0" shown-count="0" />
-    <feature id="editing.completion.replace" count="0" last-shown="1514710615181" last-used="0" shown-count="390" />
+    <feature id="editing.completion.replace" count="0" last-shown="1515142800629" last-used="0" shown-count="580" />
     <feature id="refactoring.introduceConstant" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.goto.inspection" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.popup.file" count="0" last-shown="0" last-used="0" shown-count="0" />
@@ -37,7 +37,7 @@
     <feature id="editing.completion.basic" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="tag.name.completion" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="ruby.navigation.rails.popup" count="0" last-shown="0" last-used="0" shown-count="0" />
-    <feature id="editing.select.word" count="12" last-shown="0" last-used="1514708798140" shown-count="0" />
+    <feature id="editing.select.word" count="14" last-shown="0" last-used="1515142791989" shown-count="0" />
     <feature id="codeassists.quickjavadoc.lookup" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="ui.scheme.quickswitch" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.popup.file.structure" count="0" last-shown="0" last-used="0" shown-count="0" />
