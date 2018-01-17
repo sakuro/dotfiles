@@ -29,6 +29,8 @@
 	amend = commit --no-edit --amend
 	branches = branch
 	wip = commit -m wip
+	branch-root = merge-base master HEAD
+	changes = !git diff $(git branch-root)..HEAD
 [log]
 	date = local
 	abbrevCommit = true
