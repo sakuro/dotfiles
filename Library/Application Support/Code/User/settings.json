@@ -1,0 +1,15 @@
+{
+    "editor.fontFamily": "Ricty Diminished",
+    "editor.fontSize": 16,
+    "files.autoSave": "afterDelay",
+    "files.hotExit": "off",
+    "editor.renderWhitespace": "boundary",
+    "editor.insertSpaces": true,
+    "editor.trimAutoWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "[ruby]": {
+        "editor.tabSize": 2
+    }
+}
