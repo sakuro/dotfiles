@@ -8,4 +8,3 @@
   - https://rubygems.org
 gem: --format-executable --no-document
 search: --remote
-gemsrc_clone_root: ~/github.com
