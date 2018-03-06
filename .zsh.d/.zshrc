@@ -123,6 +123,10 @@ if is-executable dircolors && [[ -f ~/.dircolors ]]; then
   alias ls='ls -F --color=auto'
 fi
 
+if is-executable gcal; then
+  alias cal='gcal --starting-day=1 --type=standard --cc-holidays=JP'
+fi
+
 rlwrap gosh
 
 autoload -U colors
