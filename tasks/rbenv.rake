@@ -1,7 +1,6 @@
 RBENV_DIR = File.expand_path('~/.rbenv')
 
 RBENV_PLUGIN_REPOS = %w(
-  rbenv/rbenv-default-gems
   rkh/rbenv-update
   rbenv/ruby-build
   rbenv/rbenv-each
