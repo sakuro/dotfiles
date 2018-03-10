@@ -118,7 +118,6 @@ alias open='reattach-to-user-namespace open'
 
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
-is-executable hub && eval "$(hub alias -s)"
 
 if is-executable dircolors && [[ -f ~/.dircolors ]]; then
   eval $(dircolors -b ~/.dircolors)

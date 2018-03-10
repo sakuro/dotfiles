@@ -2,5 +2,9 @@
 
 function git()
 {
-  PATH=$ZDOTDIR/../git:$PATH command git $*
+  if is-executable hub; then
+    PATH=$ZDOTDIR/../git:$PATH command hub $*
+  else
+    PATH=$ZDOTDIR/../git:$PATH command git $*
+  fi
 }
