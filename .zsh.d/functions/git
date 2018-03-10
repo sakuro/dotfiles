@@ -3,8 +3,8 @@
 function git()
 {
   if is-executable hub; then
-    PATH=$ZDOTDIR/../git:$PATH command hub $*
+    PATH=$DOT_DIR/git:$PATH command hub $*
   else
-    PATH=$ZDOTDIR/../git:$PATH command git $*
+    PATH=$DOT_DIR/git:$PATH command git $*
   fi
 }
