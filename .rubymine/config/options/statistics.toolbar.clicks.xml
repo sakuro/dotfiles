@@ -1,7 +1,0 @@
-<application>
-  <component name="ToolbarClicksCollector">
-    <counts>
-      <entry action="com.intellij.ui.CommonActionsPanel$MyActionButton@ToolbarDecorator" count="1" />
-    </counts>
-  </component>
-</application>

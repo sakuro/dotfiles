@@ -1,4 +1,0 @@
--Xms2048m
--Xmx4096m
--XX:MaxPermSize=500m
--XX:+UseCompressedOops

@@ -16,5 +16,4 @@
 .zshenv
 .rbenv/default-gems
 .direnvrc
-.rubymine
 Library/Application Support/Code/User/settings.json
