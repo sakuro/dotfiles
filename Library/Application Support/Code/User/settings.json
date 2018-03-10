@@ -9,6 +9,8 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "workbench.colorTheme": "GitHub Plus",
+    "workbench.iconTheme": "material-icon-theme",
     "[ruby]": {
         "editor.tabSize": 2
     }
