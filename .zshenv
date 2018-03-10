@@ -15,6 +15,10 @@ umask 022
 export TIME_STYLE=long-iso
 export QUOTING_STYLE=literal
 
+# dot
+export DOT_REPO=https://github.com/skauro/dotfiles.git
+export DOT_DIR=$HOME/.dotfiles
+
 # go
 export GOPATH=$HOME/.go
 
@@ -22,8 +26,7 @@ export GOPATH=$HOME/.go
 is-executable direnv && eval "$(direnv hook zsh)"
 
 # rbenv
-is-executable rbenv && eval "$(rbenv init -)"
-
-# dot
-export DOT_REPO=https://github.com/skauro/dotfiles.git
-export DOT_DIR=$HOME/.dotfiles
+is-executable rbenv && {
+  eval "$(rbenv init -)"
+  export RBENV_HOOK_PATH=$DOT_DIR/rbenv/hooks
+}
