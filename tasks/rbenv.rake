@@ -11,7 +11,7 @@ desc 'Install rbenv'
 task :rbenv => [ RBENV_DIR, 'rbenv:plugins' ]
 
 directory RBENV_DIR do
-  sh "git clone https://github.com/sstephenson/rbenv #{RBENV_DIR}"
+  sh "git clone https://github.com/rbenv/rbenv #{RBENV_DIR}"
 end
 
 namespace :rbenv do
