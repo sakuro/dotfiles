@@ -76,7 +76,9 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 autoload -U compinit
 compinit -u -d $ZDOTDIR/compdump
 
-if is-executable -p vim; then
+if is-executable code && [[ -n "$VSCODE_PID" ]]; then
+  EDITOR="code -w"
+elif is-executable -p vim; then
   EDITOR=vim
 else
   EDITOR=vi
