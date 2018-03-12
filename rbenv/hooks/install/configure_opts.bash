@@ -3,5 +3,4 @@ before_install 'export RUBY_CONFIGURE_OPTS="--enable-shared \
 --with-opt-dir=/opt/local \
 --with-readline-dir=/opt/local \
 --with-libyaml-dir=/opt/local \
---with-openssl-dir=/opt/local \
---with-out-ext=tk"'
+--with-openssl-dir=/opt/local"'
