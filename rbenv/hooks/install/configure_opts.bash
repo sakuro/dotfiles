@@ -5,5 +5,3 @@ before_install 'export RUBY_CONFIGURE_OPTS="--enable-shared \
 --with-libyaml-dir=/opt/local \
 --with-openssl-dir=/opt/local \
 --with-out-ext=tk"'
-
-after_install 'unset RUBY_CONFIGURE_OPTS'
