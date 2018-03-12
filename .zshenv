@@ -26,7 +26,4 @@ export GOPATH=$HOME/.go
 is-executable direnv && eval "$(direnv hook zsh)"
 
 # rbenv
-is-executable rbenv && {
-  eval "$(rbenv init -)"
-  export RBENV_HOOK_PATH=$DOT_DIR/rbenv/hooks
-}
+is-executable rbenv && export RBENV_HOOK_PATH=$DOT_DIR/rbenv/hooks
