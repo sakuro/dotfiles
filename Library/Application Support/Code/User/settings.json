@@ -10,6 +10,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "terminal.integrated.fontSize": 16,
     "workbench.colorTheme": "GitHub Plus",
     "workbench.iconTheme": "material-icon-theme",
     "[ruby]": {
