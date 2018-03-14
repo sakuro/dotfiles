@@ -5,6 +5,7 @@
     "files.hotExit": "off",
     "editor.renderWhitespace": "boundary",
     "editor.insertSpaces": true,
+    "editor.minimap.enabled": false,
     "editor.trimAutoWhitespace": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
