@@ -5,6 +5,7 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "boundary",
     "editor.trimAutoWhitespace": true,
+    "extensions.showRecommendationsOnlyOnDemand": true,,
     "files.autoSave": "afterDelay",
     "files.hotExit": "off",
     "files.insertFinalNewline": true,
