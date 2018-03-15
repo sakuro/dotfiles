@@ -18,5 +18,5 @@
         "editor.tabSize": 2
     },
     // Clock in status bar
-    "clock.dateFormat": "yyyy/mm/dd ddd HH:MM"
+    "clock.dateFormat": "\uD83D\uDDD3 yyyy/mm/dd ddd  \uD83D\uDD70 HH:MM"
 }
