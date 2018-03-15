@@ -5,7 +5,7 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "boundary",
     "editor.trimAutoWhitespace": true,
-    "extensions.showRecommendationsOnlyOnDemand": true,,
+    "extensions.showRecommendationsOnlyOnDemand": true,
     "files.autoSave": "afterDelay",
     "files.hotExit": "off",
     "files.insertFinalNewline": true,
@@ -16,5 +16,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "[ruby]": {
         "editor.tabSize": 2
-    }
+    },
+    // Clock in status bar
+    "clock.dateFormat": "yyyy/mm/dd ddd HH:MM"
 }
