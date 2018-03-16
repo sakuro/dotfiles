@@ -6,6 +6,13 @@
     "editor.renderWhitespace": "boundary",
     "editor.trimAutoWhitespace": true,
     "extensions.showRecommendationsOnlyOnDemand": true,
+    "files.associations": {
+        ".irbrc": "ruby",
+        ".pryrc": "ruby",
+        ".gemrc": "yaml",
+        ".direnvrc": "shellscript",
+        ".zplug-packages": "shellscript"
+    },
     "files.autoSave": "afterDelay",
     "files.hotExit": "off",
     "files.insertFinalNewline": true,
