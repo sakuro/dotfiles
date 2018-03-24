@@ -2,16 +2,22 @@
 
 local previous=
 local current=$PWD
+local quiet=false
+
+if [[ $1 = "-q" ]]; then
+  quiet=true
+  shift
+fi
 
 if [[ $# -ne 1 ]];then
-  echo "$0 FILE_NAME"
+  echo "$0 [-q] FILE_NAME"
   return 1
 fi
 
 while [[ -d $current && $current != $previous ]]; do
   local target_path=$current/$1
   if [[ -e $target_path ]]; then
-    echo $target_path
+    [[ $quiet = true ]] || echo $target_path
     return 0
   else
     previous=$current
