@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+function prompt_tmux_setup()
+{
+  PROMPT="%n@%m%# "
+
+  add-zsh-hook precmd prompt_tmux_precmd
+}
+
+function prompt_tmux_precmd()
+{
+  tmux refresh-client -S
+}
+
+prompt_tmux_setup "$@"

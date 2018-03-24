@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+[[ $# -gt 0 ]] && cd $1 && is-executable rbenv && print -P "ruby:#[fg=blue]$(rbenv version-name)#[default]"
