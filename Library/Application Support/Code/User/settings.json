@@ -56,5 +56,7 @@
     ],
     "cSpell.userWords": [
         "eval"
-    ]
+    ],
+    "git.confirmSync": false,
+    "explorer.confirmDelete": false
 }
