@@ -2,4 +2,5 @@
 
 PATH=$HOME/.tmux.d/widgets:$PATH
 
-[[ $# -gt 0 ]] && cd $1 && echo " #P: [$(tmux-vcs-info):$(tmux-pwd)] [$(tmux-rbenv-version)] "
+tmux_current_path="$(tmux display -p '#{pane_current_path}')"
+cd $tmux_current_path && echo " #P: [$(tmux-vcs-info):$(tmux-pwd)] [$(tmux-rbenv-version)] "
