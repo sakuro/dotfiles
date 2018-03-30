@@ -31,6 +31,7 @@
 	wip = commit -m wip
 	branch-root = merge-base master HEAD
 	changes = !git diff $(git branch-root)..HEAD
+	br = branch-root
 [log]
 	date = local
 	abbrevCommit = true
