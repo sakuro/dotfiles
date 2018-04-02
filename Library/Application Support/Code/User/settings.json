@@ -55,7 +55,13 @@
         "yml"
     ],
     "cSpell.userWords": [
-        "eval"
+        "chdir",
+        "constantize",
+        "eval",
+        "klass",
+        "repo",
+        "rspec",
+        "rubocop"
     ],
     "git.confirmSync": false,
     "explorer.confirmDelete": false
