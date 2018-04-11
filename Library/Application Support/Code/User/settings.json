@@ -55,13 +55,20 @@
         "yml"
     ],
     "cSpell.userWords": [
+        "bugsnag",
         "chdir",
+        "circleci",
         "constantize",
+        "dynamodb",
         "eval",
+        "feedforce",
         "klass",
+        "openssh",
         "repo",
         "rspec",
-        "rubocop"
+        "rsyslog",
+        "rubocop",
+        "sshd"
     ],
     "git.confirmSync": false,
     "explorer.confirmDelete": false
