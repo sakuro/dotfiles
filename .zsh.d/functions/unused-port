@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+unused-port()
+{
+
+
+  (
+    netstat -lanp tcp | sed '1,2d' | awk '{print $4}' | awk -F . 'NF == 5 {print $5}' | sort -n | uniq
+    seq 1 60000
+    seq 1 65535
+  ) | sort -n | uniq -u | shuf -n 1
+}
+
+
+
