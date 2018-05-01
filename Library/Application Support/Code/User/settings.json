@@ -55,20 +55,25 @@
         "yml"
     ],
     "cSpell.userWords": [
+        "bento",
         "bugsnag",
+        "centos",
         "chdir",
         "circleci",
         "constantize",
         "dynamodb",
         "eval",
         "feedforce",
+        "keypair",
         "klass",
         "openssh",
         "repo",
         "rspec",
         "rsyslog",
         "rubocop",
-        "sshd"
+        "sshd",
+        "subnet",
+        "vagrantfile"
     ],
     "git.confirmSync": false,
     "explorer.confirmDelete": false
