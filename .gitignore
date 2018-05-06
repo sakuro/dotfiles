@@ -6,3 +6,5 @@
 /.vim/.netrwhist
 /.bundle/cache/
 /.ssh/*
+/rbenv/*
+!/rbenv/hooks
