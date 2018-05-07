@@ -1,2 +1,2 @@
-hub
-configstore
+*
+!.gitignore
