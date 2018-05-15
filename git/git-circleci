@@ -1,0 +1,6 @@
+#!/bin/sh
+
+REPO=$(git remote -v |head -n -1 | sed 's/.*github\.com\///;s/\.git .*//')
+BRANCH=$(git symbolic-ref --short HEAD)
+
+open https://circleci.com/gh/$REPO/tree/$BRANCH
