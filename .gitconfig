@@ -43,9 +43,9 @@
 	algorithm = histogram
 	compactionHeuristic = true
 [pager]
-	diff = diff-highlight | $PAGER
-	show = diff-highlight | $PAGER
-	log = diff-highlight | $PAGER
+	diff = diff-highlight | fontawe | $PAGER
+	show = diff-highlight | fontawe | $PAGER
+	log = diff-highlight | fontawe | $PAGER
 [interactive]
 	diffFilter = diff-highlight
 [merge]
