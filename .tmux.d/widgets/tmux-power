@@ -6,6 +6,8 @@ power=$(pmset -g batt)
 percentage=$(echo $power | grep -Eo '[0-9]+%')
 percentage_raw=${percentage%\%}
 
+[[ -z "$percentage" ]] && exit 0
+
 case $power in
 *'AC Power'*)
   echo "#[fg=brightyellow]:battery-bolt:  $percentage#[fg=default]" | fontawe
