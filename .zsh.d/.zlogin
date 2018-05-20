@@ -20,6 +20,7 @@ if is-executable tmux && [[ -z "$TMUX" ]]; then
       exec tmux new-session -s "$tmux_session"
     fi
   else
-    exec tmux new-session
+    tmux new-session
+    exit 0
   fi
 fi
