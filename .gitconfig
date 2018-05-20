@@ -58,3 +58,4 @@
 	verbose = true
 [core]
 	commentchar = ";"
+	editor = code -w
