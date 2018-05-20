@@ -16,7 +16,7 @@ airport --getinfo | while read line; do
 done
 
 case $state in
-running) echo "#[fg=cyan]:wifi:  $ssid#[fg=default]" | fontawe ;;
+running) echo "#[fg=brightcyan]:wifi:  $ssid#[fg=default]" | fontawe ;;
 init)    echo "#[fg=gray]:wifi:  :ellipsis-h:#[fg=default]" | fontawe ;;
 *)       echo "#[fg=red]:wifi:  :ban:#[fg=default]" | fontawe ;;
 esac
