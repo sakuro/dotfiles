@@ -2,7 +2,7 @@
 
 function prompt_tmux_setup()
 {
-  PROMPT="%n@%m%# "
+  PROMPT="%(!.#.$) "
 
   add-zsh-hook precmd prompt_tmux_precmd
 }
