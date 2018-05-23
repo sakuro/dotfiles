@@ -28,5 +28,6 @@ is-executable direnv && eval "$(direnv hook zsh)"
 # rbenv
 is-executable rbenv && {
   export RBENV_ROOT=$DOT_DIR/rbenv
+  export RBENV_HOOK_PATH=$RBENV_ROOT/hooks
   eval "$(rbenv init -)"
 }
