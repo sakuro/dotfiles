@@ -71,6 +71,7 @@
         "inflector",
         "keypair",
         "klass",
+        "nginx",
         "nodoc",
         "openssh",
         "railtie",
