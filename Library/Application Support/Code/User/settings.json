@@ -74,6 +74,7 @@
         "nginx",
         "nodoc",
         "openssh",
+        "prepend",
         "railtie",
         "readlines",
         "repo",
