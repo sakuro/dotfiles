@@ -1,3 +1,16 @@
 #!/bin/zsh
 
-is-executable git && upfind -q .git && print -P "#[fg=blue]$(git symbolic-ref --short HEAD)#[default]"
+PATH=$ZPLUG_BIN:$PATH
+
+is-executable git && upfind -q .git && {
+    local branch="#[fg=blue]$(git symbolic-ref --short HEAD)#[default]"
+
+    local git_status=$(git status --porcelain=v1 --branch)
+    [[ "$git_status" = *"[ahead"* ]]
+    local ahead=$(print -P '%(?,#[fg=green]:arrow-up:#[default] ,)')
+    [[ "$git_status" = *"[behind"* ]]
+    local behind=$(print -P '%(?,#[fg=red]:arrow-down:#[default] ,)')
+    [[ "$git_status" = *'??'* ]]
+    local untracked=$(print -P '%(?,#[fg=yellow]:question:#[default] ,)')
+    print -P "$branch$untracked$ahead$behind" | fontawe
+}
