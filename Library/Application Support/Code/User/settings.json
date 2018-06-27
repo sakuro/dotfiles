@@ -15,6 +15,16 @@
         ".zplug-packages": "shellscript"
     },
     "files.autoSave": "afterDelay",
+    "files.exclude": {
+        ".bundle": true,
+        ".vscode": true,
+        ".yardoc": true,
+        "db/*.sqlite3": true,
+        "doc/": true,
+        "log/": true,
+        "tmp/": true,
+        "vendor/": true
+    },
     "files.hotExit": "off",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
