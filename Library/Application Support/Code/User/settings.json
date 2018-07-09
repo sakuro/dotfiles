@@ -17,6 +17,7 @@
     "files.autoSave": "afterDelay",
     "files.exclude": {
         ".bundle": true,
+        ".idea": true,
         ".vscode": true,
         ".yardoc": true,
         "db/*.sqlite3": true,
