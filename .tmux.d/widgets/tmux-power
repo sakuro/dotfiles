@@ -1,28 +1,28 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:$PATH
+PATH=
 
-power=$(pmset -g batt)
-percentage=$(echo $power | grep -Eo '[0-9]+%')
+power=$(/usr/bin/pmset -g batt)
+percentage=$(echo $power | /usr/bin/grep -Eo '[0-9]+%')
 percentage_raw=${percentage%\%}
 
 [[ -z "$percentage" ]] && exit 0
 
 case $power in
 *'AC Power'*)
-  echo "#[fg=brightyellow]:battery-bolt:  $percentage#[fg=default]" | fontawe
+  echo "#[fg=brightyellow]:battery-bolt:  $percentage#[fg=default]"
   ;;
 *'Battery Power'*)
   if [[ $percentage_raw -eq 100 ]]; then
-    echo "#[fg=brightgreen]:battery-full:  $percentage#[fg=default]" | fontawe
+    echo "#[fg=brightgreen]:battery-full:  $percentage#[fg=default]"
   elif [[ $percentage_raw -gt 75 ]]; then
-    echo "#[fg=green]:battery-three-quarters:  $percentage#[fg=default]" | fontawe
+    echo "#[fg=green]:battery-three-quarters:  $percentage#[fg=default]"
   elif [[ $percentage_raw -gt 50 ]]; then
-    echo "#[fg=brightyellow]:battery-half:  $percentage#[fg=default]" | fontawe
+    echo "#[fg=brightyellow]:battery-half:  $percentage#[fg=default]"
   elif [[ $percentage_raw -gt 25 ]]; then
-    echo "#[fg=yellow]:battery-quarter:  $percentage#[fg=default]" | fontawe
+    echo "#[fg=yellow]:battery-quarter:  $percentage#[fg=default]"
   else
-    echo "#[fg=red]:battery-empty:  $percentage#[fg=default]" | fontawe
+    echo "#[fg=red]:battery-empty:  $percentage#[fg=default]"
   fi
   ;;
 esac

@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:$PATH
+PATH=
 
-local output=$(osascript -e "(get volume settings)'s {output muted, output volume}")
+local output=$(/usr/bin/osascript -e "(get volume settings)'s {output muted, output volume}")
 set -- "${(ps:, :)output}"
 
 case "$1,$2" in
-true,*) echo "#[fg=gray]:volume-mute:  $2#[fg=default]" | fontawe ;;
-false,0) echo "#[fg=gray]:volume-off:  $2#[fg=default]" | fontawe ;;
-*) echo "#[fg=yellow]:volume-up:  $2#[fg=default]" | fontawe ;;
+true,*) echo "#[fg=gray]:volume-mute:  $2#[fg=default]" ;;
+false,0) echo "#[fg=gray]:volume-off:  $2#[fg=default]" ;;
+*) echo "#[fg=yellow]:volume-up:  $2#[fg=default]" ;;
 esac

@@ -2,6 +2,8 @@
 
 source $HOME/.tmux-weather-api-key
 
+PATH=
+
 local -A icons=(
   01 "\u2600" # clear sky
   02 "\u2601" # few clouds
@@ -13,9 +15,9 @@ local -A icons=(
 )
 
 CITY_ID=${TMUX_WEATHER_CITY_ID:=1850147} # Tokyo
-API_KEY=${TMUX_WEATHER_API_KEY:?Set TMUX_WEATHER_API_KEY}
+API_KEY=${TMUX_WEATHER_API_KEY:?Set TMUX_WEATHER_API_KEY in \$HOME/.tmux-weather-api-key}
 API_URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&APPID=${API_KEY}"
 
-icon_id=$(curl -s $API_URL | jq -Mr '.weather[0].icon')
+icon_id=$(/usr/bin/curl -s $API_URL | /opt/local/bin/jq -Mr '.weather[0].icon')
 icon_id=${icon_id%[nd]}
 echo $icons[$icon_id]

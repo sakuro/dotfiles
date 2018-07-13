@@ -1,5 +1,3 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:$PATH
-
-is-executable rbenv && print -P "#[fg=red]:gem:#[fg=default]  #[fg=blue]$(rbenv version-name)#[default]" | fontawe
+is-executable rbenv && print -P "#[fg=red]:gem:#[fg=default]  #[fg=blue]$(rbenv version-name)#[default]"

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:$PATH
+PATH=
 
 if [[ -r /proc/loadavg ]]; then
   set -A la $(< /proc/loadavg)
@@ -13,11 +13,11 @@ fi
 
 case $la[1] in
 *0.*)
-  echo "#[fg=gray]:chart-area:  ${la}#[fg=default]" | fontawe ;;
+  echo "#[fg=gray]:chart-area:  ${la}#[fg=default]" ;;
 *1.*)
-  echo "#[fg=yellow]:chart-area:  ${la}#[fg=default]" | fontawe ;;
+  echo "#[fg=yellow]:chart-area:  ${la}#[fg=default]" ;;
 *2.*)
-  echo "#[fg=magenta]:chart-area:  ${la}#[fg=default]" | fontawe ;;
+  echo "#[fg=magenta]:chart-area:  ${la}#[fg=default]" ;;
 *)
-  echo "#[fg=red]:chart-area:  ${la}#[fg=default]" | fontawe ;;
+  echo "#[fg=red]:chart-area:  ${la}#[fg=default]" ;;
 esac

@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-PATH=$HOME/.tmux.d/widgets:$PATH
+PATH=$ZPLUG_BIN:$HOME/.tmux.d/widgets:$PATH
 
-[[ $# -gt 0 ]] && cd $1 && echo " #P: [$(tmux-vcs-info):$(tmux-pwd)] [$(tmux-rbenv-version)] "
+[[ $# -gt 0 ]] && cd $1 && echo " #P: [$(tmux-vcs-info):$(tmux-pwd)] [$(tmux-rbenv-version)] " | fontawe

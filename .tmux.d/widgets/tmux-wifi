@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources:$PATH
+PATH=
 
 local rssi
 local state
 local ssid
 
-airport --getinfo | while read line; do
+/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport --getinfo | while read line; do
   local words=(${(ps.: .)line})
   case $words[1] in
   agrCtlRSSI) rssi=$words[2] ;;
@@ -16,7 +16,7 @@ airport --getinfo | while read line; do
 done
 
 case $state in
-running) echo "#[fg=brightcyan]:wifi:  $ssid#[fg=default]" | fontawe ;;
-init)    echo "#[fg=gray]:wifi:  :ellipsis-h:#[fg=default]" | fontawe ;;
-*)       echo "#[fg=red]:wifi:  :ban:#[fg=default]" | fontawe ;;
+running) echo "#[fg=brightcyan]:wifi:  $ssid#[fg=default]" ;;
+init)    echo "#[fg=gray]:wifi:  :ellipsis-h:#[fg=default]" ;;
+*)       echo "#[fg=red]:wifi:  :ban:#[fg=default]" ;;
 esac
