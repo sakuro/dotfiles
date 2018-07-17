@@ -1,65 +1,65 @@
 [include]
-	path = .gitconfig.local
+  path = .gitconfig.local
 [user]
-	name = OZAWA Sakuro
-	signingkey = 243B9E7E
-	useConfigOnly = true
+  name = OZAWA Sakuro
+  signingkey = 243B9E7E
+  useConfigOnly = true
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
 [alias]
-	sw = checkout
-	co = checkout
-	mkb = checkout -b
-	st = status -sb
-	diff = diff -M
-	egrep = grep -E
-	unstage = rm --cached
-	log = log --stat --decorate --topo-order
-	l = log --stat --pretty=format:'commit %C(green)%H%Creset%nAuthor: %C(blue)%an %x3c%ae%x3e%Creset%nDate:   %aD%n%n%C(cyan)    %s%Creset%n%n%w(0,4,4)%b'
-	tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
-	prs = browse -- pulls
-	issues = browse -- issues
-	wiki = browse -- wiki
-	track = checkout -t
-	bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
-	pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
-	amend = commit --no-edit --amend
-	branches = branch
-	wip = commit -m wip
-	branch-root = merge-base master HEAD
-	changes = !git diff $(git branch-root)..HEAD
-	br = branch-root
+  sw = checkout
+  co = checkout
+  mkb = checkout -b
+  st = status -sb
+  diff = diff -M
+  egrep = grep -E
+  unstage = rm --cached
+  log = log --stat --decorate --topo-order
+  l = log --stat --pretty=format:'commit %C(green)%H%Creset%nAuthor: %C(blue)%an %x3c%ae%x3e%Creset%nDate:   %aD%n%n%C(cyan)    %s%Creset%n%n%w(0,4,4)%b'
+  tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+  prs = browse -- pulls
+  issues = browse -- issues
+  wiki = browse -- wiki
+  track = checkout -t
+  bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
+  pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
+  amend = commit --no-edit --amend
+  branches = branch
+  wip = commit -m wip
+  branch-root = merge-base master HEAD
+  changes = !git diff $(git branch-root)..HEAD
+  br = branch-root
 [log]
-	date = local
-	abbrevCommit = true
+  date = local
+  abbrevCommit = true
 [pull]
-	rebase = true
+  rebase = true
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [diff]
-	algorithm = histogram
-	compactionHeuristic = true
+  algorithm = histogram
+  compactionHeuristic = true
 [pager]
-	diff = diff-highlight | fontawe | $PAGER
-	show = diff-highlight | fontawe | $PAGER
-	log = diff-highlight | fontawe | $PAGER
+  diff = diff-highlight | fontawe | $PAGER
+  show = diff-highlight | fontawe | $PAGER
+  log = diff-highlight | fontawe | $PAGER
 [interactive]
-	diffFilter = diff-highlight
+  diffFilter = diff-highlight
 [merge]
-	ff = false
+  ff = false
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [push]
-	default = simple
+  default = simple
 [commit]
-	verbose = true
+  verbose = true
 [core]
-	commentchar = ";"
-	editor = code -w
+  commentchar = ";"
+  editor = code -w
 [grep]
-	lineNumber = true
+  lineNumber = true
 [fetch]
-	prune = true
+  prune = true
