@@ -61,3 +61,5 @@
 	editor = code -w
 [grep]
 	lineNumber = true
+[fetch]
+	prune = true
