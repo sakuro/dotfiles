@@ -10,23 +10,14 @@
   interactive = auto
   status = auto
 [alias]
-  sw = checkout
-  co = checkout
-  mkb = checkout -b
   st = status -sb
   diff = diff -M
-  unstage = rm --cached
-  log = log --stat --decorate --topo-order
-  l = log --stat --pretty=format:'commit %C(green)%H%Creset%nAuthor: %C(blue)%an %x3c%ae%x3e%Creset%nDate:   %aD%n%n%C(cyan)    %s%Creset%n%n%w(0,4,4)%b'
-  tree = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
   prs = browse -- pulls
   issues = browse -- issues
   wiki = browse -- wiki
-  track = checkout -t
   bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
   amend = commit --no-edit --amend
-  branches = branch
   wip = commit -m wip
   branch-root = merge-base master HEAD
   changes = !git diff $(git branch-root)..HEAD
