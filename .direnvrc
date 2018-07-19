@@ -1,5 +1,6 @@
 function use_postgresql {
   export PGHOST=localhost
+  export PGUSER=postgres
 }
 
 [ -d bin ] && [ -f Gemfile.lock ] && PATH_add bin || :
