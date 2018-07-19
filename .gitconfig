@@ -10,18 +10,18 @@
   interactive = auto
   status = auto
 [alias]
-  st = status -sb
-  diff = diff -M
-  prs = browse -- pulls
-  issues = browse -- issues
-  wiki = browse -- wiki
-  bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
-  pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
   amend = commit --no-edit --amend
-  wip = commit -m wip
+  bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
+  br = branch-root
   branch-root = merge-base master HEAD
   changes = !git diff $(git branch-root)..HEAD
-  br = branch-root
+  diff = diff -M
+  issues = browse -- issues
+  pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
+  prs = browse -- pulls
+  st = status -sb
+  wiki = browse -- wiki
+  wip = commit -m wip
 [log]
   date = local
   abbrevCommit = true
