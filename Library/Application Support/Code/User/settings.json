@@ -89,6 +89,7 @@
         "openssh",
         "ozawa",
         "postgre",
+        "postgresql",
         "prepend",
         "railtie",
         "readlines",
