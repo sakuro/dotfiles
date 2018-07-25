@@ -23,6 +23,7 @@
         "db/*.sqlite3": true,
         "doc/": true,
         "log/": true,
+        "pkg/": true,
         "tmp/": true,
         "vendor/": true
     },
