@@ -1,0 +1,40 @@
+#!/bin/zsh -eux
+
+root=$(mktemp -d -t hanami-new.XXXXXXXX)
+function clean_root()
+{
+  [[ -d "$root" ]] && rm -rf "$root"
+}
+trap clean_root EXIT INT PIPE TERM
+
+pushd $root
+
+cat > Gemfile <<EOF
+source 'https://rubygems.org'
+gem 'hanami'
+EOF
+bundle install --path vendor/bundle
+bundle exec hanami new $*
+
+pushd $root/$1
+bundle install --path vendor/bundle && bundle clean
+popd
+
+popd
+
+mv $root/$1 .
+
+cd $1
+cat <<GITIGNORE >> .gitignore
+/.bundle
+/vendor/bundle
+GITIGNORE
+
+git add .
+cat <<COMMIT_MESSAGE > $root/commit-message
+Initial commit
+
+$ hanami new $*
+COMMIT_MESSAGE
+
+git commit --file $root/commit-message
