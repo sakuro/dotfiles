@@ -3,7 +3,6 @@
 .dircolors
 .editorconfig
 .gemrc
-.gitconfig
 .irbrc
 .pryrc
 .railsrc
