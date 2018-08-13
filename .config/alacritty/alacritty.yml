@@ -93,8 +93,8 @@ custom_cursor_colors: false
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xeaeaea'
+    background: '0xFAF8FF'
+    foreground: '0x808080'
 
     # (Optional) Bright and Dim foreground colors
     #
@@ -113,24 +113,24 @@ colors:
   # Normal colors
   normal:
     black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0xb9ca4a'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0xffffff'
+    red:     '0xB90000'
+    green:   '0x8FB500'
+    yellow:  '0xC9A46F'
+    blue:    '0x55669C'
+    magenta: '0x990399'
+    cyan:    '0x009E9C'
+    white:   '0x808080'
 
   # Bright colors
   bright:
-    black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
-    white:   '0xffffff'
+    black:   '0x686868'
+    red:     '0xF80449'
+    green:   '0x2D9941'
+    yellow:  '0xFEB75A'
+    blue:    '0x3E02FF'
+    magenta: '0xFF03FF'
+    cyan:    '0x00C4C7'
+    white:   '0xFAF8FF'
 
   # Dim colors (Optional)
   dim:
@@ -171,7 +171,7 @@ visual_bell:
   duration: 0
 
 # Background opacity
-background_opacity: 1.0
+background_opacity: 0.80
 
 # Mouse bindings
 #
