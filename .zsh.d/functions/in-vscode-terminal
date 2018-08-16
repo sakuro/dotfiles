@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+
+function in-vscode-terminal()
+{
+    [[ "$TERM_PROGRAM" = vscode && -t 1 ]]
+}

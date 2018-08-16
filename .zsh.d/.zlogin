@@ -10,17 +10,13 @@ if tty -s && [[ -z "$SSH_AUTH_SOCK" ]]; then
   ssh-add 2>/dev/null
 fi
 
-if is-executable tmux && [[ -z "$TMUX" ]]; then
-  # tmux is available but not in a session
-  if [[ "$TERM_PROGRAM" = "vscode" && -n "$VSCODE_PID" ]]; then
-    tmux_session="vscode-$(pwd|md5)"
-    if tmux ls -F '#S' 2>/dev/null | grep -qF "$tmux_session"; then
+if is-executable tmux; then
+  if in-vscode-terminal; then
+    local tmux_session="vscode-$(pwd|md5)"
+    if tmux-find-session $tmux_session; then
       exec tmux attach-session -d -t "$tmux_session"
     else
       exec tmux new-session -s "$tmux_session"
     fi
-  else
-    tmux new-session
-    exit 0
   fi
 fi
