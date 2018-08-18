@@ -18,5 +18,21 @@ if is-executable tmux; then
     else
       exec tmux new-session -s "$tmux_session"
     fi
+  else
+    local sessions=( ${(f)"$(tmux list-sessions 2>/dev/null)"} )
+    case $#sessions in
+    0)
+      exec tmux new-session
+      ;;
+    1)
+      exec tmux attach-session
+      ;;
+    *)
+      local session=$(echo "${(F)sessions}" | peco --prompt "Session to attach:" | cut -d: -f1)
+      if [[ -n "$session" ]]; then
+        exec tmux attach-session -t $session
+      fi
+      ;;
+    esac
   fi
 fi
