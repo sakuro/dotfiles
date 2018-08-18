@@ -24,14 +24,18 @@ if is-executable tmux; then
     0)
       exec tmux new-session
       ;;
-    1)
-      exec tmux attach-session
-      ;;
     *)
-      local session=$(echo "${(F)sessions}" | peco --prompt "Session to attach:" | cut -d: -f1)
-      if [[ -n "$session" ]]; then
+      local session=$(echo "${(F)sessions}\nN:ew session\nD:on't attach" | peco --prompt "Session to attach:" | cut -d: -f1)
+      case $session in
+      N)
+        exec tmux new-session
+        ;;
+      D)
+        ;;
+      *)
         exec tmux attach-session -t $session
-      fi
+        ;;
+      esac
       ;;
     esac
   fi
