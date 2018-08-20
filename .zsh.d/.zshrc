@@ -55,7 +55,7 @@ setopt prompt_subst
 autoload -U promptinit
 promptinit
 
-if [[ -n "$TMUX" ]]; then
+if in-tmux-session; then
   prompt tmux
 else
   prompt sakuro

@@ -11,7 +11,7 @@ if tty -s && [[ -z "$SSH_AUTH_SOCK" ]]; then
 fi
 
 if is-executable tmux; then
-  if in-vscode-terminal; then
+  if in-vscode-terminal && ! in-tmux-session; then
     local tmux_session="vscode-$(pwd|md5)"
     if tmux-find-session $tmux_session; then
       exec tmux attach-session -d -t "$tmux_session"
