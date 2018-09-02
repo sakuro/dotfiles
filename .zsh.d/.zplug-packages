@@ -5,4 +5,4 @@ zplug 'yuya-takeyama/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command
 zplug 'ssh0/dot', 'use:*.sh'
 zplug 'takaaki-kasai/git-foresta', as:command
-zplug "sakuro/fontawe", from:github, as:command, use:"bin/fontawe"
+zplug "sakuro/decolon", from:github, as:command, use:bin/decolon
