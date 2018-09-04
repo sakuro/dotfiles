@@ -6,3 +6,5 @@ function use_postgresql {
 [ -x bin/rails ] && export GIT_KEEPFILE=.keep || :
 [ -x bin/yarn ] && PATH_add /opt/local/libexec/yarn/bin || :
 [ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
+
+[ -d .git ] && git status -sb || :
