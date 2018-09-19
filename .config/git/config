@@ -1,14 +1,3 @@
-[include]
-  path = config.local
-[user]
-  name = OZAWA Sakuro
-  signingkey = 243B9E7E
-  useConfigOnly = true
-[color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
 [alias]
   amend = commit --no-edit --amend
   bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
@@ -22,35 +11,46 @@
   st = status -sb
   wiki = browse -- wiki
   wip = commit -m wip
-[log]
-  date = local
-  abbrevCommit = true
-[pull]
-  rebase = true
 [branch]
   autosetuprebase = always
-[diff]
-  algorithm = histogram
-  compactionHeuristic = true
-[pager]
-  diff = diff-highlight | decolon | $PAGER
-  show = diff-highlight | decolon | $PAGER
-  log = diff-highlight | decolon | $PAGER
-[interactive]
-  diffFilter = diff-highlight
-[merge]
-  ff = false
-[credential]
-  helper = osxkeychain
-[push]
-  default = simple
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
 [commit]
   verbose = true
 [core]
   commentchar = ";"
   editor = code -w
+[credential]
+  helper = osxkeychain
+[diff]
+  algorithm = histogram
+  compactionHeuristic = true
+[fetch]
+  prune = true
 [grep]
   lineNumber = true
   patternType = perl
-[fetch]
-  prune = true
+[include]
+  path = config.local
+[interactive]
+  diffFilter = diff-highlight
+[log]
+  abbrevCommit = true
+  date = local
+[merge]
+  ff = false
+[pager]
+  diff = diff-highlight | decolon | $PAGER
+  log = diff-highlight | decolon | $PAGER
+  show = diff-highlight | decolon | $PAGER
+[pull]
+  rebase = true
+[push]
+  default = simple
+[user]
+  name = OZAWA Sakuro
+  signingkey = 243B9E7E
+  useConfigOnly = true
