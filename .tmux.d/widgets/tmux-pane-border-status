@@ -2,4 +2,11 @@
 
 PATH=$ZPLUG_BIN:$HOME/.tmux.d/widgets:$PATH
 
-[[ $# -gt 0 ]] && cd $1 && echo " #P: [$(tmux-vcs-info):$(tmux-pwd)] [$(tmux-rbenv-version)] " | decolon
+[[ $# -gt 0 ]] && cd $1 && {
+    local vcs_info=$(tmux-vcs-info)
+    if [[ -z $vcs_info ]]; then
+        echo " #P: [$(tmux-pwd)] [$(tmux-rbenv-version)] " | decolon
+    else
+        echo " #P: [$vcs_info:$(tmux-pwd)] [$(tmux-rbenv-version)] " | decolon
+    fi
+}
