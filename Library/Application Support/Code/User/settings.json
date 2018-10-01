@@ -40,5 +40,12 @@
         "editor.tabSize": 2
     },
     "git.confirmSync": false,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "github.hosts": [
+        {
+            "host": "https://github.com",
+            "username": "oauth",
+            "token": "system"
+        }
+    ]
 }
