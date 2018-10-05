@@ -2,7 +2,11 @@ function use_postgresql {
   export PGHOST=localhost
 }
 
-[ -d bin ] && [ -f Gemfile.lock ] && PATH_add bin || :
+if [ -f Gemfile.lock ]; then
+  for bin in vendor/bundle/bin bin; do
+    [ -d $bin ] && PATH_add $bin || :
+  done
+fi
 [ -x bin/rails ] && export GIT_KEEPFILE=.keep || :
 [ -x bin/yarn ] && PATH_add /opt/local/libexec/yarn/bin || :
 [ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
