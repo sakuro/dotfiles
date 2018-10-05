@@ -1,6 +1,12 @@
 # common typos
 alias rquire require
 
+# useful stdlibs
+require 'date'
+require 'fileutils'
+require 'pathname'
+require 'time'
+
 END { puts }
 
 # Invoke pry if available
