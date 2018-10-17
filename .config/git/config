@@ -57,4 +57,4 @@
   signingkey = 243B9E7E
   useConfigOnly = true
 [hub]
-  rotocol = https
+  protocol = https
