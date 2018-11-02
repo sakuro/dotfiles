@@ -12,3 +12,5 @@ fi
 [ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
 
 [ -d .git ] && git status -sb || :
+
+[ -f .aws-profile ] && export AWS_PROFILE=$(cat .aws-profile) || :

@@ -7,6 +7,6 @@ PATH=$ZPLUG_BIN:$HOME/.tmux.d/widgets:$PATH
     if [[ -z $vcs_info ]]; then
         echo " #P: [$(tmux-pwd)] [$(tmux-rbenv-version)] " | decolon
     else
-        echo " #P: [$vcs_info:$(tmux-pwd)] [$(tmux-rbenv-version)] " | decolon
+        echo " #P: [$vcs_info:$(tmux-pwd)] [$(tmux-rbenv-version)] [$(tmux-aws-profile)] " | decolon
     fi
 }

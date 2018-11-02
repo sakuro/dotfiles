@@ -5,6 +5,7 @@ Thumbs.db
 /.idea
 /.rvmrc
 /.ruby-version
+/.aws-profile
 .envrc
 .vscode
 tags
