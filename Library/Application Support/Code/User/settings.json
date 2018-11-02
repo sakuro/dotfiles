@@ -41,7 +41,7 @@
     },
     "git.confirmSync": false,
     "explorer.confirmDelete": false,
-    "github.hosts": [
+    "githubPullRequests.hosts": [
         {
             "host": "https://github.com",
             "username": "oauth",
