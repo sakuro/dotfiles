@@ -7,6 +7,7 @@
   changes = !git diff $(git branch-root)..HEAD
   diff = diff -M
   issues = browse -- issues
+  lsm = ls-files --modified
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
   prs = browse -- pulls
   st = status -sb
