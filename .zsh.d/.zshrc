@@ -122,6 +122,8 @@ alias puts='print -l'
 alias port='with-subcommand port'
 alias open='reattach-to-user-namespace open'
 
+alias memo='$EDITOR ~/.memo.md'
+
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
 
