@@ -1,5 +1,6 @@
 function use_postgresql {
   export PGHOST=localhost
+  export PGUSER=postgres
 }
 
 if [ -f Gemfile.lock ]; then
