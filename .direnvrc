@@ -3,7 +3,7 @@ function use_postgresql {
   export PGUSER=postgres
 }
 
-if [ -f Gemfile.lock ]; then
+if [ -f Gemfile.lock ] || [ -f gems.locked ]; then
   for bin in vendor/bundle/bin bin; do
     [ -d $bin ] && PATH_add $bin || :
   done
