@@ -6,3 +6,4 @@ zplug 'mackerelio/mkr', from:gh-r, as:command
 zplug 'ssh0/dot', 'use:*.sh'
 zplug 'takaaki-kasai/git-foresta', as:command
 zplug "sakuro/decolon", from:github, as:command, use:bin/decolon
+zplug "lukechilds/zsh-nvm"
