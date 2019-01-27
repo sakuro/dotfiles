@@ -47,5 +47,6 @@
             "username": "oauth",
             "token": "system"
         }
-    ]
+    ],
+    "workbench.editor.highlightModifiedTabs": true
 }
