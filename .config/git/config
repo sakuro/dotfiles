@@ -36,8 +36,12 @@
 [grep]
   lineNumber = true
   patternType = perl
+[hub]
+  protocol = https
 [include]
   path = config.local
+[init]
+  templateDir = /Users/sakuro/.config/git/templates
 [interactive]
   diffFilter = diff-highlight
 [log]
@@ -57,5 +61,3 @@
   name = OZAWA Sakuro
   signingkey = 243B9E7E
   useConfigOnly = true
-[hub]
-  protocol = https
