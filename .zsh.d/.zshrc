@@ -81,6 +81,7 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
 autoload -U compinit
 compinit -u -d $ZDOTDIR/compdump
+[[ -f /opt/local/bin/aws_zsh_completer.sh ]] && . /opt/local/bin/aws_zsh_completer.sh
 
 if is-executable code && [[ -n "$VSCODE_PID" ]]; then
   EDITOR="code -w"
