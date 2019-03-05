@@ -19,7 +19,7 @@ bindkey '^M' accept-line-with-hooks
 bindkey '^J' accept-line-and-open-in-pane
 bindkey '^r' peco-history-search
 bindkey '^x^v' peco-chdir-dirs
-bindkey '^x^y' peco-chdir-bundle-show
+bindkey '^x^y' peco-open-bundled-gem
 bindkey '^x^g' peco-chdir-project
 bindkey '^x^k' peco-rake-choose-task
 bindkey '^x^b' peco-git-choose-branch
