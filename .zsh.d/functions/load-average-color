@@ -9,7 +9,10 @@ else
   return 0
 fi
 
-case "$(term-brightness) $1" in
+#brightness=$(term-brightness)
+brightness=light
+
+case "$brightness $1" in
 *0.*)
   echo '%F{gray}' ;;
 light*1.*)
