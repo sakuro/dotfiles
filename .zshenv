@@ -19,9 +19,6 @@ export QUOTING_STYLE=literal
 export DOT_REPO=https://github.com/skauro/dotfiles.git
 export DOT_DIR=$HOME/.dotfiles
 
-# go
-export GOPATH=$HOME/.go
-
 # direnv
 is-executable direnv && eval "$(direnv hook zsh)"
 
