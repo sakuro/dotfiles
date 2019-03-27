@@ -61,3 +61,7 @@
   name = OZAWA Sakuro
   signingkey = 243B9E7E
   useConfigOnly = true
+[include]
+  path = user.email/fallback
+[includeIf "gitdir:~/github.com/feedforce/**"]
+  path = user.email/feedforce
