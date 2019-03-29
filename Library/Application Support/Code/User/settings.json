@@ -33,8 +33,7 @@
     "files.trimTrailingWhitespace": true,
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.rendererType": "dom",
-    "workbench.colorTheme": "GitHub Plus",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Visual Studio Dark",
     "workbench.startupEditor": "newUntitledFile",
     "[ruby]": {
         "editor.tabSize": 2
