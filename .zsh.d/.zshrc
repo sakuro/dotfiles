@@ -156,4 +156,10 @@ export LANG=ja_JP.UTF-8
 
 limit coredumpsize 0
 
+
+# asdf
+if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh ]]; then
+  source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
+fi
+
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :

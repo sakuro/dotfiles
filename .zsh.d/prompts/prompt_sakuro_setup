@@ -57,9 +57,6 @@ function prompt_sakuro_precmd()
   [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && psvar[1]+="/%F{cyan}$vcs_info_msg_1_%f"
   psvar[1]+="%F{gray}]%f"
 
-  # [rbenv]
-  psvar[1]+=" %F{gray}[%F{red}$(echo :gem: | decolon)%f  %F{blue}$(rbenv version-name)%f%F{gray}]%f"
-
   # $
   psvar[2]+='%(!.#.$) '
 

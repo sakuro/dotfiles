@@ -21,9 +21,3 @@ export DOT_DIR=$HOME/.dotfiles
 
 # direnv
 is-executable direnv && eval "$(direnv hook zsh)"
-
-# rbenv
-is-executable rbenv && {
-  export RBENV_HOOK_PATH=$DOT_DIR/rbenv/hooks
-  eval "$(rbenv init -)"
-}

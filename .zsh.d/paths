@@ -1,7 +1,4 @@
 ~/bin
-~/.rbenv/bin
-~/.nodebrew/current/bin
-~/.go/bin
 /usr/local/bin
 /opt/local/libexec/ccache
 /opt/local/libexec/gnubin
