@@ -161,5 +161,8 @@ limit coredumpsize 0
 if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh ]]; then
   source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
 fi
+if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/completions/asdf.bash ]]; then
+  source $ZPLUG_REPOS/asdf-vm/asdf/completions/asdf.bash
+fi
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
