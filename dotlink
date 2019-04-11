@@ -1,7 +1,9 @@
+.asdf/hooks
 .asdfrc
 .bundle
 .config
 .dircolors
+.direnvrc
 .editorconfig
 .gemrc
 .irbrc
@@ -13,6 +15,4 @@
 .tmux.d
 .zsh.d
 .zshenv
-.direnvrc
 Library/Application Support/Code/User/settings.json
-.asdf/hooks
