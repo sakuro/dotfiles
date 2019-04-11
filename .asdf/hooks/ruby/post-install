@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+echo "[post-install] Switching to newly installed ruby $1"
+source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
+asdf shell ruby $1
+echo "[post-install] Ruby version: $(ruby -v)"
+
+echo "[post-install] Installing bundler for ruby $1"
+if gem list | grep -q bundler; then
+  gem update bundler --no-post-install-message
+else
+  gem install bundler --no-post-install-message
+fi
+echo "[post-install] $(bundle version)"
+
+echo "[post-install] Updating rubygems for ruby $1"
+gem update --system --no-post-install-message
+gem uninstall rubygems-update --all --executables
+echo "[post-install] Rubygems version: $(gem -v)"
+
+echo "[post-install] Done"
