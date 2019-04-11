@@ -1,10 +1,12 @@
 {
+    "editor.copyWithSyntaxHighlighting": false,
     "editor.fontFamily": "Cica",
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "editor.insertSpaces": true,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "boundary",
     "editor.trimAutoWhitespace": true,
+    "explorer.confirmDelete": false,
     "explorer.sortOrder": "mixed",
     "extensions.showRecommendationsOnlyOnDemand": true,
     "files.associations": {
@@ -31,21 +33,13 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "terminal.integrated.fontSize": 16,
+    "git.confirmSync": false,
+    "terminal.integrated.fontSize": 18,
     "terminal.integrated.rendererType": "dom",
     "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
     "[ruby]": {
         "editor.tabSize": 2
-    },
-    "git.confirmSync": false,
-    "explorer.confirmDelete": false,
-    "githubPullRequests.hosts": [
-        {
-            "host": "https://github.com",
-            "username": "oauth",
-            "token": "system"
-        }
-    ],
-    "workbench.editor.highlightModifiedTabs": true
+    }
 }
