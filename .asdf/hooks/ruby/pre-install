@@ -1,6 +1,12 @@
+#!/bin/zsh
+
+echo "[pre-install] Installing ruby $1"
+
 export RUBY_CONFIGURE_OPTS='--enable-shared
   --disable-install-doc
   --with-opt-dir=/opt/local
   --with-readline-dir=/opt/local
   --with-libyaml-dir=/opt/local
   --with-openssl-dir=/opt/local'
+
+echo "[pre-install] Configure options: $RUBY_CONFIGURE_OPTS"
