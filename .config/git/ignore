@@ -1,12 +1,7 @@
-.DS_Store
-Thumbs.db
-.*.swp
 *~
-/.idea
-/.rvmrc
-/.ruby-version
-/.aws-profile
+.*.swp
+.DS_Store
 .envrc
 .vscode
-tags
-TAGS
+/.ruby-version
+/.tools-version
