@@ -5,10 +5,11 @@ source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
 asdf shell ruby $1
 echo "[post-install] Ruby version: $(ruby -v)"
 
-echo "[post-install] Installing bundler for ruby $1"
 if gem list | grep -q bundler; then
+  echo "[post-install] Updating bundler for ruby $1"
   gem update bundler --no-post-install-message
 else
+  echo "[post-install] Installing bundler for ruby $1"
   gem install bundler --no-post-install-message
 fi
 echo "[post-install] $(bundle version)"
