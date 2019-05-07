@@ -1,4 +1,6 @@
 ~/bin
+~/.dotnet/tools
+/usr/local/share/dotnet
 /usr/local/bin
 /opt/local/libexec/ccache
 /opt/local/libexec/gnubin
