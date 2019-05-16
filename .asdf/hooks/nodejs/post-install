@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+echo "[post-install] Switching to newly installed Node.js $1"
+source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
+asdf shell nodejs $1
+echo "[post-install] Node.js version: $(node -v)"
+echo "[post-install] npm version: $(npm -qv)"
+echo "[post-install] Installing yarn"
+npm install -g yarn
+echo "[post-install] Done"
