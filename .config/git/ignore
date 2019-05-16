@@ -4,4 +4,5 @@
 .envrc
 .vscode
 /.ruby-version
-/.tools-version
+/.tool-versions
+/.bundle/config
