@@ -1,0 +1,44 @@
+#!/bin/sh
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local sha1> <remote ref> <remote sha1>
+
+remote="$1"
+url="$2"
+
+detect_languages()
+{
+    [[ -f Gemfile ]] && echo ruby
+}
+
+command_exist()
+{
+    IFS=:
+    for dir in $PATH; do
+        [[ -x $dir/$1 ]] && return 0
+    done
+    return 1
+}
+
+pre_push_ruby()
+{
+    for command in rubocop rspec yard; do
+        if command_exist $command; then
+            echo "Running $command"
+            $command || return 1
+        fi
+    done
+    return 0
+}
+
+for language in $(detect_languages); do
+  pre_push_$language || exit 1
+done
+
+exit 0
