@@ -9,6 +9,17 @@ require 'time'
 
 END { puts }
 
+# Prefer reline
+begin
+  require 'reline'
+  puts 'Using reline'
+rescue LoadError
+  require 'readline'
+  puts 'Using readline'
+ensure
+  IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb.history')
+end
+
 # Invoke pry if available
 begin
   require 'pry'
@@ -20,7 +31,6 @@ rescue LoadError
   require 'irb/completion'
 
   IRB.conf[:SAVE_HISTORY] = 10000
-  IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb.history')
   IRB.conf[:PROMPT_MODE] = :SIMPLE
   puts 'Invoking irb' if IRB.conf[:VERBOSE]
 end
