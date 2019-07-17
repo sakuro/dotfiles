@@ -9,3 +9,4 @@ zplug "sakuro/decolon", from:github, as:command, use:bin/decolon
 zplug 'asdf-vm/asdf'
 zplug 'sakuro/dockerized-awscli', as:command, use:bin/aws
 zplug 'itamae-kitchen/mitamae', from:gh-r, as:command
+zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
