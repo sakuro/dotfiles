@@ -44,5 +44,7 @@
     },
     "[terraform]": {
         "editor.tabSize": 2
-    }
+    },
+    "extensions.autoUpdate": true,
+    "clock.dateFormat": "yyyy/mm/dd (ddd) HH:MM:ss"
 }
