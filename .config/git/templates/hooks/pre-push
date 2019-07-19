@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh -e
 # $1 -- Name of the remote to which the push is being done
 # $2 -- URL to which the push is being done
 
@@ -12,33 +12,14 @@
 remote="$1"
 url="$2"
 
-detect_languages()
-{
-    [[ -f Gemfile ]] && echo ruby
-}
+GIT_HOOKS_DIR=$DOT_DIR/git/hooks
+. $GIT_HOOKS_DIR/support.zsh
 
-command_exist()
-{
-    IFS=:
-    for dir in $PATH; do
-        [[ -x $dir/$1 ]] && return 0
-    done
-    return 1
-}
+languages=$(detect_languages)
 
-pre_push_ruby()
-{
-    for command in rubocop rspec yard; do
-        if command_exist $command; then
-            echo "Running $command"
-            $command || return 1
-        fi
-    done
-    return 0
-}
-
-for language in $(detect_languages); do
-  pre_push_$language || exit 1
+while [[ $#languages -gt 0 ]]; do
+  hook=$GIT_HOOKS_DIR/pre-push-$1
+  [[ -x $hook ]] && $hook $remote $url || exit 1
 done
 
 exit 0

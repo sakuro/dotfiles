@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+function need-bundle-update() {
+  [[ -f Gemfile ]] && git ls-files --error-unmach Gemfile.lock 2>/dev/null && [[ Gemfile -ot Gemfile.lock ]]
+}
+
+if need-bundle-update; then
+  echo "Gemfile.lock is not up to date.  Run bundle install"
+  return 1
+fi
+
+for command in rubocop rspec yard; do
+  command-in-path -p $command || continue
+  echo "Running $command"
+  command $command || return 1
+done
