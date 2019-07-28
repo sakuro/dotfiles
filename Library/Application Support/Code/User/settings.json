@@ -39,15 +39,6 @@
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
-    "[ruby]": {
-        "editor.tabSize": 2
-    },
-    "[terraform]": {
-        "editor.tabSize": 2
-    },
-    "[zsh]": {
-        "editor.tabSize": 2
-    },
     "extensions.autoUpdate": true,
     "clock.dateFormat": "yyyy-mm-dd (ddd) HH:MM:ss",
     "editor.wrappingIndent": "indent"
