@@ -10,7 +10,7 @@ if need-bundle-update; then
 fi
 
 for command in rubocop rspec yard; do
-  command-in-path -p $command || continue
+  command-in-path $command || continue
   echo "Running $command"
   command $command || return 1
 done
