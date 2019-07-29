@@ -6,3 +6,4 @@
 /.vim/.netrwhist
 /.bundle/cache/
 /.ssh/*
+/.aws/credentials

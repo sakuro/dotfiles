@@ -1,5 +1,6 @@
 .asdf/hooks
 .asdfrc
+.aws
 .bundle
 .config
 .dircolors
