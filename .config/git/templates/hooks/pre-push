@@ -15,7 +15,7 @@ url="$2"
 GIT_HOOKS_DIR=$DOT_DIR/git/hooks
 . $GIT_HOOKS_DIR/support.zsh
 
-languages=$(detect_languages)
+languages=$(detect-languages)
 
 while [[ $#languages -gt 0 ]]; do
   hook=$GIT_HOOKS_DIR/pre-push-$1
