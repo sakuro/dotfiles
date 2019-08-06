@@ -1,7 +1,7 @@
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions'
 zplug 'git/git', use:contrib/diff-highlight/diff-highlight, as:command, hook-build:'make -C contrib/diff-highlight'
-zplug 'yuya-takeyama/ltsv2json', from:gh-r, as:command
+zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command
 zplug 'ssh0/dot', 'use:*.sh'
 zplug 'takaaki-kasai/git-foresta', as:command
@@ -9,4 +9,6 @@ zplug "sakuro/decolon", from:github, as:command, use:bin/decolon
 zplug 'asdf-vm/asdf'
 zplug 'sakuro/dockerized-awscli', as:command, use:bin/aws
 zplug 'itamae-kitchen/mitamae', from:gh-r, as:command
+zplug 'itamae-kitchen/mitamae', from:gh-r, as:command
 zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
+zplug 'sakuro/dockerized-graphviz', as:command, 'use:bin/*'
