@@ -41,5 +41,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "extensions.autoUpdate": true,
     "clock.dateFormat": "yyyy-mm-dd (ddd) HH:MM:ss",
-    "editor.wrappingIndent": "indent"
+    "editor.wrappingIndent": "indent",
+    "solargraph.commandPath": "/Users/sakuro/.asdf/shims/solargraph",
+    "solargraph.bundlerPath": "/Users/sakuro/.asdf/shims/bundle"
 }
