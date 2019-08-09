@@ -19,4 +19,9 @@ gem update --system --no-post-install-message
 gem uninstall rubygems-update --all --executables
 echo "[post-install] Rubygems version: $(gem -v)"
 
+echo "[post-install] Installing default gems for ruby $1"
+for gem in solargraph; do
+  gem install $gem
+done
+
 echo "[post-install] Done"
