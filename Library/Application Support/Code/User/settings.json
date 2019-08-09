@@ -1,4 +1,5 @@
 {
+    "clock.dateFormat": "yyyy-mm-dd (ddd) HH:MM:ss",
     "editor.copyWithSyntaxHighlighting": false,
     "editor.fontFamily": "Cica",
     "editor.fontSize": 18,
@@ -6,8 +7,10 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "boundary",
     "editor.trimAutoWhitespace": true,
+    "editor.wrappingIndent": "indent",
     "explorer.confirmDelete": false,
     "explorer.sortOrder": "mixed",
+    "extensions.autoUpdate": true,
     "extensions.showRecommendationsOnlyOnDemand": true,
     "files.associations": {
         ".irbrc": "ruby",
@@ -34,14 +37,12 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "git.confirmSync": false,
+    "solargraph.commandPath": "/Users/sakuro/.asdf/shims/solargraph",
+    "solargraph.bundlerPath": "/Users/sakuro/.asdf/shims/bundle",
     "terminal.integrated.fontSize": 18,
     "terminal.integrated.rendererType": "dom",
+    "terminal.integrated.shellArgs.osx": [],
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.highlightModifiedTabs": true,
-    "workbench.startupEditor": "newUntitledFile",
-    "extensions.autoUpdate": true,
-    "clock.dateFormat": "yyyy-mm-dd (ddd) HH:MM:ss",
-    "editor.wrappingIndent": "indent",
-    "solargraph.commandPath": "/Users/sakuro/.asdf/shims/solargraph",
-    "solargraph.bundlerPath": "/Users/sakuro/.asdf/shims/bundle"
+    "workbench.startupEditor": "newUntitledFile"
 }
