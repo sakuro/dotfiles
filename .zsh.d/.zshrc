@@ -95,7 +95,7 @@ export EDITOR
 
 if is-executable -p less; then
   PAGER=less
-  export LESS="-inmRz-4"
+  export LESS="-inmXRz-4"
   if is-executable -p lesspipe.sh; then
     eval $(lesspipe.sh)
   fi
