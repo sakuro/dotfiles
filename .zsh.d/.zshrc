@@ -121,7 +121,6 @@ alias dirs='dirs -v'
 
 alias puts='print -l'
 alias port='with-subcommand port'
-alias open='reattach-to-user-namespace open'
 
 alias memo='$EDITOR ~/.memo.md'
 
