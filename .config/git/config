@@ -50,9 +50,9 @@
 [merge]
   ff = false
 [pager]
-  diff = diff-highlight | decolon | $PAGER
-  log = diff-highlight | decolon | $PAGER
-  show = diff-highlight | decolon | $PAGER
+  diff = diff-highlight | $PAGER
+  log = diff-highlight | $PAGER
+  show = diff-highlight | $PAGER
 [pull]
   rebase = true
 [push]

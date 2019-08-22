@@ -5,7 +5,6 @@ zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command
 zplug 'ssh0/dot', 'use:*.sh'
 zplug 'takaaki-kasai/git-foresta', as:command
-zplug "sakuro/decolon", from:github, as:command, use:bin/decolon
 zplug 'asdf-vm/asdf'
 zplug 'sakuro/dockerized-awscli', as:command, use:bin/aws
 zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
