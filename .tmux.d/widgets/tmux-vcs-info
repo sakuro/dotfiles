@@ -5,10 +5,10 @@ is-executable git && upfind -q .git && {
 
     local git_status=$(git status --porcelain=v1 --branch)
     [[ "$git_status" = *"ahead"* ]]
-    local ahead=$(print -P '%(?,#[fg=green]:arrow-up:#[default] ,)')
+    local ahead=$(print -P '%(?,#[fg=green]↑#[default] ,)')
     [[ "$git_status" = *"behind"* ]]
-    local behind=$(print -P '%(?,#[fg=red]:arrow-down:#[default] ,)')
+    local behind=$(print -P '%(?,#[fg=red]↓#[default] ,)')
     [[ "$git_status" = *'??'* ]]
-    local untracked=$(print -P '%(?,#[fg=yellow]:question:#[default] ,)')
+    local untracked=$(print -P '%(?,#[fg=yellow]?#[default] ,)')
     print -P "$branch$untracked$ahead$behind"
 }
