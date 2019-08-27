@@ -1,27 +1,29 @@
 #!/bin/zsh
 
-echo "[post-install] Switching to newly installed ruby $1"
+exec > >(sed -ue 's/^/[post-install] /')
+
+echo "Switching to newly installed ruby $1"
 source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
 asdf shell ruby $1
-echo "[post-install] Ruby version: $(ruby -v)"
+echo "Ruby version: $(ruby -v)"
 
 if gem list | grep -q bundler; then
-  echo "[post-install] Updating bundler for ruby $1"
+  echo "Updating bundler for ruby $1"
   gem update bundler --no-post-install-message
 else
-  echo "[post-install] Installing bundler for ruby $1"
+  echo "Installing bundler for ruby $1"
   gem install bundler --no-post-install-message
 fi
-echo "[post-install] $(bundle version)"
+bundle version
 
-echo "[post-install] Updating rubygems for ruby $1"
+echo "Updating rubygems for ruby $1"
 gem update --system --no-post-install-message
 gem uninstall rubygems-update --all --executables
-echo "[post-install] Rubygems version: $(gem -v)"
+echo "Rubygems version: $(gem -v)"
 
-echo "[post-install] Installing default gems for ruby $1"
+echo "Installing default gems for ruby $1"
 for gem in solargraph; do
-  gem install $gem
+  gem install $gem --no-post-install-message
 done
 
-echo "[post-install] Done"
+echo "Done"

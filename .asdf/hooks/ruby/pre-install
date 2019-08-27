@@ -1,6 +1,8 @@
 #!/bin/zsh
 
-echo "[pre-install] Installing ruby $1"
+exec > >(sed -ue 's/^/[pre-install] /')
+
+echo "Installing ruby $1"
 
 export RUBY_CONFIGURE_OPTS='--enable-shared
   --disable-install-doc
@@ -9,4 +11,4 @@ export RUBY_CONFIGURE_OPTS='--enable-shared
   --with-libyaml-dir=/opt/local
   --with-openssl-dir=/opt/local'
 
-echo "[pre-install] Configure options: $RUBY_CONFIGURE_OPTS"
+echo "Configure options: $RUBY_CONFIGURE_OPTS"
