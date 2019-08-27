@@ -98,7 +98,7 @@ if is-executable -p less; then
   export LESS="-inmXRz-4"
   export LESSHISTFILE=-
   if is-executable -p lesspipe.sh; then
-    eval $(lesspipe.sh)
+    export LESSOPEN='|/opt/local/bin/lesspipe.sh %s'
   fi
 else
   PAGER=more
