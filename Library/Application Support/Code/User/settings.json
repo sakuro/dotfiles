@@ -41,7 +41,7 @@
     "solargraph.bundlerPath": "/Users/sakuro/.asdf/shims/bundle",
     "terminal.integrated.fontSize": 18,
     "terminal.integrated.rendererType": "dom",
-    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.colorTheme": "Nord",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile"
 }
