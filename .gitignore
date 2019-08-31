@@ -2,8 +2,8 @@
 /.bundle/cache/
 /.ssh/*
 /.vim/.netrwhist
-/.zsh.d/.chpwd-recent-dirs
-/.zsh.d/.zshrc.local
-/.zsh.d/compcache
-/.zsh.d/compdump
-/.zsh.d/history
+/.config/zsh/.chpwd-recent-dirs
+/.config/zsh/.zshrc.local
+/.config/zsh/compcache
+/.config/zsh/compdump
+/.config/zsh/history
