@@ -10,3 +10,4 @@ zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
 zplug 'sakuro/dockerized-graphviz', as:command, 'use:bin/*'
 zplug 'sharkdp/bat', from:gh-r, as:command
 zplug 'tmux-plugins/tpm'
+zplug 'arcticicestudio/nord-dircolors', hook-build:'ln -sf $PWD/src/dir_colors ~/.dircolors'
