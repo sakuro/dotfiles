@@ -158,6 +158,9 @@ unset LC_CTYPE LC_MONETARY LC_NUMERIC
 export LC_COLLATE=C LC_TIME=C LC_MESSAGES=C
 export LANG=ja_JP.UTF-8
 
+export TIME_STYLE=long-iso
+export QUOTING_STYLE=literal
+
 limit coredumpsize 0
 
 # direnv

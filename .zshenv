@@ -8,6 +8,3 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 ulimit -c unlimited
 umask 022
-
-export TIME_STYLE=long-iso
-export QUOTING_STYLE=literal
