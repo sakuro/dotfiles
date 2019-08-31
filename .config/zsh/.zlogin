@@ -5,4 +5,4 @@ if tty -s && [[ -z "$SSH_AUTH_SOCK" ]]; then
   ssh-add 2>/dev/null
 fi
 
-interactive-start-tmux-session
+#interactive-start-tmux-session

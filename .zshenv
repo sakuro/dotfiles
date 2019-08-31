@@ -3,9 +3,9 @@
 setopt no_global_rcs
 export XDG_CONFIG_HOME=$HOME/.config
 [[ -d $XDG_CONFIG_HOME ]] || mkdir -p $XDG_CONFIG_HOME
-ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
-fpath=($ZDOTDIR/*(/N) $fpath)
+fpath=($ZDOTDIR/{functions,widgets,prompts} $fpath)
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
 
 typeset -aU path
