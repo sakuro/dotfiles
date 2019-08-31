@@ -15,6 +15,9 @@ umask 022
 export TIME_STYLE=long-iso
 export QUOTING_STYLE=literal
 
+export XDG_CONFIG_HOME=$HOME/.config
+[[ -d $XDG_CONFIG_HOME ]] || mkdir -p $XDG_CONFIG_HOME
+
 # dot
 export DOT_REPO=https://github.com/skauro/dotfiles.git
 export DOT_DIR=$HOME/.dotfiles
