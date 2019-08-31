@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+local tmux_conf=${XDG_CONFIG_HOME-$HOME/.config}/tmux/tmux.conf
+
+if [[ -f $tmux_conf ]]; then
+  command tmux -f $tmux_conf "$@"
+else
+  command tmux "$@"
+fi

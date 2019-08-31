@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:$HOME/.tmux.d/widgets:$PATH
+PATH=$ZPLUG_BIN:$HOME/.config/tmux/widgets:$PATH
 
 echo "$(tmux-load-average)|$(tmux-wifi)|$(tmux-volume)|$(tmux-power)|$(tmux-weather)"

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:$HOME/.tmux.d/widgets:$PATH
+PATH=$ZPLUG_BIN:$HOME/.config/tmux/widgets:$PATH
 
 [[ $# -gt 0 ]] && cd $1 && {
     local vcs_info=$(tmux-vcs-info)

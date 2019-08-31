@@ -12,8 +12,6 @@
 .railsrc
 .sqliterc
 .ssh
-.tmux.conf
-.tmux.d
 .zsh.d
 .zshenv
 Library/Application Support/Code/User/settings.json
