@@ -48,7 +48,8 @@
 [merge]
   ff = false
 [pager]
-  diff = bat --theme GitHub --style plain
+  diff = bat --style plain
+  log = bat --style plain
 [pull]
   rebase = true
 [push]
