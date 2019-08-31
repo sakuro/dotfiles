@@ -15,3 +15,7 @@ fi
 [ -d .git ] && git status -sb || :
 
 [ -f .aws-profile ] && export AWS_PROFILE=$(cat .aws-profile) || :
+
+function use_rust {
+  PATH_add $(asdf where rust)/bin
+}
