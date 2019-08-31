@@ -1,9 +1,13 @@
 #!/bin/zsh
 
+typeset -aU path
+set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
+echo my .zshrc
+print -l $path
+echo DONE
 
+fpath=($ZDOTDIR/functions $fpath)
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
-# direnv
-is-executable direnv && eval "$(direnv hook zsh)"
 
 source $ZDOTDIR/.zplugrc
 
@@ -159,6 +163,12 @@ export LANG=ja_JP.UTF-8
 
 limit coredumpsize 0
 
+# direnv
+is-executable direnv && eval "$(direnv hook zsh)"
+
+# dot
+export DOT_REPO=https://github.com/skauro/dotfiles.git
+export DOT_DIR=$HOME/.dotfiles
 
 # asdf
 if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh ]]; then
