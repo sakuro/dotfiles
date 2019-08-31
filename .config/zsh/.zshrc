@@ -120,8 +120,8 @@ alias history='history -i 1'
 alias du='du -h'
 alias df='df -h'
 alias free='free -t -m'
-alias -g V='| view -'
 alias -g L="| $PAGER"
+is-executable bat && alias -g B="| bat"
 alias dirs='dirs -v'
 
 alias puts='print -l'
