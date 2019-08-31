@@ -42,17 +42,13 @@
   path = config.local
 [init]
   templateDir = /Users/sakuro/.config/git/templates
-[interactive]
-  diffFilter = diff-highlight
 [log]
   abbrevCommit = true
   date = local
 [merge]
   ff = false
 [pager]
-  diff = diff-highlight | $PAGER
-  log = diff-highlight | $PAGER
-  show = diff-highlight | $PAGER
+  diff = bat --theme GitHub --style plain
 [pull]
   rebase = true
 [push]

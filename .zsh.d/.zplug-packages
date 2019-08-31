@@ -1,6 +1,5 @@
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions'
-zplug 'git/git', use:contrib/diff-highlight/diff-highlight, as:command, hook-build:'make -C contrib/diff-highlight'
 zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command
 zplug 'ssh0/dot', 'use:*.sh'
@@ -9,3 +8,4 @@ zplug 'asdf-vm/asdf'
 zplug 'sakuro/dockerized-awscli', as:command, use:bin/aws
 zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
 zplug 'sakuro/dockerized-graphviz', as:command, 'use:bin/*'
+zplug 'sharkdp/bat', from:gh-r, as:command
