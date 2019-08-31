@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+
+autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
+# direnv
+is-executable direnv && eval "$(direnv hook zsh)"
+
 source $ZDOTDIR/.zplugrc
 
 setopt auto_resume
@@ -51,6 +56,7 @@ typeset -i SAVEHIST=1000000
 typeset -i HISTSIZE=1100000
 
 setopt prompt_subst
+fpath=($ZDOTDIR/prompts $fpath)
 
 autoload -U promptinit
 promptinit

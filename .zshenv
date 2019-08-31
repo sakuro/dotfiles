@@ -5,8 +5,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 [[ -d $XDG_CONFIG_HOME ]] || mkdir -p $XDG_CONFIG_HOME
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
-fpath=($ZDOTDIR/{functions,widgets,prompts} $fpath)
-autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
+fpath=($ZDOTDIR/functions $fpath)
 
 typeset -aU path
 set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
@@ -20,6 +19,3 @@ export QUOTING_STYLE=literal
 # dot
 export DOT_REPO=https://github.com/skauro/dotfiles.git
 export DOT_DIR=$HOME/.dotfiles
-
-# direnv
-is-executable direnv && eval "$(direnv hook zsh)"
