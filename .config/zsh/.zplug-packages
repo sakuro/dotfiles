@@ -1,13 +1,13 @@
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-zplug 'zsh-users/zsh-completions'
+zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
+zplug 'arcticicestudio/nord-dircolors', hook-build:'ln -sf $PWD/src/dir_colors ~/.dircolors'
+zplug 'asdf-vm/asdf'
 zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command
-zplug 'ssh0/dot', 'use:*.sh'
-zplug 'takaaki-kasai/git-foresta', as:command
-zplug 'asdf-vm/asdf'
 zplug 'sakuro/dockerized-awscli', as:command, use:bin/aws
-zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
 zplug 'sakuro/dockerized-graphviz', as:command, 'use:bin/*'
 zplug 'sharkdp/bat', from:gh-r, as:command
+zplug 'ssh0/dot', 'use:*.sh'
+zplug 'takaaki-kasai/git-foresta', as:command
 zplug 'tmux-plugins/tpm'
-zplug 'arcticicestudio/nord-dircolors', hook-build:'ln -sf $PWD/src/dir_colors ~/.dircolors'
+zplug 'zsh-users/zsh-completions'
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
