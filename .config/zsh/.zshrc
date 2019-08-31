@@ -2,9 +2,6 @@
 
 typeset -aU path
 set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
-echo my .zshrc
-print -l $path
-echo DONE
 
 fpath=($ZDOTDIR/functions $fpath)
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
