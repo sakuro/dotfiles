@@ -12,7 +12,7 @@
 remote="$1"
 url="$2"
 
-GIT_HOOKS_DIR=$DOT_DIR/git/hooks
+GIT_HOOKS_DIR=$XDG_CONFIG_HOME/git/hooks
 . $GIT_HOOKS_DIR/support.zsh
 
 languages=$(detect-languages)
