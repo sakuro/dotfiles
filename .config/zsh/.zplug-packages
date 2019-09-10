@@ -1,5 +1,5 @@
 zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
-zplug 'arcticicestudio/nord-dircolors', hook-build:'ln -sf $PWD/src/dir_colors ~/.dircolors'
+zplug 'arcticicestudio/nord-dircolors'
 zplug 'asdf-vm/asdf'
 zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command

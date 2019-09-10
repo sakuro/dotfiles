@@ -3,6 +3,7 @@
 .aws
 .bundle
 .config
+.dircolors
 .direnvrc
 .editorconfig
 .gemrc
