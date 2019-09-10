@@ -41,7 +41,7 @@
 [include]
   path = config.local
 [init]
-  templateDir = /Users/sakuro/.config/git/templates
+  templateDir = ~/.config/git/templates
 [log]
   abbrevCommit = true
   date = local
