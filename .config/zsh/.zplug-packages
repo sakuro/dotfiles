@@ -1,5 +1,6 @@
 zplug "GoogleCloudPlatform/terraformer", from:gh-r, as:command
 zplug 'arcticicestudio/nord-dircolors'
+zplug 'arcticicestudio/nord-sublime-text', at:8d01b88, hook-build:'bat cache --build'
 zplug 'asdf-vm/asdf'
 zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'mackerelio/mkr', from:gh-r, as:command
