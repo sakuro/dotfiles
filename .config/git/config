@@ -56,7 +56,6 @@
   default = simple
 [user]
   name = OZAWA Sakuro
-  signingkey = 243B9E7E
   useConfigOnly = true
 [include]
   path = user.email/fallback
