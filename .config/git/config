@@ -30,7 +30,6 @@
   helper = osxkeychain
 [diff]
   algorithm = histogram
-  compactionHeuristic = true
 [fetch]
   prune = true
 [grep]
