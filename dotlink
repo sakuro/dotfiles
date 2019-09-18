@@ -12,6 +12,7 @@
 .railsrc
 .sqliterc
 .ssh
+.vim
 .vimrc
 .zshenv
 Library/Application Support/Code/User/settings.json

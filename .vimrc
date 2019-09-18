@@ -2,6 +2,9 @@ set nocompatible
 
 set runtimepath+=/opt/local/share/vim/vimfiles
 
+call plug#begin('~/.vim/plugged')
+call plug#end()
+
 syntax on             " Enable syntax highlighting
 filetype on           " Enable fieltype detection
 filetype indent on    " Enable filetype-specific indenting

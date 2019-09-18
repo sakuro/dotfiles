@@ -1,0 +1,1 @@
+../../.config/zsh/plugins/junegunn/vim-plug/plug.vim
