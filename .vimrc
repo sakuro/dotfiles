@@ -3,6 +3,7 @@ set nocompatible
 set runtimepath+=/opt/local/share/vim/vimfiles
 
 call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 syntax on             " Enable syntax highlighting
@@ -24,3 +25,5 @@ set statusline=%y%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}
 set paste " to make paste work as expected
 
 set noswapfile nobackup viminfo=
+
+colorscheme nord
