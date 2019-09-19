@@ -1,9 +1,0 @@
-/.aws/credentials
-/.bundle/cache/
-/.ssh/*
-/.vim/.netrwhist
-/.config/zsh/.chpwd-recent-dirs
-/.config/zsh/.zshrc.local
-/.config/zsh/compcache
-/.config/zsh/compdump
-/.config/zsh/history
