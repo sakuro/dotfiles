@@ -180,8 +180,9 @@ if [[ -f /opt/brew/opt/asdf/asdf.sh ]]; then
   source /opt/brew/opt/asdf/asdf.sh
 fi
 
-if [[ -f /opt/brew/opt/asdf/completions/asdf.bash ]]; then
-  source /opt/brew/opt/asdf/completions/asdf.bash
+if [[ -f /opt/brew/etc/bash_completion.d/asdf.bash ]]; then
+  source /opt/brew/etc/bash_completion.d/asdf.bash
 fi
+
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
