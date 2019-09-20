@@ -1,6 +1,6 @@
 set nocompatible
 
-set runtimepath+=/opt/local/share/vim/vimfiles
+set runtimepath+=/opt/brew/share/vim/vimfiles
 
 call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'

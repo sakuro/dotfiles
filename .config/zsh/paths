@@ -1,10 +1,9 @@
 ~/bin
-~/.dotnet/tools
-/usr/local/share/dotnet
+$(brew --prefix)/bin
+$(brew --prefix coreutils)/libexec/gnubin
+$(brew --prefix grep)/libexec/gnubin
+$(brew --prefix gnu-sed)/libexec/gnubin
 /usr/local/bin
-/opt/local/libexec/ccache
-/opt/local/libexec/gnubin
-/opt/local/bin
 /usr/bin
 /bin
 /usr/games

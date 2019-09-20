@@ -9,13 +9,8 @@ if [ -f Gemfile.lock ] || [ -f gems.locked ]; then
   done
 fi
 [ -x bin/rails ] && export GIT_KEEPFILE=.keep || :
-[ -x bin/yarn ] && PATH_add /opt/local/libexec/yarn/bin || :
 [ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
 
 [ -d .git ] && git status -sb || :
 
 [ -f .aws-profile ] && export AWS_PROFILE=$(cat .aws-profile) || :
-
-function use_rust {
-  PATH_add $(asdf where rust)/bin
-}

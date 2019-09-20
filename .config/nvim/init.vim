@@ -1,6 +1,6 @@
 set nocompatible
 
-set runtimepath+=/opt/local/share/vim/vimfiles
+set runtimepath+=/opt/brew/share/vim/vimfiles
 
 syntax on             " Enable syntax highlighting
 filetype on           " Enable fieltype detection

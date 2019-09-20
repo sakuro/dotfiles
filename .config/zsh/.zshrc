@@ -1,12 +1,19 @@
 #!/bin/zsh
 
 typeset -aU path
+PATH=/opt/brew/bin:$PATH # Need to hardcode brew's patha at first
 set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
 
-fpath=($ZDOTDIR/functions $fpath)
+source $ZDOTDIR/.zplugrc
+
+fpath=(
+  $ZDOTDIR/functions $fpath
+  $(brew --prefix)/share/zsh/site-functions
+  $(brew --prefix)/share/zsh-completions
+)
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
 
-source $ZDOTDIR/.zplugrc
+source /opt/brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 setopt auto_resume
 
@@ -88,7 +95,6 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
 autoload -U compinit
 compinit -u -d $ZDOTDIR/compdump
-[[ -f /opt/local/bin/aws_zsh_completer.sh ]] && . /opt/local/bin/aws_zsh_completer.sh
 
 if is-executable code && [[ -n "$VSCODE_PID" ]]; then
   EDITOR="code -w"
@@ -125,7 +131,6 @@ is-executable bat && alias -g B="| bat"
 alias dirs='dirs -v'
 
 alias puts='print -l'
-alias port='with-subcommand port'
 
 alias memo='$EDITOR ~/.memo.md'
 
@@ -171,11 +176,12 @@ export DOT_REPO=https://github.com/skauro/dotfiles.git
 export DOT_DIR=$HOME/.dotfiles
 
 # asdf
-if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh ]]; then
-  source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
+if [[ -f $(brew --prefix asdf)/asdf.sh ]]; then
+  source $(brew --prefix asdf)/asdf.sh
 fi
-if [[ -f $ZPLUG_REPOS/asdf-vm/asdf/completions/asdf.bash ]]; then
-  source $ZPLUG_REPOS/asdf-vm/asdf/completions/asdf.bash
+
+if [[ -f $(brew --prefix asdf)/completions/asdf.bash ]]; then
+  source $(brew --prefix asdf)/completions/asdf.bash
 fi
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :

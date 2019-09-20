@@ -1,13 +1,6 @@
-zplug 'GoogleCloudPlatform/terraformer', from:gh-r, as:command
 zplug 'arcticicestudio/nord-dircolors'
 zplug 'arcticicestudio/nord-sublime-text', at:8d01b88, hook-build:'bat cache --build', defer:2
-zplug 'asdf-vm/asdf'
 zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'junegunn/vim-plug'
-zplug 'sakuro/dockerized-awscli', as:command, use:bin/aws
-zplug 'sakuro/dockerized-graphviz', as:command, 'use:bin/*'
-zplug 'sharkdp/bat', from:gh-r, as:command
 zplug 'ssh0/dot', 'use:*.sh'
 zplug 'tmux-plugins/tpm'
-zplug 'zsh-users/zsh-completions'
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2

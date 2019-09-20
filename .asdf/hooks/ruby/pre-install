@@ -4,11 +4,10 @@ exec > >(sed -ue 's/^/[pre-install] /')
 
 echo "Installing ruby $1"
 
-export RUBY_CONFIGURE_OPTS='--enable-shared
+export RUBY_CONFIGURE_OPTS="--enable-shared
   --disable-install-doc
-  --with-opt-dir=/opt/local
-  --with-readline-dir=/opt/local
-  --with-libyaml-dir=/opt/local
-  --with-openssl-dir=/opt/local'
+  --with-readline-dir=$(brew --prefix readline)
+  --with-libyaml-dir=$(brew --prefix libyaml)
+  --with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 echo "Configure options: $RUBY_CONFIGURE_OPTS"

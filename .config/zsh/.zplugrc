@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export ZPLUG_HOME=$ZDOTDIR/plugins/zplug
+export ZPLUG_HOME=$(brew --prefix zplug)
 export ZPLUG_REPOS=$ZDOTDIR/plugins
 export ZPLUG_LOADFILE=$ZDOTDIR/.zplug-packages
 

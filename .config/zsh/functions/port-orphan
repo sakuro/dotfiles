@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-port dependents installed | sed -n 's/ has no dependents.//p'
