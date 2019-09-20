@@ -2,3 +2,4 @@ legacy_version_file = yes
 pre_asdf_install_ruby = source $HOME/.asdf/hooks/ruby/pre-install "$@"
 post_asdf_install_ruby = source $HOME/.asdf/hooks/ruby/post-install "$@"
 post_asdf_install_nodejs = source $HOME/.asdf/hooks/nodejs/post-install "$@"
+pre_asdf_install_gauche = source $HOME/.asdf/hooks/gauche/pre-install "$@"

@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+exec > >(sed -ue 's/^/[pre-install] /')
+
+echo "Installing gauche $1"
+
+PATH=$(brew --prefix texinfo)/bin:$PATH
+PATH=$(brew --prefix openssl@1.1)/bin:$PATH
+export CFLAGS="-I$(brew --prefix openssl@1.1)/include"
+export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib"
