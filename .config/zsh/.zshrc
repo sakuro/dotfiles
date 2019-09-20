@@ -176,12 +176,12 @@ export DOT_REPO=https://github.com/skauro/dotfiles.git
 export DOT_DIR=$HOME/.dotfiles
 
 # asdf
-if [[ -f $(brew --prefix asdf)/asdf.sh ]]; then
-  source $(brew --prefix asdf)/asdf.sh
+if [[ -f /opt/brew/opt/asdf/asdf.sh ]]; then
+  source /opt/brew/opt/asdf/asdf.sh
 fi
 
-if [[ -f $(brew --prefix asdf)/completions/asdf.bash ]]; then
-  source $(brew --prefix asdf)/completions/asdf.bash
+if [[ -f /opt/brew/opt/asdf/completions/asdf.bash ]]; then
+  source /opt/brew/opt/asdf/completions/asdf.bash
 fi
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
