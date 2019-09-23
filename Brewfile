@@ -50,6 +50,7 @@ cask "steam"
 cask "visual-studio-code"
 mas "Amphetamine", id: 937984704
 mas "CloudClip Manager", id: 563362017
+mas "Deckset", id: 847496013
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "Numbers", id: 409203825
