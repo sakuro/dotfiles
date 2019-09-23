@@ -1,11 +1,12 @@
-# Install zplug
+# Homebrew
 
 ```
-$ git submodule init
-$ git submodule foreach 'git pull origin master'
+rake bundle
 ```
 
-# Install links
+# Links to dotfiles
+
+After zplug is set up,
 
 ```
 $ dot set
