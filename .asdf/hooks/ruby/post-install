@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+DEFAULT_GEMS=$HOME/.asdf/hooks/ruby/default-gems
+
 exec > >(sed -ue 's/^/[post-install] /')
 
 echo "Switching to newly installed ruby $1"
@@ -22,8 +24,9 @@ gem uninstall rubygems-update --all --executables
 echo "Rubygems version: $(gem -v)"
 
 echo "Installing default gems for ruby $1"
-for gem in solargraph; do
+while read gem; do
+  echo "Installing $gem"
   gem install $gem --no-post-install-message
-done
+done < $DEFAULT_GEMS
 
 echo "Done"
