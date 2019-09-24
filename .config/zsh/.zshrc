@@ -8,8 +8,8 @@ source $ZDOTDIR/.zplugrc
 
 fpath=(
   $ZDOTDIR/functions $fpath
-  $(brew --prefix)/share/zsh/site-functions
-  $(brew --prefix)/share/zsh-completions
+  /opt/brew/share/zsh/site-functions
+  /opt/brew/share/zsh-completions
 )
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
 
