@@ -9,6 +9,7 @@ brew "libyaml"
 brew "asdf", args: ["HEAD"]
 brew "awscli"
 brew "bat"
+brew "ccache"
 brew "diffutils"
 brew "direnv"
 brew "findutils"
