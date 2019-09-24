@@ -143,8 +143,6 @@ if is-executable gcal; then
   alias cal='gcal --starting-day=1 --type=standard --cc-holidays=JP'
 fi
 
-rlwrap gosh
-
 autoload -U colors
 colors
 
@@ -181,5 +179,10 @@ if [[ -f /opt/brew/etc/bash_completion.d/asdf.bash ]]; then
   source /opt/brew/etc/bash_completion.d/asdf.bash
 fi
 
+
+if is-executable gosh; then
+  export SCHEME_LIBRARY_PATH=/opt/brew/opt/slib/lib/slib
+  rlwrap gosh
+fi
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
