@@ -5,7 +5,7 @@ DEFAULT_GEMS=$HOME/.asdf/hooks/ruby/default-gems
 exec > >(sed -ue 's/^/[post-install] /')
 
 echo "Switching to newly installed ruby $1"
-source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
+source $(brew --prefix asdf)/asdf.sh
 asdf shell ruby $1
 echo "Ruby version: $(ruby -v)"
 
