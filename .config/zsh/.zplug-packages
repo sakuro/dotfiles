@@ -1,6 +1,5 @@
 zplug 'arcticicestudio/nord-dircolors'
 zplug 'arcticicestudio/nord-sublime-text', at:8d01b88, hook-build:'bat cache --build', defer:2
-zplug 'hatappi/ltsv2json', from:gh-r, as:command
 zplug 'junegunn/vim-plug'
 zplug 'ssh0/dot', 'use:*.sh'
 zplug 'tmux-plugins/tpm'
