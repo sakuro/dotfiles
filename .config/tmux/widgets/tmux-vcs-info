@@ -13,5 +13,5 @@ is-executable git && upfind -q .git && {
     local behind=$(print -P '%(?,#[fg=red]↓#[default] ,)')
     [[ "$git_status" = *'??'* ]]
     local untracked=$(print -P '%(?,#[fg=yellow]?#[default] ,)')
-    print -P "$branch$untracked$ahead$behind"
+    print -P "$branch$untracked$behind$ahead"
 }
