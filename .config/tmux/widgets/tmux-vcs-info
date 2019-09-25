@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+autoload is-executable
+autoload upfind
+
 is-executable git && upfind -q .git && {
     local branch="#[fg=blue]$(git symbolic-ref --short HEAD)#[default]"
 
