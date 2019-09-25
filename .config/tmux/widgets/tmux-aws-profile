@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-if [[ -f .aws-profile ]]; then
-  AWS_PROFILE=$(cat .aws-profile)
-else
-  AWS_PROFILE=""
-fi
-echo "#[fg=yellow]:aws:#[fg=default]  $AWS_PROFILE"
