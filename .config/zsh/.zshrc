@@ -183,7 +183,6 @@ fi
 
 
 if is-executable gosh; then
-  export SCHEME_LIBRARY_PATH=/opt/brew/opt/slib/lib/slib
   rlwrap gosh
 fi
 
