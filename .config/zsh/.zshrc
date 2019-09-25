@@ -134,10 +134,12 @@ alias memo='$EDITOR ~/.memo.md'
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
 
-if is-executable dircolors && [[ -f ~/.dircolors ]]; then
-  eval $(dircolors -b ~/.dircolors)
+DIRCOLORS=$ZPLUG_REPOS/arcticicestudio/nord-dircolors/src/dir_colors
+if is-executable dircolors && [[ -f $DIRCOLORS ]]; then
+  eval $(dircolors -b $DIRCOLORS)
   alias ls='ls -F --color=auto'
 fi
+unset DIRCOLORS
 
 if is-executable gcal; then
   alias cal='gcal --starting-day=1 --type=standard --cc-holidays=JP'
