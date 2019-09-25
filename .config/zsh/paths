@@ -1,4 +1,5 @@
 ~/bin
+$ZDOTDIR/bin
 /opt/brew/bin
 /opt/brew/opt/ccache/libexec
 /opt/brew/opt/coreutils/libexec/gnubin
