@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-function tmux-find-session()
-{
-  tmux ls -F '#S' 2>/dev/null | grep -qF "$1"
-}
