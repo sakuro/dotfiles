@@ -168,10 +168,6 @@ limit coredumpsize 0
 # direnv
 is-executable direnv && eval "$(direnv hook zsh)"
 
-# dot
-export DOT_REPO=https://github.com/skauro/dotfiles.git
-export DOT_DIR=$HOME/.dotfiles
-
 # asdf
 if [[ -f /opt/brew/opt/asdf/asdf.sh ]]; then
   source /opt/brew/opt/asdf/asdf.sh
@@ -180,7 +176,6 @@ fi
 if [[ -f /opt/brew/etc/bash_completion.d/asdf.bash ]]; then
   source /opt/brew/etc/bash_completion.d/asdf.bash
 fi
-
 
 if is-executable gosh; then
   rlwrap gosh
