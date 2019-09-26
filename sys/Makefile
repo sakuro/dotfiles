@@ -5,4 +5,7 @@ brew:
 	@scripts/homebrew.sh
 
 bundle: brew
-	brew bundle
+	@brew bundle
+
+bundle-dump:
+	@brew bundle dump --force
