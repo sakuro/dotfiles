@@ -55,6 +55,6 @@
   name = OZAWA Sakuro
   useConfigOnly = true
 [include]
-  path = user.email/fallback
+  path = include/user.email-fallback
 [includeIf "gitdir:~/github.com/feedforce/**"]
-  path = user.email/feedforce
+  path = include/user.email-feedforce
