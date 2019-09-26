@@ -1,13 +1,10 @@
-# Homebrew
+# Inital setup
+
+The snippet below will do
+
+- clone this repository to ~/.dotfiles
+- link files in ~/.dotfiles to ~
 
 ```
-rake bundle
-```
-
-# Links to dotfiles
-
-After zplug is set up,
-
-```
-$ dot set
+curl -fsSL https://raw.githubusercontent.com/sakuro/dotfiles/master/sys/setup | bash
 ```

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+DOTDEST="${DOTDEST:=$HOME/.dotfiles}"
+DOTREPO="https://github.com/sakuro/dotfiles.git"
+REQUIRED_COMMANDS=(
+  git
+  curl
+  make
+)
+
+function is_executable() {
+  echo -n "Checking if ${command} exists ... "
+  if type -P "${command}" >/dev/null; then
+    echo "yes" && return 0
+  else
+    echo "no" && return 1
+  fi
+}
+
+if [[ -e "${DOTDEST}" ]]; then
+  echo "${DOTDEST}" already exists
+  exit 0
+fi
+
+missing_commands=()
+
+for command in "${REQUIRED_COMMANDS[@]}"; do
+  is_executable "${command}" || missing_commands=("${missing_commands[@]}" $command)
+done
+
+if [[ "${#missing_commands}" -gt 0 ]]; then
+  echo "Install following commands before continue"
+  for command in "${missing_commands[@]}"; do
+    echo "- ${command}"
+  done
+  exit 1
+fi
+
+git clone -q "${DOTREPO}" "${DOTDEST}" && (cd "${DOTDEST}/sys" && make deploy)
