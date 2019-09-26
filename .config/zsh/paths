@@ -2,9 +2,7 @@
 $ZDOTDIR/bin
 /opt/brew/bin
 /opt/brew/opt/ccache/libexec
-/opt/brew/opt/coreutils/libexec/gnubin
-/opt/brew/opt/grep/libexec/gnubin
-/opt/brew/opt/gnu-sed/libexec/gnubin
+/opt/brew/opt/*/libexec/gnubin
 /usr/local/bin
 /usr/bin
 /bin
