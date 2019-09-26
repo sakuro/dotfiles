@@ -2,9 +2,7 @@
 
 . $(dirname $0)/defs.sh
 
-
 function list_targets() {
-
   (cd ${DOTROOT} && git ls-files) | while read item; do
     is_member_of "${item}" "${EXCLUDED_PATTERNS[@]}" || echo "${item}"
   done
