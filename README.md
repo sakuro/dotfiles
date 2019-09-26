@@ -6,5 +6,5 @@ The snippet below will do
 - link files in ~/.dotfiles to ~
 
 ```
-curl -fsSL https://raw.githubusercontent.com/sakuro/dotfiles/master/sys/setup | bash
+curl -fsSL https://dot.2238.club | bash
 ```
