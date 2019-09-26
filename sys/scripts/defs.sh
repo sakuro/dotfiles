@@ -49,3 +49,8 @@ function is_macos() {
 function is_linux() {
   [[ "$(name)" = "Linux" ]]
 }
+
+is_executable() {
+  local command=$1
+  type -P "${command}" > /dev/null
+}
