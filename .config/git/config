@@ -37,8 +37,6 @@
   patternType = perl
 [hub]
   protocol = https
-[include]
-  path = config.local
 [init]
   templateDir = ~/.config/git/templates
 [log]
