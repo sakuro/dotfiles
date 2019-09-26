@@ -11,7 +11,7 @@ fpath=(
   /opt/brew/share/zsh/site-functions
   /opt/brew/share/zsh-completions
 )
-autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(.N))}:t}
+autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
 
 source /opt/brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -37,7 +37,7 @@ bindkey '^x^y' peco-open-bundled-gem
 bindkey '^x^k' peco-rake-choose-task
 bindkey '^x^b' peco-git-choose-branch
 
-for w in $ZDOTDIR/widgets/*(.); do
+for w in $ZDOTDIR/widgets/*(@,.); do
   source $w
   zle -N $w:t
 done
