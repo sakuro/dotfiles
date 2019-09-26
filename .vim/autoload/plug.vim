@@ -1,1 +1,1 @@
-../../.config/zsh/plugins/junegunn/vim-plug/plug.vim
+/Users/sakuro/.config/zsh/plugins/junegunn/vim-plug/plug.vim
