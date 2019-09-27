@@ -43,11 +43,11 @@ function ln_s() {
 }
 
 function is_macos() {
-  [[ "$(name)" = "Darwin" ]]
+  [[ "$(uname)" = "Darwin" ]]
 }
 
 function is_linux() {
-  [[ "$(name)" = "Linux" ]]
+  [[ "$(uname)" = "Linux" ]]
 }
 
 is_executable() {
