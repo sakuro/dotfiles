@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. $(dirname $0)/dotfiles.sh
+. $(dirname $0)/../dotfiles.sh
 
 EXCLUDED_PATTERNS=(
   README.md
