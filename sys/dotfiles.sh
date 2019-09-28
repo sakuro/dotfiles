@@ -108,7 +108,9 @@ function linux::apt-get::update() {
   sudo apt-get update -y
 }
 
-alias linux::apt-get::required=linux::yum::required
+function linux:apt-get::required() {
+  echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"
+}
 
 function setup::main() {
   setup::main::should-execute || return 0
@@ -149,9 +151,15 @@ function setup::detect-os() {
         linux::yum::required "$@"
       }
     elif is-executable apt-get; then
-      alias linux::package::install=linux::apt-get::install
-      alias linux::package::update=linux::apt-get::update
-      alias linux::package::required=linux::apt-get::package::required
+      function linux::package::install() {
+        linux::apt-get::install "$@"
+      }
+      function linux::package::update() {
+        linux::apt-get::update "$@"
+      }
+      function linux::package::required() {
+        linux::apt-get::required "$@"
+      }
     fi
   else
     echo Unsupported OS
