@@ -29,11 +29,11 @@ function make-link() {
   local to="$DOTDEST/${file}"
   local dir="$(dirname "$file")"
 
-  [[ "{$dir}" = "." ]] || [[ -d "$DOTDEST/$dir" ]] || mkdir_p "$DOTDEST/$dir"
+  [[ "{$dir}" = "." ]] || [[ -d "$DOTDEST/$dir" ]] || mkdir-p "$DOTDEST/$dir"
   if [[ -e "$to" ]]; then
     echo "${to} already exists"
   else
-    ln_s "$from" "$to"
+    ln-s "$from" "$to"
   fi
 }
 
