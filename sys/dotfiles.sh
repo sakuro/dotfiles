@@ -7,6 +7,11 @@ DOTROOT=${DOTROOT:=$HOME/.dotfiles}
 DOTDEST=${DOTDEST:=$HOME}
 LOGIN_SHELL=zsh
 
+# Return true if DRYRUN is set and its length is greater than zero
+function is-dry-run() {
+  [[ -n "${DRYRUN}" ]]
+}
+
 # Check if given STRING matches any of given PATTERNS(globs)
 # is_member_of STRING PATTERNS
 function is-member-of() {
@@ -23,7 +28,7 @@ function is-member-of() {
 # Wrapper of mkdir -p
 # When DRYRUN is set, it just echos what would be done
 function mkdir-p() {
-  if [[ -n "${DRYRUN}" ]]; then
+  if is-dry-run; then
     echo mkdir -p "$@"
   else
     mkdir -p "$@"
@@ -33,7 +38,7 @@ function mkdir-p() {
 # Wrapper of ln -s
 # When DRYRUN is set, it just echos what would be done
 function ln-s() {
-  if [[ -n "${DRYRUN}" ]]; then
+  if is-dry-run; then
     echo ln -s "$@"
   else
     ln -s "$@"
