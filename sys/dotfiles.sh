@@ -89,11 +89,11 @@ function linux::prepare() {
 }
 
 function linux::yum::install() {
-  sudo yum install -q -y "$@"
+  sudo yum install -y "$@"
 }
 
 function linux::yum::update() {
-  sudo yum update -q -y
+  sudo yum update -y
 }
 
 function linux::yum::required() {
