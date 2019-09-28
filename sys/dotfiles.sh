@@ -5,6 +5,7 @@ set -e
 DOTREPO="https://github.com/sakuro/dotfiles.git"
 DOTROOT=${DOTROOT:=$HOME/.dotfiles}
 DOTDEST=${DOTDEST:=$HOME}
+LOGIN_SHELL=zsh
 
 # Check if given STRING matches any of given PATTERNS(globs)
 # is_member_of STRING PATTERNS
@@ -91,7 +92,7 @@ function linux::yum::update() {
 }
 
 function linux::yum::required() {
-  echo git make
+  echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"
 }
 
 function linux::apt-get::install() {
@@ -115,6 +116,8 @@ function setup::main() {
     git clone "${DOTREPO}" "${DOTROOT}"
   fi
   (cd "${DOTROOT}/sys" && make deploy)
+
+  setup::chsh
 }
 
 function setup::main::should-execute() {
@@ -149,7 +152,18 @@ function setup::detect-os() {
     echo Unsupported OS
     exit 1
   fi
-  set +x
+}
+
+function setup::chsh() {
+  # if multiple paths are found, use the last one
+  local shell_path="$(grep -F "/${LOGIN_SHELL}"'$' /etc/passwd | sed '$!d')"
+  # using sudo incase the user's password is not known
+  if [[ -n "${shell_path}" ]]; then
+    sudo chsh -s "${shell_path}" "$(id -un)"
+  else
+    echo "${LOGIN_SHELL} could not be found in /etc/shells"
+    exit 1
+  fi
 }
 
 setup::main
