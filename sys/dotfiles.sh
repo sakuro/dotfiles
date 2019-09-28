@@ -8,9 +8,7 @@ DOTDEST=${DOTDEST:=$HOME}
 LOGIN_SHELL=zsh
 
 # Return true if DRYRUN is set and its length is greater than zero
-function is-dry-run() {
-  [[ -n "${DRYRUN}" ]]
-}
+function is-dry-run() { [[ -n "${DRYRUN}" ]]; }
 
 # Check if given STRING matches any of given PATTERNS(globs)
 # is_member_of STRING PATTERNS
@@ -45,41 +43,24 @@ function ln-s() {
   fi
 }
 
-function is-macos() {
-  [[ "$(uname)" = "Darwin" ]]
-}
-
-function is-linux() {
-  [[ "$(uname)" = "Linux" ]]
-}
+function is-macos() { [[ "$(uname)" = "Darwin" ]]; }
+function is-linux() { [[ "$(uname)" = "Linux" ]]; }
 
 is-executable() {
   local command=$1
   type -P "${command}" > /dev/null
 }
 
-function macos::prepare() {
-  osx::clt::should-install && osx::clt::install
-}
-
-function macos::os::version() {
-  sw_vers | grep ProuctVersion | grep -Eo '10\.[0-9]+'
-}
-
-function macos::clt::should-install() {
-  [[ -e /Library/Developer/CommandLineTools/usr/bin/git ]]
-}
-
+function macos::prepare() { osx::clt::should-install && osx::clt::install; }
+function macos::os::version() { sw_vers | grep ProuctVersion | grep -Eo '10\.[0-9]+'; }
+function macos::clt::should-install() { [[ -e /Library/Developer/CommandLineTools/usr/bin/git ]]; }
 function macos::clt::install() {
   sudo /usr/bin/xcode-select --install
   echo Press any key when the installation has completed
   read
   sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 }
-
-function macos::brew::install() {
-  brew install "$@"
-}
+function macos::brew::install() { brew install "$@"; }
 
 function linux::prepare() {
   linux::package::update
@@ -87,30 +68,12 @@ function linux::prepare() {
     linux::package::install "${package}"
   done
 }
-
-function linux::yum::install() {
-  sudo yum install -y "$@"
-}
-
-function linux::yum::update() {
-  sudo yum update -y
-}
-
-function linux::yum::required() {
-  echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"
-}
-
-function linux::apt-get::install() {
-  sudo apt-get install -y "$@"
-}
-
-function linux::apt-get::update() {
-  sudo apt-get update
-}
-
-function linux:apt-get::required() {
-  echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"
-}
+function linux::yum::install() { sudo yum install -y "$@"; }
+function linux::yum::update() { sudo yum update -y; }
+function linux::yum::required() { echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"; }
+function linux::apt-get::install() { sudo apt-get install -y "$@"; }
+function linux::apt-get::update() { sudo apt-get update; }
+function linux:apt-get::required() { echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"; }
 
 function setup::main() {
   setup::main::should-execute || return 0
@@ -133,33 +96,17 @@ function setup::main::should-execute() {
 
 function setup::detect-os() {
   if is-macos; then
-    function setup::prepare() {
-      osx::prepare
-    }
+    function setup::prepare() { osx::prepare; }
   elif is-linux; then
-    function setup::prepare() {
-      linux::prepare
-    }
+    function setup::prepare() { linux::prepare; }
     if is-executable yum; then
-      function linux::package::install() {
-        linux::yum::install "$@"
-      }
-      function linux::package::update() {
-        linux::yum::update "$@"
-      }
-      function linux::package::required() {
-        linux::yum::required "$@"
-      }
+      function linux::package::install() { linux::yum::install "$@"; }
+      function linux::package::update() { linux::yum::update "$@"; }
+      function linux::package::required() { linux::yum::required "$@"; }
     elif is-executable apt-get; then
-      function linux::package::install() {
-        linux::apt-get::install "$@"
-      }
-      function linux::package::update() {
-        linux::apt-get::update "$@"
-      }
-      function linux::package::required() {
-        linux::apt-get::required "$@"
-      }
+      function linux::package::install() { linux::apt-get::install "$@"; }
+      function linux::package::update() { linux::apt-get::update "$@"; }
+      function linux::package::required() { linux::apt-get::required "$@"; }
     fi
   else
     echo Unsupported OS
