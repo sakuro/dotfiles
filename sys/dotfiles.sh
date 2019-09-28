@@ -169,7 +169,7 @@ function setup::detect-os() {
 
 function setup::chsh() {
   # if multiple paths are found, use the last one
-  local shell_path="$(grep -F "/${LOGIN_SHELL}"'$' /etc/passwd | sed '$!d')"
+  local shell_path="$(grep "/${LOGIN_SHELL}"'$' /etc/passwd | sed '$!d')"
   # using sudo incase the user's password is not known
   if [[ -n "${shell_path}" ]]; then
     sudo chsh -s "${shell_path}" "$(id -un)"
