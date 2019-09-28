@@ -59,7 +59,7 @@ is-executable() {
 }
 
 function macos::prepare() {
-  osx::clt::should_install && osx::clt::install
+  osx::clt::should-install && osx::clt::install
 }
 
 function macos::os::version() {
