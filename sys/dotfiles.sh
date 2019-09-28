@@ -105,7 +105,7 @@ function linux::apt-get::install() {
 }
 
 function linux::apt-get::update() {
-  sudo apt-get update -y
+  sudo apt-get update
 }
 
 function linux:apt-get::required() {
