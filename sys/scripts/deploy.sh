@@ -1,14 +1,28 @@
 #!/bin/bash
 
-. $(dirname $0)/defs.sh
+. $(dirname $0)/dotfiles.sh
 
-function list_targets() {
+EXCLUDED_PATTERNS=(
+  README.md
+  sys/*
+  */.gitignore
+)
+
+if is-linux; then
+  EXCLUDED_PATTERNS=(
+    "${EXCLUDED_PATTERNS[@]}"
+    iCloud
+    Library/*
+  )
+fi
+
+function list-targets() {
   (cd ${DOTROOT} && git ls-files) | while read item; do
-    is_member_of "${item}" "${EXCLUDED_PATTERNS[@]}" || echo "${item}"
+    is-member-of "${item}" "${EXCLUDED_PATTERNS[@]}" || echo "${item}"
   done
 }
 
-function make_link() {
+function make-link() {
   local file="$1"
 
   local from="$DOTROOT/${file}"
@@ -23,8 +37,8 @@ function make_link() {
   fi
 }
 
-[[ -d $DOTDEST ]] || mkdir_p "$DOTDEST"
+[[ -d $DOTDEST ]] || mkdir-p "$DOTDEST"
 
-list_targets | while read file; do
-  make_link "$file"
+list-targets | while read file; do
+  make-link "$file"
 done
