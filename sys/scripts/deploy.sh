@@ -9,10 +9,9 @@ EXCLUDED_PATTERNS=(
 )
 
 if is-linux; then
-  EXCLUDED_PATTERNS=(
-    "${EXCLUDED_PATTERNS[@]}"
-    iCloud
+  EXCLUDED_PATTERNS+=(
     Library/*
+    iCloud
   )
 fi
 
