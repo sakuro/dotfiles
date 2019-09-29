@@ -57,7 +57,7 @@ function macos::clt::should-install() { [[ -e /Library/Developer/CommandLineTool
 function macos::clt::install() {
   sudo /usr/bin/xcode-select --install
   echo Press any key when the installation has completed
-  read
+  read answer < /dev/tty
   sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 }
 function macos::brew::install() { brew install "$@"; }
