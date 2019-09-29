@@ -89,7 +89,7 @@ function linux::yum::required() { echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN
 function linux::apt-get::install() { sudo apt-get install -y "$@"; }
 function linux::apt-get::update() { sudo apt-get update; }
 function linux:apt-get::required() { echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"; }
-function linux::post-deploy() { ; }
+function linux::post-deploy() { :; }
 
 function setup::main() {
   setup::main::should-execute || return 0
