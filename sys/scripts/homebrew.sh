@@ -18,8 +18,15 @@ fi
 if /usr/libexec/java_home >/dev/null 2>/dev/null; then
   :
 else
-  brew update
   brew cask install java
 fi
+
+brew install mas
+local mas_account="$(mas account)"
+until [[ $? = 0 ]]; do
+  echo "Log in to the AppStore and press any key" && read answer < /dev/tty
+  mas_account="$(mas account)"
+done
+echo "Using the AppStore account: ${mas_account}"
 
 brew bundle
