@@ -51,7 +51,7 @@ is-executable() {
   type -P "${command}" > /dev/null
 }
 
-function macos::prepare() { macos::clt::should-install && macos::clt::install; }
+function macos::prepare() { PATH=/opt/brew:$PATH && macos::clt::should-install && macos::clt::install; }
 function macos::os::version() { sw_vers | grep ProuctVersion | grep -Eo '10\.[0-9]+'; }
 function macos::clt::should-install() { [[ ! -e /Library/Developer/CommandLineTools/usr/bin/git ]]; }
 function macos::clt::install() {
