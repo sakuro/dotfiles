@@ -60,6 +60,7 @@ function macos::clt::install() {
   sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 }
 function macos::brew::install() { brew install "$@"; }
+function macos::post-deploy() { (cd "${DOTROOT}/sys" && make brew bundle); }
 
 function linux::prepare() {
   linux::package::update
@@ -73,6 +74,7 @@ function linux::yum::required() { echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN
 function linux::apt-get::install() { sudo apt-get install -y "$@"; }
 function linux::apt-get::update() { sudo apt-get update; }
 function linux:apt-get::required() { echo git make "${LOGIN_SHELL_PACKAGE:-"${LOGIN_SHELL}"}"; }
+function linux::post-deploy() { ; }
 
 function setup::main() {
   setup::main::should-execute || return 0
@@ -86,6 +88,7 @@ function setup::main() {
   fi
   (cd "${DOTROOT}/sys" && make deploy)
 
+  setup::post-deploy
   setup::chsh
 }
 
@@ -96,8 +99,10 @@ function setup::main::should-execute() {
 function setup::detect-os() {
   if is-macos; then
     function setup::prepare() { macos::prepare; }
+    function setup::post-deploy() { macos::post-deploy; }
   elif is-linux; then
     function setup::prepare() { linux::prepare; }
+    function setup::post-deploy() { linux::post-deploy; }
     if is-executable yum; then
       function linux::package::install() { linux::yum::install "$@"; }
       function linux::package::update() { linux::yum::update "$@"; }
