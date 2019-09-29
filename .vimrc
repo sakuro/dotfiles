@@ -26,4 +26,4 @@ set paste " to make paste work as expected
 
 set noswapfile nobackup viminfo=
 
-colorscheme nord
+silent! colorscheme nord
