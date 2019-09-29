@@ -51,7 +51,7 @@ is-executable() {
   type -P "${command}" > /dev/null
 }
 
-function macos::prepare() { osx::clt::should-install && osx::clt::install; }
+function macos::prepare() { macos::clt::should-install && macos::clt::install; }
 function macos::os::version() { sw_vers | grep ProuctVersion | grep -Eo '10\.[0-9]+'; }
 function macos::clt::should-install() { [[ -e /Library/Developer/CommandLineTools/usr/bin/git ]]; }
 function macos::clt::install() {
@@ -96,7 +96,7 @@ function setup::main::should-execute() {
 
 function setup::detect-os() {
   if is-macos; then
-    function setup::prepare() { osx::prepare; }
+    function setup::prepare() { macos::prepare; }
   elif is-linux; then
     function setup::prepare() { linux::prepare; }
     if is-executable yum; then
