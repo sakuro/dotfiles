@@ -57,7 +57,7 @@ function macos::prepare() {
   macos::clt::should-install && macos::clt::install
   macos::sdk-headers::should-install && macos::sdk-headers::install
 }
-function macos::os::version() { sw_vers | grep ProuctVersion | grep -Eo '10\.[0-9]+'; }
+function macos::os::version() { sw_vers | grep ProductVersion | grep -Eo '10\.[0-9]+'; }
 function macos::clt::should-install() { [[ ! -e /Library/Developer/CommandLineTools/usr/bin/git ]]; }
 function macos::clt::install() {
   sudo /usr/bin/xcode-select --install
