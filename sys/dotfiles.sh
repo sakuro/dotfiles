@@ -53,7 +53,6 @@ is-executable() {
 }
 
 function macos::prepare() {
-  export PATH="${BREW_ROOT}/bin:$PATH"
   macos::clt::should-install && macos::clt::install || :
   macos::sdk-headers::should-install && macos::sdk-headers::install || :
 }

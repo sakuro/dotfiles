@@ -5,6 +5,8 @@
 BREW_INSTALLER_URL=https://raw.githubusercontent.com/Homebrew/install/master/install
 BREW_ORIGINAL_ROOT=/usr/local
 
+export PATH="${BREW_ROOT}/bin:$PATH"
+
 if is-executable brew; then
   echo "Homebrew is already installed"
   exit 0
@@ -19,3 +21,5 @@ else
     brew cask install java
   fi
 fi
+
+brew bundle
