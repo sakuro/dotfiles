@@ -1,11 +1,11 @@
 deploy:
-	@scripts/deploy.sh
+	scripts/deploy.sh
 
 brew:
-	@scripts/homebrew.sh
+	scripts/homebrew.sh
 
 bundle: brew
-	@brew bundle
+	brew bundle
 
 bundle-dump:
-	@brew bundle dump --force
+	brew bundle dump --force
