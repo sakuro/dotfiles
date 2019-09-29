@@ -21,7 +21,11 @@ else
   brew cask install java
 fi
 
-brew install mas
+if is-executable mas; then
+  :
+else
+  brew install mas
+fi
 
 mas_account="$(mas account)"
 until [[ $? = 0 ]]; do
