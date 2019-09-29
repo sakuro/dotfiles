@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function brew() {
+  local path=( $(print -l $path | grep -v '/gnubin$') )
+  command brew "$@"
+}
