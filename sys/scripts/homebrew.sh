@@ -5,7 +5,26 @@
 BREW_INSTALLER_URL=https://raw.githubusercontent.com/Homebrew/install/master/install
 BREW_ORIGINAL_ROOT=/usr/local
 
-export PATH="${BREW_ROOT}/bin:$PATH"
+PATH="${BREW_ROOT}/bin:$PATH"
+
+# Remove elements which end with /gnubin from $PATH
+IFS=: read -r -a path <<<"$PATH"
+PATH=""
+set -- "${path[@]}"
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  */gnubin)
+    ;;
+  *)
+    if [[ -z "$PATH" ]]; then
+      PATH="$1"
+    else
+      PATH="${PATH}:$1"
+    fi
+    ;;
+  esac
+  shift
+done
 
 if is-executable brew; then
   echo "Homebrew is already installed"
