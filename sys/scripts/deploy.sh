@@ -29,7 +29,7 @@ function make-link() {
   local dir="$(dirname "$file")"
 
   [[ "{$dir}" = "." ]] || [[ -d "$DOTDEST/$dir" ]] || mkdir-p "$DOTDEST/$dir"
-  if [[ -e "$to" ]]; then
+  if [[ -e "$to" || -h "$to" ]]; then
     echo "${to} already exists"
   else
     ln-s "$from" "$to"
