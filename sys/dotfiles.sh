@@ -71,7 +71,7 @@ function macos::sdk-headers::should-install() {
 }
 
 function macos::sdk-headers::install() {
-  sudo installer -verbose -pkg "/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_$(macos::os::version).pkg" -target /
+  sudo installer -pkg "/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_$(macos::os::version).pkg" -target /
 }
 
 function macos::brew::install() { brew install "$@"; }
