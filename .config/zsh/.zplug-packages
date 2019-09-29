@@ -2,4 +2,3 @@ zplug 'arcticicestudio/nord-dircolors'
 zplug 'arcticicestudio/nord-sublime-text', at:8d01b88, hook-build:'bat cache --build', defer:2
 #zplug 'arcticicestudio/nord-tmux'
 zplug 'goronfreeman/nord-tmux', at:tmux-2.9
-zplug 'junegunn/vim-plug'
