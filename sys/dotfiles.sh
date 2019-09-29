@@ -6,6 +6,7 @@ DOTREPO="https://github.com/sakuro/dotfiles.git"
 DOTROOT=${DOTROOT:=$HOME/.dotfiles}
 DOTDEST=${DOTDEST:=$HOME}
 LOGIN_SHELL=zsh
+BREW_ROOT=/opt/brew
 
 # Return true if DRYRUN is set and its length is greater than zero
 function is-dry-run() { [[ -n "${DRYRUN}" ]]; }
@@ -52,7 +53,7 @@ is-executable() {
 }
 
 function macos::prepare() {
-  PATH=/opt/brew:$PATH
+  export PATH="${BREW_ROOT}/bin:$PATH"
   macos::clt::should-install && macos::clt::install
   macos::sdk-headers::should-install && macos::sdk-headers::install
 }
@@ -64,7 +65,7 @@ function macos::clt::install() {
   sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 }
 
-funcion macos::sdk-headers::should-install() {
+function macos::sdk-headers::should-install() {
   # `brew install postgresql` requires this
   [[ ! -e /System/Library/Perl/5.18/darwin-thread-multi-2level/CORE/perl.h ]]
 }
