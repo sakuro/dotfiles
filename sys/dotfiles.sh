@@ -74,7 +74,7 @@ function macos::sdk-headers::install() {
 }
 
 function macos::brew::install() { brew install "$@"; }
-function macos::post-deploy() { (cd "${DOTROOT}/sys" && make brew bundle); }
+function macos::post-deploy() { (cd "${DOTROOT}/sys" && make brew); }
 
 function linux::prepare() {
   linux::package::update
