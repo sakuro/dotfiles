@@ -22,7 +22,8 @@ else
 fi
 
 brew install mas
-local mas_account="$(mas account)"
+
+mas_account="$(mas account)"
 until [[ $? = 0 ]]; do
   echo "Log in to the AppStore and press any key" && read answer < /dev/tty
   mas_account="$(mas account)"
