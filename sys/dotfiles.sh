@@ -51,7 +51,11 @@ is-executable() {
   type -P "${command}" > /dev/null
 }
 
-function macos::prepare() { PATH=/opt/brew:$PATH && macos::clt::should-install && macos::clt::install; }
+function macos::prepare() {
+  PATH=/opt/brew:$PATH
+  macos::clt::should-install && macos::clt::install
+  macos::sdk-headers::should-install && macos::sdk-headers::install
+}
 function macos::os::version() { sw_vers | grep ProuctVersion | grep -Eo '10\.[0-9]+'; }
 function macos::clt::should-install() { [[ ! -e /Library/Developer/CommandLineTools/usr/bin/git ]]; }
 function macos::clt::install() {
@@ -59,6 +63,16 @@ function macos::clt::install() {
   echo -n "Press any key when the installation has completed"; read answer < /dev/tty
   sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 }
+
+funcion macos::sdk-headers::should-install() {
+  # `brew install postgresql` requires this
+  [[ ! -e /System/Library/Perl/5.18/darwin-thread-multi-2level/CORE/perl.h ]]
+}
+
+function macos::sdk-headers::install() {
+  sudo installer -verbose -pkg "/Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_$(macos::os::version).pkg" -target /
+}
+
 function macos::brew::install() { brew install "$@"; }
 function macos::post-deploy() { (cd "${DOTROOT}/sys" && make brew bundle); }
 
