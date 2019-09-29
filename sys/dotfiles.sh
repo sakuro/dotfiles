@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 DOTREPO="https://github.com/sakuro/dotfiles.git"
 DOTROOT=${DOTROOT:=$HOME/.dotfiles}
 DOTDEST=${DOTDEST:=$HOME}
