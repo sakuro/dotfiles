@@ -6,3 +6,6 @@ brew:
 
 bundle-dump:
 	brew bundle dump --force
+
+vscode-extensions:
+	scripts/vscode.sh
