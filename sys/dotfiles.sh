@@ -72,7 +72,7 @@ function macos::sdk-headers::install() {
 }
 
 function macos::brew::install() { brew install "$@"; }
-function macos::post-deploy() { (cd "${DOTROOT}/sys" && make brew); }
+function macos::post-deploy() { make -C "${DOTROOT}/sys" brew; }
 
 function linux::prepare() {
   linux::package::update
@@ -98,7 +98,7 @@ function setup::main() {
   else
     git clone "${DOTREPO}" "${DOTROOT}"
   fi
-  (cd "${DOTROOT}/sys" && make deploy)
+  make -C "${DOTROOT}/sys" deploy
 
   setup::post-deploy
   setup::chsh
