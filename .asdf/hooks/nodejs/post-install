@@ -3,7 +3,7 @@
 exec > >(sed -ue 's/^/[post-install] /')
 
 echo "Switching to newly installed Node.js $1"
-source $ZPLUG_REPOS/asdf-vm/asdf/asdf.sh
+source $(brew --prefix asdf)/asdf.sh
 asdf shell nodejs $1
 echo "Node.js version: $(node -v)"
 echo "npm version: $(npm -qv)"
