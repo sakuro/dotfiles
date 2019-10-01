@@ -56,5 +56,5 @@
   useConfigOnly = true
 [include]
   path = include/user.email-fallback
-[includeIf "gitdir:~/github.com/feedforce/**"]
-  path = include/user.email-feedforce
+[includeIf "gitdir:~/github.com/quipper/**"]
+  path = include/user.email-quipper
