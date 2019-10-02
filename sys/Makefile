@@ -9,3 +9,6 @@ bundle-dump:
 
 vscode-extensions:
 	scripts/vscode.sh
+
+asdf-update-tool-versions:
+	scripts/asdf-update-tool-versions.sh

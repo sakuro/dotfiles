@@ -1,0 +1,40 @@
+version: 2.1
+jobs:
+  update-asdf-tool-versions:
+    docker:
+      - image: debian:buster-slim
+    steps:
+      - run:
+          name: Install required tools
+          command: apt-get update && apt-get install -y curl git gnupg hub make
+      - checkout
+      - run:
+          name: Make symbolic link to .tool-versions
+          command: ln -fs "$(pwd)/.tool-versions" $HOME/.tool-versions
+      - run:
+          name: Configure git
+          command: |-
+            mkdir -p $HOME/.config
+            ln -fs "$(pwd)/.config/git" $HOME/.config
+      - run:
+          name: Clone asdf
+          command: git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf
+      - run:
+          name: Update sigining key of the Node.js release team
+          command: curl -sSfL https://raw.githubusercontent.com/asdf-vm/asdf-nodejs/master/bin/import-release-team-keyring | bash
+      - run:
+          name: Try updating tool versions
+          command: bash -c "source $HOME/.asdf/asdf.sh && make -C sys asdf-update-tool-versions"
+      - run:
+          name: Make PR
+          command: |-
+            git diff --no-patch --exit-code .tool-versions && exit 0
+            git checkout -b update-asdf-tool-versions-$(date +%Y%m%d%H%M%S)
+            git commit -m 'Update tool versions' .tool-versions
+            git push -u origin $(git symbolic-ref --short HEAD)
+            git checkout master
+
+workflows:
+  update:
+    jobs:
+      - update-asdf-tool-versions

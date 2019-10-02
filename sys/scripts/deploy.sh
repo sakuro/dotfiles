@@ -6,6 +6,7 @@ EXCLUDED_PATTERNS=(
   README.md
   sys/*
   */.gitignore
+  .circleci/*
 )
 
 if is-linux; then
