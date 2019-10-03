@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+function kss() {
+  ks config get-contexts | sed '/^\ /d'
+  ks auth can-i get ns >/dev/null 2>&1 && echo '(Authorized)' || echo '(Unauthorized)'
+}
