@@ -130,6 +130,7 @@ alias -g Q='1>/dev/null 2>&1'
 alias puts='print -l'
 
 alias memo='$EDITOR ~/.memo.md'
+alias daily='$EDITOR ~/Documents/daily.md'
 
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
