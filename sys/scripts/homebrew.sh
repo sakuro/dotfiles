@@ -54,3 +54,5 @@ done
 echo "Using the AppStore account: ${mas_account}"
 
 brew bundle
+
+chmod go-w "$(brew --prefix)/share"
