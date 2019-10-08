@@ -1,7 +1,7 @@
-nodejs 12.11.0
-ruby 2.6.4
+nodejs 12.11.1
+ruby 2.6.5
 haskell 8.8.1
-terraform 0.12.9
-rust 1.37.0
+terraform 0.12.10
+rust 1.38.0
 julia 1.2.0
 gauche 0.9.8
