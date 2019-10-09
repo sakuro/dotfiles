@@ -8,8 +8,9 @@ EXTENSIONS=(
   EditorConfig.EditorConfig
   mauve.terraform
   MS-CEINTL.vscode-language-pack-ja
+  ms-vscode-remote.remote-containers
 )
 
 for extension in "${EXTENSIONS[@]}"; do
-  code --install-extension "${extension}"
+  code --list-extensions | grep -qF "${extension}" || code --install-extension "${extension}"
 done
