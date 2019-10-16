@@ -17,7 +17,8 @@
         ".pryrc": "ruby",
         ".gemrc": "yaml",
         ".direnvrc": "shellscript",
-        ".zplug-packages": "shellscript"
+        ".zplug-packages": "shellscript",
+        ".zunit": "shellscript"
     },
     "files.autoSave": "afterDelay",
     "files.exclude": {
