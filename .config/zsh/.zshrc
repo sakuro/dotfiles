@@ -64,16 +64,15 @@ typeset -i SAVEHIST=1000000
 typeset -i HISTSIZE=1100000
 
 setopt prompt_subst
-fpath=($ZDOTDIR/prompts $fpath)
+fpath=(
+  $ZDOTDIR/prompts
+  $ZPLUG_REPOS/sindresorhus/pure
+  $fpath
+)
 
 autoload -U promptinit
 promptinit
-
-if in-tmux-session; then
-  prompt tmux
-else
-  prompt sakuro
-fi
+prompt pure
 
 autoload -Uz select-word-style
 select-word-style default
