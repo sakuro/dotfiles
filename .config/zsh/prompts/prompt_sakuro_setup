@@ -17,7 +17,7 @@ function prompt_sakuro_precmd()
   local vcs_info_msg_0_ vcs_info_msg_1_
   LANG=C vcs_info
 
-  psvar=( "%F{gray}[%f" )
+  psvar=()
 
   # user@host
   psvar[1]+="%n%F{cyan}@$(load-average-color)%m"
@@ -26,17 +26,13 @@ function prompt_sakuro_precmd()
   [[ -n "$TMUX_PANE" ]] && psvar[1]+="%F{gray}:%F{blue}%$TMUX_PANE"
 
   # %jobs
-  psvar[1]+="%(1j,%F{gray}:%F{magenta}%%%j,)"
-
-  psvar[1]+="%F{gray}]%f"
+  psvar[1]+="%(1j,%F{magenta}%%%j,)"
 
   # [time]
-  psvar[1]+=" %F{gray}[%F{yellow}%D{%H:%M:%S}%F{gray}]%f"
-
-  psvar[1]+=" %F{gray}[%f"
+  psvar[1]+=" %F{yellow}%D{%H:%M:%S}%f"
 
   # [vcs]
-  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+="$vcs_info_msg_0_%F{cyan}:%f"
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" $vcs_info_msg_0_ "
 
   # [pwd]
   local base_path="$(print -P '%~')"
@@ -55,7 +51,6 @@ function prompt_sakuro_precmd()
 
   psvar[1]+="%F{magenta}$base_path%f"
   [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && psvar[1]+="/%F{cyan}$vcs_info_msg_1_%f"
-  psvar[1]+="%F{gray}]%f"
 
   # $
   psvar[2]+='%(!.#.$) '
