@@ -32,9 +32,18 @@ function prompt_sakuro_precmd()
   psvar[1]+=" %F{yellow}%D{%H:%M:%S}%f"
 
   # [vcs]
-  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" $vcs_info_msg_0_ "
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" $vcs_info_msg_0_"
 
-  # [pwd]
+  psvar[1]+=$(prompt_sakuro_pwd)
+  # $
+  psvar[2]+='%(!.#.$) '
+
+  PROMPT=${(F)psvar}
+}
+
+function prompt_sakuro_pwd() {
+  local result
+
   local base_path="$(print -P '%~')"
   # remove repository_part($vcs_info_msg_1_)
   [[ -n "$vcs_info_msg_0_" && $vcs_info_msg_1_ != '.' ]] && base_path="${base_path%/$vcs_info_msg_1_}"
@@ -49,13 +58,10 @@ function prompt_sakuro_precmd()
     base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
   fi
 
-  psvar[1]+="%F{magenta}$base_path%f"
-  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && psvar[1]+="/%F{cyan}$vcs_info_msg_1_%f"
+  result+="%F{magenta}$base_path%f"
+  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/%F{cyan}$vcs_info_msg_1_%f"
 
-  # $
-  psvar[2]+='%(!.#.$) '
-
-  PROMPT=${(F)psvar}
+  print -n " ${result}"
 }
 
 prompt_sakuro_setup "$@"
