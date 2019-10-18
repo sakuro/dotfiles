@@ -14,35 +14,43 @@ function prompt_sakuro_precmd()
 {
   autoload -Uz vcs_info
 
-  local vcs_info_msg_0_ vcs_info_msg_1_
-  LANG=C vcs_info
-
   psvar=()
+  local -a first_line=()
+  local -a main_line=()
+  local -a final_line=()
 
-  # user@host
-  psvar[1]+="%n%F{cyan}@$(load-average-color)%m"
+  main_line+="$(prompt_sakuro_user)@$(prompt_sakuro_host)"
+  main_line+="%F{yellow}%D{%H:%M:%S}%f"
+  main_line+="$(prompt_sakuro_pwd)"
+  main_line+="$(prompt_sakuro_vcs)"
+  main_line+="$(prompt_sakuro_aws)"
 
-  # %tmux pane
-  [[ -n "$TMUX_PANE" ]] && psvar[1]+="%F{gray}:%F{blue}%$TMUX_PANE"
+  final_line+="$(prompt_sakuro_prompt)"
 
-  # %jobs
-  psvar[1]+="%(1j,%F{magenta}%%%j,)"
-
-  # [time]
-  psvar[1]+=" %F{yellow}%D{%H:%M:%S}%f"
-
-  # [vcs]
-  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]+=" $vcs_info_msg_0_"
-
-  psvar[1]+=$(prompt_sakuro_pwd)
-  # $
-  psvar[2]+='%(!.#.$) '
-
+  psvar=(
+    "${(j: :)first_line}"
+    "${(j: :)main_line}"
+    "${(j: :)final_line}"' '
+  )
   PROMPT=${(F)psvar}
+}
+
+function prompt_sakuro_user() {
+  print -nP "%n"
+}
+
+function prompt_sakuro_host() {
+  print -nP "$(load-average-color)%m%f"
+}
+
+function prompt_sakuro_tmux_pane() {
+  [[ -n "$TMUX_PANE" ]] && print -nP "%%%F{blue}$TMUX_PANE%f"
 }
 
 function prompt_sakuro_pwd() {
   local result
+  local vcs_info_msg_0_ vcs_info_msg_1_
+  LANG=C vcs_info
 
   local base_path="$(print -P '%~')"
   # remove repository_part($vcs_info_msg_1_)
@@ -61,7 +69,24 @@ function prompt_sakuro_pwd() {
   result+="%F{magenta}$base_path%f"
   [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/%F{cyan}$vcs_info_msg_1_%f"
 
-  print -n " ${result}"
+  print -n "${result}"
+}
+
+function prompt_sakuro_vcs() {
+  local vcs_info_msg_0_
+  LANG=C vcs_info
+
+  [[ -n "$vcs_info_msg_0_" ]] && print -n "$vcs_info_msg_0_"
+}
+
+function prompt_sakuro_aws() {
+  local aws_emoji="\uf270 "
+  [[ -n "$AWS_PROFILE" ]] && print -nP "%F{yellow}${aws_emoji}$AWS_PROFILE%f"
+}
+
+function prompt_sakuro_prompt() {
+  local last_status=$1
+  print -nP '%(!.#.$)'
 }
 
 prompt_sakuro_setup "$@"
