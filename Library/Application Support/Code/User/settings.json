@@ -18,7 +18,8 @@
         ".gemrc": "yaml",
         ".direnvrc": "shellscript",
         ".zplug-packages": "shellscript",
-        ".zunit": "shellscript"
+        ".zunit": "shellscript",
+        "*.zunit": "shellscript"
     },
     "files.autoSave": "afterDelay",
     "files.exclude": {
