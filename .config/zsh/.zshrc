@@ -73,6 +73,7 @@ fpath=(
 autoload -U promptinit
 promptinit
 prompt pure
+PURE_PROMPT_SYMBOL='$'
 
 autoload -Uz select-word-style
 select-word-style default
