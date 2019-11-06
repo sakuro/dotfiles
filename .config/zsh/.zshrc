@@ -134,11 +134,14 @@ alias daily='$EDITOR ~/Documents/daily.md'
 
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
-
 DIRCOLORS=$ZPLUG_REPOS/arcticicestudio/nord-dircolors/src/dir_colors
 if is-executable dircolors && [[ -f $DIRCOLORS ]]; then
   eval $(dircolors -b $DIRCOLORS)
-  alias ls='ls -F --color=auto'
+  if is-executable exa; then
+    alias ls='exa -F --color=auto'
+  else
+    alias ls='ls -F --color=auto'
+  fi
 fi
 unset DIRCOLORS
 
