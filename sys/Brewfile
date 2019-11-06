@@ -30,6 +30,7 @@ brew "kubernetes-cli"
 brew "kubectx"
 brew "mas"
 brew "nethack"
+brew "nkf"
 brew "node"
 brew "peco"
 brew "postgresql"
@@ -43,6 +44,7 @@ brew "texinfo"
 brew "tmux"
 brew "tmux-mem-cpu-load"
 brew "typescript"
+brew "watch"
 brew "zplug"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
@@ -64,6 +66,7 @@ cask "font-ricty-diminished"
 cask "google-chrome"
 cask "haptickey"
 cask "java"
+cask "karabiner-elements"
 cask "keyboard-cleaner"
 cask "launchbar"
 cask "station"
@@ -78,3 +81,4 @@ mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
