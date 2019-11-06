@@ -134,16 +134,18 @@ alias daily='$EDITOR ~/Documents/daily.md'
 
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
-DIRCOLORS=$ZPLUG_REPOS/arcticicestudio/nord-dircolors/src/dir_colors
-if is-executable dircolors && [[ -f $DIRCOLORS ]]; then
-  eval $(dircolors -b $DIRCOLORS)
-  if is-executable exa; then
-    alias ls='exa -F --color=auto'
-  else
-    alias ls='ls -F --color=auto'
+
+() {
+  local dircolors_path=$ZPLUG_REPOS/arcticicestudio/nord-dircolors/src/dir_colors
+  if is-executable dircolors && [[ -f $dircolors_path ]]; then
+    eval $(dircolors -b $dircolors_path)
+    if is-executable exa; then
+      alias ls='exa -F --color=auto'
+    else
+      alias ls='ls -F --color=auto'
+    fi
   fi
-fi
-unset DIRCOLORS
+}
 
 if is-executable gcal; then
   alias cal='gcal --starting-day=1 --type=standard --cc-holidays=JP'
