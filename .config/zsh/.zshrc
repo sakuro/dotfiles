@@ -140,7 +140,7 @@ is-executable vim && alias vi=vim
   if is-executable dircolors && [[ -f $dircolors_path ]]; then
     eval $(dircolors -b $dircolors_path)
     if is-executable exa; then
-      alias ls='exa -F --color=auto'
+      alias ls='exa -F --color=auto --git'
     else
       alias ls='ls -F --color=auto'
     fi
