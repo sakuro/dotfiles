@@ -14,6 +14,7 @@ fpath=(
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
 
 source /opt/brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/brew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 setopt auto_resume
 
