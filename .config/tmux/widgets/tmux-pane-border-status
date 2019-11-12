@@ -1,12 +1,5 @@
 #!/bin/zsh
 
-PATH=$ZPLUG_BIN:$XDG_CONFIG_HOME/tmux/widgets:$PATH
+PATH=$XDG_CONFIG_HOME/tmux/widgets:$PATH
 
-[[ $# -gt 0 ]] && cd $1 && {
-    local vcs_info=$(tmux-vcs-info)
-    if [[ -z $vcs_info ]]; then
-        echo " #P: [$(tmux-pwd)]"
-    else
-        echo " #P: [$vcs_info:$(tmux-pwd)] "
-    fi
-}
+[[ $# -gt 0 ]] && cd $1 && echo " #P: $(tmux-pwd) "
