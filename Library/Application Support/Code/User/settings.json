@@ -39,6 +39,7 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "git.confirmSync": false,
+    "rust-client.disableRustup": true,
     "solargraph.commandPath": "/Users/sakuro/.asdf/shims/solargraph",
     "solargraph.bundlerPath": "/Users/sakuro/.asdf/shims/bundle",
     "terminal.integrated.fontSize": 18,
