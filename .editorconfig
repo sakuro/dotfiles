@@ -25,6 +25,9 @@ indent_size = 4
 [*.rb]
 quote_type = single
 
+[*.rs]
+indent_size = 4
+
 [Makefile*]
 indent_size = 4
 indent_style = tab
