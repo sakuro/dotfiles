@@ -53,6 +53,6 @@ until [[ $? = 0 ]]; do
 done
 echo "Using the AppStore account: ${mas_account}"
 
-brew bundle
+brew bundle --no-lock
 
 chmod go-w "$(brew --prefix)/share"
