@@ -104,7 +104,10 @@ fi
 
 export EDITOR
 
-if is-executable -p less; then
+if is-executable -p bat; then
+  PAGER=bat
+  alias less=bat
+elif is-executable -p less; then
   PAGER=less
   export LESS="-inmXRz-4"
   export LESSHISTFILE=-
