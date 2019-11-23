@@ -53,7 +53,7 @@ brew "heroku/brew/heroku"
 brew "sakuro/formulae/ltsv2json"
 brew "sakuro/formulae/slib"
 brew "sakuro/formulae/vim-plug"
-brew "zunit-zsh/zunit/zunit", args: ["devel"]
+brew "zunit-zsh/zunit/zunit", args: ["HEAD"]
 cask "1password"
 cask "alacritty"
 cask "brave-browser"
