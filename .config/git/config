@@ -45,8 +45,9 @@
 [merge]
   ff = false
 [pager]
-  diff = bat --style plain
-  log = bat --style plain
+  diff = diff-so-fancy | bat --style plain
+  log = diff-so-fancy | bat --style plain
+  show = diff-so-fancy | bat --style plain
 [pull]
   rebase = true
 [push]
