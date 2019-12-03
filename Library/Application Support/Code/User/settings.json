@@ -21,7 +21,6 @@
         ".zunit": "shellscript",
         "*.zunit": "shellscript"
     },
-    "files.autoSave": "afterDelay",
     "files.exclude": {
         ".bundle": true,
         ".idea": true,
