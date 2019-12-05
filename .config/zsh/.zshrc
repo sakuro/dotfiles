@@ -107,6 +107,7 @@ export EDITOR
 if is-executable -p bat; then
   PAGER=bat
   alias less=bat
+  export MANPAGER="bat --plain"
 elif is-executable -p less; then
   PAGER=less
   export LESS="-inmXRz-4"
