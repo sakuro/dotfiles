@@ -48,6 +48,7 @@
   diff = diff-so-fancy | bat --style plain
   log = diff-so-fancy | bat --style plain
   show = diff-so-fancy | bat --style plain
+  grep = bat --style plain
 [pull]
   rebase = true
 [push]
