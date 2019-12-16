@@ -2,7 +2,7 @@
     "clock.dateFormat": "yyyy-mm-dd (ddd) HH:MM:ss",
     "editor.copyWithSyntaxHighlighting": false,
     "editor.fontFamily": "Cica",
-    "editor.fontSize": 18,
+    "editor.fontSize": 16,
     "editor.insertSpaces": true,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "boundary",
