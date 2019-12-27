@@ -20,17 +20,8 @@ ensure
   IRB.conf[:HISTORY_FILE] = File.expand_path('~/.irb.history')
 end
 
-# Invoke pry if available
-begin
-  require 'pry'
-  puts 'Invoking pry' if IRB.conf[:VERBOSE]
-  Pry.start
-  exit
-rescue LoadError
-  require 'irb/ext/save-history'
-  require 'irb/completion'
+require 'irb/ext/save-history'
+require 'irb/completion'
 
-  IRB.conf[:SAVE_HISTORY] = 10000
-  IRB.conf[:PROMPT_MODE] = :SIMPLE
-  puts 'Invoking irb' if IRB.conf[:VERBOSE]
-end
+IRB.conf[:SAVE_HISTORY] = 10000
+IRB.conf[:PROMPT_MODE] = :SIMPLE
