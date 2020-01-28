@@ -4,3 +4,4 @@ zplug 'arcticicestudio/nord-sublime-text', at:8d01b88, hook-build:'bat cache --b
 zplug 'goronfreeman/nord-tmux', at:tmux-2.9
 zplug "sindresorhus/pure"
 zplug '~/github.com/sakuro/zcolon', from:local
+zplug "sakuro/zcal"

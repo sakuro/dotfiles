@@ -152,7 +152,9 @@ is-executable vim && alias vi=vim
   fi
 }
 
-if is-executable gcal; then
+if is-executable zcal; then
+  alias cal=zcal
+elif is-executable gcal; then
   alias cal='gcal --starting-day=1 --type=standard --cc-holidays=JP'
 fi
 
