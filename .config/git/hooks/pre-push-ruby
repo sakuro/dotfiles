@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+source "${0:h}/support.zsh"
+
 function need-bundle-update() {
   [[ -f Gemfile ]] && git ls-files --error-unmach Gemfile.lock 2>/dev/null && [[ Gemfile -ot Gemfile.lock ]]
 }
