@@ -11,6 +11,8 @@ EXTENSIONS=(
   ms-vscode-remote.remote-containers
 )
 
+VSCODE=${VSCODE:=code}
+
 for extension in "${EXTENSIONS[@]}"; do
-  code --list-extensions | grep -qF "${extension}" || code --install-extension "${extension}"
+  "${VSCODE}" --list-extensions | grep -qF "${extension}" || "${VSCODE}" --install-extension "${extension}"
 done
