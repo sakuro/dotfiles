@@ -96,10 +96,8 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
 if is-executable -p code-insiders; then
   alias code=code-insiders
-  if  [[ -n "$VSCODE_PID" ]]; then
-    EDITOR="code-insiders -w"
-  fi
-elif is-executable -p code && [[ -n "$VSCODE_PID" ]]; then
+  EDITOR="code-insiders -w"
+elif is-executable -p code; then
   EDITOR="code -w"
 elif is-executable -p vim; then
   EDITOR=vim
