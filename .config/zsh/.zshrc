@@ -190,7 +190,7 @@ if [[ -f /opt/brew/opt/asdf/asdf.sh ]]; then
 fi
 
 if [[ -f /opt/brew/etc/bash_completion.d/asdf.bash ]]; then
-  source /opt/brew/etc/bash_completion.d/asdf.bash
+  source /opt/brew/etc/bash_completion.d/asdf.bash 2>/dev/null
 fi
 
 if is-executable gosh; then
