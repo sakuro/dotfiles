@@ -45,5 +45,10 @@
     "terminal.integrated.rendererType": "dom",
     "workbench.colorTheme": "Nord",
     "workbench.editor.highlightModifiedTabs": true,
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "[yaml]": {
+      "editor.trimAutoWhitespace": false,
+      "files.trimFinalNewlines": false,
+      "files.trimTrailingWhitespace": false
+    }
 }
