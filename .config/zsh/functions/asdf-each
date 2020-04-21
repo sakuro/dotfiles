@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+function asdf-each() {
+  if [[ $# -lt 2 ]]; then
+    echo "asdf-each PLUGIN_NAME COMMAND"
+    return 1
+  fi
+  local plugin_name="$1"
+  shift
+  local versions=( $(asdf list "$plugin_name") )
+  for version in $versions; do
+    (asdf shell "$plugin_name" $versions; $*)
+  done
+}
