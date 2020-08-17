@@ -94,10 +94,7 @@ zstyle ':completion:*' cache-path $ZDOTDIR/compcache
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
-if is-executable -p code-insiders; then
-  alias code=code-insiders
-  EDITOR="code-insiders -w"
-elif is-executable -p code; then
+if is-executable -p code; then
   EDITOR="code -w"
 elif is-executable -p vim; then
   EDITOR=vim

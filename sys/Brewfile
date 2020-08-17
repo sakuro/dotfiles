@@ -92,7 +92,6 @@ cask "vagrant"
 cask "virtualbox"
 cask "virtualbox-extension-pack"
 cask "visual-studio-code"
-cask "visual-studio-code-insiders"
 mas "Amphetamine", id: 937984704
 mas "CloudClip Manager", id: 563362017
 mas "Keyboard Pilot", id: 402670023
