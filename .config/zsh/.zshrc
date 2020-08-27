@@ -182,12 +182,8 @@ limit coredumpsize 0
 is-executable direnv && eval "$(direnv hook zsh)"
 
 # asdf
-if [[ -f /opt/brew/opt/asdf/asdf.sh ]]; then
-  source /opt/brew/opt/asdf/asdf.sh
-fi
-
-if [[ -f /opt/brew/etc/bash_completion.d/asdf.bash ]]; then
-  source /opt/brew/etc/bash_completion.d/asdf.bash 2>/dev/null
+if [[ -f ~/.asdf/asdf.sh ]]; then
+  source ~/.asdf/asdf.sh
 fi
 
 if is-executable gosh; then
