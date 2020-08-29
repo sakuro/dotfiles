@@ -1,7 +1,7 @@
 zplug 'arcticicestudio/nord-dircolors'
 zplug 'arcticicestudio/nord-sublime-text', hook-build:'bat cache --build', defer:2
-#zplug 'arcticicestudio/nord-tmux'
 zplug 'goronfreeman/nord-tmux', at:tmux-2.9
-zplug "sindresorhus/pure"
 zplug '~/github.com/sakuro/zcolon', from:local
-zplug "sakuro/zcal"
+zplug 'sakuro/zcal'
+zplug 'zsh-users/zsh-syntax-highlighting'
+zplug 'zsh-users/zsh-autosuggestions'

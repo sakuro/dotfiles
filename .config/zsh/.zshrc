@@ -13,9 +13,6 @@ fpath=(
 )
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
 
-source /opt/brew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/brew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 setopt auto_resume
 
 setopt correct
@@ -67,14 +64,12 @@ typeset -i HISTSIZE=1100000
 setopt prompt_subst
 fpath=(
   $ZDOTDIR/prompts
-  $ZPLUG_REPOS/sindresorhus/pure
   $fpath
 )
 
 autoload -U promptinit
 promptinit
-prompt pure
-PURE_PROMPT_SYMBOL='$'
+prompt sakuro
 
 autoload -Uz select-word-style
 select-word-style default
