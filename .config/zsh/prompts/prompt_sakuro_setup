@@ -24,6 +24,7 @@ function prompt_sakuro_precmd()
   main_line+="$(prompt_sakuro_current_time)"
   main_line+="$(prompt_sakuro_pwd)"
   main_line+="$(prompt_sakuro_vcs)"
+  main_line+="$(prompt_sakuro_ruby)"
   main_line+="$(prompt_sakuro_aws)"
 
   final_line+="$(prompt_sakuro_prompt $last_status)"
@@ -53,6 +54,7 @@ function prompt_sakuro_tmux_pane() {
 }
 
 function prompt_sakuro_pwd() {
+  local pwd_symbol="\uf115"
   local result
   local vcs_info_msg_0_ vcs_info_msg_1_
   LANG=C vcs_info
@@ -71,22 +73,30 @@ function prompt_sakuro_pwd() {
     base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
   fi
 
-  result+="%F{magenta}$base_path%f"
+  result="%F{magenta}${pwd_symbol} $base_path%f"
   [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/%F{cyan}$vcs_info_msg_1_%f"
 
   print -n "${result}"
 }
 
 function prompt_sakuro_vcs() {
+  local vcs_symbol="\ue725"
   local vcs_info_msg_0_
   LANG=C vcs_info
 
-  [[ -n "$vcs_info_msg_0_" ]] && print -n "$vcs_info_msg_0_"
+  [[ -n "$vcs_info_msg_0_" ]] && print -n "%F{blue}${vcs_symbol}%f $vcs_info_msg_0_"
 }
 
 function prompt_sakuro_aws() {
-  local aws_emoji="\uf270 "
-  [[ -n "$AWS_PROFILE" ]] && print -nP "%F{yellow}${aws_emoji}$AWS_PROFILE%f"
+  local aws_symbol="\uf270"
+  [[ -n "$AWS_PROFILE" ]] && print -nP "%F{yellow}${aws_symbol} $AWS_PROFILE%f"
+}
+
+function prompt_sakuro_ruby() {
+  local ruby_symbol="\ue23e"
+  local ruby_version_array=( $(asdf current ruby) )
+  local ruby_version=$ruby_version_array[1]
+  [[ $? == 0 ]] && print -nP "%F{red}${ruby_symbol} ${ruby_version}%f"
 }
 
 function prompt_sakuro_prompt() {
