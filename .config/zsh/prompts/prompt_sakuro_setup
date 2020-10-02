@@ -12,6 +12,7 @@ function prompt_sakuro_setup()
 
 function prompt_sakuro_precmd()
 {
+  local last_status=$?
   autoload -Uz vcs_info
 
   psvar=()
@@ -20,12 +21,12 @@ function prompt_sakuro_precmd()
   local -a final_line=()
 
   main_line+="$(prompt_sakuro_user)@$(prompt_sakuro_host)"
-  main_line+="%F{yellow}%D{%H:%M:%S}%f"
+  main_line+="$(prompt_sakuro_current_time)"
   main_line+="$(prompt_sakuro_pwd)"
   main_line+="$(prompt_sakuro_vcs)"
   main_line+="$(prompt_sakuro_aws)"
 
-  final_line+="$(prompt_sakuro_prompt)"
+  final_line+="$(prompt_sakuro_prompt $last_status)"
 
   psvar=(
     "${(j: :)first_line}"
@@ -41,6 +42,10 @@ function prompt_sakuro_user() {
 
 function prompt_sakuro_host() {
   print -nP "$(load-average-color)%m%f"
+}
+
+function prompt_sakuro_current_time() {
+  print -nP "%F{yellow}%D{%H:%M:%S}%f"
 }
 
 function prompt_sakuro_tmux_pane() {
@@ -86,7 +91,7 @@ function prompt_sakuro_aws() {
 
 function prompt_sakuro_prompt() {
   local last_status=$1
-  print -nP '%(!.#.$)'
+  [[ $last_status = 0 ]] && print -nP '%F{green}$%f' || print -nP '%F{red}$%f'
 }
 
 prompt_sakuro_setup "$@"
