@@ -144,7 +144,7 @@ function prompt_sakuro_aws() {
 function prompt_sakuro_ruby() {
   local ruby_symbol="\ue23e"
   local ruby_version_array=( $(asdf current ruby) )
-  local ruby_version=$ruby_version_array[1]
+  local ruby_version=$ruby_version_array[2]
   [[ $? == 0 ]] && print -nP "%F{red}${ruby_symbol} ${ruby_version}%f"
 }
 
