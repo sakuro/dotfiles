@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+path=(${path:#~/bin})
+whence -p batcat >/dev/null && exec batcat "$@"
+whence -p bat >/dev/null && exec bat "$@"
+exec cat "$@"
