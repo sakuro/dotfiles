@@ -1,11 +1,5 @@
 set nocompatible
 
-set runtimepath+=/opt/brew/share/vim/vimfiles
-
-call plug#begin('~/.vim/plugged')
-Plug 'arcticicestudio/nord-vim'
-call plug#end()
-
 syntax on             " Enable syntax highlighting
 filetype on           " Enable fieltype detection
 filetype indent on    " Enable filetype-specific indenting
@@ -25,5 +19,3 @@ set statusline=%y%{'['.(&fenc!=''?&fenc:'?').'-'.&ff.']'}
 set paste " to make paste work as expected
 
 set noswapfile nobackup viminfo=
-
-silent! colorscheme nord
