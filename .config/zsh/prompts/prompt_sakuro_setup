@@ -90,7 +90,7 @@ function prompt_sakuro_host() {
   dark-1.*)  print -nP '%F{yellow}%m%f'  ;;
   light-2.*) print -nP '%F{green}%m%f'   ;;
   dark-2.*)  print -nP '%F{magenta}%m%f' ;;
-  *-3.*)     print -nP '%F{red}%m%f'     ;;
+  *)         print -nP '%F{red}%m%f'     ;;
   esac
 }
 
