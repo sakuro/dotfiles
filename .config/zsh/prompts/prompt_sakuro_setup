@@ -98,10 +98,6 @@ function prompt_sakuro_current_time() {
   print -nP "%F{yellow}%D{%H:%M:%S}%f"
 }
 
-function prompt_sakuro_tmux_pane() {
-  [[ -n "$TMUX_PANE" ]] && print -nP "%%%F{blue}$TMUX_PANE%f"
-}
-
 function prompt_sakuro_pwd() {
   local pwd_symbol="\uf115"
   local result
