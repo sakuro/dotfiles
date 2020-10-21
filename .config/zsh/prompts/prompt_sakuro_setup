@@ -9,6 +9,9 @@ function prompt_sakuro_setup()
   zstyle ':vcs_info:svn:*' branchformat  '%F{blue}%b%F{cyan}:%fr%r'
   zstyle ':vcs_info:*' enable git svn hg bzr cvs
 
+  zstyle ':prompt:sakuro:duration' threshold 2
+  zstyle ':prompt:sakuro:duration' style yellow
+
   add-zsh-hook preexec prompt_sakuro_preexec
   add-zsh-hook precmd prompt_sakuro_precmd
 }
@@ -48,11 +51,14 @@ function prompt_sakuro_precmd()
 }
 
 function prompt_sakuro_duration() {
-  integer elapsed
-  (( elapsed = EPOCHSECONDS - ${prompt_sakuro_command_start_time:-$EPOCHSECONDS} ))
+  integer elapsed threshold
+  local style
 
-  local threshold=2
-  [[ $threashold -lt $elapsed ]] || return
+  zstyle -s ':prompt:sakuro:duration' threshold threshold
+  zstyle -s ':prompt:sakuro:duration' style style
+
+  (( elapsed = EPOCHSECONDS - ${prompt_sakuro_command_start_time:-$EPOCHSECONDS} ))
+  (( threshold < elapsed )) || return
 
   local days=$(( elapsed / 60 / 60 / 24 ))
   local hours=$(( elapsed / 60 / 60 % 24 ))
@@ -64,7 +70,7 @@ function prompt_sakuro_duration() {
   (( minutes > 0 )) && duration+="${minutes}m"
   duration+="${seconds}s"
 
-  print -nP "%F{yellow}$duration%f"
+  print -nP "%F{$style}$duration%f"
 }
 
 function prompt_sakuro_user() {
