@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+path=(${path:#~/bin})
+
+tmux_version="${$(tmux -V)//[^0-9.]/}"
+if (( tmux_version < 3.1 )); then
+  exec command tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf "$@"
+else
+  exec command tmux "$@"
+fi
