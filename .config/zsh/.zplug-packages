@@ -3,4 +3,4 @@ zplug 'arcticicestudio/nord-sublime-text', hook-build:'bat cache --build', defer
 zplug 'goronfreeman/nord-tmux', at:tmux-2.9
 zplug '~/github.com/sakuro/zcolon', from:local
 zplug 'sakuro/zcal'
-zplug 'zsh-users/zsh-syntax-highlighting'
+zplug 'zsh-users/zsh-autosuggestions'
