@@ -9,8 +9,7 @@ function prompt_sakuro_setup()
   zstyle ':vcs_info:svn:*' branchformat  '%F{blue}%b%F{cyan}:%fr%r'
   zstyle ':vcs_info:*' enable git svn hg bzr cvs
 
-  zstyle ':prompt:sakuro:duration' threshold 2
-  zstyle ':prompt:sakuro:duration' style yellow
+  prompt_sakuro_load_default_styles
 
   add-zsh-hook preexec prompt_sakuro_preexec
   add-zsh-hook precmd prompt_sakuro_precmd
@@ -20,6 +19,16 @@ function prompt_sakuro_preexec()
 {
   [[ -z $1 ]] && return
   prompt_sakuro_command_start_time=$(print -P %D{%s})
+}
+
+function prompt_sakuro_load_default_styles
+{
+  zstyle ':prompt:sakuro:duration' threshold 2
+  zstyle ':prompt:sakuro:duration' style yellow
+
+  zstyle ':prompt:sakuro:prompt' symbol '$'
+  zstyle ':prompt:sakuro:prompt' success_style green
+  zstyle ':prompt:sakuro:prompt' failure_style red
 }
 
 function prompt_sakuro_precmd()
@@ -54,8 +63,8 @@ function prompt_sakuro_duration() {
   integer elapsed threshold
   local style
 
-  zstyle -s ':prompt:sakuro:duration' threshold threshold
-  zstyle -s ':prompt:sakuro:duration' style style
+  threshold=$(prompt_sakuro_style_for duration threshold 2)
+  style=$(prompt_sakuro_style_for duration style yellow)
 
   (( elapsed = EPOCHSECONDS - ${prompt_sakuro_command_start_time:-$EPOCHSECONDS} ))
   (( threshold < elapsed )) || return
@@ -150,9 +159,36 @@ function prompt_sakuro_ruby() {
   [[ $? == 0 ]] && print -nP "%F{red}${ruby_symbol} ${ruby_version}%f"
 }
 
+function prompt_sakuro_style_for() {
+  local partial_context=$1
+  shift
+
+  local style_name style_value
+  while (($# > 1 )); do
+    style_name=$1
+    zstyle -s ":prompt:sakuro:$partial_context" $style_name style_value
+    if [[ -n "$style_value" ]]; then
+      echo "$style_value"
+      return
+    fi
+    shift
+  done
+  echo $1
+}
+
 function prompt_sakuro_prompt() {
   local last_status=$1
-  [[ $last_status = 0 ]] && print -nP '%F{green}$%f' || print -nP '%F{red}$%f'
+  local symbol style
+
+  if [[ $last_status = 0 ]]; then
+    symbol=$(prompt_sakuro_style_for prompt success_symbol symbol '$')
+    style=$(prompt_sakuro_style_for prompt success_style style green)
+  else
+    symbol=$(prompt_sakuro_style_for prompt failure_symbol symbol '$')
+    style=$(prompt_sakuro_style_for prompt failure_style style red)
+  fi
+
+  print -nP "%F{$style}$symbol%f"
 }
 
 prompt_sakuro_setup "$@"
