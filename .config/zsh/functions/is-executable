@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-function is-executable()
-{
+function is-executable() {
   whence $* > /dev/null
 }

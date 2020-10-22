@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-function rlwrap()
-{
+function rlwrap() {
   [[ $# == 0 ]] && {
     return 0;
   }
@@ -9,4 +8,3 @@ function rlwrap()
   shift
   alias $command="command rlwrap $command $*"
 }
-

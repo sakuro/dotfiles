@@ -1,14 +1,12 @@
 #!/bin/zsh
 
-function prompt_tmux_setup()
-{
+function prompt_tmux_setup() {
   PROMPT="%(!.#.$) "
 
   add-zsh-hook precmd prompt_tmux_precmd
 }
 
-function prompt_tmux_precmd()
-{
+function prompt_tmux_precmd() {
   tmux refresh-client -S
 }
 

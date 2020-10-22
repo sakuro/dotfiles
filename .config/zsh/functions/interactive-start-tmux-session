@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-function interactive-start-tmux-session()
-{
+function interactive-start-tmux-session() {
   is-executable tmux || return
   tty -s || return
   in-vscode-terminal && return

@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-function interactive-chdir()
-{
+function interactive-chdir() {
     local input=$1
     local selected=$(eval "$input" | peco --query "$LBUFFER")
 

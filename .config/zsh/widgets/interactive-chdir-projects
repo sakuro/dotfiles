@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-function interactive-chdir-projects()
-{
+function interactive-chdir-projects() {
   interactive-chdir 'print -lD ~/github.com/*/*(/)'
 }

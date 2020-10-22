@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 
-function in-tmux-session()
-{
+function in-tmux-session() {
     [[ -n "$TMUX" ]]
 }
