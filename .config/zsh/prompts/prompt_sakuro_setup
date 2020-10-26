@@ -40,7 +40,6 @@ function prompt_sakuro_precmd() {
   first_line+="$(prompt_sakuro_duration)"
 
   main_line+="$(prompt_sakuro_user)@$(prompt_sakuro_host)"
-  main_line+="$(prompt_sakuro_current_time)"
   main_line+="$(prompt_sakuro_pwd)"
   main_line+="$(prompt_sakuro_vcs)"
   main_line+="$(prompt_sakuro_ruby)"
@@ -103,10 +102,6 @@ function prompt_sakuro_host() {
   dark-2.*)  print -nP '%F{magenta}%m%f' ;;
   *)         print -nP '%F{red}%m%f'     ;;
   esac
-}
-
-function prompt_sakuro_current_time() {
-  print -nP "%F{yellow}%D{%H:%M:%S}%f"
 }
 
 function prompt_sakuro_pwd() {
