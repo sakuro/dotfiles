@@ -5,7 +5,6 @@
   branch-root = merge-base master HEAD
   cdiff = diff --word-diff --word-diff-regex .
   changes = !git diff $(git branch-root)..HEAD
-  diff = diff -M
   issues = browse -- issues
   lsm = ls-files --modified
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
