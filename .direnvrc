@@ -8,7 +8,6 @@ if [ -f Gemfile.lock ] || [ -f gems.locked ]; then
     [ -d $bin ] && PATH_add $bin || :
   done
 fi
-[ -x bin/rails ] && export GIT_KEEPFILE=.keep || :
 [ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
 
 [ -d .git ] && git status -sb || :
