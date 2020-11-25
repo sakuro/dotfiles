@@ -106,11 +106,7 @@ fi
 
 export EDITOR
 
-if is-executable -p bat; then
-  PAGER="bat --plain"
-  alias less="bat --plain"
-  export MANPAGER="bat --plain"
-elif is-executable -p less; then
+if is-executable -p less; then
   PAGER=less
   export LESS="-inmXRz-4"
   export LESSHISTFILE=-
