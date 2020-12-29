@@ -6,7 +6,7 @@ echo "Installing ruby $1"
 
 export RUBY_CONFIGURE_OPTS="--enable-shared --disable-install-doc"
 
-if whence -p brew >/dev/null; then
+if brew --version >/dev/null 2>/dev/null; then
   export RUBY_CONFIGURE_OPTS="$RUBY_CONFIGURE_OPTS
     --with-readline-dir=$(brew --prefix readline)
     --with-libyaml-dir=$(brew --prefix libyaml)
