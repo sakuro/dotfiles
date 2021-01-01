@@ -97,9 +97,6 @@ cask "launchbar"
 cask "powershell"
 cask "rubymine"
 cask "steam"
-cask "vagrant"
-cask "virtualbox"
-cask "virtualbox-extension-pack"
 cask "visual-studio-code"
 mas "Amphetamine", id: 937984704
 mas "CloudClip Manager", id: 563362017
