@@ -35,12 +35,12 @@ bindkey '^?' cd-up-at-bol-or-backward-delete-char
 bindkey '^H' cd-up-at-bol-or-backward-delete-char
 bindkey '^M' accept-line-with-hooks
 bindkey '^J' accept-line-and-open-in-pane
-bindkey '^r' peco-history-search
+bindkey '^r' interactive-history-search
 bindkey '^x^v' interactive-chdir-dirs
 bindkey '^x^g' interactive-chdir-projects
-bindkey '^x^y' peco-open-bundled-gem
-bindkey '^x^k' peco-rake-choose-task
-bindkey '^x^b' peco-git-choose-branch
+bindkey '^x^y' interactive-open-bundled-gem
+bindkey '^x^k' interactive-choose-rake-task
+bindkey '^x^b' interactive-choose-git-branch
 
 for w in $ZDOTDIR/widgets/*(@,.); do
   source $w
