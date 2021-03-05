@@ -1,4 +1,4 @@
-function peco-rake-choose-task() {
+function interactive-choose-rake-task() {
   echo "Collecting rake tasks..."
   local dir
   task=$(bundle exec rake -T | peco | sed -e 's/^rake //;s/ *#.*$//')

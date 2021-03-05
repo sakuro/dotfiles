@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-function peco-open-bundled-gem() {
+function interactive-open-bundled-gem() {
   local dir=$(bundle show | sed -n 's/  \* \([^ ][^ ]*\) (.*)$/\1/p' |  peco --query "$LBUFFER" | xargs bundle show)
   if [[ -n "$dir" ]]; then
     BUFFER="$EDITOR $dir"
