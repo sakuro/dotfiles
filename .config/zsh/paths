@@ -4,6 +4,7 @@ $ZDOTDIR/bin
 /opt/brew/sbin
 /opt/brew/opt/ccache/libexec
 /opt/brew/opt/*/libexec/gnubin
+/opt/brew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
 /usr/local/bin
 /usr/bin
 /bin
