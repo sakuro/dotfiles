@@ -52,6 +52,6 @@
   useConfigOnly = true
 [include]
   path = include/user.email-fallback
-  ath = include/credential.windows
+  path = include/credential
 [includeIf "gitdir:~/github.com/quipper/**"]
   path = include/user.email-quipper
