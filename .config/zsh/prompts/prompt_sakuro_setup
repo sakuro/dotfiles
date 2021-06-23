@@ -43,6 +43,7 @@ function prompt_sakuro_precmd() {
   main_line+="$(prompt_sakuro_pwd)"
   main_line+="$(prompt_sakuro_vcs)"
   main_line+="$(prompt_sakuro_ruby)"
+  main_line+="$(prompt_sakuro_kube)"
   main_line+="$(prompt_sakuro_aws)"
 
   final_line+="$(prompt_sakuro_prompt $last_status)"
@@ -141,6 +142,14 @@ function prompt_sakuro_vcs() {
 function prompt_sakuro_aws() {
   local aws_symbol="\uf270"
   [[ -n "$AWS_PROFILE" ]] && print -nP "%F{yellow}${aws_symbol} $AWS_PROFILE%f"
+}
+
+function prompt_sakuro_kube() {
+  local kube_symbol="\u2388"
+  if is-executable kubectl; then
+    local kube_context=$(kubectl config current-context)
+    print -nP "%F{cyan}${kube_symbol}$kube_context%f"
+  fi
 }
 
 function prompt_sakuro_ruby() {
