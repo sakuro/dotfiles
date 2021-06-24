@@ -147,8 +147,8 @@ function prompt_sakuro_aws() {
 function prompt_sakuro_kube() {
   local kube_symbol="\u2388"
   if is-executable kubectl; then
-    local kube_context=$(kubectl config current-context)
-    print -nP "%F{cyan}${kube_symbol}$kube_context%f"
+    local kube_context=$(kubectl config current-context 2> /dev/null)
+    [[ -n "$kube_context" ]] && print -nP "%F{cyan}${kube_symbol}$kube_context%f"
   fi
 }
 
