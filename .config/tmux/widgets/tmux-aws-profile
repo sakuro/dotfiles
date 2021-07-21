@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+local aws_symbol="\uf270"
+[[ -n "$AWS_PROFILE" ]] && print -nP "#[fg=yellow]${aws_symbol} $AWS_PROFILE#[default]"

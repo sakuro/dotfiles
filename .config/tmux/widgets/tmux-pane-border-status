@@ -2,4 +2,4 @@
 
 PATH=$XDG_CONFIG_HOME/tmux/widgets:$PATH
 
-[[ $# -gt 0 ]] && cd $1 && echo " #P: $(tmux-pwd) $(tmux-vcs-info) $(tmux-ruby-version)"
+[[ $# -gt 0 ]] && cd $1 && echo " #P: $(tmux-pwd) $(tmux-vcs-info) $(tmux-ruby-version) $(tmux-aws-profile) "
