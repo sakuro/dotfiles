@@ -36,7 +36,7 @@
   protocol = https
 [init]
   templateDir = ~/.config/git/templates
-	defaultBranch = main
+  defaultBranch = main
 [log]
   abbrevCommit = true
   date = local
