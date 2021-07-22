@@ -3,6 +3,7 @@
 .DS_Store
 .envrc
 .vscode
+.aws-profile
 /.ruby-version
 /.tool-versions
 /.bundle/config
