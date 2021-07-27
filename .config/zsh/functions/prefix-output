@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+function prefix-output() {
+  [[ $# = 1 ]] && exec > >(sed -ue 's/^/'$1'/')
+}
