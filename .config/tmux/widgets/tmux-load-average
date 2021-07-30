@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+if [[ -r /proc/loadavg ]]; then
+  set -- $(< /proc/loadavg)
+elif [[ -x /usr/sbin/sysctl ]]; then
+  set -- $(/usr/sbin/sysctl -n vm.loadavg)
+  shift
+else
+  return
+fi
+
+local -i load_average=$1 # round down fraction
+print -nP "\U1F4C8"
+case "$load_average" in
+0) tmux-levels red white 0 ;;
+1) tmux-levels red white 1 ;;
+2) tmux-levels red white 2 ;;
+3) tmux-levels red white 3 ;;
+*) tmux-levels red white 4 ;;
+esac
