@@ -15,7 +15,7 @@ zstyle ':vcs_info:git:*' stagedstr 'M'
 zstyle ':vcs_info:git:*' unstagedstr 'M'
 
 function tmux-pwd() {
-    local pwd_symbol="\uf115"
+    local pwd_symbol="\U1F4C1"
     local base_path="$(print -P '%~')"
     local result
     local vcs_info_msg_0_ vcs_info_msg_1_
