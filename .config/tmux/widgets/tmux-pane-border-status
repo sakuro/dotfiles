@@ -61,7 +61,7 @@ function tmux-vcs-info() {
 }
 
 function tmux-ruby-version() {
-    local ruby_symbol="\ue23e"
+    local ruby_symbol="\U1F48E"
     local ruby_version_array
     local ruby_version
     is-executable asdf && {
