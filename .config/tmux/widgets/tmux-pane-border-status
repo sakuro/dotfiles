@@ -47,8 +47,8 @@ function tmux-vcs-info() {
     is-executable git && upfind -q .git && {
         LANG=C vcs_info
         set -- $(git status --porcelain=v2 --branch | grep -e '\(branch.ab\|^\?\)')
-        local ahead=$( [[ "$3" = "+0" ]] || print -P "%(?,,#[fg=green]$ahead_symbol${3#+}#[default])" )
-        local behind=$( [[ "$4" = "-0" ]] || print -P "%(?,,#[fg=red]$behind_symbol${4#-}#[default])" )
+        local ahead=$( [[ -z "$3" ]] || [[ "$3" = "+0" ]] || print -P "%(?,,#[fg=green]$ahead_symbol${3#+}#[default])" )
+        local behind=$( [[ -z "$4" ]] || [[ "$4" = "-0" ]] || print -P "%(?,,#[fg=red]$behind_symbol${4#-}#[default])" )
         local untracked=$( [[ -z "$5" ]] || print -P '%(?,,#[fg=yellow]?#[default])' )
 
         print -P "$vcs_symbol $vcs_info_msg_0_$untracked$ahead$behind"
