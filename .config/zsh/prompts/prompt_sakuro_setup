@@ -88,21 +88,21 @@ function prompt_sakuro_host() {
   elif [[ -x /usr/sbin/sysctl ]]; then
     set -- $(/usr/sbin/sysctl -n vm.loadavg)
     shift
-  else
-    return
   fi
 
-  local -i load_average=$1 # round down fraction
-  local brightness=dark #$(term-brightness)
+  [[ -n "$1" ]] && {
+    local -i load_average=$1 # round down fraction
+    local brightness=dark #$(term-brightness)
 
-  case "$brightness-$load_average" in
-  *-0)     print -nP '%F{gray}%m%f'    ;;
-  light-1) print -nP '%F{cyan}%m%f'    ;;
-  dark-1)  print -nP '%F{yellow}%m%f'  ;;
-  light-2) print -nP '%F{green}%m%f'   ;;
-  dark-2)  print -nP '%F{magenta}%m%f' ;;
-  *)       print -nP '%F{red}%m%f'     ;;
-  esac
+    case "$brightness-$load_average" in
+    *-0)     print -nP '%F{gray}%m%f'    ;;
+    light-1) print -nP '%F{cyan}%m%f'    ;;
+    dark-1)  print -nP '%F{yellow}%m%f'  ;;
+    light-2) print -nP '%F{green}%m%f'   ;;
+    dark-2)  print -nP '%F{magenta}%m%f' ;;
+    *)       print -nP '%F{red}%m%f'     ;;
+    esac
+  }
 }
 
 function prompt_sakuro_pwd() {

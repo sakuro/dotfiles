@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-PATH=$XDG_CONFIG_HOME/tmux/widgets:$PATH
-
-autoload upfind
-
-local aws_symbol="\uf270"
-local aws_profile_path=$(upfind .aws-profile)
-[[ -n "$aws_profile_path" ]] && print -nP "#[fg=yellow]${aws_symbol} $(< $aws_profile_path)#[default]"
