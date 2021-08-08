@@ -1,11 +1,9 @@
 #!/bin/zsh
 
-PATH=$XDG_CONFIG_HOME/tmux/widgets:$PATH
-
 autoload is-executable
 autoload upfind
-
 autoload vcs_info
+
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' check-for-staged-changes true

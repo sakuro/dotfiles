@@ -1,12 +1,14 @@
 #!/bin/zsh
 
 function prompt_tmux_setup() {
-  PROMPT="%(!.#.$) "
+  PROMPT="%F{%(?,green,red)}%(!.#.$)%f "
 
+  source ~/.config/zsh/prompts/prompt_duration
   add-zsh-hook precmd prompt_tmux_precmd
 }
 
 function prompt_tmux_precmd() {
+  [[ -n "$prompt_duration" ]] && print -P "%F{yellow}$prompt_duration%f"
   tmux refresh-client -S
 }
 

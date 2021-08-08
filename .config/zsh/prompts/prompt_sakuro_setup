@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-typeset -g prompt_sakuro_command_start_time
-
 function prompt_sakuro_setup() {
   zstyle ':vcs_info:*'     formats       '%F{blue}%b%f' '%S'
   zstyle ':vcs_info:*'     actionformats '%b%F{cyan}:%F{red}%a%f'
@@ -10,19 +8,11 @@ function prompt_sakuro_setup() {
 
   prompt_sakuro_load_default_styles
 
-  add-zsh-hook preexec prompt_sakuro_preexec
+  source ~/.config/zsh/prompts/prompt_duration
   add-zsh-hook precmd prompt_sakuro_precmd
 }
 
-function prompt_sakuro_preexec() {
-  [[ -z $1 ]] && return
-  prompt_sakuro_command_start_time=$(print -P %D{%s})
-}
-
 function prompt_sakuro_load_default_styles() {
-  zstyle ':prompt:sakuro:duration' threshold 2
-  zstyle ':prompt:sakuro:duration' style yellow
-
   zstyle ':prompt:sakuro:prompt' symbol '$'
   zstyle ':prompt:sakuro:prompt' success_style green
   zstyle ':prompt:sakuro:prompt' failure_style red
@@ -33,49 +23,25 @@ function prompt_sakuro_precmd() {
   autoload -Uz vcs_info
 
   psvar=()
-  local -a first_line=()
-  local -a main_line=()
-  local -a final_line=()
 
-  first_line+="$(prompt_sakuro_duration)"
+  [[ -n "$prompt_duration" ]] && print -P "%F{yellow}$prompt_duration%f"
 
-  main_line+="$(prompt_sakuro_user)@$(prompt_sakuro_host)"
-  main_line+="$(prompt_sakuro_pwd)"
-  main_line+="$(prompt_sakuro_vcs)"
-  main_line+="$(prompt_sakuro_ruby)"
-  main_line+="$(prompt_sakuro_kube)"
-  main_line+="$(prompt_sakuro_aws)"
+  local -a main_line=(
+    "$(prompt_sakuro_user)@$(prompt_sakuro_host)"
+    "$(prompt_sakuro_pwd)"
+    "$(prompt_sakuro_vcs)"
+    "$(prompt_sakuro_ruby)"
+    "$(prompt_sakuro_kube)"
+    "$(prompt_sakuro_aws)"
+  )
+  local -a final_line=(
+    "$(prompt_sakuro_prompt $last_status)"
+  )
 
-  final_line+="$(prompt_sakuro_prompt $last_status)"
-
-  psvar+="${(j: :)first_line}"
   psvar+="${(j: :)main_line}"
   psvar+="${(j: :)final_line}"' '
 
   PROMPT=${(F)psvar}
-}
-
-function prompt_sakuro_duration() {
-  integer elapsed threshold
-  local style
-
-  threshold=$(prompt_sakuro_style_for duration threshold 2)
-  style=$(prompt_sakuro_style_for duration style yellow)
-
-  (( elapsed = EPOCHSECONDS - ${prompt_sakuro_command_start_time:-$EPOCHSECONDS} ))
-  (( threshold < elapsed )) || return
-
-  local days=$(( elapsed / 60 / 60 / 24 ))
-  local hours=$(( elapsed / 60 / 60 % 24 ))
-  local minutes=$(( elapsed / 60 % 60 ))
-  local seconds=$(( elapsed % 60 ))
-
-  (( days > 0 )) && duration+="${days}d"
-  (( hours > 0 )) && duration+="${hours}h"
-  (( minutes > 0 )) && duration+="${minutes}m"
-  duration+="${seconds}s"
-
-  print -nP "%F{$style}$duration%f"
 }
 
 function prompt_sakuro_user() {

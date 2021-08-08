@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+typeset -g prompt_duration_command_start_time prompt_duration
+
+function prompt_duration_preexec() {
+  prompt_duration_command_start_time=$(print -P "%D{%s}")
+}
+
+function prompt_duration_precmd() {
+  integer threshold=2 elapsed
+  (( elapsed = EPOCHSECONDS - ${prompt_duration_command_start_time:-$EPOCHSECONDS} ))
+  unset prompt_duration_command_start_time
+  prompt_duration=$( (( threshold < elapsed )) && prompt_duration_format "$elapsed" )
+}
+
+function prompt_duration_format() {
+  integer elapsed=$1
+  local days=$(( elapsed / 60 / 60 / 24 ))
+  local hours=$(( elapsed / 60 / 60 % 24 ))
+  local minutes=$(( elapsed / 60 % 60 ))
+  local seconds=$(( elapsed % 60 ))
+
+  (( days > 0 )) && print -n "${days}d"
+  (( hours > 0 )) && print -n "${hours}h"
+  (( minutes > 0 )) && print -n "${minutes}m"
+  print -n "${seconds}s"
+}
+
+add-zsh-hook preexec prompt_duration_preexec
+add-zsh-hook precmd prompt_duration_precmd
