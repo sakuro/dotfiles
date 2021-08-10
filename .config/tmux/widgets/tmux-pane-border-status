@@ -25,10 +25,10 @@ function tmux-pwd() {
     set -A path_elements ${(s:/:)base_path}
 
     if [[ $#path_elements -gt 2 ]]; then
-    local first="$path_elements[1]"
-    [[ "$first" = '~'* ]] || first="/$first"
-    local last="$path_elements[-1]"
-    base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
+      local first="$path_elements[1]"
+      [[ "$first" = '~'* ]] || first="/$first"
+      local last="$path_elements[-1]"
+      base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
     fi
 
     result="#[fg=magenta]${pwd_symbol} ${base_path}#[default]"
