@@ -38,7 +38,7 @@ function tmux-pwd() {
 }
 
 function tmux-vcs-info() {
-    local vcs_symbol="\ue725"
+    local vcs_symbol="\ue0a0"
     local ahead_symbol="↑"
     local behind_symbol="↓"
 
