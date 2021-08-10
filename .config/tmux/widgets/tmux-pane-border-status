@@ -51,7 +51,7 @@ function tmux-vcs-info() {
         local behind=$( [[ -z "$4" ]] || [[ "$4" = "-0" ]] || print -P "%(?,,#[fg=red]$behind_symbol${4#-}#[default])" )
         local untracked=$( [[ -z "$5" ]] || print -P '%(?,,#[fg=yellow]?#[default])' )
 
-        print -P "$vcs_symbol $vcs_info_msg_0_$untracked$ahead$behind"
+        print -P "#[fg=blue]$vcs_symbol#[default] $vcs_info_msg_0_$untracked$ahead$behind"
     }
 }
 
