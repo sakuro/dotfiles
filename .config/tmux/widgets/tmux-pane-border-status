@@ -81,12 +81,6 @@ function tmux-kube-context() {
 [[ $# -gt 0 ]] && cd $1 && {
   local vcs_info_msg_0_ vcs_info_msg_1_
   LANG=C vcs_info
-  local -a parts=(
-    "$(tmux-pwd)"
-    "$(tmux-vcs-info)"
-    "$(tmux-ruby-version)"
-    "$(tmux-aws-profile)"
-    "$(tmux-kube-context)"
-  )
-  echo -n "#P:"; for part in $parts; do echo -n " $part"; done
+  set -- "$(tmux-pwd)" "$(tmux-vcs-info)" "$(tmux-ruby-version)" "$(tmux-aws-profile)" "$(tmux-kube-context)"
+  echo -n "#P:"; while [[ $# -gt 0 ]]; do echo -n " $1"; shift; done
 }
