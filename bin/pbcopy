@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+path=(${path:#~/bin})
+autoload is-executable
+
+if is-executable -p clip.exe; then
+  exec command clip.exe "$@"
+else
+  exec command pbcopy "$@"
+fi

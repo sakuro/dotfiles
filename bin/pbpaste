@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+path=(${path:#~/bin})
+autoload is-executable
+
+if is-executable -p powershell.exe; then
+  exec command powershell.exe -Command Get-Clipboard "$@"
+else
+  exec command pbpaste "$@"
+fi
