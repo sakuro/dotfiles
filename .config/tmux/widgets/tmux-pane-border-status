@@ -16,8 +16,6 @@ function tmux-pwd() {
     local pwd_symbol="\U1F4C1"
     local base_path="$(print -P '%~')"
     local result
-    local vcs_info_msg_0_ vcs_info_msg_1_
-    LANG=C vcs_info
 
     # remove repository_part($vcs_info_msg_1_)
     [[ -n "$vcs_info_msg_0_" && $vcs_info_msg_1_ != '.' ]] && base_path="${base_path%/$vcs_info_msg_1_}"
@@ -34,7 +32,7 @@ function tmux-pwd() {
     result="#[fg=magenta]${pwd_symbol} ${base_path}#[default]"
     [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/#[fg=cyan]$vcs_info_msg_1_#[default]"
 
-    print -n "${result}"
+    print "${result}"
 }
 
 function tmux-vcs-info() {
@@ -42,10 +40,7 @@ function tmux-vcs-info() {
     local ahead_symbol="↑"
     local behind_symbol="↓"
 
-    local vcs_info_msg_0_ vcs_info_msg_1_
-
     is-executable git && upfind -q .git && {
-        LANG=C vcs_info
         set -- $(git status --porcelain=v2 --branch | grep -e '\(branch.ab\|^\?\)')
         local ahead=$( [[ -z "$3" ]] || [[ "$3" = "+0" ]] || print -P "%(?,,#[fg=green]$ahead_symbol${3#+}#[default])" )
         local behind=$( [[ -z "$4" ]] || [[ "$4" = "-0" ]] || print -P "%(?,,#[fg=red]$behind_symbol${4#-}#[default])" )
@@ -59,11 +54,12 @@ function tmux-ruby-version() {
     local ruby_symbol="\U1F48E"
     local ruby_version_array
     local ruby_version
+
     is-executable asdf && {
         ruby_version_array=( $(asdf current ruby) )
         ruby_version=$ruby_version_array[2]
 
-        [[ $? == 0 ]] && print -nP "#[fg=red]${ruby_symbol} ${ruby_version}#[default]"
+        [[ $? == 0 ]] && print -P "#[fg=red]${ruby_symbol} ${ruby_version}#[default]"
     }
 }
 
@@ -71,15 +67,26 @@ function tmux-aws-profile() {
     local aws_symbol="\uf270"
     local aws_profile_path=$(upfind .aws-profile)
 
-    [[ -n "$aws_profile_path" ]] && print -nP "#[fg=yellow]${aws_symbol} $(< $aws_profile_path)#[default]"
+    [[ -n "$aws_profile_path" ]] && print -P "#[fg=yellow]${aws_symbol} $(< $aws_profile_path)#[default]"
 }
 
 function tmux-kube-context() {
   local kube_symbol="\u2388"
   if is-executable kubectl; then
     local kube_context=$(kubectl config current-context 2> /dev/null)
-    [[ -n "$kube_context" ]] && print -nP "#[fg=cyan]${kube_symbol}$kube_context#[default]"
+    [[ -n "$kube_context" ]] && print -P "#[fg=cyan]${kube_symbol}$kube_context#[default]"
   fi
 }
 
-[[ $# -gt 0 ]] && cd $1 && echo " #P: $(tmux-pwd) $(tmux-vcs-info) $(tmux-ruby-version) $(tmux-aws-profile) $(tmux-kube-context)"
+[[ $# -gt 0 ]] && cd $1 && {
+  local vcs_info_msg_0_ vcs_info_msg_1_
+  LANG=C vcs_info
+  local -a parts=(
+    "$(tmux-pwd)"
+    "$(tmux-vcs-info)"
+    "$(tmux-ruby-version)"
+    "$(tmux-aws-profile)"
+    "$(tmux-kube-context)"
+  )
+  echo -n "#P:"; for part in $parts; do echo -n " $part"; done
+}
