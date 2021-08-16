@@ -25,6 +25,7 @@
 [core]
   commentchar = ";"
   editor = code -w
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [diff]
   algorithm = histogram
 [fetch]
@@ -42,8 +43,6 @@
   date = local
 [merge]
   ff = false
-[pager]
-  diff = diff-so-fancy
 [pull]
   rebase = true
 [push]
