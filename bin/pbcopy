@@ -4,7 +4,7 @@ path=(${path:#~/bin})
 autoload is-executable
 
 if is-executable -p clip.exe; then
-  exec command clip.exe "$@"
+  exec clip.exe "$@"
 else
-  exec command pbcopy "$@"
+  exec pbcopy "$@"
 fi
