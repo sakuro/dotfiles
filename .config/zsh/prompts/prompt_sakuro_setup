@@ -130,7 +130,7 @@ function prompt_sakuro_style_for() {
   shift
 
   local style_name style_value
-  while (($# > 1 )); do
+  while (( $# > 1 )); do
     style_name=$1
     zstyle -s ":prompt:sakuro:$partial_context" $style_name style_value
     if [[ -n "$style_value" ]]; then

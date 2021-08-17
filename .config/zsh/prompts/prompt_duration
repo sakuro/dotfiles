@@ -8,7 +8,7 @@ function prompt_duration_preexec() {
 
 function prompt_duration_precmd() {
   integer threshold=2 elapsed
-  (( elapsed = EPOCHSECONDS - ${prompt_duration_command_start_time:-$EPOCHSECONDS} ))
+  elapsed=$(( EPOCHSECONDS - ${prompt_duration_command_start_time:-$EPOCHSECONDS} ))
   unset prompt_duration_command_start_time
   prompt_duration=$( (( threshold < elapsed )) && prompt_duration_format "$elapsed" )
 }
