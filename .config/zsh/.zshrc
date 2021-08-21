@@ -118,6 +118,10 @@ fi
 export PAGER
 export READNULLCMD=$PAGER
 
+if is-executable -p explorer.exe; then
+  alias open=explorer.exe
+fi
+
 setopt completealiases
 
 alias rm='rm -i'
