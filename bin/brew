@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+path=(${path:#~/bin})
+# The brew command itself does not expect GNU-extended binaries.
+path=(${path:#*/gnubin})
+
+exec command brew "$@"

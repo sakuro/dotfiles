@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-function git() {
-  if is-executable hub; then
-    PATH=$DOT_DIR/git/bin:$PATH command hub $*
-  else
-    PATH=$DOT_DIR/git/bin:$PATH command git $*
-  fi
-}
