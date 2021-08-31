@@ -142,7 +142,6 @@ alias daily='$EDITOR ~/Documents/daily.md'
 
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
-is-executable hub && alias git=hub
 
 () {
   local dircolors_path=$ZPLUG_REPOS/arcticicestudio/nord-dircolors/src/dir_colors
