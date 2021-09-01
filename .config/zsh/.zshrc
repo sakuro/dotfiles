@@ -147,11 +147,7 @@ is-executable vim && alias vi=vim
   local dircolors_path=$ZPLUG_REPOS/arcticicestudio/nord-dircolors/src/dir_colors
   if is-executable dircolors && [[ -f $dircolors_path ]]; then
     eval $(dircolors -b $dircolors_path)
-    if is-executable exa; then
-      alias ls='exa -F --color=auto --git --icons'
-    else
-      alias ls='ls -F --color=auto'
-    fi
+    alias ls='ls -F --color=auto'
   fi
 }
 
