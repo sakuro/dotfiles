@@ -7,14 +7,13 @@ function interactive-start-tmux-session() {
   in-tmux-session && return
 
   local sessions=( ${(f)"$(tmux list-sessions 2>/dev/null)"} )
-
   if [[ $#sessions -eq 0 ]]; then
-    exec tmux new-session
+    tmux new-session
   else
     local session=$(echo "${(F)sessions}\nN:ew session" | peco --prompt "Session to attach:" | cut -d: -f1)
     case $session in
-    N) exec tmux new-session ;;
-    *) exec tmux attach-session -t $session ;;
+    N) tmux new-session ;;
+    *) tmux attach-session -t $session ;;
     esac
   fi
 }
