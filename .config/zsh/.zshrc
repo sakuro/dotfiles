@@ -132,7 +132,6 @@ alias du='du -h'
 alias df='df -h'
 alias free='free -t -m'
 alias -g L="| $PAGER"
-is-executable bat && alias -g B="| bat"
 alias dirs='dirs -v'
 alias -g Q='1>/dev/null 2>&1'
 alias puts='print -l'
