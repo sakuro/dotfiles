@@ -25,7 +25,6 @@
 [core]
   commentchar = ";"
   editor = code -w
-  pager = less --tabs=4 -RFX
 [diff]
   algorithm = histogram
 [fetch]
