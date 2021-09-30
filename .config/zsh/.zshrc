@@ -4,9 +4,6 @@ typeset -aU path
 
 () {
   local winpath=( ${(M)path##/mnt*} )
-  if [[ -d /opt/brew/bin ]]; then
-    PATH=/opt/brew/bin:$PATH # Need to hardcode brew's path at first
-  fi
   set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
   path=($path $winpath)
 }
