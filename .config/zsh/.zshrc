@@ -140,7 +140,7 @@ is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
 
 () {
-  local dircolors_path=$ZPLUG_REPOS/arcticicestudio/nord-dircolors/src/dir_colors
+  local dircolors_path=$XDG_CONFIG_HOME/themes/nord/dircolors/src/dir_colors
   if is-executable dircolors && [[ -f $dircolors_path ]]; then
     eval $(dircolors -b $dircolors_path)
     alias ls='ls -F --color=auto'

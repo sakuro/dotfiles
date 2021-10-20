@@ -1,4 +1,2 @@
-zplug 'arcticicestudio/nord-dircolors'
-zplug 'goronfreeman/nord-tmux', at:tmux-2.9
 zplug '~/github.com/sakuro/zcolon', from:local
 zplug 'sakuro/zcal'
