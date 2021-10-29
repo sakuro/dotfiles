@@ -10,7 +10,7 @@
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
   prs = browse -- pulls
   st = status -sb
-  wdiff = diff --word-diff
+  wdiff = diff --word-diff=color --color=auto --word-diff-regex=.
   wiki = browse -- wiki
   wip = commit -m wip
 [branch]
