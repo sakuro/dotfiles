@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-path=(${path:#~/bin})
-# The brew command itself does not expect GNU-extended binaries.
-path=(${path:#*/gnubin})
+autoload remove-path
+remove-path ~/bin /opt/brew/opt/*/libexec/gnubin # The brew command itself does not expect GNU-extended binaries.
 
 exec command brew "$@"

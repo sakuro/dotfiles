@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-path=(${path:#~/bin})
-autoload is-executable
+autoload is-executable remove-path
+remove-path ~/bin
 
 if is-executable -p powershell.exe; then
   exec powershell.exe -Command Get-Clipboard "$@"

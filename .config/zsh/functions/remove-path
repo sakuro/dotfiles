@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+function remove-path()
+{
+  for e in $*; do
+    path=(${path:#$1})
+    shift
+  done
+}
