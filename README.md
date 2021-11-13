@@ -5,7 +5,7 @@
 - bash
 - zsh
 - curl
-- sudo (use must be sudo-able)
+- sudo (user must be sudo-able)
 - yum OR apt-get
 
 ## MacOS
@@ -16,12 +16,6 @@
 
 # Inital setup
 
-The snippet below will do
-
-- (Linux) install neccessary package
-- clone this repository to ~/.dotfiles
-- link files in ~/.dotfiles to ~
-
 ```
-curl -fsSL https://dot.2238.club | bash
+curl -fsSL https://dot.2238club.org | bash
 ```
