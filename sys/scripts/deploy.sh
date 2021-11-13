@@ -4,6 +4,7 @@
 
 EXCLUDED_PATTERNS=(
   README.md
+  dist/*
   sys/*
   */.gitignore
 )

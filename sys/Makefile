@@ -1,8 +1,8 @@
-deploy:
-	scripts/deploy.sh
+setup: link-dotfiles install-packages change-login-shell
 
-brew:
-	scripts/homebrew.sh
-
-bundle-dump:
-	brew bundle dump --force
+link-dotfiles:
+	scripts/link-dotfiles.sh
+install-packages:
+    scripts/install-packages.sh
+change-shell:
+	scripts/change-login-shell.sh

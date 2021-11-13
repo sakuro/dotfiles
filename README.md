@@ -12,6 +12,7 @@
 
 - curl
 - CommandLineTools installable
+  xcode-select --install
 
 # Inital setup
 
