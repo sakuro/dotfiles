@@ -19,11 +19,8 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-if type -P brew > /dev/null; then
-  echo "Homebrew is already installed"
-else
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
+type -P brew > /dev/null && exit 0
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Some formulae require java cask be installed, but in Brewfile, casks are
 # listed after formulae, so this must be installed beforehand
