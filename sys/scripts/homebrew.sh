@@ -34,18 +34,9 @@ fi
 
 # Some formulae require java cask be installed, but in Brewfile, casks are
 # listed after formulae, so this must be installed beforehand
-if /usr/libexec/java_home >/dev/null 2>/dev/null; then
-  :
-else
-  brew cask install java
-fi
+/usr/libexec/java_home >/dev/null 2>/dev/null || brew cask install java
 
-if is-executable mas; then
-  :
-else
-  brew install mas
-fi
-
+is-executable mas || brew install mas
 mas_account="$(mas account)"
 until [[ $? = 0 ]]; do
   echo "Log in to the AppStore and press any key" && read answer < /dev/tty
@@ -54,5 +45,4 @@ done
 echo "Using the AppStore account: ${mas_account}"
 
 brew bundle --no-lock
-
 chmod go-w "$(brew --prefix)/share"
