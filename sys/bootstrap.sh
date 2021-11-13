@@ -1,11 +1,7 @@
 #!/bin/bash
 
 export DOTREPO="https://github.com/sakuro/dotfiles.git"
-export DOTROOT=${DOTROOT:=$HOME/.dotfiles}
-export LOGIN_SHELL=zsh
-
-# return if sourced
-[[ -z "${BASH_SOURCE[0]}" ]] && return 0
+export DOTROOT="${DOTROOT:=$HOME/.dotfiles}"
 
 function bootstrap-macos()
 {
@@ -14,18 +10,37 @@ function bootstrap-macos()
     echo -n "Press any key when the installation has completed"; read answer < /dev/tty
     sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
   fi
+  BOOTSTRAP=1
 }
 
-os="$(uname -o)"
-case $os in
+function bootstrap-ubuntu()
+{
+  [[ -e /usr/bin/git ]] || sudo apt install git
+  [[ -e /usr/bin/make ]] || sudo apt install make
+  BOOTSTRAP=1
+}
+
+
+unset BOOTSTRAP
+case "$(uname -o)" in
 Darwin)
   bootstrap-macos
   ;;
-*)
-  echo "Unsupported OS: $os"
-  exit 1
+*Linux)
+  for release in /etc/os-release /usr/lib/os-release; do
+    if [[ -f "$release" ]]; then
+      source $release
+      break
+    fi
+  done
+  case "${ID}" in
+  ubuntu)
+    bootstrap-ubuntu
+    ;;
+  esac
   ;;
 esac
+: ${BOOTSTRAP:?failed}
 
 if [[ -d "${DOTROOT}" ]]; then
   (cd "$DOTROOT" && git pull)
