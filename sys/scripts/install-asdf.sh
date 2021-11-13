@@ -1,16 +1,10 @@
 #!/bin/bash
 
-VERSION=v0.8.1
 TOOL_VERSIONS_FILE="${HOME}/.tool-versions"
 PLUGINS=( $(awk '{print $1}' "${TOOL_VERSIONS_FILE}") )
 
-if type -P asdf > /dev/null; then
-  echo 'asdf is already installed'
-else
-  echo 'Installing asdf'
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-  (cd $HOME/.asdf && git checkout "$(git describe --abbrev=0 --tags)")
-fi
+type -P asdf > /dev/null && exit 0
+git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
 
 if [[ -f "${TOOL_VERSIONS_FILE}" ]]; then
   source $HOME/.asdf/asdf.sh
