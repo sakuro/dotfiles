@@ -41,6 +41,7 @@ Darwin)
 esac
 : ${TARGET:?}
 
+export TARGET
 bootstrap-$TARGET
 
 if [[ ! -d "${DOTROOT}" ]]; then

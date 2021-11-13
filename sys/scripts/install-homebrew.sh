@@ -1,19 +1,12 @@
 #!/bin/bash
 
-. $(dirname $0)/../dotfiles.sh
-
-BREW_INSTALLER_URL=https://raw.githubusercontent.com/Homebrew/install/master/install
-BREW_ORIGINAL_ROOT=/usr/local
-
-PATH="${BREW_ROOT}/bin:$PATH"
-
-# Remove elements which end with /gnubin from $PATH
+# Remove elements which end with /gnubin or ~/bin from $PATH
 IFS=: read -r -a path <<<"$PATH"
 PATH=""
 set -- "${path[@]}"
 while [[ $# -gt 0 ]]; do
   case $1 in
-  */gnubin)
+  */gnubin|$HOME/bin)
     ;;
   *)
     if [[ -z "$PATH" ]]; then
@@ -26,23 +19,20 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-if is-executable brew; then
+if type -P brew > /dev/null; then
   echo "Homebrew is already installed"
 else
-  /usr/bin/ruby -e "$(curl -fsSL "${BREW_INSTALLER_URL}" | sed -e "s!${BREW_ORIGINAL_ROOT}!${BREW_ROOT}!g")"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Some formulae require java cask be installed, but in Brewfile, casks are
 # listed after formulae, so this must be installed beforehand
-/usr/libexec/java_home >/dev/null 2>/dev/null || brew cask install java
+/usr/libexec/java_home >/dev/null 2>/dev/null || brew install java
 
-is-executable mas || brew install mas
+type -P mas > /dev/null || brew install mas
 mas_account="$(mas account)"
 until [[ $? = 0 ]]; do
   echo "Log in to the AppStore and press any key" && read answer < /dev/tty
   mas_account="$(mas account)"
 done
 echo "Using the AppStore account: ${mas_account}"
-
-brew bundle --no-lock
-chmod go-w "$(brew --prefix)/share"
