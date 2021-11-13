@@ -10,14 +10,12 @@ function bootstrap-macos()
     echo -n "Press any key when the installation has completed"; read answer < /dev/tty
     sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
   fi
-  BOOTSTRAP=1
 }
 
 function bootstrap-ubuntu()
 {
   [[ -e /usr/bin/git ]] || sudo apt install git
   [[ -e /usr/bin/make ]] || sudo apt install make
-  BOOTSTRAP=1
 }
 
 
@@ -25,6 +23,7 @@ unset BOOTSTRAP
 case "$(uname -o)" in
 Darwin)
   bootstrap-macos
+  BOOTSTRAP=1
   ;;
 *Linux)
   for release in /etc/os-release /usr/lib/os-release; do
@@ -36,6 +35,7 @@ Darwin)
   case "${ID}" in
   ubuntu)
     bootstrap-ubuntu
+    BOOTSTRAP=1
     ;;
   esac
   ;;
