@@ -46,6 +46,7 @@ if [[ -d "${DOTROOT}" ]]; then
   (cd "$DOTROOT" && git pull)
 else
   git clone "${DOTREPO}" "${DOTROOT}"
+  (cd "$DOTROOT" && git submodule init && git sudmobuld update)
 fi
 
 make -C "$DOTROOT/sys" setup
