@@ -8,8 +8,6 @@ typeset -aU path
   path=($path $winpath)
 }
 
-source $ZDOTDIR/.zplugrc
-
 fpath=(
   $ZDOTDIR/functions $fpath
   /opt/brew/share/zsh/site-functions
