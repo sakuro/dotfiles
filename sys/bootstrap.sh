@@ -2,6 +2,7 @@
 
 export DOTREPO="https://github.com/sakuro/dotfiles.git"
 export DOTROOT="${DOTROOT:=$HOME/.dotfiles}"
+export DOTDEST=${DOTDEST:=$HOME}
 
 function bootstrap-macos()
 {
@@ -19,11 +20,10 @@ function bootstrap-ubuntu()
 }
 
 
-unset BOOTSTRAP
+unset TARGET
 case "$(uname -o)" in
 Darwin)
-  bootstrap-macos
-  BOOTSTRAP=1
+  TARGET=macos
   ;;
 *Linux)
   for release in /etc/os-release /usr/lib/os-release; do
@@ -34,17 +34,16 @@ Darwin)
   done
   case "${ID}" in
   ubuntu)
-    bootstrap-ubuntu
-    BOOTSTRAP=1
+    TARGET=ubuntu
     ;;
   esac
   ;;
 esac
-: ${BOOTSTRAP:?failed}
+: ${TARGET:?}
 
-if [[ -d "${DOTROOT}" ]]; then
-  (cd "$DOTROOT" && git pull)
-else
+bootstrap-$TARGET
+
+if [[ ! -d "${DOTROOT}" ]]; then
   git clone "${DOTREPO}" "${DOTROOT}"
   (cd "$DOTROOT" && git submodule init && git sudmobuld update)
 fi
