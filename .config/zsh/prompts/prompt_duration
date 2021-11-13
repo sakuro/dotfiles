@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 typeset -g prompt_duration_command_start_time prompt_duration
+zmodload zsh/datetime
 
 function prompt_duration_preexec() {
   prompt_duration_command_start_time=$(print -P "%D{%s}")
