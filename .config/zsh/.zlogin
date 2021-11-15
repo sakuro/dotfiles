@@ -10,5 +10,3 @@ if tty -s; then
     ssh-add 2>/dev/null
   fi
 fi
-
-interactive-start-tmux-session
