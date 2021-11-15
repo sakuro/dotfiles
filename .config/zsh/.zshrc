@@ -1,20 +1,5 @@
 #!/bin/zsh
 
-typeset -aU path
-
-() {
-  local winpath=( ${(M)path##/mnt*} )
-  set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
-  path=($path $winpath)
-}
-
-fpath=(
-  $ZDOTDIR/functions $fpath
-  /opt/brew/share/zsh/site-functions
-  /opt/brew/share/zsh-completions
-)
-autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
-
 setopt auto_resume
 
 setopt correct
