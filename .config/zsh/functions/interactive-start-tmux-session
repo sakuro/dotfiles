@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+function interactive-start-tmux-session() {
+  is-executable tmux || return
+  tty -s || return
+  in-vscode-terminal && return
+  in-tmux-session && return
+
+  local sessions=( ${(f)"$(tmux list-sessions 2>/dev/null)"} )
+  if [[ $#sessions -eq 0 ]]; then
+    tmux new-session
+  else
+    local session=$(echo "${(F)sessions}\nN:ew session" | peco --prompt "Session to attach:" | cut -d: -f1)
+    case $session in
+    N) tmux new-session ;;
+    *) tmux attach-session -t $session ;;
+    esac
+  fi
+}
