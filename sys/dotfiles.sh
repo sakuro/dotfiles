@@ -4,7 +4,7 @@ DOTREPO="https://github.com/sakuro/dotfiles.git"
 DOTROOT=${DOTROOT:=$HOME/.dotfiles}
 DOTDEST=${DOTDEST:=$HOME}
 LOGIN_SHELL=zsh
-BREW_ROOT=/opt/brew
+BREW_ROOT=/opt/homebrew
 
 # Return true if DRYRUN is set and its length is greater than zero
 function is-dry-run() { [[ -n "${DRYRUN}" ]]; }

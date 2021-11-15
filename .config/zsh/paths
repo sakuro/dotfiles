@@ -1,10 +1,10 @@
 ~/bin
 $ZDOTDIR/bin
-/opt/brew/bin
-/opt/brew/sbin
-/opt/brew/opt/ccache/libexec
-/opt/brew/opt/*/libexec/gnubin
-/opt/brew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+/opt/homebrew/bin
+/opt/homebrew/sbin
+/opt/homebrew/opt/ccache/libexec
+/opt/homebrew/opt/*/libexec/gnubin
+/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
 /usr/local/bin
 /usr/bin
 /bin

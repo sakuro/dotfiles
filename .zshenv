@@ -22,8 +22,8 @@ ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 fpath=(
   $ZDOTDIR/functions $fpath
-  /opt/brew/share/zsh/site-functions
-  /opt/brew/share/zsh-completions
+  /opt/homebrew/share/zsh/site-functions
+  /opt/homebrew/share/zsh-completions
 )
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
 
