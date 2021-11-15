@@ -29,7 +29,7 @@ function make-link() {
   local dir="$(dirname "$file")"
 
   [[ "{$dir}" = "." ]] || [[ -d "$DOTDEST/$dir" ]] || mkdir -p "$DOTDEST/$dir"
-  [[ -e "$to" || -h "$to" ]] || ln -s "$from" "$to"
+  [[ -e "$to" || -h "$to" ]] || ln -sv "$from" "$to"
 }
 
 [[ -d $DOTDEST ]] || mkdir -p "$DOTDEST"
