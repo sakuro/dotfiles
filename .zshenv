@@ -26,3 +26,6 @@ fpath=(
   /opt/brew/share/zsh-completions
 )
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
+
+# asdf
+[[ -f ~/.asdf/asdf.sh ]] && source $HOME/.asdf/asdf.sh

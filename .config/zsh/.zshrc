@@ -156,11 +156,6 @@ limit coredumpsize 0
 # direnv
 is-executable direnv && eval "$(direnv hook zsh)"
 
-# asdf
-if [[ -f ~/.asdf/asdf.sh ]]; then
-  source ~/.asdf/asdf.sh
-fi
-
 if is-executable gosh; then
   rlwrap gosh
 fi
