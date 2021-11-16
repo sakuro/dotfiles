@@ -1,3 +1,5 @@
+HOSTNAME=$(shell hostname)
+
 setup: link-dotfiles install-packages change-login-shell
 
 link-dotfiles:
@@ -11,3 +13,9 @@ change-login-shell:
 
 install-asdf:
 	@scripts/install-asdf.sh
+
+dump-brewfile: Brewfile.$(HOSTNAME)
+
+Brewfile.$(HOSTNAME):
+	@rm -f $@
+	@brew bundle dump --file=$@
