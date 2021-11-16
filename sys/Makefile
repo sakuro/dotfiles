@@ -2,6 +2,8 @@ HOSTNAME=$(shell hostname)
 
 setup: link-dotfiles install-packages change-login-shell
 
+.PHONY: Brewfile.$(HOSTNAME)
+
 link-dotfiles:
 	@scripts/link-dotfiles.sh
 
