@@ -1,6 +1,0 @@
-FROM centos:7
-RUN adduser dev -G wheel
-RUN yum install -y sudo
-RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-USER dev
-WORKDIR /home/dev
