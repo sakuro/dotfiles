@@ -116,6 +116,9 @@ alias dirs='dirs -v'
 alias -g Q='1>/dev/null 2>&1'
 alias puts='print -l'
 
+in-rosetta && alias brew='arch -arch arm64 brew'
+in-rosetta && alias asdf='arch -arch arm64 asdf'
+
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
 
