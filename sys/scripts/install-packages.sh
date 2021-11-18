@@ -5,7 +5,11 @@ darwin*)
     eval "$(/usr/libexec/path_helper)"
     PATH=/opt/homebrew/bin:$PATH
     type -P brew > /dev/null || scripts/install-homebrew.sh
-    brew bundle --no-lock
+    if [[ $(uname -m) = *arm64* ]] && [[ $(arch) = i386 ]]; then
+        arch -arch arm64 brew bundle --no-lock
+    else
+        brew bundle --no-lock
+    fi
     chmod go-w "$(brew --prefix)/share"
     ;;
 *)
