@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+[[ $(uname -m) = *arm64* ]] && [[ $(arch) = i386 ]]
