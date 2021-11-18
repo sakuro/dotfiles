@@ -2,7 +2,8 @@
 
 case "${OSTYPE}" in
 darwin*)
-    PATH=/opt/homebrew/bin:$(eval $(/usr/libexec/path_helper))
+    eval "$(/usr/libexec/path_helper)"
+    PATH=/opt/homebrew/bin:$PATH
     type -P brew > /dev/null || scripts/install-homebrew.sh
     brew bundle --no-lock
     chmod go-w "$(brew --prefix)/share"
