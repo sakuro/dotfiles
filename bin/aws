@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+# Wrapper script fow AWS CLI
+#
+# If --profile options is not fed, read it from .aws-profile if one exists in the current directory or its parents.
+
+autoload remove-path upfind
+remove-path ~/bin
+
+typeset -A opts
+zparseopts -E -A opts -profile::
+
+if [[ -z $opts[(i)--profile] ]]; then
+  profile_path=$(upfind .aws-profile)
+  [[ -n $profile_path ]] && set -- --profile $(< $profile_path) $@
+fi
+
+aws $@
