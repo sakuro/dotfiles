@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-exec > >(sed -ue 's/^/[pre-install] /')
+exec > >(sed -ue "s/^/[nodejs-$1][pre-install] /")
 
 export NODEJS_CHECK_SIGNATURES=no

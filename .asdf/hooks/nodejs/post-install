@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-exec > >(sed -ue 's/^/[post-install] /')
+exec > >(sed -ue "s/^/[nodejs-$1][post-install] /")
 
 echo "Switching to newly installed Node.js $1"
 source $ASDF_DIR/asdf.sh

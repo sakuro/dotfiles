@@ -2,7 +2,7 @@
 
 DEFAULT_GEMS=$ASDF_DIR/hooks/ruby/default-gems
 
-exec > >(sed -ue 's/^/[post-install] /')
+exec > >(sed -ue "s/^/[ruby-$1][post-install] /")
 
 echo "Switching to newly installed ruby $1"
 source $ASDF_DIR/asdf.sh
