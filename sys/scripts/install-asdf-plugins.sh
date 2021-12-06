@@ -2,10 +2,8 @@
 
 TOOL_VERSIONS_FILE=$HOME/.tool-versions
 
-type -P asdf > /dev/null || git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-
 if [[ -f $TOOL_VERSIONS_FILE ]]; then
-  source $HOME/.asdf/asdf.sh
+  source /opt/homebrew/opt/asdf/libexec/asdf.sh
   while read plugin version; do
     if asdf plugin list | grep -qxF $plugin; then
       echo "Updating plugin: $plugin"
