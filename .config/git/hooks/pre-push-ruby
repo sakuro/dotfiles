@@ -3,7 +3,7 @@
 source "${0:h}/support.zsh"
 
 function need-bundle-update() {
-  [[ -f Gemfile ]] && git ls-files --error-unmatch Gemfile.lock 2>/dev/null && [[ Gemfile.lock -ot Gemfile ]]
+  [[ -f Gemfile ]] && git ls-files --error-unmatch Gemfile.lock >/dev/null 2>/dev/null && [[ Gemfile.lock -ot Gemfile ]]
 }
 
 if need-bundle-update; then
