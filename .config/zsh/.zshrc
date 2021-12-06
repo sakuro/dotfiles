@@ -73,7 +73,7 @@ zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' cache-path $ZDOTDIR/compcache
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/compcache
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
