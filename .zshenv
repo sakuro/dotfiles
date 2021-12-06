@@ -31,7 +31,13 @@ fpath=(
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
 
 # asdf
-[[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]] && source /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+for asdf_sh in /opt/homebrew/opt/asdf/libexec/asdf.sh $HOME/.asdf/asdf.sh; do
+  if [[ -f $asdf_sh ]]; then
+    source $asdf_sh
+    break
+  fi
+done
 export ASDF_DATA_DIR=$XDG_DATA_HOME/asdf
 export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=$XDG_CONFIG_HOME/asdf/tool-versions
