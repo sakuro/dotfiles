@@ -3,10 +3,13 @@
 : "${DOTROOT:?} "${DOTDEST:?}
 
 EXCLUDED_PATTERNS=(
+  Brewfile*
+  Makefile
   README.md
-  dist/*
+  bootstrap.sh
+  scripts/*
   sys/*
-  */.gitignore
+  .gitignore
   .gitmodules
 )
 
