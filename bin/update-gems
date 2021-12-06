@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+source ~/.asdf/asdf.sh
+
+gem update --system && gem uninstall --executables rubygems-update
+gem update && gem clean
