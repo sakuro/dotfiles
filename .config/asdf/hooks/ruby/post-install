@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-DEFAULT_GEMS=$ASDF_DIR/hooks/ruby/default-gems
+DEFAULT_GEMS=$XDG_CONFIG_HOME/asdf/hooks/ruby/default-gems
 
 exec > >(sed -ue "s/^/[ruby-$1][post-install] /")
 
