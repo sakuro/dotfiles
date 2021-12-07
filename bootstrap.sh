@@ -28,4 +28,4 @@ if [[ ! -d "${DOTROOT}" ]]; then
   (cd "$DOTROOT" && git submodule init && git sudmobule update)
 fi
 
-make -C "$DOTROOT/sys" setup
+make setup
