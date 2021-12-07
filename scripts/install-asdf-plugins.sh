@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOOL_VERSIONS_FILE=$HOME/.tool-versions
+TOOL_VERSIONS_FILE=$XDG_CONFIG_HOME/asdf/tool-versions
 
 if [[ -f $TOOL_VERSIONS_FILE ]]; then
   source /opt/homebrew/opt/asdf/libexec/asdf.sh
