@@ -6,6 +6,12 @@ echo "Installing ruby $1"
 
 export RUBY_CONFIGURE_OPTS="--enable-shared --disable-install-doc"
 
+case $1 in
+2.6.7)
+  export CFLAGS="-Wno-error=implicit-function-declaration"
+  ;;
+esac
+
 if brew --version >/dev/null 2>/dev/null; then
   export RUBY_CONFIGURE_OPTS="$RUBY_CONFIGURE_OPTS
     --with-readline-dir=$(brew --prefix readline)
@@ -14,3 +20,6 @@ if brew --version >/dev/null 2>/dev/null; then
 fi
 
 echo "Configure options: $RUBY_CONFIGURE_OPTS"
+if [[ -n "$CFLAGS" ]]; then
+  echo "Additional CFLAGS for ruby-$1: $CFLAGS"
+fi
