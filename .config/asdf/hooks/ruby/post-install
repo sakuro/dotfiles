@@ -11,22 +11,22 @@ echo "Ruby version: $(ruby -v)"
 
 if gem list | grep -q bundler; then
   echo "Updating bundler for ruby $1"
-  gem update bundler --no-post-install-message
+  gem update bundler --no-post-install-message --no-document
 else
   echo "Installing bundler for ruby $1"
-  gem install bundler --no-post-install-message
+  gem install bundler --no-post-install-message --no-document
 fi
 bundle version
 
 echo "Updating rubygems for ruby $1"
-gem update --system --no-post-install-message
+gem update --system --no-post-install-message --no-document
 gem uninstall rubygems-update --all --executables
 echo "Rubygems version: $(gem -v)"
 
 echo "Installing default gems for ruby $1"
 while read gem; do
   echo "Installing $gem"
-  gem install $gem --no-post-install-message
+  gem install $gem --no-post-install-message --no-document
 done < $DEFAULT_GEMS
 
 echo "Done"
