@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+autoload upfind
+
+function prompt_update_remote() {
+  (upfind .git && git fetch) >/dev/null 2>/dev/null &!
+}
+
+PERIOD=120
+add-zsh-hook periodic prompt_update_remote

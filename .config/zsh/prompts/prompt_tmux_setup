@@ -4,6 +4,7 @@ function prompt_tmux_setup() {
   PROMPT="%F{%(?,green,red)}%(!.#.$)%f "
 
   source ~/.config/zsh/prompts/prompt_duration
+  source ~/.config/zsh/prompts/prompt_update_remote
   add-zsh-hook precmd prompt_tmux_precmd
 }
 
