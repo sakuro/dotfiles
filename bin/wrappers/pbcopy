@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 autoload remove-path is-executable
-remove-path ~/bin
+remove-path ~/bin/wrappers
 
 if is-executable -p clip.exe; then
   exec clip.exe "$@"
