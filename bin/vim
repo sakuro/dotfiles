@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+autoload remove-path
+remove-path ~/bin
+
+export VIMINIT='set nocp | source $XDG_CONFIG_HOME/vim/vimrc'
+command vim $@
