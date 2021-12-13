@@ -5,13 +5,9 @@
   branch-root = merge-base master HEAD
   cdiff = diff --word-diff --word-diff-regex .
   changes = !git diff $(git branch-root)..HEAD
-  issues = browse -- issues
-  lsm = ls-files --modified
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
-  prs = browse -- pulls
   st = status -sb
   wdiff = diff --word-diff=color --color=auto --word-diff-regex=.
-  wiki = browse -- wiki
   wip = commit -m wip
 [branch]
   autosetuprebase = always
