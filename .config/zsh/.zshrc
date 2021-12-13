@@ -90,7 +90,7 @@ export EDITOR
 if is-executable -p less; then
   PAGER=less
   export LESS="--ignore-case --line-numbers --long-prompt --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --window=-4"
-  export LESSHISTFILE=-
+  export LESSHISTFILE=/dev/null
 else
   PAGER=more
 fi
