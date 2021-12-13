@@ -40,3 +40,12 @@ function make-link() {
 (cd ${DOTROOT} && git ls-files) | while read item; do
   is-member-of "${item}" "${EXCLUDED_PATTERNS[@]}" || make-link "$item"
 done
+
+# Handle .config/git/include/credentials
+case $OSTYPE in
+darwin*)
+  ln -sv $DOTROOT/.config/git/include/credential.darwin $DOTDEST/.config/git/include/credential
+  ;;
+*)
+  echo "Unsupported OS: $OSTYPE"
+esac
