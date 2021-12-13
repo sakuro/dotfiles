@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+autoload remove-path
+remove-path ~/bin
+
+export SQLITE_HISTORY=$XDG_CACHE_HOME/sqlite3/history
+sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqliterc
