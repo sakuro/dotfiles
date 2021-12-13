@@ -89,7 +89,7 @@ export EDITOR
 
 if is-executable -p less; then
   PAGER=less
-  export LESS="-inmXRz-4"
+  export LESS="-inmXFRz-4"
   export LESSHISTFILE=-
 else
   PAGER=more
