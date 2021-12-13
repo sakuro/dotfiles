@@ -89,7 +89,7 @@ export EDITOR
 
 if is-executable -p less; then
   PAGER=less
-  export LESS="-inmXFRz-4"
+  export LESS="--ignore-case --line-numbers --long-prompt --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --window=-4"
   export LESSHISTFILE=-
 else
   PAGER=more
@@ -104,12 +104,12 @@ fi
 
 setopt completealiases
 
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
+alias rm='rm --interactive=once'
+alias mv='mv --interactive'
+alias cp='cp --interactive'
 alias history='history -i 1'
-alias du='du -h'
-alias df='df -h'
+alias du='du --human-readable'
+alias df='df --human-readable'
 alias free='free -t -m'
 alias -g L="| $PAGER"
 alias dirs='dirs -v'

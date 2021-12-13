@@ -2,7 +2,7 @@
 
 function interactive-start-tmux-session() {
   is-executable tmux || return
-  tty -s || return
+  tty --silent || return
   in-vscode-terminal && return
   in-tmux-session && return
 
