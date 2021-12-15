@@ -41,6 +41,12 @@ function make-link() {
   is-member-of "${item}" "${EXCLUDED_PATTERNS[@]}" || make-link "$item"
 done
 
+# Remove dangling symlinks
+GLOBIGNORE=.git:scripts
+for dir in $(cd ${DOTROOT} && find * -maxdepth 0 -type d); do
+  find $DOTDEST/$dir -xtype l -exec rm -v '{}' +
+done
+
 # Handle .config/git/include/credentials
 case $OSTYPE in
 darwin*)
