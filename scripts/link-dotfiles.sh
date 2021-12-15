@@ -52,6 +52,11 @@ case $OSTYPE in
 darwin*)
   ln -svf $DOTROOT/.config/git/include/credential.darwin $DOTDEST/.config/git/include/credential
   ;;
-*)
-  echo "Unsupported OS: $OSTYPE"
+linux*)
+  if [[ -n "$WSL_DISTRO_NAME" ]]; then
+    if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
+      ln -svf $DOTROOT/.config/git/include/credential.windows $DOTDEST/.config/git/include/credential
+    fi
+  fi
+  ;;
 esac
