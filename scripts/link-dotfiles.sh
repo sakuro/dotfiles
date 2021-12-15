@@ -50,7 +50,7 @@ done
 # Handle .config/git/include/credentials
 case $OSTYPE in
 darwin*)
-  ln -sv $DOTROOT/.config/git/include/credential.darwin $DOTDEST/.config/git/include/credential
+  ln -svf $DOTROOT/.config/git/include/credential.darwin $DOTDEST/.config/git/include/credential
   ;;
 *)
   echo "Unsupported OS: $OSTYPE"
