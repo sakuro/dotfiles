@@ -3,9 +3,10 @@
 PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
 
 if is-executable pmset; then
-  set -- $(pmset -g ps | grep -oP '((?<=Now drawing from '\'')(AC|Battery)|(\d+)(?=%; (?:charged|discharging)))')
+  set -- $(pmset -g ps | grep -oP '(?<=Now drawing from '\'')(AC|Battery)|(\d+)(?=%;)|(charged|charging|dischargin)')
   source=$1
   percentage=$2
+  state=$3
 fi
 
 case $source in
@@ -13,6 +14,11 @@ AC)
   print -nP "\U1F50C" ;;
 Battery)
   print -nP "\U1F50B" ;;
+esac
+
+case $state in
+charging)
+  print -nP "\U26A1" ;;
 esac
 
 if [[ -n $percentage ]]; then
