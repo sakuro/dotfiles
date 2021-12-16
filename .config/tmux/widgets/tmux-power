@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
+
+if is-executable pmset; then
+  set -- $(pmset -g ps | grep -oP '((?<=Now drawing from '\'')(AC|Battery)|(\d+)(?=%; charged))')
+  source=$1
+  percentage=$2
+fi
+
+case $source in
+AC)
+  print -nP "\U1F50C" ;;
+Battery)
+  print -nP "\U1F50B" ;;
+esac
+
+if [[ -n $percentage ]]; then
+  print "$percentage%"
+fi
