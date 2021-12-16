@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
+
 if [[ -r /proc/loadavg ]]; then
   set -- $(< /proc/loadavg)
 elif [[ -x /usr/sbin/sysctl ]]; then
