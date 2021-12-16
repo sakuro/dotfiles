@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
+
+airport_cmd=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
+
+if [[ -x $airport_cmd ]]; then
+  set -- $($airport_cmd --getinfo | grep -oP '(?<=agrCtlRSSI: -)(\d+)|(?<=SSID: )(?<!BSSID: )(.*)')
+  strength=$1
+  ssid=$2
+fi
+
+if [[ -n $strength ]]; then
+  level=$(( strength / 20 ))
+  print -nP "\U1F4F6"
+  tmux-levels cyan white $level
+  print -nP " $ssid"
+fi
