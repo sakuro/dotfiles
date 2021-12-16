@@ -16,5 +16,7 @@ Battery)
 esac
 
 if [[ -n $percentage ]]; then
-  print "$percentage%"
+  level=$(( percentage / 20 ))
+  tmux-levels green white $level
+  print " $percentage%"
 fi
