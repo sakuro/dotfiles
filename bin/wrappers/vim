@@ -4,4 +4,4 @@ autoload remove-path
 remove-path ~/bin/wrappers
 
 export VIMINIT='set nocp | source $XDG_CONFIG_HOME/vim/vimrc'
-command vim $@
+exec vim $@

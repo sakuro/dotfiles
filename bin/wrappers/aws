@@ -15,4 +15,4 @@ if [[ -z $opts[(i)--profile] ]]; then
   [[ -n $profile_path ]] && set -- --profile $(< $profile_path) $@
 fi
 
-aws $@
+exec aws $@
