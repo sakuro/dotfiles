@@ -14,13 +14,7 @@ fi
 local -i load_average=$1 # round down fraction
 print -nP "\U1F4C8"
 case "$load_average" in
-0) tmux-levels magenta white 0 ;;
-1) tmux-levels magenta white 1 ;;
-2) tmux-levels magenta white 2 ;;
-3) tmux-levels red white 3 ;;
-4) tmux-levels red white 4 ;;
-5) tmux-levels red white 5 ;;
-6) tmux-levels red white 6 ;;
-7) tmux-levels red white 7 ;;
+0|1|2) tmux-levels magenta white $load_average ;;
+3|4|5|6|7) tmux-levels red white $load_average ;;
 *) tmux-levels red white 8 ;;
 esac
