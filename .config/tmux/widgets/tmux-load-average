@@ -18,5 +18,9 @@ case "$load_average" in
 1) tmux-levels red white 1 ;;
 2) tmux-levels red white 2 ;;
 3) tmux-levels red white 3 ;;
-*) tmux-levels red white 4 ;;
+4) tmux-levels red white 4 ;;
+5) tmux-levels red white 5 ;;
+6) tmux-levels red white 6 ;;
+7) tmux-levels red white 7 ;;
+*) tmux-levels red white 8 ;;
 esac

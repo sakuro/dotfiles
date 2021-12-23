@@ -11,7 +11,7 @@ fi
 if $muted; then
   print -nP "\U1F507" # SPEAKER WITH CANCELLATION STROKE
 elif [[ -n $volume ]]; then
-  level=$(( (volume + 24) / 25 ))
+  integer level=$((volume / 12.5))
   print -nP "\U1F50A" # SPEAKER WITH THREE SOUND WAVES
   tmux-levels yellow white $level
 fi

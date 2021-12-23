@@ -22,7 +22,7 @@ charging)
 esac
 
 if [[ -n $percentage ]]; then
-  level=$(( (percentage - 1) / 20 ))
+  integer level=$(( percentage / 12.5 ))
   tmux-levels green white $level
   print "$percentage%"
 fi

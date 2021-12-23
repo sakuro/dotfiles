@@ -6,12 +6,12 @@ airport_cmd=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Curr
 
 if [[ -x $airport_cmd ]]; then
   local info=(${(f)"$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | grep -oP '(?<=agrCtlRSSI: -)(\d+)|(?<=SSID: )(?<!BSSID: )(.*)')"})
-  strength=$info[1]
+  strength=$((100 - $info[1]))
   ssid=$info[2]
 fi
 
 if [[ -n $strength ]]; then
-  level=$(( strength / 20 ))
+  level=$((strength / 12.5))
   print -nP "\U1F4F6"
   tmux-levels cyan white $level
   print -nP "$ssid"
