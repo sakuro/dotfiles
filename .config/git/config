@@ -5,6 +5,7 @@
   branch-root = merge-base master HEAD
   cdiff = diff --word-diff --word-diff-regex .
   changes = !git diff $(git branch-root)..HEAD
+  main = "!f() { for rev in main master; do git rev-parse $rev 1>/dev/null 2>/dev/null || continue; echo $rev; break; done }; f"
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
   st = status -sb
   wdiff = diff --word-diff=color --color=auto --word-diff-regex=[[:alnum:]_]
