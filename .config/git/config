@@ -5,7 +5,6 @@
   branch-root = merge-base master HEAD
   cdiff = diff --word-diff --word-diff-regex .
   changes = !git diff $(git branch-root)..HEAD
-  main = !git remote show origin | grep -oP '(?<=HEAD branch: )\\S+'
   pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
   st = status -sb
   wdiff = diff --word-diff=color --color=auto --word-diff-regex=[[:alnum:]_]
