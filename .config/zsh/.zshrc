@@ -157,10 +157,6 @@ limit coredumpsize 0
 # direnv
 is-executable direnv && eval "$(direnv hook zsh)"
 
-if is-executable gosh; then
-  rlwrap gosh
-fi
-
 () {
   for script in \
     /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
