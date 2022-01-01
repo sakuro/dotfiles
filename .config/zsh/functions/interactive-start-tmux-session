@@ -3,8 +3,8 @@
 function interactive-start-tmux-session() {
   is-executable tmux || return
   tty --silent || return
-  in-vscode-terminal && return
-  in-tmux-session && return
+  [[ "$TERM_PROGRAM" = vscode && -t 1 ]] && return
+  [[ -n "$TMUX" ]] && return
 
   local sessions=( ${(f)"$(tmux list-sessions 2>/dev/null)"} )
   if [[ $#sessions -eq 0 ]]; then
