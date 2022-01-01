@@ -98,10 +98,6 @@ fi
 export PAGER
 export READNULLCMD=$PAGER
 
-if is-executable -p explorer.exe; then
-  alias open=explorer.exe
-fi
-
 setopt completealiases
 
 alias rm='rm --interactive=once'
@@ -118,6 +114,11 @@ alias puts='print -l'
 
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
+
+# Aliases for Windows
+is-executable -p explorer.exe && alias open=explorer.exe
+is-executable -p clip.exe && alias pbcopy=clip.exe
+is-executable -p powershell.exe && alias pbpaste='powershell.exe -Command Get-Clipboard'
 
 () {
   local dircolors_path=$XDG_CONFIG_HOME/themes/nord/dircolors/src/dir_colors
