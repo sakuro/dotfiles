@@ -24,7 +24,7 @@ function prompt_duration_format() {
   (( days > 0 )) && print -n "${days}d"
   (( hours > 0 )) && print -n "${hours}h"
   (( minutes > 0 )) && print -n "${minutes}m"
-  print -n "${seconds}s"
+  (( seconds > 0 )) && print "${seconds}s"
 }
 
 add-zsh-hook preexec prompt_duration_preexec
