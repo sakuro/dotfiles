@@ -1,11 +1,10 @@
 #!/bin/zsh
 
 function interactive-chdir() {
-    local input=$1
-    local selected=$(eval "$input" | peco --query "$LBUFFER")
+    local selected=$(peco --query "$LBUFFER")
 
-    if [[ -n "$selected" ]]; then
-        BUFFER="cd $selected"
-        zle accept-line
-    fi
+    [[ -n "$selected" ]] || return
+    [[ -d "$selected" ]] || { echo "$selected is not a directory" && return 1 }
+    BUFFER="cd $selected"
+    zle accept-line
 }
