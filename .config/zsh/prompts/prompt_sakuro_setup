@@ -58,7 +58,7 @@ function prompt_sakuro_host() {
 
   [[ -n "$1" ]] && {
     local -i load_average=$1 # round down fraction
-    local brightness=dark #$(term-brightness)
+    local brightness=dark
 
     case "$brightness-$load_average" in
     *-0)     print -nP '%F{gray}%m%f'    ;;
