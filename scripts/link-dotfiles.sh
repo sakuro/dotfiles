@@ -8,7 +8,6 @@ EXCLUDED_PATTERNS=(
   README.md
   bootstrap.sh
   scripts/*
-  sys/*
   .gitignore
   .gitmodules
 )
