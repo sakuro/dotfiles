@@ -18,6 +18,9 @@ install-asdf-plugins:
 
 dump-brewfile: Brewfile.$(HOSTNAME)
 
+diff-brewfile: Brewfile.$(HOSTNAME)
+	@diff -u Brewfile $< || exit 0
+
 Brewfile.$(HOSTNAME):
 	@rm -f $@
 	@brew bundle dump --file=$@
