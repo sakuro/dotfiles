@@ -4,14 +4,16 @@ PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
 
 if [[ -r /proc/loadavg ]]; then
   set -- $(< /proc/loadavg)
+  ncpu=$(< /proc/cpuinfo | grep '^processor' |wc -l)
 elif [[ -x /usr/sbin/sysctl ]]; then
   set -- $(/usr/sbin/sysctl -n vm.loadavg)
   shift
+  ncpu=$(/usr/sbin/sysctl -n hw.ncpu)
 else
   return
 fi
 
-local -i load_average=$1 # round down fraction
+local -i load_average=$(( $1 / $ncpu )) # round down fraction
 print -nP "\U1F4C8"
 case "$load_average" in
 0|1|2) tmux-levels magenta white $load_average ;;
