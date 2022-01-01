@@ -2,5 +2,5 @@
 
 IFS="	"
 while read -rA; do
-  jq -R <<<"${(F)reply[@]}" | jq -s | jq -M 'map(split(":") | {(.[0]): .[1]}) | add'
+  jq -R <<<"${(F)reply[@]}" | jq -sM 'map(split(":") | {(.[0]): .[1]}) | add'
 done
