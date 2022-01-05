@@ -13,10 +13,10 @@ else
   return
 fi
 
-local -i load_average=$(( $1 / $ncpu )) # round down fraction
+local load_average=$(( $1 / $ncpu ))
+local -i load_average_scaled=$(( $load_average * 4 ))
 print -nP "\U1F4C8"
-case "$load_average" in
-0|1|2) tmux-levels magenta white $load_average ;;
-3|4|5|6|7) tmux-levels red white $load_average ;;
-*) tmux-levels red white 8 ;;
+case $load_average_scaled in
+0|1|2|3|4) tmux-levels magenta white $load_average_scaled ;;
+*) tmux-levels red white $load_average_scaled ;;
 esac
