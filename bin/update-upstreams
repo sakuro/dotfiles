@@ -7,13 +7,13 @@ fi
 
 for repo in $*; do
   [[ -d $repo/.git ]] || {
-    echo "$repo is not a git directory, skipping"
+    echo "${repo/$HOME/~} is not a git directory, skipping"
     continue
   }
   (
     cd $repo
     git remote show | grep upstream >/dev/null || exit 0
-    print -P "=== %~ ==="
+    echo "=== ${repo/$HOME/~} ==="
     git fetch upstream
     if git diff-index --quiet HEAD; then
       default_branch=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
