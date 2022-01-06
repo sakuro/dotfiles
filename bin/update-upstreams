@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+if [[ $# = 0 ]]; then
+  echo "Usage: update-upstreams REPOSITORIES"
+  exit 1
+fi
+
+for repo in $*; do
+  [[ -d $repo/.git ]] || {
+    echo "$repo is not a git directory, skipping"
+    continue
+  }
+  (
+    cd $repo
+    git remote show | grep upstream >/dev/null || exit 0
+    echo "=== $repo ==="
+    git fetch upstream
+    if git diff-index --quiet HEAD; then
+      default_branch=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+      git rebase upstream/$default_branch
+    else
+      echo "There are local modification(s), skipping rebase"
+    fi
+  )
+done
+
+
+
+
+
+
