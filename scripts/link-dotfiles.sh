@@ -1,6 +1,7 @@
 #!/bin/bash
 
-: "${DOTROOT:?} "${DOTDEST:?}
+: "${DOTROOT:=$HOME/.dotfiles}"
+: "${DOTDEST:=$HOME}"
 
 EXCLUDED_PATTERNS=(
   Brewfile*
