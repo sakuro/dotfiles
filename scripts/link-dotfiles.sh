@@ -47,15 +47,18 @@ for dir in $(cd ${DOTROOT} && find * -maxdepth 0 -type d); do
 done
 
 # Handle .config/git/include/credentials
-case $OSTYPE in
-darwin*)
-  ln -svf $DOTROOT/.config/git/include/credential.darwin $DOTDEST/.config/git/include/credential
-  ;;
-linux*)
-  if [[ -n "$WSL_DISTRO_NAME" ]]; then
-    if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
-      ln -svf $DOTROOT/.config/git/include/credential.windows $DOTDEST/.config/git/include/credential
+CREDENTIAL_CONFIG_FILE=$DOTDEST/.config/git/include/credential
+if [[ ! -f $CREDENTIAL_CONFIG_FILE ]]; then
+  case $OSTYPE in
+  darwin*)
+    ln -sv $DOTROOT/.config/git/include/credential.darwin $CREDENTIAL_CONFIG_FILE
+    ;;
+  linux*)
+    if [[ -n "$WSL_DISTRO_NAME" ]]; then
+      if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
+        ln -sv $DOTROOT/.config/git/include/credential.windows $CREDENTIAL_CONFIG_FILE
+      fi
     fi
-  fi
-  ;;
-esac
+    ;;
+  esac
+fi
