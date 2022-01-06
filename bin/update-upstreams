@@ -20,7 +20,7 @@ for repo in $*; do
       git rebase upstream/$default_branch
       git push
     else
-      echo "There are local modification(s), skipping rebase"
+      echo "There are uncommitted change(s), skipping rebase and push"
     fi
   )
 done
