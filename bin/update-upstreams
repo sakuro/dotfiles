@@ -13,7 +13,7 @@ for repo in $*; do
   (
     cd $repo
     git remote show | grep upstream >/dev/null || exit 0
-    echo "=== $repo ==="
+    print -P "=== %~ ==="
     git fetch upstream
     if git diff-index --quiet HEAD; then
       default_branch=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
