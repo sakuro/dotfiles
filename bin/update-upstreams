@@ -18,6 +18,7 @@ for repo in $*; do
     if git diff-index --quiet HEAD; then
       default_branch=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
       git rebase upstream/$default_branch
+      git push
     else
       echo "There are local modification(s), skipping rebase"
     fi
