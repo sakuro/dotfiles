@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+autoload remove-path
+remove-path ~/bin/wrappers
+
+if [[ $1 = repo && $2 = clone ]]; then
+  local me="$(gh api /user --jq .login)"
+  if [[ $3 != $me/* ]]; then
+    set -- $@ -- -o upstream
+  fi
+fi
+
+exec gh $@
