@@ -63,7 +63,7 @@ function tmux-pane-ruby-version() {
 }
 
 function tmux-pane-aws-profile() {
-    local aws_symbol="\uf270"
+    local aws_symbol="\uF270"
     local aws_profile_path=$(upfind .aws-profile)
 
     [[ -n "$aws_profile_path" ]] && print -P "#[fg=yellow]${aws_symbol} $(< $aws_profile_path)#[default]"
