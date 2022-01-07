@@ -1,4 +1,4 @@
-#!/bin/zsh -e
+#!/bin/zsh
 # $1 -- Name of the remote to which the push is being done
 # $2 -- URL to which the push is being done
 
@@ -8,6 +8,8 @@
 # the standard input in the form:
 #
 #   <local ref> <local sha1> <remote ref> <remote sha1>
+
+set -ue
 
 remote="$1"
 url="$2"
@@ -19,8 +21,10 @@ set -- $(detect-languages)
 
 while [[ $# -gt 0 ]]; do
   hook=$GIT_HOOKS_DIR/pre-push-$1
-  [[ -x $hook ]] && $hook $remote $url || exit 1
   shift
+  [[ -x $hook ]] || continue
+  echo "Running ${hook:t} hook..."
+  $hook $remote $url
 done
 
 exit 0
