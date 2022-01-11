@@ -1,3 +1,15 @@
 #!/bin/zsh
 
-echo "$(sed -e 's/+/ /g' -e 's/%\([0-9A-Fa-f][0-9A-Fa-f]\)/\\x\1/g')"
+function decode()
+{
+  sed -e 's/+/ /g' -e 's/%\([0-9A-Fa-f][0-9A-Fa-f]\)/\\x\1/g'
+}
+
+if [[ $# = 0 ]]; then
+  echo $(decode)
+else
+  while [[ $# -gt 0 ]]; do
+    echo $(decode<<<$1)
+    shift
+  done
+fi
