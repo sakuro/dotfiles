@@ -1,4 +1,5 @@
 git_protocol: https
 prompt: enabled
 aliases:
-  default-branch: repo view --json defaultBranchRef --jq .defaultBranchRef.name
+    default-branch: repo view --json defaultBranchRef --jq .defaultBranchRef.name
+    whoami: api /user --jq .login
