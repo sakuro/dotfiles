@@ -18,7 +18,9 @@ for repo in $*; do
     if git diff-index --quiet HEAD; then
       default_branch=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
       git rebase upstream/$default_branch
-      git push
+      if git remote show | grep origin >/dev/null; then
+        git push origin
+      fi
     else
       echo "There are uncommitted change(s), skipping rebase and push"
     fi
