@@ -45,3 +45,9 @@ autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
 export ASDF_DATA_DIR=$XDG_DATA_HOME/asdf
 export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=$XDG_CONFIG_HOME/asdf/tool-versions
+
+# Wrappers take precedence over asdf shims
+() {
+  local wrappers_path=( ${(M)path##~/bin/wrappers} )
+  path=($wrappers_path $path)
+}
