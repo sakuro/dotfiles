@@ -32,6 +32,10 @@ autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
 
 # asdf
 
+export ASDF_DATA_DIR=$XDG_DATA_HOME/asdf
+export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
+export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=$XDG_CONFIG_HOME/asdf/tool-versions
+
 () {
   local asdf_sh
   for asdf_sh in /opt/homebrew/opt/asdf/libexec/asdf.sh $HOME/.asdf/asdf.sh; do
@@ -40,14 +44,8 @@ autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
       break
     fi
   done
-}
 
-export ASDF_DATA_DIR=$XDG_DATA_HOME/asdf
-export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=$XDG_CONFIG_HOME/asdf/tool-versions
-
-# Wrappers take precedence over asdf shims
-() {
+  # Wrappers take precedence over asdf shims
   local wrappers_path=( ${(M)path##~/bin/wrappers} )
   path=($wrappers_path $path)
 }
