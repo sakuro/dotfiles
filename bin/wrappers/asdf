@@ -4,9 +4,9 @@ autoload remove-path
 remove-path ~/bin/wrappers
 
 if is-executable asdf-$1; then
-    local command="asdf-$1"
-    shift
-    exec "$command" "$@"
+  local command="asdf-$1"
+  shift
+  exec "$command" "$@"
 else
-    exec asdf "$@"
+  exec asdf "$@"
 fi
