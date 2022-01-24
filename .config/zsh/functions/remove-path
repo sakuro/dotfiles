@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-for e in $*; do
+while [[ $# -gt 0 ]]; do
   path=(${path:#$1})
   shift
 done
