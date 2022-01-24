@@ -6,6 +6,18 @@ function need-bundle-update() {
   [[ -f Gemfile ]] && git ls-files --error-unmatch Gemfile.lock >/dev/null 2>/dev/null && [[ Gemfile.lock -ot Gemfile ]]
 }
 
+function rubocop-ready() {
+  [[ -f .rubocop.yml ]]
+}
+
+function rspec-ready() {
+  [[ -f .rspec ]]
+}
+
+function yard-ready() {
+  true
+}
+
 if need-bundle-update; then
   echo "Gemfile.lock is not up to date.  Run bundle install"
   return 1
@@ -13,6 +25,7 @@ fi
 
 for command in rubocop rspec yard; do
   command-in-path $command || continue
-  echo "Running $command"
+  $command-ready || continue
+  echo "Running $command..."
   command $command || return 1
 done
