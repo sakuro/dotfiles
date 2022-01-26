@@ -1,18 +1,14 @@
 #!/bin/zsh
 
-if [[ $# = 0 ]]; then
-  echo "Usage: update-upstreams REPOSITORIES"
-  exit 1
-fi
-
-for repo in $*; do
+function update-upstream()
+{
   [[ -d $repo/.git ]] || {
     echo "${repo/$HOME/~} is not a git directory, skipping"
-    continue
+    return
   }
   (
     cd $repo
-    git remote show | grep upstream >/dev/null || exit 0
+    git remote show | grep upstream >/dev/null || return
     echo "=== ${repo/$HOME/~} ==="
     git fetch upstream
     if git diff-index --quiet HEAD; then
@@ -25,10 +21,14 @@ for repo in $*; do
       echo "There are uncommitted change(s), skipping rebase and push"
     fi
   )
-done
+}
 
-
-
-
-
-
+if [[ $# = 0 ]]; then
+  while read repo; do
+    update-upstream $repo
+  done
+else
+  for repo in "$@"; do
+    update-upstream $repo
+  done
+fi
