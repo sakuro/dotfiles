@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-autoload remove-path
 remove-path ~/bin/wrappers
 
 tmux_version="${$(tmux -V)//[^0-9.]/}"
