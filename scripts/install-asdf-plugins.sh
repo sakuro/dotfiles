@@ -12,6 +12,33 @@ function init_asdf()
   return 1
 }
 
+function install_or_update_plugin()
+{
+  local plugin=$1
+
+  if asdf plugin list | grep -qxF $plugin; then
+    echo "Updating plugin: $plugin"
+    asdf plugin-update $plugin
+  else
+    echo "Installing plugin: $plugin"
+    asdf plugin-add $plugin
+  fi
+  return 0
+}
+
+function install_specific_version()
+{
+  plugin=$1
+  version=$2
+
+  if asdf list $plugin | grep -qxF $version; then
+    echo "$plugin $version is already installed"
+  else
+    echo "Installing $plugin $version"
+    asdf install $plugin $version
+  fi
+}
+
 init_asdf || {
   echo "ASDF is not installed"
   exit 1
@@ -23,17 +50,5 @@ init_asdf || {
 }
 
 while read plugin version; do
-  if asdf plugin list | grep -qxF $plugin; then
-    echo "Updating plugin: $plugin"
-    asdf plugin-update $plugin
-  else
-    echo "Installing plugin: $plugin"
-    asdf plugin-add $plugin
-  fi
-  if asdf list $plugin | grep -qxF $version; then
-    echo "$plugin $version is already installed"
-  else
-    echo "Installing $plugin $version"
-    asdf install $plugin $version
-  fi
+  install_or_update_plugin $plugin && install_specific_version $plugin $version
 done < $TOOL_VERSIONS_FILE

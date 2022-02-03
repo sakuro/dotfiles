@@ -3,42 +3,25 @@
 : "${DOTROOT:=$HOME/.dotfiles}"
 : "${DOTDEST:=$HOME}"
 
-EXCLUDED_PATTERNS=(
-  Brewfile*
-  Makefile
-  README.md
-  bootstrap.sh
-  scripts/*
-  .gitignore
-  .gitmodules
+EXCLUDED_PATHSPECS=(
+  ':!/Brewfile'
+  ':!/Makefile'
+  ':!/README.md'
+  ':!/bootstrap.sh'
+  ':!/scripts/'
+  ':!/.gitignore'
+  ':!/.gitmodules'
 )
-
-function is-member-of() {
-  local v=$1
-  shift
-  for e; do
-    case "${v}" in
-    ${e}) return 0 ;;
-    esac
-  done
-  return 1
-}
-
-function make-link() {
-  local file="$1"
-
-  local from="$DOTROOT/${file}"
-  local to="$DOTDEST/${file}"
-  local dir="$(dirname "$file")"
-
-  [[ "{$dir}" = "." ]] || [[ -d "$DOTDEST/$dir" ]] || mkdir -p "$DOTDEST/$dir"
-  [[ -e "$to" || -h "$to" ]] || ln -sv "$from" "$to"
-}
 
 [[ -d $DOTDEST ]] || mkdir -p "$DOTDEST"
 
-(cd ${DOTROOT} && git ls-files) | while read item; do
-  is-member-of "${item}" "${EXCLUDED_PATTERNS[@]}" || make-link "$item"
+(cd ${DOTROOT} && git ls-files . ${EXCLUDED_PATHSPECS[@]}) | while read file; do
+  from="$DOTROOT/${file}"
+  to="$DOTDEST/${file}"
+  dir="$(dirname "$file")"
+
+  [[ "{$dir}" = "." ]] || [[ -d "$DOTDEST/$dir" ]] || mkdir -p "$DOTDEST/$dir"
+  [[ -e "$to" || -h "$to" ]] || ln -sv "$from" "$to"
 done
 
 # Remove dangling symlinks
