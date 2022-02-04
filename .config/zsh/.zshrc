@@ -165,4 +165,10 @@ is-executable direnv && eval "$(direnv hook zsh)"
   done
 }
 
+function git-status-short()
+{
+  upfind -q .git && git status -sb
+}
+add-zsh-hook chpwd git-status-short
+
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :

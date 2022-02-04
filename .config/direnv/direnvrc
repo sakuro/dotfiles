@@ -8,6 +8,5 @@ if [ -f Gemfile.lock ] || [ -f gems.locked ]; then
     [ -d $bin ] && PATH_add $bin || :
   done
 fi
-[ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
 
-[ -d .git ] && git status -sb || :
+[ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
