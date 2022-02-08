@@ -13,7 +13,27 @@ function bootstrap-macos()
   fi
 }
 
-function bootstrap-debian()
+function bootstrap-linux()
+{
+  [[ -f /etc/os-release ]] || {
+    echo "Unknown Linux (/etc/os-release does not exist)"
+    exit 1
+  }
+
+  source /etc/os-release
+
+  case $ID in
+  debian)
+    bootstrap-linux-debian
+    ;;
+  *)
+    echo "Unsupported Linux: $ID / $PRETTY_NAME"
+    exit 1
+    ;;
+  esac
+}
+
+function bootstrap-linux-debian()
 {
   sudo apt update && sudo apt install git make zsh
 }
@@ -23,21 +43,7 @@ darwin*)
   bootstrap-macos
   ;;
 *linux*)
-  if [[ -f /etc/os-release ]]; then
-    source /etc/os-release
-    case $ID in
-    debian)
-      bootstrap-debian
-      ;;
-    *)
-      echo "Unsupported Linux: $ID / $PRETTY_NAME"
-      exit 1
-      ;;
-    esac
-  else
-    echo "Unknown Linux (/etc/os-release does not exist)"
-    exit 1
-  fi
+  bootstrap-linux
   ;;
 *)
   echo "Unsupported OS: $OSTYPE"
