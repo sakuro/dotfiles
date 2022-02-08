@@ -13,9 +13,31 @@ function bootstrap-macos()
   fi
 }
 
+function bootstrap-debian()
+{
+  sudo apt update && sudo apt install git make zsh
+}
+
 case "${OSTYPE}" in
 darwin*)
   bootstrap-macos
+  ;;
+*linux*)
+  if [[ -f /etc/os-release ]]; then
+    source /etc/os-release
+    case $ID in
+    debian)
+      bootstrap-debian
+      ;;
+    *)
+      echo "Unsupported Linux: $ID / $PRETTY_NAME"
+      exit 1
+      ;;
+    esac
+  else
+    echo "Unknown Linux (/etc/os-release does not exist)"
+    exit 1
+  fi
   ;;
 *)
   echo "Unsupported OS: $OSTYPE"
