@@ -53,7 +53,7 @@ esac
 
 if [[ ! -d "${DOTROOT}" ]]; then
   git clone "${DOTREPO}" "${DOTROOT}"
-  (cd "$DOTROOT" && git submodule init && git sudmobule update)
+  (cd "$DOTROOT" && git submodule init && git submobule update)
 fi
 
 make -C "$DOTROOT" setup
