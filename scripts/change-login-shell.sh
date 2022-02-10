@@ -18,13 +18,16 @@ case $# in
   ;;
 esac
 
+: ${USER:=$(id --user --name)}
+
 case $OSTYPE in
 darwin*)
   set -- $(dscl localhost -read Local/Default/Users/$USER UserShell)
   current_shell=$2
   ;;
 *)
-  echo "Unsupported OS: $OSTYPE"
+  set -- $(getent passwd $URER | cut --delimiter=: --fields=7)
+  current_shell=$1
   ;;
 esac
 
@@ -34,4 +37,4 @@ if [[ ${shell_path##*/} = ${current_shell##*/} ]]; then
 fi
 
 # using sudo in case the user's password is not known
-sudo chsh -s ${shell_path} $(id --user --name)
+sudo chsh -s ${shell_path} $USER
