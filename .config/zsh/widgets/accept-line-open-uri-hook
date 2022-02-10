@@ -7,7 +7,7 @@ function accept-line-open-uri-hook() {
     zle quote-line
     case "$url" in
     *.gz|*.bz2|*.tgz|*.zip|*.dmg|*.lzh)
-      BUFFER="curl -O $BUFFER"
+      BUFFER="curl --remote-name $BUFFER"
       ;;
     *)
       BUFFER="open $BUFFER"

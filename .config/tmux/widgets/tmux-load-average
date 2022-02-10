@@ -4,7 +4,7 @@ PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
 
 if [[ -r /proc/loadavg ]]; then
   set -- $(< /proc/loadavg)
-  ncpu=$(< /proc/cpuinfo | grep '^processor' |wc -l)
+  ncpu=$(< /proc/cpuinfo | grep '^processor' |wc --lines)
 elif [[ -x /usr/sbin/sysctl ]]; then
   set -- $(/usr/sbin/sysctl -n vm.loadavg)
   shift

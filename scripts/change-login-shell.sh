@@ -34,4 +34,4 @@ if [[ ${shell_path##*/} = ${current_shell##*/} ]]; then
 fi
 
 # using sudo in case the user's password is not known
-sudo chsh -s ${shell_path} $(id -un)
+sudo chsh -s ${shell_path} $(id --user --name)

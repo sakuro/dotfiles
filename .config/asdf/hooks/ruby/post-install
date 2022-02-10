@@ -2,14 +2,14 @@
 
 DEFAULT_GEMS=$XDG_CONFIG_HOME/asdf/hooks/ruby/default-gems
 
-exec > >(sed -ue "s/^/[ruby-$1][post-install] /")
+exec > >(sed --unbuffered --expression "s/^/[ruby-$1][post-install] /")
 
 echo "Switching to newly installed ruby $1"
 source $ASDF_DIR/asdf.sh
 asdf shell ruby $1
 echo "Ruby version: $(ruby -v)"
 
-if gem list | grep -q bundler; then
+if gem list | grep --quiet bundler; then
   echo "Updating bundler for ruby $1"
   gem update bundler --no-post-install-message --no-document
 else

@@ -1,2 +1,2 @@
-#!/bin/sed -f
+#!/bin/sed --file
 s/\r//g

@@ -2,7 +2,7 @@
 
 function decode()
 {
-  sed -e 's/+/ /g' -e 's/%\([0-9A-Fa-f][0-9A-Fa-f]\)/\\x\1/g'
+  sed --expression 's/+/ /g' --expression 's/%\([0-9A-Fa-f][0-9A-Fa-f]\)/\\x\1/g'
 }
 
 if [[ $# = 0 ]]; then

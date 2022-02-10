@@ -1,13 +1,10 @@
 [alias]
   amend = commit --no-edit --amend
-  bd = !git branch --merged | fgrep -v '*' | egrep -v '\\<master\\>' | xargs -I % git branch -d %
-  br = branch-root
-  branch-root = merge-base master HEAD
-  changes = !git diff $(git branch-root)..HEAD
-  pb = !git push --verbose -u origin $(git symbolic-ref --short HEAD)
-  st = status -sb
+  bd = !git branch --merged | fgrep --invert-match '*' | egrep --invert-match '\\<master\\>' | xargs -I % git branch --delete %
+  pb = !git push --verbose --set-upstream origin $(git symbolic-ref --short HEAD)
+  st = status --short --branch
   wdiff = diff --word-diff=color --color=auto --word-diff-regex=[[:alnum:]_]
-  wip = commit -m wip
+  wip = commit --message wip
 [branch]
   autosetuprebase = always
 [color]

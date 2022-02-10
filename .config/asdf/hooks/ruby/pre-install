@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-exec > >(sed -ue "s/^/[ruby-$1][pre-install] /")
+exec > >(sed --unbuffered --expression "s/^/[ruby-$1][pre-install] /")
 
 echo "Installing ruby $1"
 

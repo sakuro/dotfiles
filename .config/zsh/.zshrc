@@ -78,7 +78,7 @@ zstyle ':completion:*' use-cache true
 zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
 if is-executable -p code; then
-  EDITOR="code -w"
+  EDITOR="code --wait"
 elif is-executable -p vim; then
   EDITOR=vim
 else
@@ -124,7 +124,7 @@ is-executable -p powershell.exe && alias pbpaste='powershell.exe -Command Get-Cl
   local dircolors_path=$XDG_CONFIG_HOME/themes/nord/dircolors/src/dir_colors
   if is-executable dircolors && [[ -f $dircolors_path ]]; then
     eval $(dircolors -b $dircolors_path)
-    alias ls='ls -F --color=auto'
+    alias ls='ls --classify=auto --color=auto'
   fi
 }
 
@@ -170,7 +170,7 @@ is-executable direnv && eval "$(direnv hook zsh)"
 
 function git-status-short()
 {
-  upfind -q .git && git status -sb
+  upfind -q .git && git status --short --branch
 }
 add-zsh-hook chpwd git-status-short
 

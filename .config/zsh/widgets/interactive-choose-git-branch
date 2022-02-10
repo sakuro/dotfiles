@@ -3,7 +3,7 @@
 function interactive-choose-git-branch() {
   local branch=$(git branch | peco --prompt "Branch to checkout:" --query "$BUFFER" | awk '{print $NF}')
   if [[ -n "$branch" ]]; then
-    BUFFER="git checkout -q $branch"
+    BUFFER="git checkout --quiet $branch"
     CURSOR=$#BUFFER
   fi
 }

@@ -31,7 +31,7 @@ function install_specific_version()
   plugin=$1
   version=$2
 
-  if asdf list $plugin | grep -qxF $version; then
+  if asdf list $plugin | grep --quiet --line-regexp --fixed-strings $version; then
     echo "$plugin $version is already installed"
   else
     echo "Installing $plugin $version"

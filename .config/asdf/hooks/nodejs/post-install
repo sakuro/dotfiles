@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-exec > >(sed -ue "s/^/[nodejs-$1][post-install] /")
+exec > >(sed --unbuffered --expression "s/^/[nodejs-$1][post-install] /")
 
 echo "Switching to newly installed Node.js $1"
 source $ASDF_DIR/asdf.sh
 asdf shell nodejs $1
-echo "Node.js version: $(node -v)"
-echo "npm version: $(npm -qv)"
+echo "Node.js version: $(node --version)"
+echo "npm version: $(npm --version)"
 echo "Installing yarn"
-npm install -g yarn
+npm install --global yarn
 echo "Done"

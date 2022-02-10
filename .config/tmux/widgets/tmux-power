@@ -3,7 +3,7 @@
 PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
 
 if is-executable pmset; then
-  set -- $(pmset -g ps | grep -oP '(?<=Now drawing from '\'')(AC|Battery)|(\d+)(?=%;)|(charged|charging|dischargin)')
+  set -- $(pmset -g ps | grep --only-matching --perl-regexp '(?<=Now drawing from '\'')(AC|Battery)|(\d+)(?=%;)|(charged|charging|dischargin)')
   source=$1
   percentage=$2
   state=$3

@@ -56,4 +56,4 @@ if [[ ! -d "${DOTROOT}" ]]; then
   (cd "$DOTROOT" && git submodule init && git submobule update)
 fi
 
-make -C "$DOTROOT" setup
+make --directory "$DOTROOT" setup
