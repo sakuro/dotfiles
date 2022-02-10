@@ -163,6 +163,9 @@ is-executable direnv && eval "$(direnv hook zsh)"
     /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
     [[ -f $script ]] && source $script
   done
+  if [[ -n $ZSH_AUTOSUGGEST_CLEAR_WIDGETS ]]; then
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-with-hooks
+  fi
 }
 
 function git-status-short()
