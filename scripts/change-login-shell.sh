@@ -26,7 +26,7 @@ darwin*)
   current_shell=$2
   ;;
 *)
-  set -- $(getent passwd $URER | cut --delimiter=: --fields=7)
+  set -- $(getent passwd $USER | cut --delimiter=: --fields=7)
   current_shell=$1
   ;;
 esac
