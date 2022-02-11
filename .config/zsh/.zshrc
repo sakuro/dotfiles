@@ -160,7 +160,9 @@ is-executable direnv && eval "$(direnv hook zsh)"
 () {
   for script in \
     /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
+    /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
+    /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
     [[ -f $script ]] && source $script
   done
   if [[ -n $ZSH_AUTOSUGGEST_CLEAR_WIDGETS ]]; then
