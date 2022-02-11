@@ -1,5 +1,6 @@
 git_protocol: https
 prompt: enabled
 aliases:
+    browse: repo view --web
     default-branch: repo view --json defaultBranchRef --jq .defaultBranchRef.name
     whoami: api /user --cache 24h --jq .login
