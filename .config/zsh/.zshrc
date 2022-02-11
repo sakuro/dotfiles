@@ -124,7 +124,7 @@ is-executable -p powershell.exe && alias pbpaste='powershell.exe -Command Get-Cl
   local dircolors_path=$XDG_CONFIG_HOME/themes/nord/dircolors/src/dir_colors
   if is-executable dircolors && [[ -f $dircolors_path ]]; then
     eval $(dircolors -b $dircolors_path)
-    alias ls='ls --classify=auto --color=auto'
+    alias ls='ls --classify --color=auto'
   fi
 }
 
