@@ -12,7 +12,7 @@ fi
 
 if [[ -n $strength ]]; then
   level=$((strength / 12.5))
-  print -nP "\U1F4F6"
   tmux-levels cyan white $level
+  print -nP "\U1F4F6"
   print -nP "$ssid"
 fi
