@@ -12,7 +12,10 @@ for repo in $*; do
   }
   (
     cd $repo
-    git remote show | grep upstream >/dev/null || exit 0
+    git remote show | grep upstream >/dev/null || {
+      echo "${repo/$HOME/~} does not have an upstream, skipping"
+      exit 0
+    }
     echo "=== ${repo/$HOME/~} ==="
     git fetch upstream
     if git diff-index --quiet HEAD; then
