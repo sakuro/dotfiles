@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 function interactive-choose-git-branch() {
-  local branch=$(git branch | peco --prompt "Branch to checkout:" --query "$BUFFER" | awk '{print $NF}')
+  local branch=$(git branch | peco --prompt "Branch to checkout:" --query "$LBUFFER" | awk '{print $NF}')
   if [[ -n "$branch" ]]; then
     BUFFER="git checkout --quiet $branch"
     CURSOR=$#BUFFER
