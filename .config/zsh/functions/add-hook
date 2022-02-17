@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+[[ $# = 2 ]] || {
+  echo Usage: add-hook hook-name hook-function
+  return 1
+}
+
+local hook="${1}_functions"
+local f=$2
+
+if [[ ${(P)+hook} = 1 ]]; then
+  set -A $hook ${(P)hook} $f
+else
+  typeset -agU $hook
+  set -A $hook $f
+fi

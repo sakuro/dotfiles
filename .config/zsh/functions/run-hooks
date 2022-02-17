@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+typeset -A opts
+zparseopts -D -A opts -until-success -until-failure
+
+local hook="${1}_functions"
+shift
+
+if [[ -n $opts[(i)--until-success] && -n $opts[(i)--until-failure] ]]; then
+  echo "run-hooks: You cannont specify --until-success and --until-failure at the same time"
+  return 1
+elif [[ -n $opts[(i)--until-success] ]]; then
+  for f in ${(P)hook}; do
+    $f $@ && return 0
+  done
+  return 1
+elif [[ -n $opts[(i)--until-failure] ]]; then
+  for f in ${(P)hook}; do
+    $f $@ || return 0
+  done
+  return 1
+else
+  for f in ${(P)hook}; do
+    echo running $f
+    $f $@
+  done
+  return 0
+fi
