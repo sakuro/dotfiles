@@ -3,6 +3,7 @@
 function accept-line-with-hooks() {
   run-hooks --until-success accept_line $BUFFER
   if [[ $? = 0 ]]; then
+    print -S "$BUFFER"
     BUFFER=""
     zle reset-prompt
   else
