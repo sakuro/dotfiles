@@ -171,9 +171,9 @@ is-executable direnv && eval "$(direnv hook zsh)"
   if [[ -n $ZSH_AUTOSUGGEST_CLEAR_WIDGETS ]]; then
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-with-hooks
   fi
-  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main regexp)
-  if [[ -n ZSH_HIGHLIGHT_REGEXP ]]; then
-    ZSH_HIGHLIGHT_REGEXP+=('(https?://([^ ]+[.])+([^ ]+))' fg=cyan)
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
+  if [[ -n ZSH_HIGHLIGHT_PATTERNS ]]; then
+    ZSH_HIGHLIGHT_PATTERNS+=('(http|https)://(([^[:SPACE:]])##.)##([^[:SPACE:]])##(([^[:SPACE:]])##)' fg=cyan)
   fi
 }
 
