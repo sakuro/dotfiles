@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+[[ $1 = (http://*|https://*) ]] || return 1
+
+local url="$1"
+
+echo ""
+open $url
+REPLY=$?

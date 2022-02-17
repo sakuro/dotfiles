@@ -24,11 +24,11 @@ typeset -aU path
 }
 
 fpath=(
-  $ZDOTDIR/functions $fpath
+  $ZDOTDIR/functions $ZDOTDIR/hooks $fpath
   /opt/homebrew/share/zsh/site-functions
   /opt/homebrew/share/zsh-completions
 )
-autoload -Uz ${(e)${^$(echo $ZDOTDIR/functions/*(@,.N))}:t}
+autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
 
 # asdf
 

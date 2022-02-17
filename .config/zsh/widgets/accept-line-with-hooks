@@ -1,13 +1,11 @@
 #!/bin/zsh
 
 function accept-line-with-hooks() {
-  local hook
-  if [[ $#accept_line_functions -gt 0 ]]; then
-    for hook in $accept_line_functions; do
-      zle $hook && break
-    done
+  run-hooks --until-success accept_line $BUFFER
+  if [[ $? = 0 ]]; then
+    BUFFER=""
+    zle reset-prompt
+  else
+    zle accept-line
   fi
-  zle accept-line
 }
-
-typeset -aU accept_line_functions

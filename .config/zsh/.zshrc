@@ -12,6 +12,9 @@ setopt numeric_glob_sort
 autoload run-help
 bindkey -e
 bindkey '^M' accept-line-with-hooks
+add-hook accept_line accept-line-uri-download
+add-hook accept_line accept-line-uri-github-clone
+add-hook accept_line accept-line-uri-open
 bindkey '^r' interactive-history-search
 bindkey '^x^v' interactive-chdir-dirs
 bindkey '^x^g' interactive-chdir-projects
