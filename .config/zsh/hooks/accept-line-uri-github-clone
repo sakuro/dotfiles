@@ -4,14 +4,13 @@
 
 local url=$1
 local repo=${${url%.git}#*://*/}
-local owner=$repo:h
-local owner_dir=$HOME/github.com/$owner
+local dir=$HOME/github.com/$repo
+
 echo ""
-(mkdir -p $owner_dir && cd $owner_dir && {
-  if [[ -d $repo:t ]]; then
-    echo $repo exists
-  else
-    gh repo clone $url
-  fi
-})
+
+if [[ -d $dir ]]; then
+  echo $repo exists
+else
+  (unset PS4; set -x; gh repo clone $url $dir)
+fi
 REPLY=$?

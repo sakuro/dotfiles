@@ -5,5 +5,5 @@
 local url="$1"
 
 echo ""
-open $url
+(unset PS4; set -x; open $url)
 REPLY=$?

@@ -7,5 +7,5 @@ local url="${1%%\?*}"
 [[ $url = (*.gz|*.bz2|*.tgz|*.zip|*.dmg|*.lzh) ]] || return 1
 
 echo ""
-curl --remote-name $url
+(unset PS4; set -x; curl --remote-name $url)
 REPLY=$?
