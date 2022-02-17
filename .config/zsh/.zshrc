@@ -171,6 +171,10 @@ is-executable direnv && eval "$(direnv hook zsh)"
   if [[ -n $ZSH_AUTOSUGGEST_CLEAR_WIDGETS ]]; then
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-with-hooks
   fi
+  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main regexp)
+  if [[ -n ZSH_HIGHLIGHT_REGEXP ]]; then
+    ZSH_HIGHLIGHT_REGEXP+=('(https?://([^ ]+[.])+([^ ]+))' fg=cyan)
+  fi
 }
 
 function git-status-short()
