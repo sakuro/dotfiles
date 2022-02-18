@@ -98,6 +98,8 @@
   # Override the variant of the GTK theme. Commonly supported values are `dark`
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
+window:
+  opacity: 0.94
 
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -157,7 +159,6 @@
 
   # Point size
   #size: 11.0
-
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
@@ -184,6 +185,10 @@
   # characters (Unicode points 2500 - 259f).
   #
   #builtin_box_drawing: true
+font:
+  normal:
+    family: Cica
+  size: 18.0
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
@@ -331,6 +336,31 @@
   # the default background. When set to `true` all cells will be transparent
   # regardless of their background color.
   #transparent_background_colors: false
+colors:
+  primary:
+    background: '0x2E3440'
+    foreground: '0xD8DEE9'
+  cursor:
+    text: '0x2E3440'
+    cursor: '0xD8DEE9'
+  normal:
+    black: '0x3B4252'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x88C0D0'
+    white: '0xE5E9F0'
+  bright:
+    black: '0x4C566A'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x8FBCBB'
+    white: '0xECEFF4'
 
 # Bell
 #
@@ -372,6 +402,10 @@
   #     args: ["Hello, World!"]
   #
   #command: None
+bell:
+  animation: EaseOutCubic
+  duration: 50
+  color: '#ffffff'
 
 #selection:
   # This string contains all characters that are used as separators for
