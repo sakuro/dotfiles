@@ -2,7 +2,7 @@
 
   local selected=$(peco --query "$LBUFFER")
 
-  [[ -n ${~selected} ]] || return
-  [[ -d ${~selected} ]] || { echo "$selected is not a directory" && return 1 }
+  [[ -n ${~selected} ]] || { bell && return }
+  [[ -d ${~selected} ]] || { bell && return }
   BUFFER="cd $selected"
   zle accept-line

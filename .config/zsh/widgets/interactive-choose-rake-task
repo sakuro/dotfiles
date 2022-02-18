@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-upfind -q Rakefile || return 0
+upfind -q Rakefile || { bell && return 0 }
 
 echo "Collecting rake tasks..."
 local dir
