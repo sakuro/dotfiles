@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-if [[ $# = 0 ]]; then
+[[ $# = 0 ]] || {
   echo "Usage: update-upstream REPO"
   exit 1
-fi
+}
 
 local repo=$1
 
