@@ -1,0 +1,31 @@
+#!/bin/zsh
+
+if [[ $# = 0 ]]; then
+  echo "Usage: update-upstream REPO"
+  exit 1
+fi
+
+local repo=$1
+
+[[ -d $repo/.git ]] || {
+  echo "$(print -D $repo) is not a git repo"
+  exit 1
+}
+
+cd $repo
+
+git remote show | grep upstream >/dev/null || {
+  echo "$(print -D $repo) does not have an upstream"
+  exit 1
+}
+
+echo "=== $(print -D $repo) ==="
+git fetch upstream
+git diff-index --quiet HEAD || {
+  echo "There are uncommitted change(s), skipping rebase and push"
+  exit 1
+}
+
+default_branch=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+git rebase upstream/$default_branch
+git remote show | grep origin >/dev/null && git push origin
