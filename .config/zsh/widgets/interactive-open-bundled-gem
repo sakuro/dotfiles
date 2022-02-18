@@ -1,8 +1,7 @@
 #!/bin/zsh
 
-upfind -q Gemfile || return 0
-local dir=$(bundle show | sed --quiet --expression 's/  \* \([^ ][^ ]*\) (.*)$/\1/p' |  peco --query "$LBUFFER" | xargs bundle show)
-if [[ -n "$dir" ]]; then
-  BUFFER="$EDITOR $dir"
-  zle accept-line
-fi
+upfind -q Gemfile || { bell && return 0 }
+local gem=$(bundle show | sed --expression 1d | peco --query "$LBUFFER" | awk '{print $2}')
+[[ -n $gem ]] || { bell && return 0 }
+BUFFER="bundle open $gem"
+zle accept-line
