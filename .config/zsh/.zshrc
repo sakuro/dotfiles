@@ -16,10 +16,10 @@ add-hook accept_line accept-line-uri-download
 add-hook accept_line accept-line-uri-github-clone
 add-hook accept_line accept-line-uri-open
 bindkey '^r' interactive-history-search
-bindkey '^x^v' interactive-chdir-dirs
-bindkey '^x^g' interactive-chdir-projects
-bindkey '^x^y' interactive-open-bundled-gem
-bindkey '^x^k' interactive-choose-rake-task
+bindkey '^x^d' interactive-chdir-dirs
+bindkey '^x^p' interactive-chdir-projects
+bindkey '^x^g' interactive-open-bundled-gem
+bindkey '^x^t' interactive-choose-rake-task
 bindkey '^x^b' interactive-choose-git-branch
 
 fpath=(
