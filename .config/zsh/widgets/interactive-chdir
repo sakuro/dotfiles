@@ -1,8 +1,8 @@
 #!/bin/zsh
 
   local selected=$(peco --query "$LBUFFER")
+  [[ -n ${~selected} ]] || { bell && return 1 }
+  [[ -d ${~selected} ]] || { bell && return 1 }
 
-  [[ -n ${~selected} ]] || { bell && return }
-  [[ -d ${~selected} ]] || { bell && return }
   BUFFER="cd $selected"
   zle accept-line

@@ -1,7 +1,9 @@
 #!/bin/zsh
 
-upfind -q Gemfile || { bell && return 0 }
+upfind -q Gemfile || { bell && return 1 }
+
 local gem=$(bundle show | sed --expression 1d | peco --query "$LBUFFER" | awk '{print $2}')
-[[ -n $gem ]] || { bell && return 0 }
+[[ -n $gem ]] || { bell && return }
+
 BUFFER="bundle open $gem"
 zle accept-line

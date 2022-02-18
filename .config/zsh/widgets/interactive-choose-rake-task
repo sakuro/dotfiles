@@ -1,11 +1,10 @@
 #!/bin/zsh
 
-upfind -q Rakefile || { bell && return 0 }
+upfind -q Rakefile || { bell && return 1 }
 
 echo "Collecting rake tasks..."
-local dir
-task=$(bundle exec rake --tasks | peco | sed --expression 's/^rake //;s/ *#.*$//')
-if [[ -n "$task" ]]; then
-  BUFFER="bundle exec rake $task"
-  zle accept-line
-fi
+local task=$(bundle exec rake --tasks | peco | sed --expression 's/^rake //;s/ *#.*$//')
+[[ -n "$task" ]] || { bell && return }
+
+BUFFER="bundle exec rake $task"
+zle accept-line

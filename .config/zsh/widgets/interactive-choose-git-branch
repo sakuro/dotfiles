@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-upfind -q .git || { bell && return 0 }
+upfind -q .git || { bell && return 1 }
 
 local branch=$(git branch | peco --prompt "Branch to checkout:" --query "$LBUFFER" | awk '{print $NF}')
-if [[ -n "$branch" ]]; then
-  BUFFER="git switch --quiet $branch"
-  zle accept-line
-fi
+[[ -n "$branch" ]] || { bell & return }
+
+BUFFER="git switch --quiet $branch"
+zle accept-line
