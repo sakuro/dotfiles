@@ -1,5 +1,3 @@
 #!/bin/zsh
 
-function interactive-chdir-dirs() {
-  builtin dirs -p | interactive-chdir
-}
+builtin dirs -p | interactive-chdir

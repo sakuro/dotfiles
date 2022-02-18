@@ -1,6 +1,4 @@
 #!/bin/zsh
 
-function interactive-history-search() {
-  BUFFER=$(builtin history -r 1 | sed --expression 's/^ *[0-9][0-9]*[* ] //' | peco --query "$LBUFFER")
-  CURSOR=$#BUFFER
-}
+BUFFER=$(builtin history -r 1 | sed --expression 's/^ *[0-9][0-9]*[* ] //' | peco --query "$LBUFFER")
+CURSOR=$#BUFFER

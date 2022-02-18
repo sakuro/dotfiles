@@ -1,14 +1,12 @@
-function cd-up-at-bol-or-backward-delete-char() {
-  if [[ $#BUFFER -eq 0 ]]; then
-    local f
-    cd ..
-    for f in $precmd_functions; do
-      $f
-    done
-    zle reset-prompt
-  else
-    zle backward-delete-char
-  fi
-}
+#!/bin/zsh
 
-zle -N cd-up-at-bol-or-backward-delete-char
+if [[ $#BUFFER -eq 0 ]]; then
+  local f
+  cd ..
+  for f in $precmd_functions; do
+    $f
+  done
+  zle reset-prompt
+else
+  zle backward-delete-char
+fi

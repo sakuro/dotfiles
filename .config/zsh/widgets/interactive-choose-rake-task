@@ -1,9 +1,11 @@
-function interactive-choose-rake-task() {
-  echo "Collecting rake tasks..."
-  local dir
-  task=$(bundle exec rake --tasks | peco | sed --expression 's/^rake //;s/ *#.*$//')
-  if [[ -n "$task" ]]; then
-    BUFFER="bundle exec rake $task"
-    zle accept-line
-  fi
-}
+#!/bin/zsh
+
+upfind -q Rakefile || return 0
+
+echo "Collecting rake tasks..."
+local dir
+task=$(bundle exec rake --tasks | peco | sed --expression 's/^rake //;s/ *#.*$//')
+if [[ -n "$task" ]]; then
+  BUFFER="bundle exec rake $task"
+  zle accept-line
+fi

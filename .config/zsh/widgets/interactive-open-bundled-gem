@@ -1,9 +1,8 @@
 #!/bin/zsh
 
-function interactive-open-bundled-gem() {
-  local dir=$(bundle show | sed --quiet --expression 's/  \* \([^ ][^ ]*\) (.*)$/\1/p' |  peco --query "$LBUFFER" | xargs bundle show)
-  if [[ -n "$dir" ]]; then
-    BUFFER="$EDITOR $dir"
-    zle accept-line
-  fi
-}
+upfind -q Gemfile || return 0
+local dir=$(bundle show | sed --quiet --expression 's/  \* \([^ ][^ ]*\) (.*)$/\1/p' |  peco --query "$LBUFFER" | xargs bundle show)
+if [[ -n "$dir" ]]; then
+  BUFFER="$EDITOR $dir"
+  zle accept-line
+fi

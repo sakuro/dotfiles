@@ -22,8 +22,12 @@ bindkey '^x^y' interactive-open-bundled-gem
 bindkey '^x^k' interactive-choose-rake-task
 bindkey '^x^b' interactive-choose-git-branch
 
+fpath=(
+  $ZDOTDIR/widgets
+  $fpath
+)
 for w in $ZDOTDIR/widgets/*(@,.); do
-  source $w
+  autoload $w:t
   zle -N $w:t
 done
 
