@@ -21,7 +21,6 @@ elif [[ -n $opts[(i)--until-failure] ]]; then
   return 1
 else
   for f in ${(P)hook}; do
-    echo running $f
     $f $@
   done
   return 0
