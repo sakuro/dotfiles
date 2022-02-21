@@ -7,7 +7,7 @@ local hook="${1}_functions"
 shift
 
 if [[ -n $opts[(i)--until-success] && -n $opts[(i)--until-failure] ]]; then
-  echo "run-hooks: You cannont specify --until-success and --until-failure at the same time"
+  echo "run-hooks: You cannot specify --until-success and --until-failure at the same time"
   return 1
 elif [[ -n $opts[(i)--until-success] ]]; then
   for f in ${(P)hook}; do
