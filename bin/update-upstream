@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-[[ $# = 0 ]] || {
+[[ $# != 1 ]] && {
   echo "Usage: update-upstream REPO"
   exit 1
 }
