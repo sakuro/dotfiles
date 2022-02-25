@@ -1,0 +1,5 @@
+#!/bin/zsh
+# Link this script from .git/hooks
+echo "Running post-merge hook..."
+echo "Updating symlinks"
+make link-dotfiles
