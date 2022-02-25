@@ -24,3 +24,6 @@ diff-brewfile: Brewfile.$(HOSTNAME)
 Brewfile.$(HOSTNAME):
 	@rm --force $@
 	@brew bundle dump --file=$@
+
+link-hooks:
+	@ln -sf $(PWD)/scripts/post-merge .git/hooks
