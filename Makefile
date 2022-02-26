@@ -1,6 +1,6 @@
 HOSTNAME=$(shell hostname)
 
-setup: link-dotfiles install-packages change-login-shell
+setup: link-git-hooks link-dotfiles install-packages change-login-shell
 
 .PHONY: Brewfile.$(HOSTNAME)
 
@@ -25,7 +25,7 @@ Brewfile.$(HOSTNAME):
 	@rm --force $@
 	@brew bundle dump --file=$@
 
-link-hooks:
+link-git-hooks:
 	@ln -sf $(PWD)/scripts/post-merge .git/hooks
 
 shellcheck:
