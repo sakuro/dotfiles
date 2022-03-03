@@ -7,8 +7,9 @@ bash -c "$(curl --fail --silent --show-error --location https://raw.githubuserco
 
 type -P mas > /dev/null || brew install mas
 mas_account="$(mas account)"
+# shellcheck disable=SC2181
 until [[ $? = 0 ]]; do
-  echo "Log in to the AppStore and press ENTER" && read answer < /dev/tty
+  echo "Log in to the AppStore and press ENTER" && read -r < /dev/tty
   mas_account="$(mas account)"
 done
 echo "Using the AppStore account: ${mas_account}"

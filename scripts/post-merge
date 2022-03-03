@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # Link this script from .git/hooks
 echo "Running post-merge hook..."
 echo "Updating symlinks"

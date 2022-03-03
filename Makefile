@@ -27,3 +27,6 @@ Brewfile.$(HOSTNAME):
 
 link-hooks:
 	@ln -sf $(PWD)/scripts/post-merge .git/hooks
+
+shellcheck:
+	@shellcheck *.sh scripts/*.sh
