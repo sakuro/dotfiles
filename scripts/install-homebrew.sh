@@ -7,11 +7,8 @@ bash -c "$(curl --fail --silent --show-error --location https://raw.githubuserco
 
 type -P mas > /dev/null || brew install mas
 if [[ "${$(sw_vers -productVersion)%%.*}" -lt 12 ]]; then
-  mas_account="$(mas account)"
-  # shellcheck disable=SC2181
-  until [[ $? = 0 ]]; do
+  until mas_account="$(mas account)"; do
     echo "Log in to the AppStore and press ENTER" && read -r < /dev/tty
-    mas_account="$(mas account)"
   done
   echo "Using the AppStore account: ${mas_account}"
 fi
