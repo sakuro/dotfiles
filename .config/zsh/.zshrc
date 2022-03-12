@@ -123,7 +123,6 @@ is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
 
 # Aliases for Windows
-is-executable -p explorer.exe && alias open=explorer.exe
 is-executable -p clip.exe && alias pbcopy=clip.exe
 is-executable -p powershell.exe && alias pbpaste='powershell.exe -Command Get-Clipboard'
 

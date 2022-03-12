@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+remove-path ~/bin/wrappers
+
+is-executable -p open && exec open "$@"
+
+local app cmd
+typeset -A opts
+zparseopts -D -A opts a: e
+
+if [[ $# = 0 ]]; then
+  exec explorer.exe .
+elif [[ -n $opts[(i)-a] && -n $opts[(i)-e] ]]; then
+  echo "open [-a app|-e] [path]"
+  exit 1
+elif [[ -n $opts[(i)-e] ]]; then
+  app="${VISUAL:-${EDITOR:-vi}}"
+elif [[ -n $opts[(i)-a] ]]; then
+  app="$opts[-a]"
+fi
+
+[[ -z "$app" && -e "$1" ]] && exec cmd.exe /c start "$(wslpath -w "$1")" 2>/dev/null
+
+set -- "${=app}" "$@"
+cmd=$1
+shift
+
+is-executable -p "${cmd}.exe" && cmd="${cmd}.exe"
+exec "${cmd}" "$@"
