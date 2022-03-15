@@ -43,4 +43,3 @@ cask "kindle"
 cask "launchbar"
 cask "visual-studio-code"
 mas "Amphetamine", id: 937984704
-mas "CloudClip Manager", id: 563362017
