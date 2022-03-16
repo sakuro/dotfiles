@@ -1,4 +1,0 @@
-#!/bin/sh
-
-defaults write org.hammerspoon.Hammerspoon MJConfigFile $HOME/.config/hammerspoon/init.lua
-
