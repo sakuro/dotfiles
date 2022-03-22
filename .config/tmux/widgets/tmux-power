@@ -2,12 +2,12 @@
 
 PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
 
-if is-executable pmset; then
-  set -- $(pmset -g ps | grep --only-matching --perl-regexp '(?<=Now drawing from '\'')(AC|Battery)|(\d+)(?=%;)|(charged|charging|dischargin)')
-  source=$1
-  percentage=$2
-  state=$3
-fi
+is-executable pmset || return
+
+set -- $(pmset -g ps | grep --only-matching --perl-regexp '(?<=Now drawing from '\'')(AC|Battery)|(\d+)(?=%;)|(charged|charging|dischargin)')
+source=$1
+percentage=$2
+state=$3
 
 if [[ -n $percentage ]]; then
   integer level=$(( percentage / 12.5 ))

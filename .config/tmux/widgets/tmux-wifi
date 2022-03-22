@@ -4,11 +4,11 @@ PATH="$XDG_CONFIG_HOME/tmux/widgets:$PATH"
 
 airport_cmd=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
 
-if [[ -x $airport_cmd ]]; then
-  local info=(${(f)"$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | grep --only-matching --perl-regexp '(?<=agrCtlRSSI: -)(\d+)|(?<=SSID: )(?<!BSSID: )(.*)')"})
-  strength=$((100 - $info[1]))
-  ssid=$info[2]
-fi
+[[ -x $airport_cmd ]] || return
+
+local info=(${(f)"$($airport_cmd -I | grep --only-matching --perl-regexp '(?<=agrCtlRSSI: -)(\d+)|(?<=SSID: )(?<!BSSID: )(.*)')"})
+strength=$((100 - $info[1]))
+ssid=$info[2]
 
 if [[ -n $strength ]]; then
   level=$((strength / 12.5))
