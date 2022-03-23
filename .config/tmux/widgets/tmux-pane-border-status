@@ -23,9 +23,9 @@ function tmux-pane-pwd() {
 
     if [[ $# -gt 2 ]]; then
       local first="$1"
+      shift
       [[ "$first" = '~'* ]] || first="/$first"
-      local last="$@[$#]"
-      base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)@[2,-2]}})}/"$last"
+      base_path="$first/${(j:/:)@}"
     fi
 
     result="#[fg=magenta]${pwd_symbol} ${base_path}#[default]"
