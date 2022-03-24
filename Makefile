@@ -30,3 +30,6 @@ link-git-hooks:
 
 shellcheck:
 	shellcheck *.sh scripts/*.sh
+
+clean-packages:
+	brew cleanup --prune=all
