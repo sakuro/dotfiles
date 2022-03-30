@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+function list-tabs()
+{
+  osascript -l JavaScript <<-'EOF'
+  const browser = Application("Google Chrome");
+  browser.windows().flatMap((window, i) => window.tabs().map((tab, j) => `${i}:${j}:${tab.title()}`)).join("\n");
+EOF
+}
+
+function activate-tab()
+{
+  osascript -l JavaScript -- - "${(s|:|)@}" <<-'EOF'
+  function run(argv) {
+    const windowIndex = parseInt(argv[0]);
+    const tabIndex = parseInt(argv[1]);
+    const browser = Application("Google Chrome");
+    browser.activate();
+    browser.windows[windowIndex].visible = true;
+    browser.windows[windowIndex].activeTabIndex = tabIndex + 1;
+    browser.windows[windowIndex].index = 1;
+  }
+EOF
+}
+
+activate-tab "$(list-tabs | peco)"

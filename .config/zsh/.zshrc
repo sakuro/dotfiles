@@ -21,6 +21,7 @@ bindkey '^x^p' interactive-chdir-projects
 bindkey '^x^g' interactive-open-bundled-gem
 bindkey '^x^t' interactive-choose-rake-task
 bindkey '^x^b' interactive-choose-git-branch
+bindkey '^x^w' interactive-choose-chrome-tab
 
 fpath=(
   $ZDOTDIR/widgets
