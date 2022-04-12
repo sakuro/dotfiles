@@ -7,8 +7,12 @@ ulimit -c unlimited
 export XDG_CONFIG_HOME=$HOME/.config
 [[ -d $XDG_CONFIG_HOME ]] || mkdir --parents $XDG_CONFIG_HOME
 
-export XDG_CACHE_HOME=$HOME/.cache
-[[ -d $XDG_CACHE_HOME ]] || mkdir --parents $XDG_CACHE_HOME
+if [[ -d $HOME/Library/Caches ]]; then
+  export XDG_CACHE_HOME=$HOME/Library/Caches
+else
+  export XDG_CACHE_HOME=$HOME/.cache
+  [[ -d $XDG_CACHE_HOME ]] || mkdir --parents $XDG_CACHE_HOME
+fi
 
 export XDG_DATA_HOME=$HOME/.local/share
 [[ -d $XDG_DATA_HOME ]] || mkdir --parents $XDG_DATA_HOME
