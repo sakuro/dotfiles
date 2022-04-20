@@ -33,3 +33,6 @@ shellcheck:
 
 clean-packages:
 	brew cleanup --prune=all
+
+update-packages:
+	brew upgrade --verbose
