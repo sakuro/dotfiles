@@ -8,3 +8,4 @@
 /.tool-versions
 /.bundle/config
 /*.code-workspace
+bundle/
