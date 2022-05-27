@@ -119,6 +119,7 @@ alias -g L="| $PAGER"
 alias dirs='dirs -v'
 alias -g Q='1>/dev/null 2>&1'
 alias puts='print -l'
+alias mktree='mkdir -p'
 
 is-executable nvim && alias vim=nvim
 is-executable vim && alias vi=vim
