@@ -18,7 +18,8 @@ darwin*)
 
     case $ID in
     debian)
-      apt install tmux
+      sudo apt
+      sudo apt install --yes less tmux vim zsh
       ;;
     *)
       echo "Unsupported Linux: $ID / $PRETTY_NAME"
