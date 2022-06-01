@@ -1,0 +1,11 @@
+awscli
+direnv
+gh
+jq
+less
+peco
+rsync
+tmux
+vim
+zsh-autosuggestions
+zsh-syntax-highlighting
