@@ -9,6 +9,7 @@ EXCLUDED_PATHSPECS=(
   ':!/README.md'
   ':!/bootstrap.sh'
   ':!/scripts/'
+  ':!/*.txt'
   ':!/.gitignore'
   ':!/.gitmodules'
 )
