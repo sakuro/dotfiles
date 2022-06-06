@@ -26,9 +26,8 @@ EXCLUDED_PATHSPECS=(
 done
 
 # Remove dangling symlinks
-GLOBIGNORE=./.git:./scripts
 for dir in $(cd "$DOTROOT" && find ./* -maxdepth 0 -type d); do
-  find "$DOTDEST/$dir" -xtype l -exec rm --verbose '{}' +
+  [[ -d $DOTDEST/$dir ]] && find "$DOTDEST/$dir" -xtype l -exec rm --verbose '{}' +
 done
 
 # Handle .config/git/include/credentials
