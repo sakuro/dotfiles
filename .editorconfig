@@ -28,6 +28,11 @@ quote_type = single
 [*.rs]
 indent_size = 4
 
+[*.go]
+indent_size = tab
+indent_style = tab
+tab_width = 4
+
 [Makefile*]
 indent_size = 4
 indent_style = tab
