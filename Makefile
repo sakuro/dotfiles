@@ -16,6 +16,9 @@ change-login-shell:
 install-asdf-plugins:
 	scripts/install-asdf-plugins.sh
 
+install-locale:
+	scripts/install-locale.sh
+
 dump-brewfile: Brewfile.$(HOSTNAME)
 
 diff-brewfile: Brewfile.$(HOSTNAME)
