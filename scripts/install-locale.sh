@@ -14,8 +14,8 @@ darwin*)
     case $ID in
     debian)
       sudo apt install --yes locales
-      sudo sed -i -e '/ja_JP.UTF-8/s/^# *//'
-      sudo locale-gen
+      sudo sed -i -e '/ja_JP.UTF-8/s/^# *//' /etc/locale.gen
+      sudo locale-gen --keep-existing
       ;;
     *)
       echo "Unsupported Linux: $ID / $PRETTY_NAME"
