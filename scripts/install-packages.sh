@@ -27,6 +27,7 @@ darwin*)
     debian)
       install_source_list
       sudo apt update
+      # shellcheck disable=SC2046
       sudo apt install --yes $(cat apt-packages.txt)
       ;;
     *)
