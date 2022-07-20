@@ -4,8 +4,14 @@ setup: link-git-hooks link-dotfiles install-locale install-packages change-login
 
 .PHONY: Brewfile.$(HOSTNAME)
 
+link-git-hooks:
+	ln -sf $(PWD)/scripts/post-merge .git/hooks
+
 link-dotfiles:
 	scripts/link-dotfiles.sh
+
+install-locale:
+	scripts/install-locale.sh
 
 install-packages:
 	scripts/install-packages.sh
@@ -16,9 +22,6 @@ change-login-shell:
 install-asdf-plugins:
 	scripts/install-asdf-plugins.sh
 
-install-locale:
-	scripts/install-locale.sh
-
 dump-brewfile: Brewfile.$(HOSTNAME)
 
 diff-brewfile: Brewfile.$(HOSTNAME)
@@ -27,9 +30,6 @@ diff-brewfile: Brewfile.$(HOSTNAME)
 Brewfile.$(HOSTNAME):
 	rm --force $@
 	brew bundle dump --file=$@
-
-link-git-hooks:
-	ln -sf $(PWD)/scripts/post-merge .git/hooks
 
 shellcheck:
 	shellcheck *.sh scripts/*.sh
