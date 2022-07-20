@@ -1,6 +1,6 @@
 HOSTNAME=$(shell hostname)
 
-setup: link-git-hooks link-dotfiles install-packages change-login-shell
+setup: link-git-hooks link-dotfiles install-locale install-packages change-login-shell
 
 .PHONY: Brewfile.$(HOSTNAME)
 
