@@ -38,7 +38,6 @@ autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
 
 export ASDF_DATA_DIR=$XDG_DATA_HOME/asdf
 export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=$XDG_CONFIG_HOME/asdf/tool-versions
 
 () {
   local asdf_sh
