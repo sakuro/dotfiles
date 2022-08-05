@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOOL_VERSIONS_FILE=$XDG_CONFIG_HOME/asdf/tool-versions
+GLOBAL_TOOL_VERSIONS_FILE=$HOME/.tool-versions
 
 function init_asdf()
 {
@@ -45,11 +45,11 @@ init_asdf || {
   exit 1
 }
 
-[[ -f "$TOOL_VERSIONS_FILE" ]] || {
-  echo "${TOOL_VERSIONS_FILE/$HOME/~/} does not exist"
+[[ -f "$GLOBAL_TOOL_VERSIONS_FILE" ]] || {
+  echo "${GLOBAL_TOOL_VERSIONS_FILE/$HOME/~/} does not exist"
   exit 0
 }
 
 while read -r plugin version; do
   install_or_update_plugin "$plugin" && install_specific_version "$plugin" "$version"
-done < "$TOOL_VERSIONS_FILE"
+done < "$GLOBAL_TOOL_VERSIONS_FILE"
