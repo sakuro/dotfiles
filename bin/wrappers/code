@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+remove-path ~/bin
+
+unset TMUX
+exec code "$@"
