@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-remove-path ~/bin
+remove-path ~/bin/wrappers
 
 unset TMUX
 exec code "$@"
