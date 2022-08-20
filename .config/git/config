@@ -1,11 +1,12 @@
 [alias]
   amend = commit --no-edit --amend
   bd = !git branch --merged | fgrep --invert-match '*' | egrep --invert-match '\\<master\\>' | xargs -I % git branch --delete %
-	new-branch = switch -c
+  new-branch = switch -c
   pb = !git push --verbose --set-upstream origin $(git symbolic-ref --short HEAD)
   st = status --short --branch
   wdiff = diff --word-diff=color --color=auto --word-diff-regex=[[:alnum:]_]
   wip = commit --message wip
+  current-branch = symbolic-ref --short HEAD
 [branch]
   autosetuprebase = always
 [color]
