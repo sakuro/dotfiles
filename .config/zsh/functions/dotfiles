@@ -16,7 +16,7 @@ case $# in
     edit)
       ${(z)EDITOR} $DOTDIR ;;
     update)
-      make up-to-date ;;
+      make up-to-date -C $DOTDIR ;;
     *)
       error_usage ;;
   esac
