@@ -1,3 +1,26 @@
 #!/fin/zsh
 
-[[ $# = 0 ]] && [[ -d ~/.dotfiles ]] && cd ~/.dotfiles
+DOTDIR=$HOME/.dotfiles
+
+function error_usage()
+{
+  echo "dotfiles [edit | update]"
+}
+
+case $# in
+0)
+  [[ -d $DOTDIR ]] && cd $DOTDIR
+  ;;
+1)
+  case $1 in
+    edit)
+      ${(z)EDITOR} $DOTDIR ;;
+    update)
+      make up-to-date ;;
+    *)
+      error_usage ;;
+  esac
+  ;;
+*)
+  error_usage ;;
+esac
