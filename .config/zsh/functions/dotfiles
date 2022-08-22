@@ -1,0 +1,3 @@
+#!/fin/zsh
+
+[[ $# = 0 ]] && [[ -d ~/.dotfiles ]] && cd ~/.dotfiles
