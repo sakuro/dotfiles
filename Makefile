@@ -37,7 +37,7 @@ shellcheck:
 up-to-date: update-packages clean-packages
 
 clean-packages:
-	brew cleanup --prune=all
+	scripts/clean-packages.sh
 
 update-packages:
-	brew upgrade --verbose
+	scripts/update-packages.sh
