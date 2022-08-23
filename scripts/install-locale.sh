@@ -4,7 +4,7 @@ source $(dirname "${BASH_SOURCE:-$0}")/util.sh
 
 function install-locale-darwin()
 {
-  # do nothing
+  : # do nothing
 }
 
 function install-locale-linux-debian()
