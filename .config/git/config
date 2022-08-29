@@ -41,8 +41,4 @@
 [user]
   name = OZAWA Sakuro
   useConfigOnly = true
-[include]
-  path = include/user.email-fallback
-  path = include/credential
-[includeIf "gitdir:~/github.com/quipper/**"]
-  path = include/user.email-quipper
+  email = 10973+sakuro@users.noreply.github.com
