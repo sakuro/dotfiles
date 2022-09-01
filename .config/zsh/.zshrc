@@ -22,6 +22,7 @@ bindkey '^x^g' interactive-open-bundled-gem
 bindkey '^x^t' interactive-choose-rake-task
 bindkey '^x^b' interactive-choose-git-branch
 bindkey '^x^w' interactive-choose-chrome-tab
+bindkey '^x^i' interactive-choose-k8s-ingress
 
 fpath=(
   $ZDOTDIR/widgets
