@@ -146,7 +146,7 @@ fi
 autoload -U colors
 colors
 
-export GREP_COLOR=$color[cyan]
+export GREP_COLOR="mt=$color[cyan]"
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
