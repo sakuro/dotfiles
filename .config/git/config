@@ -1,6 +1,6 @@
 [alias]
   amend = commit --no-edit --amend
-  bd = !git branch --merged | fgrep --invert-match '*' | egrep --invert-match '\\<master\\>' | xargs -I % git branch --delete %
+  bd = !git branch --merged | grep --fixed-strings --invert-match '*' | grep --extended-regexp --invert-match '\\<master\\>' | xargs -I % git branch --delete %
   new-branch = switch -c
   pb = !git push --verbose --set-upstream origin $(git symbolic-ref --short HEAD)
   st = status --short --branch
