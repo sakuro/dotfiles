@@ -19,7 +19,7 @@ function current_shell()
 }
 
 # shellcheck disable=SC2046
-set -- $(grep "/$LOGIN_SHELL"'$' /etc/shells)
+set -- $(grep "/$LOGIN_SHELL"'$' /etc/shells | awk '{print length, $0}' | sort --numeric-sort | head --lines 1 | cut --delimiter ' ' --fields 2)
 case $# in
 0)
   echo "$LOGIN_SHELL could not be found in /etc/shells"
@@ -27,11 +27,6 @@ case $# in
   ;;
 1)
   shell_path=$1
-  ;;
-*)
-  select shell_path; do
-    break
-  done
   ;;
 esac
 
