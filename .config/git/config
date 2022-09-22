@@ -42,3 +42,5 @@
   name = OZAWA Sakuro
   useConfigOnly = true
   email = 10973+sakuro@users.noreply.github.com
+[include]
+  path = include/credential
