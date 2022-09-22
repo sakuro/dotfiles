@@ -23,15 +23,15 @@ function bootstrap-linux()
   # shellcheck disable=SC1091
   source /etc/os-release
 
-  case $ID in
-  debian)
-    bootstrap-linux-debian
-    ;;
-  *)
-    echo "Unsupported Linux: $ID / $PRETTY_NAME"
-    exit 1
-    ;;
-  esac
+  for id in "$ID" "$ID_LIKE"; do
+    case "$id" in
+    debian)
+      bootstrap-linux-debian && return 0
+      ;;
+    esac
+  done
+  echo "Unsupported Linux: ID: ${ID}, ID_LIKE: ${ID_LIKE}, PRETTY_NAME: ${PRETTY_NAME}"
+  exit 1
 }
 
 function bootstrap-linux-debian()
