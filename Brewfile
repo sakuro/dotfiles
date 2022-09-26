@@ -43,4 +43,3 @@ cask "keyboard-cleaner"
 cask "kindle"
 cask "launchbar"
 cask "visual-studio-code"
-mas "Amphetamine", id: 937984704
