@@ -12,14 +12,14 @@ function current_shell()
     ;;
   *)
     # shellcheck disable=SC2046
-    set -- $(getent passwd "$USER" | cut --delimiter=: --fields=7)
+    set -- $(getent passwd "$USER" | cut -d : -f 7)
     echo "$1"
     ;;
   esac
 }
 
 # shellcheck disable=SC2046
-set -- $(grep "/$LOGIN_SHELL"'$' /etc/shells | awk '{print length, $0}' | sort --numeric-sort | head --lines 1 | cut --delimiter ' ' --fields 2)
+set -- $(grep "/$LOGIN_SHELL"'$' /etc/shells | awk '{print length, $0}' | sort -n | head -n 1 | cut -d ' ' -f 2)
 case $# in
 0)
   echo "$LOGIN_SHELL could not be found in /etc/shells"
@@ -30,7 +30,7 @@ case $# in
   ;;
 esac
 
-: "${USER:=$(id --user --name)}"
+: "${USER:=$(id --u -n)}"
 
 current_shell=$(current_shell)
 if [[ "${shell_path##*/}" = "${current_shell##*/}" ]]; then
