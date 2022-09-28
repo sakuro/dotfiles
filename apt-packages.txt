@@ -1,11 +1,15 @@
 awscli
+build-essential
 direnv
 gh
 jq
 less
+libssl-dev
 peco
 rsync
 tmux
+unzip
 vim
+zlib1g-dev
 zsh-autosuggestions
 zsh-syntax-highlighting
