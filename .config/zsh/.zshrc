@@ -146,7 +146,7 @@ fi
 autoload -U colors
 colors
 
-export GREP_COLOR="mt=$color[cyan]"
+export GREP_COLORS="ms=${color[bold]};${color[cyan]}:mc=${color[bold]};${color[cyan]}:sl=:cx=:fn=${color[magenta]}:ln=${color[green]}:bn=${color[green]}:se=${color[blue]}"
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
