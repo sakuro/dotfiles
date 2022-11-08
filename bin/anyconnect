@@ -4,7 +4,6 @@ host="${ANYCONNECT_HOST?is unset}"
 service="AnyConnect"
 vpn="/opt/cisco/anyconnect/bin/vpn"
 
-exec > >(sed --unbuffered --expression '/state:/!d')
 
 case $1 in
 connect)
