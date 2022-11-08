@@ -4,7 +4,7 @@ DOTDIR=$HOME/.dotfiles
 
 function error_usage()
 {
-  echo "dotfiles [edit | update]"
+  echo "dotfiles [edit | update | dump]"
 }
 
 case $# in
@@ -17,6 +17,8 @@ case $# in
       ${(z)EDITOR} $DOTDIR ;;
     update)
       make up-to-date -C $DOTDIR ;;
+    dump)
+      make dump-brewfile -C $DOTDIR ;;
     *)
       error_usage ;;
   esac
