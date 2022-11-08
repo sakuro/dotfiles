@@ -1,8 +1,15 @@
 #!/bin/zsh
 
-host="${ANYCONNECT_HOST?is unset}"
-service="AnyConnect"
+host="${ANYCONNECT_HOST?not set}"
+service="${ANYCONNECT_SERVICE?not set}"
+interface="${ANYCONNECT_INTERFACE?not set}"
+
 vpn="/opt/cisco/anyconnect/bin/vpn"
+
+[[ -x "$vpn" ]] || {
+  echo "Command not found: $vpn:t"
+  exit 1
+}
 
 
 case $1 in
@@ -15,8 +22,15 @@ connect)
 disconnect)
   $vpn disconnect "$host"
   ;;
+status)
+  (( ${"$(ifconfig -l)"[(I)$ANYCONNECT_INTERFACE]} )) && {
+    echo "on"
+  } || {
+    echo "off"
+  }
+  ;;
 *)
-  echo "Usage: $0:t connect|disconnect"
+  echo "Usage: $0:t connect|disconnect|status"
   exit 1
   ;;
 esac
