@@ -2,10 +2,11 @@
 
 VPN="/opt/cisco/anyconnect/bin/vpn"
 
-[[ -x "$VPN" ]] && [[ ${"$(ifconfig -l)"[(I)utun3]} > 0 ]] && {
-  print -nP "\U1F511"
+[[ -x "$VPN" ]] || return 0
+
+print -nP "\U1F511"
+[[ ${"$(ifconfig -l)"[(I)utun3]} > 0 ]] && {
   print -nP On
-} || {
-  print -nP "\U1F511"
+}   || {
   print -nP Off
 }
