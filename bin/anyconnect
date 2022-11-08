@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+host="${ANYCONNECT_HOST?is unset}"
+service="AnyConnect"
+vpn="/opt/cisco/anyconnect/bin/vpn"
+
+exec > >(sed --unbuffered --expression '/state:/!d')
+
+case $1 in
+connect)
+  {
+    security find-generic-password -s "$service" | grep -Po '(?<=acct"<blob>=").*(?=")'
+    security find-generic-password -s "$service" -w
+  } | $vpn connect "$host" -s
+  ;;
+disconnect)
+  $vpn disconnect "$host"
+  ;;
+*)
+  echo "Usage: $0:t connect|disconnect"
+  exit 1
+  ;;
+esac
