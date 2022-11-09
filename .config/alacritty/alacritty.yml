@@ -188,7 +188,7 @@ window:
 font:
   normal:
     family: Cica
-  size: 18.0
+  size: 24.0
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
