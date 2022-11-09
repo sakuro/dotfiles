@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-alacritty --config-file ~/.config/alacritty/large.yml $@ &!

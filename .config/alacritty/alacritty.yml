@@ -23,7 +23,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. The number of columns
@@ -32,6 +32,9 @@
   #dimensions:
   #  columns: 0
   #  lines: 0
+  dimensions:
+    columns: 96
+    lines: 25
 
   # Window position (changes require restart)
   #
@@ -98,7 +101,6 @@
   # Override the variant of the GTK theme. Commonly supported values are `dark`
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
-window:
   opacity: 0.94
 
 #scrolling:
@@ -110,7 +112,7 @@ window:
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -120,6 +122,8 @@ window:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     #family: monospace
+  normal:
+    family: Cica
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -159,6 +163,7 @@ window:
 
   # Point size
   #size: 11.0
+  size: 24.0
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
@@ -185,10 +190,6 @@ window:
   # characters (Unicode points 2500 - 259f).
   #
   #builtin_box_drawing: true
-font:
-  normal:
-    family: Cica
-  size: 24.0
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
