@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 echo "Collecting ingress information..."
-ingress=$(kubectl get ingress --output jsonpath="{.items[*].spec.rules[*].host}" | tr " " "\n" | sed 's,^,https://,' | peco --prompt "Host to connect:")
+ingress=$(print -l $(kubectl get ingress --output jsonpath="{.items[*].spec.rules[*].host}") | sed 's,^,https://,' | peco --prompt "Host to connect:")
 [[ -n "$ingress" ]] || { bell & return }
 
 BUFFER="open $ingress"
