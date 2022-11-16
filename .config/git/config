@@ -8,6 +8,7 @@
   wip = commit --message wip
   current-branch = symbolic-ref --short HEAD
   grep-context = grep -h -E '^ *(RSpec.)?(shared_(examples|context)|context|describe|it)'
+  log1 = log --oneline
 [branch]
   autosetuprebase = always
 [color]
