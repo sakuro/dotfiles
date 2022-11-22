@@ -3,6 +3,7 @@
 remove-path ~/bin/wrappers
 
 is-executable -p open && exec open "$@"
+is-executable -p xdg-open && exec xdg-open "$@"
 
 local app cmd
 typeset -A opts
