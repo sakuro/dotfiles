@@ -1,5 +1,12 @@
 #!/bin/zsh
 
+for rc in "${XDG_CONFIG_HOME:+$XDG_CONFIG_HOME/anyconnectrc}" "${HOME:+$HOME/.anyconnectrc}"; do
+  if [[ -f "$rc" ]]; then
+    source $rc
+    break
+  fi
+done
+
 host="${ANYCONNECT_HOST?not set}"
 service="${ANYCONNECT_SERVICE?not set}"
 interface="${ANYCONNECT_INTERFACE?not set}"
