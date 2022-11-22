@@ -13,13 +13,13 @@ vpn="/opt/cisco/anyconnect/bin/vpn"
 
 
 case $1 in
-connect)
+connect|on)
   {
     security find-generic-password -s "$service" | grep -Po '(?<=acct"<blob>=").*(?=")'
     security find-generic-password -s "$service" -w
   } | $vpn connect "$host" -s
   ;;
-disconnect)
+disconnect|off)
   $vpn disconnect "$host"
   ;;
 status)
@@ -30,7 +30,10 @@ status)
   }
   ;;
 *)
-  echo "Usage: $0:t connect|disconnect|status"
+  echo "Usage:"
+  echo "$0:t connect | on"
+  echo "$0:t disconnect | off"
+  echo "$0:t status"
   exit 1
   ;;
 esac
