@@ -1,6 +1,10 @@
 awscli
 build-essential
+containerd.io
 direnv
+docker-ce
+docker-ce-cli
+docker-compose-plugin
 gh
 jq
 less
