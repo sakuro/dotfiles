@@ -8,6 +8,7 @@ docker-compose-plugin
 gh
 jq
 less
+libpq-dev
 libssl-dev
 peco
 rsync
