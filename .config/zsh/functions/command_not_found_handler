@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+missing="$1"
+shift
+
+exe="${missing}.exe"
+if is-executable -p "${exe}"; then
+  # try invoking .exe version
+  exec "${exe}" "$@"
+else
+  # emulate original zsh behavior
+  echo "$SHELL:t: command not found: ${missing}"
+  exit 127
+fi
