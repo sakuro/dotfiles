@@ -11,6 +11,7 @@ less
 libpq-dev
 libssl-dev
 peco
+postgresql-client
 rsync
 sqlite3
 tmux
