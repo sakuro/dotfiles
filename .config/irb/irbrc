@@ -17,7 +17,9 @@ rescue LoadError
   require 'readline'
   puts 'Using readline'
 ensure
-  IRB.conf[:HISTORY_FILE] = File.join(ENV['XDG_CACHE_HOME'], 'irb/history')
+  history_path = File.join(ENV.fetch('XDG_CACHE_HOME', File.expand_path('~/.cache')), 'irb/history')
+  IRB.conf[:HISTORY_FILE] = history_path
+  FileUtils.mkdir_p(File.dirname(history_path))
 end
 
 require 'irb/ext/save-history'
