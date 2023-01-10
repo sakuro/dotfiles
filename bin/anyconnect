@@ -18,16 +18,20 @@ vpn="/opt/cisco/anyconnect/bin/vpn"
   exit 1
 }
 
+function vpn()
+{
+  command $vpn "$@" 2>&1 | grep state | sed -n -e '$p'
+}
 
 case $1 in
 connect|on)
   {
     security find-generic-password -s "$service" | grep -Po '(?<=acct"<blob>=").*(?=")'
     security find-generic-password -s "$service" -w
-  } | $vpn connect "$host" -s
+  } | vpn connect "$host" -s
   ;;
 disconnect|off)
-  $vpn disconnect "$host"
+  vpn disconnect "$host"
   ;;
 status)
   (( ${"$(ifconfig -l)"[(I)$ANYCONNECT_INTERFACE]} )) && {
