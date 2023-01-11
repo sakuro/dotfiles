@@ -20,7 +20,7 @@ vpn="/opt/cisco/anyconnect/bin/vpn"
 
 function vpn()
 {
-  command $vpn "$@" 2>&1 | grep state | sed -n -e '$p'
+  command $vpn "$@" 2>&1 | sed -n -e '/state:/s/.*state: //p' | sed -n -e '$p'
 }
 
 case $1 in
