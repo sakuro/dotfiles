@@ -3,6 +3,7 @@
 is-executable tmux || return
 tty --silent || return
 [[ "$TERM_PROGRAM" = vscode && -t 1 ]] && return
+in-jediterm && return
 [[ -n "$TMUX" ]] && return
 
 local sessions=( ${(f)"$(tmux list-sessions 2>/dev/null)"} )
