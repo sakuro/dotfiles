@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+[[ "${TERMINAL_EMULATOR}" = JetBrains-JediTerm ]]
+
