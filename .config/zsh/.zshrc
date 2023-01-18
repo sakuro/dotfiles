@@ -89,6 +89,8 @@ zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
 if is-executable -p code; then
   EDITOR="code --wait"
+elif is-executable -p nvim; then
+  EDITOR=nvim
 elif is-executable -p vim; then
   EDITOR=vim
 else
@@ -123,8 +125,12 @@ alias -g Q='1>/dev/null 2>&1'
 alias puts='print -l'
 alias mktree='mkdir -p'
 
-is-executable nvim && alias vim=nvim
-is-executable vim && alias vi=vim
+if is-executable -p nvim; then
+  alias vim=nvim
+  alias vi=nvim
+elif is-executable -p vim; then
+  alias vi=nvim
+fi
 
 # Aliases for Windows
 is-executable -p clip.exe && alias pbcopy=clip.exe
