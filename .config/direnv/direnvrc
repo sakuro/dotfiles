@@ -3,7 +3,7 @@ function use_postgresql {
   export PGUSER=postgres
 }
 
-function at-least {
+function is-at-least {
   least=$( (echo "$1"; echo "$2") | sort -V | sed -e 1q )
   [ "$least" = "$1" ]
 }
@@ -16,6 +16,6 @@ fi
 
 [ -d node_modules/.bin ] && PATH_add node_modules/.bin || :
 
-if at-least 3.2.0 $(ruby --version | cut -f 2 -d ' '); then
+if is-at-least 3.2.0 $(ruby <<<"puts RUBY_VERSION"); then
   export RUBY_OPT="--yjit"
 fi
