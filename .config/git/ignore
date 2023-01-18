@@ -9,3 +9,4 @@
 /.bundle/config
 /*.code-workspace
 bundle/
+/.idea/
