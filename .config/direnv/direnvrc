@@ -3,6 +3,11 @@ function use_postgresql {
   export PGUSER=postgres
 }
 
+function at-least {
+  least=$( (echo "$1"; echo "$2") | sort -V | sed --e 1q )
+  [ "$least" = "$1" ]
+}
+
 if [ -f Gemfile.lock ] || [ -f gems.locked ]; then
   for bin in vendor/bundle/bin bin; do
     [ -d $bin ] && PATH_add $bin || :
