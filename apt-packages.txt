@@ -10,13 +10,13 @@ jq
 less
 libpq-dev
 libssl-dev
+neovim
 peco
 postgresql-client
 rsync
 sqlite3
 tmux
 unzip
-vim
 xdg-utils
 zlib1g-dev
 zsh-autosuggestions
