@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cat <<SCRIPT | osascript -l JavaScript 2>/dev/null
+const app = Application.currentApplication()
+app.includeStandardAdditions = true
+
+const color = app.chooseColor({defaultColor: [0, 1, 0]})
+const hex =
+  (Math.trunc(color[0] * 255) << 16) | (Math.trunc(color[1] * 255) << 8) | (Math.trunc(color[2] * 255))
+
+const hexCode = "#" + ("0" + hex.toString(16)).substr(-6)
+hexCode
+SCRIPT
+
