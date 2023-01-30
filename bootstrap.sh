@@ -36,7 +36,7 @@ function bootstrap-linux()
 
 function bootstrap-linux-debian()
 {
-  sudo apt update && sudo apt install --yes git make zsh
+  sudo apt update && sudo apt install --yes git make zsh lsb-release
 }
 
 case "${OSTYPE}" in
