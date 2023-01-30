@@ -8,6 +8,7 @@ docker-compose-plugin
 gh
 jq
 less
+libgdbm-dev
 libpq-dev
 libssl-dev
 neovim
