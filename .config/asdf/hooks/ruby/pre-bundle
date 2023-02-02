@@ -1,0 +1,9 @@
+case "$1" in
+install|"")
+  [[ -d /opt/homebrew ]] && {
+    export BUNDLE_BUILD__GDBM="--with-gdbm-dir=$(bundle --prefix gdbm)"
+  }
+  ;;
+esac
+
+return 0
