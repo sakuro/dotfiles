@@ -4,6 +4,7 @@ $ZDOTDIR/bin
 /opt/homebrew/bin
 /opt/homebrew/sbin
 /opt/homebrew/opt/ccache/libexec
+/opt/homebrew/opt/sqlite3/bin
 /opt/homebrew/opt/*/libexec/gnubin
 /usr/local/bin
 /usr/bin
