@@ -1,1 +1,3 @@
 ENV.delete('PAGER')
+
+Pry.config.print = ->(output, value) { output.puts "#=> %p" % value }
