@@ -17,6 +17,7 @@
   interactive = auto
   status = auto
 [commit]
+  template = ~/.config/git/templates/commit
   verbose = true
 [core]
   commentchar = ";"
