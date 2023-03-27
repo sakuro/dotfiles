@@ -128,8 +128,10 @@ alias mktree='mkdir -p'
 if is-executable -p nvim; then
   alias vim=nvim
   alias vi=nvim
+  alias view='nvim -R'
 elif is-executable -p vim; then
   alias vi=nvim
+  alias view='vim -R'
 fi
 
 # Aliases for Windows
