@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+upfind -q .git || { bell && return 1 }
+
+local file=$(git ls-files | peco --prompt "Choose file:")
+[[ -n "$file" ]] || { bell & return }
+
+case "${LBUFFER[-1]}" in
+""|" ")
+  LBUFFER+="${(q)file}" ;;
+*)
+  LBUFFER+=" ${(q)file}" ;;
+esac

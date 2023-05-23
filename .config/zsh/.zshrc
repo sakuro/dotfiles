@@ -23,6 +23,7 @@ bindkey '^x^t' interactive-choose-rake-task
 bindkey '^x^b' interactive-choose-git-branch
 bindkey '^x^w' interactive-choose-chrome-tab
 bindkey '^x^i' interactive-choose-k8s-ingress
+bindkey '^x^l' interactive-choose-git-managed-file
 
 fpath=(
   $ZDOTDIR/widgets
