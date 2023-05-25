@@ -2,3 +2,4 @@
 .explain ON
 .headers ON
 .nullvalue NULL
+PRAGMA foreign_keys = ON;
