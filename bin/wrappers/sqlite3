@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-remove-path ~/bin/wrappers
-
-export SQLITE_HISTORY=$XDG_CACHE_HOME/sqlite3/history
-exec sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqliterc "$@"

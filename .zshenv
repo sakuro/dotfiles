@@ -52,3 +52,5 @@ export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
   local wrappers_path=( ${(M)path##~/bin/wrappers} )
   path=($wrappers_path $path)
 }
+
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
