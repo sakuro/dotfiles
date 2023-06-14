@@ -1,6 +1,7 @@
 ---
 BUNDLE_PATH: "vendor/bundle"
 BUNDLE_JOBS: "4"
+BUNDLE_CLEAN: "true"
 BUNDLE_DISABLE_SHARED_GEMS: "true"
 BUNDLE_GEM__CHANGELOG: "true"
 BUNDLE_GEM__CI: "github"
