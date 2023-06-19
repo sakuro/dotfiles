@@ -28,14 +28,6 @@ function install-source-list()
   [[ -f /etc/apt/sources.list.d/github-cli.list ]] || {
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
   }
-
-  # Docker
-  [[ -f /usr/share/keyrings/docker-archive-keyring.gpg ]] || {
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-  }
-  [[ -f /etc/apt/sources.list.d/docker.list ]] || {
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  }
 }
 
 install-packages-$(os)
