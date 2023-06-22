@@ -6,5 +6,7 @@ function prompt_update_remote() {
   (upfind .git && GIT_OPTIONAL_LOCKS=0 git fetch) >/dev/null 2>/dev/null &!
 }
 
-PERIOD=120
-add-zsh-hook periodic prompt_update_remote
+if [[ -z $REDUCE_STATUS_UPDATE ]]; then
+  PERIOD=120
+  add-zsh-hook periodic prompt_update_remote
+fi
