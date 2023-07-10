@@ -12,12 +12,16 @@ case $1 in
   ;;
 esac
 
-if brew --version >/dev/null 2>/dev/null; then
-  export RUBY_CONFIGURE_OPTS="$RUBY_CONFIGURE_OPTS
-    --with-readline-dir=$(brew --prefix readline)
-    --with-libyaml-dir=$(brew --prefix libyaml)
-    --with-openssl-dir=$(brew --prefix openssl@1.1)"
-fi
+case "${OSTYPE}" in
+darwin*)
+  if brew --version >/dev/null 2>/dev/null; then
+    export RUBY_CONFIGURE_OPTS="$RUBY_CONFIGURE_OPTS
+      --with-readline-dir=$(brew --prefix readline)
+      --with-libyaml-dir=$(brew --prefix libyaml)
+      --with-openssl-dir=$(brew --prefix openssl@1.1)"
+  fi
+  ;;
+esac
 
 echo "Configure options: $RUBY_CONFIGURE_OPTS"
 if [[ -n "$CFLAGS" ]]; then
