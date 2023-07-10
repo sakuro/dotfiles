@@ -27,8 +27,11 @@ dump-brewfile: Brewfile.$(HOSTNAME)
 diff-brewfile: Brewfile.$(HOSTNAME)
 	diff --unified Brewfile $< || exit 0
 
+clean-brewfie:
+	@rm -v Brewfile.$(HOSTNAME).*
+
 Brewfile.$(HOSTNAME):
-	rm --force $@
+	@scripts/rotate-brewfiles.sh
 	brew bundle dump --file=$@
 
 shellcheck:
