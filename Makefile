@@ -4,8 +4,11 @@ setup: link-git-hooks link-dotfiles install-locale install-packages change-login
 
 .PHONY: Brewfile.$(HOSTNAME)
 
-link-git-hooks:
-	ln -sf $(PWD)/scripts/post-merge .git/hooks
+link-git-hooks: .git/hooks/post-merge
+
+.git/hooks/post-merge:
+	mkdir --parents $$(dirname $@)
+	ln --symbolic --force $(PWD)/scripts/post-merge $$(dirname $@)
 
 link-dotfiles:
 	@scripts/link-dotfiles.sh
