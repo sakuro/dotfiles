@@ -30,7 +30,7 @@ dump-brewfile: Brewfile.$(HOSTNAME)
 diff-brewfile: Brewfile.$(HOSTNAME)
 	diff --unified Brewfile $< || exit 0
 
-clean-brewfie:
+clean-brewfile:
 	@rm -v Brewfile.$(HOSTNAME).*
 
 Brewfile.$(HOSTNAME):
