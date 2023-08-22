@@ -7,8 +7,10 @@ function init_asdf()
   local asdf_sh
   for asdf_sh in /opt/homebrew/opt/asdf/libexec/asdf.sh $HOME/.asdf/asdf.sh; do
     # shellcheck disable=SC1090
-    source "$asdf_sh"
-    return 0
+    if [[ -f "$asdf_sh" ]]; then
+      source "$asdf_sh"
+      return 0
+    fi
   done
   return 1
 }
