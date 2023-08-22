@@ -1,6 +1,7 @@
 awscli
 build-essential
 direnv
+gdb
 gh
 jq
 less
