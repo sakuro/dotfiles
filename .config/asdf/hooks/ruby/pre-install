@@ -4,13 +4,15 @@ exec > >(sed --unbuffered --expression "s/^/[ruby-$1][pre-install] /")
 
 echo "Installing ruby $1"
 
-export RUBY_CONFIGURE_OPTS="--enable-shared --disable-install-doc"
+export RUBY_CONFIGURE_OPTS="--enable-shared --disable-install-doc "
+CFLAGS="-O0 -ggdb3"
 
 case $1 in
 2.6.7)
-  export CFLAGS="-Wno-error=implicit-function-declaration"
+  export CFLAGS="${CFLAGS} -Wno-error=implicit-function-declaration"
   ;;
 esac
+
 
 case "${OSTYPE}" in
 darwin*)
@@ -24,6 +26,4 @@ darwin*)
 esac
 
 echo "Configure options: $RUBY_CONFIGURE_OPTS"
-if [[ -n "$CFLAGS" ]]; then
-  echo "Additional CFLAGS for ruby-$1: $CFLAGS"
-fi
+echo "CFLAGS: $CFLAGS"
