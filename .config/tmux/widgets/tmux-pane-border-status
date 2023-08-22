@@ -73,8 +73,13 @@ function tmux-pane-kube-context() {
   local kube_symbol="\u2388"
   is-executable kubectl || return
 
-  local kube_context=$(kubectl config current-context 2> /dev/null)
-  [[ -n "$kube_context" ]] && print -P "#[fg=cyan]${kube_symbol}$kube_context#[default]"
+  set -- $( kubectl config get-contexts 2>/dev/null | sed -n -e '/^\*/p' )
+
+  [[ -n "$2" ]] && {
+    print -nP "#[fg=cyan]${kube_symbol}${2}"
+    [[ -n "$5" ]] && print -n " $5"
+    print -P "#[default]"
+  }
 }
 
 [[ $# -gt 0 ]] && cd $1 && {
