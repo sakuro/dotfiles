@@ -5,6 +5,7 @@ gdb
 gh
 jq
 less
+libc6-dbg
 libgdbm-dev
 libpq-dev
 libssl-dev
