@@ -26,6 +26,6 @@ fi
 for command in rubocop rspec yard; do
   command-in-path $command || continue
   $command-ready || continue
-  echo "Running $command..."
-  command $command || return 1
+  echo "Running $command ..."
+  command bundle exec $command || return 1
 done
