@@ -31,10 +31,9 @@ local keyDown = hs.eventtap.event.types.keyDown
 local flagsChanged = hs.eventtap.event.types.flagsChanged
 
 -- Switch IM via Left ⌘ (to English) and Right ⌘ (to Japanese)
-hs.eventtap.new({keyDown, flagsChanged}, function(event)
+switchInputMethodByCommandKey = hs.eventtap.new({keyDown, flagsChanged}, function(event)
   local eventType = event:getType()
   local isCmdFlag = event:getFlags()['cmd']
-
   if eventType == keyDown then
     if isCmdFlag then
       isCmdAsModifier = true
@@ -47,13 +46,19 @@ hs.eventtap.new({keyDown, flagsChanged}, function(event)
       isCmdAsModifier = false
     end
   end
-end):start()
+end)
 
 local activated = hs.application.watcher.activated
 
 -- Force switching IM to English on activated applications
-hs.application.watcher.new(function(name, event, app)
+
+local activated = hs.application.watcher.activated
+
+switchToEnglishOnActivated = hs.application.watcher.new(function(name, event, app)
   if event == activated then
-    hs.keycodes.setMethod(inputMethods["en"])
+      hs.keycodes.setMethod(inputMethods["en"])
   end
-end):start()
+end)
+
+switchInputMethodByCommandKey:start()
+switchToEnglishOnActivated:start()
