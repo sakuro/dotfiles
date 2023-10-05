@@ -1,24 +1,21 @@
 -- Make sure to change the location of init.lua
 -- $ defaults write org.hammerspoon.Hammerspoon MJConfigFile ~/.config/hammerspoon/init.lua
+-- hs.settings.set({["en"] = "英字　　（ATOK）", ["ja"] = "ひらがな（ATOK）"})
 
 local map = hs.keycodes.map
 local bindings = {
-  -- Swith IM to English via Left ⌘
-  ["en"] = map['cmd'],
-  -- Switch IM to Japanese via Right ⌘
-  ["ja"] = map['rightcmd']
+  -- Left ⌘ switches IM to English
+  [map["cmd"]] = "en",
+  -- Right ⌘ switches IM to Japanese
+  [map["rightcmd"]] = "ja"
 }
 
-local inputMethods = {
-  ["en"] = "英字　　（ATOK）",
-  ["ja"] = "ひらがな（ATOK）"
-}
-
+local inputMethods = hs.settings.get("input-methods")
 local isCmdAsModifier = false
 
 local trySwitchInputMethod = function(keyCode)
   local currentInputMethod = hs.keycodes.currentMethod()
-  for lang, code in pairs(bindings) do
+  for code, lang in pairs(bindings) do
     inputMethod = inputMethods[lang]
     if keyCode == code and currentInputMethod ~= inputMethod then
       hs.keycodes.setMethod(inputMethod)
