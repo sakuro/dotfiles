@@ -1,6 +1,6 @@
 -- Make sure to change the location of init.lua
 -- $ defaults write org.hammerspoon.Hammerspoon MJConfigFile ~/.config/hammerspoon/init.lua
--- hs.settings.set({["en"] = "英字　　（ATOK）", ["ja"] = "ひらがな（ATOK）"})
+-- hs.settings.set("input-methods", {["en"] = "英字　　（ATOK）", ["ja"] = "ひらがな（ATOK）"})
 
 local map = hs.keycodes.map
 local bindings = {
