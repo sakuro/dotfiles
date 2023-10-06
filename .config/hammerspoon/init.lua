@@ -14,7 +14,7 @@ local bindings = {
 local inputMethods = hs.settings.get("input-methods")
 local isCmdAsModifier = false
 
-local trySwitchInputMethod = function(keyCode)
+local switchInputMethod = function(keyCode)
   local currentInputMethod = hs.keycodes.currentMethod()
   for code, lang in pairs(bindings) do
     inputMethod = inputMethods[lang]
@@ -39,7 +39,7 @@ switchInputMethodByCommandKey = hs.eventtap.new({keyDown, flagsChanged}, functio
   elseif eventType == flagsChanged then
     if not isCmdFlag then
       if isCmdAsModifier == false then
-        trySwitchInputMethod(event:getKeyCode())
+        switchInputMethod(event:getKeyCode())
       end
       isCmdAsModifier = false
     end
@@ -52,11 +52,11 @@ local activated = hs.application.watcher.activated
 
 local activated = hs.application.watcher.activated
 
-switchToEnglishOnActivated = hs.application.watcher.new(function(name, event, app)
+switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, app)
   if event == activated then
       hs.keycodes.setMethod(inputMethods["en"])
   end
 end)
 
 switchInputMethodByCommandKey:start()
-switchToEnglishOnActivated:start()
+switchToEnglishOnActivation:start()
