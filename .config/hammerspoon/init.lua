@@ -46,10 +46,7 @@ switchInputMethodByCommandKey = hs.eventtap.new({keyDown, flagsChanged}, functio
   end
 end)
 
-local activated = hs.application.watcher.activated
-
 -- Force switching IM to English on activated applications
-
 local activated = hs.application.watcher.activated
 
 switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, app)
