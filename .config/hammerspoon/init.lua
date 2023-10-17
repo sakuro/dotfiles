@@ -1,5 +1,3 @@
--- Make sure to change the location of init.lua
---   defaults write org.hammerspoon.Hammerspoon MJConfigFile ~/.config/hammerspoon/init.lua
 -- Specify inputs methods for en and ja.
 --   defaults write org.hammerspoon.Hammerspoon input-methods '{ "en" = "英字　　（ATOK）"; "ja" = "ひらがな（ATOK）"; }'
 
