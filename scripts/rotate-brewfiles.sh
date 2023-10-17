@@ -2,10 +2,7 @@
 
 local_brewfile="Brewfile.$(hostname)"
 
-[[ -f $local_brewfile ]] || {
-  echo "${local_brewfile} does not exist. Already rotated?"
-  exit 1
-}
+[[ -f $local_brewfile ]] || exit 0
 
 setopt nullglob nonomatch
 old_brewfiles=($local_brewfile.<-> )
