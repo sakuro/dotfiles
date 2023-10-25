@@ -2,7 +2,7 @@
 
 eval "$(/usr/libexec/path_helper)"
 PATH=/opt/homebrew/bin:$PATH
-type -P brew > /dev/null && exit 0
+[[ -x /opt/homebrew/bin/brew ]] && exit 0
 bash -c "$(curl --fail --silent --show-error --location https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 type -P mas > /dev/null || brew install mas
