@@ -12,14 +12,19 @@ local bindings = {
 local inputMethods = hs.settings.get("input-methods")
 local isCmdAsModifier = false
 
-local switchInputMethod = function(keyCode)
-  local currentInputMethod = hs.keycodes.currentMethod()
+local keyCodeToInputMethod = function(keyCode)
   for code, lang in pairs(bindings) do
-    inputMethod = inputMethods[lang]
-    if keyCode == code and currentInputMethod ~= inputMethod then
-      hs.keycodes.setMethod(inputMethod)
-      break
+    if keyCode == code then
+      return inputMethods[lang]
     end
+  end
+  error('inputMethod unbound')
+end
+
+local switchInputMethod = function(inputMethod)
+  local currentInputMethod = hs.keycodes.currentMethod()
+  if currentInputMethod ~= inputMethod then
+    hs.keycodes.setMethod(inputMethod)
   end
 end
 
@@ -37,7 +42,11 @@ switchInputMethodByCommandKey = hs.eventtap.new({keyDown, flagsChanged}, functio
   elseif eventType == flagsChanged then
     if not isCmdFlag then
       if isCmdAsModifier == false then
-        switchInputMethod(event:getKeyCode())
+        local keyCode = event:getKeyCode()
+        local success, result = pcall(keyCodeToInputMethod, keyCode)
+        if success then
+          switchInputMethod(result)
+        end
       end
       isCmdAsModifier = false
     end
@@ -49,7 +58,7 @@ local activated = hs.application.watcher.activated
 
 switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, app)
   if event == activated then
-      hs.keycodes.setMethod(inputMethods["en"])
+    switchInputMethod(inputMethods["en"])
   end
 end)
 
