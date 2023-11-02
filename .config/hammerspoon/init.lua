@@ -62,5 +62,31 @@ switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, a
   end
 end)
 
+-- Toggle Mute
+local isAltAsModifier = false
+toggleMuteByRightOptionKey = hs.eventtap.new({keyDown, flagsChanged}, function(event)
+  local eventType = event:getType()
+  local isAltFlag = event:getFlags()['alt']
+
+  if eventType == keyDown then
+    if isAltFlag then
+      isAltAsModifier = true
+    end
+  elseif eventType == flagsChanged then
+    if not isAltFlag then
+      if isAltAsModifier == false then
+        local keyCode = event:getKeyCode()
+        if keyCode == map['rightalt'] then
+          local audio = hs.audiodevice.defaultOutputDevice()
+          local muted = audio:outputMuted()
+          audio:setOutputMuted(not muted)
+        end
+      end
+      isAltAsModifier = false
+    end
+  end
+end)
+
 switchInputMethodByCommandKey:start()
 switchToEnglishOnActivation:start()
+toggleMuteByRightOptionKey:start()
