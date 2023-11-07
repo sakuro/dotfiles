@@ -31,31 +31,37 @@ end
 local keyDown = hs.eventtap.event.types.keyDown
 local flagsChanged = hs.eventtap.event.types.flagsChanged
 
--- Switch IM via Left ⌘ (to English) and Right ⌘ (to Japanese)
-switchInputMethodByCommandKey = hs.eventtap.new({keyDown, flagsChanged}, function(event)
-  local eventType = event:getType()
-  local isCmdFlag = event:getFlags()['cmd']
-  if eventType == keyDown then
-    if isCmdFlag then
-      isCmdAsModifier = true
-    end
-  elseif eventType == flagsChanged then
-    if not isCmdFlag then
-      if isCmdAsModifier == false then
-        local keyCode = event:getKeyCode()
-        local success, result = pcall(keyCodeToInputMethod, keyCode)
-        if success then
-          switchInputMethod(result)
-        end
+local isAsModifier = {}
+
+local handleSingleModifier = function(modifier, handler)
+  return hs.eventtap.new({keyDown, flagsChanged}, function(event)
+    local eventType = event:getType()
+    local isFlag = event:getFlags()[modifier]
+    if eventType == keyDown then
+      if isFlag then
+        isAsModifier[modifier] = true
       end
-      isCmdAsModifier = false
+    elseif eventType == flagsChanged then
+      if not isFlag then
+        if isAsModifier[modifier] == false then
+          handler(event)
+        end
+        isAsModifier[modifier] = false
+      end
     end
+  end)
+end
+
+switchInputMethodByCommandKey = handleSingleModifier('cmd', function(event)
+  local keyCode = event:getKeyCode()
+  local success, result = pcall(keyCodeToInputMethod, keyCode)
+  if success then
+    switchInputMethod(result)
   end
 end)
 
 -- Force switching IM to English on activated applications
 local activated = hs.application.watcher.activated
-
 switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, app)
   if event == activated then
     switchInputMethod(inputMethods["en"])
@@ -63,27 +69,12 @@ switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, a
 end)
 
 -- Toggle Mute
-local isAltAsModifier = false
-toggleMuteByRightOptionKey = hs.eventtap.new({keyDown, flagsChanged}, function(event)
-  local eventType = event:getType()
-  local isAltFlag = event:getFlags()['alt']
-
-  if eventType == keyDown then
-    if isAltFlag then
-      isAltAsModifier = true
-    end
-  elseif eventType == flagsChanged then
-    if not isAltFlag then
-      if isAltAsModifier == false then
-        local keyCode = event:getKeyCode()
-        if keyCode == map['rightalt'] then
-          local audio = hs.audiodevice.defaultOutputDevice()
-          local muted = audio:outputMuted()
-          audio:setOutputMuted(not muted)
-        end
-      end
-      isAltAsModifier = false
-    end
+toggleMuteByRightOptionKey = handleSingleModifier('alt', function(event)
+  local keyCode = event:getKeyCode()
+  if keyCode == map['rightalt'] then
+    local audio = hs.audiodevice.defaultOutputDevice()
+    local muted = audio:outputMuted()
+    audio:setOutputMuted(not muted)
   end
 end)
 
