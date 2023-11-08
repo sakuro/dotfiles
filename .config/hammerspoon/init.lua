@@ -10,7 +10,6 @@ local bindings = {
 }
 
 local inputMethods = hs.settings.get("input-methods")
-local isCmdAsModifier = false
 
 local keyCodeToInputMethod = function(keyCode)
   for code, lang in pairs(bindings) do
@@ -28,12 +27,12 @@ local switchInputMethod = function(inputMethod)
   end
 end
 
-local keyDown = hs.eventtap.event.types.keyDown
-local flagsChanged = hs.eventtap.event.types.flagsChanged
-
 local isAsModifier = {}
 
 local handleSingleModifier = function(modifier, handler)
+  local keyDown = hs.eventtap.event.types.keyDown
+  local flagsChanged = hs.eventtap.event.types.flagsChanged
+
   return hs.eventtap.new({keyDown, flagsChanged}, function(event)
     local eventType = event:getType()
     local isFlag = event:getFlags()[modifier]
