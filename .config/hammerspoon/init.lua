@@ -44,7 +44,8 @@ local handleSingleModifier = function(modifier, handler)
     elseif eventType == flagsChanged then
       if not isFlag then
         if isAsModifier[modifier] == false then
-          handler(event)
+          local keyCode = event:getKeyCode()
+          handler(keyCode)
         end
         isAsModifier[modifier] = false
       end
@@ -52,8 +53,7 @@ local handleSingleModifier = function(modifier, handler)
   end)
 end
 
-switchInputMethodByCommandKey = handleSingleModifier('cmd', function(event)
-  local keyCode = event:getKeyCode()
+switchInputMethodByCommandKey = handleSingleModifier('cmd', function(keyCode)
   local success, result = pcall(keyCodeToInputMethod, keyCode)
   if success then
     switchInputMethod(result)
@@ -69,8 +69,7 @@ switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, a
 end)
 
 -- Toggle Mute
-toggleMuteByRightOptionKey = handleSingleModifier('alt', function(event)
-  local keyCode = event:getKeyCode()
+toggleMuteByRightOptionKey = handleSingleModifier('alt', function(keyCode)
   if keyCode == map['rightalt'] then
     local audio = hs.audiodevice.defaultOutputDevice()
     local muted = audio:outputMuted()
