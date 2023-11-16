@@ -51,6 +51,7 @@ config.leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 local MoveToNewTab = wezterm.action_callback(function(window, pane)
   local tab, window = pane:move_to_new_tab()
+  tab:activate()
 end)
 
 config.keys = {
