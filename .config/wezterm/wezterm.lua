@@ -9,9 +9,7 @@ wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
     local pane = tab.active_pane
-    local title = basename(pane.foreground_process_name)
-      .. ' '
-      .. pane.pane_id
+    local title = string.format('[%d:%d] %s', tab.tab_id, pane.pane_id, basename(pane.foreground_process_name))
     local color = '#8FBCBB'
     if tab.is_active then
       color = '#5E81AC'
@@ -58,8 +56,10 @@ config.keys = {
   -- tab traversal
   { key = ']',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(1) },
   { key = '[',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(-1) },
+  { key = '}',   mods = 'LEADER',       action = wezterm.action.MoveTabRelative(1) },
+  { key = '{',   mods = 'LEADER',       action = wezterm.action.MoveTabRelative(-1) },
   -- pane management
-  { key = '|',   mods = 'LEADER|SHIFT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = '|',   mods = 'LEADER',       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '-',   mods = 'LEADER',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'z',   mods = 'LEADER',       action = wezterm.action.TogglePaneZoomState },
   -- pane traversal
