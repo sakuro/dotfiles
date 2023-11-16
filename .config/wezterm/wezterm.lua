@@ -10,11 +10,12 @@ wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
     local pane = tab.active_pane
+    local process_name = file.basename(pane.foreground_process_name)
 
     return {
       { Background = { Color = tab.is_active and '#81A1C1' or '#5E81AC' } },
       { Foreground = { Color = '#ECEFF4' } },
-      { Text = string.format(' [%d:%d] %s ', tab.tab_id, pane.pane_id, file.basename(pane.foreground_process_name)) },
+      { Text = string.format(' [%d:%d] %s ', tab.tab_id, pane.pane_id, process_name) },
     }
   end
 )
