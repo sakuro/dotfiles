@@ -5,26 +5,22 @@ function basename(s)
   return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
--- #8FBCBB
--- #88C0D0
--- #81A1C1
---#5E81AC
 wezterm.on(
-'format-tab-title',
-function(tab, tabs, panes, config, hover, max_width)
-  local pane = tab.active_pane
-  local title = basename(pane.foreground_process_name)
-  .. ' '
-  .. pane.pane_id
-  local color = '#8FBCBB'
-  if tab.is_active then
-    color = '#5E81AC'
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    local pane = tab.active_pane
+    local title = basename(pane.foreground_process_name)
+      .. ' '
+      .. pane.pane_id
+    local color = '#8FBCBB'
+    if tab.is_active then
+      color = '#5E81AC'
+    end
+    return {
+      { Background = { Color = color } },
+      { Text = ' ' .. title .. ' ' },
+    }
   end
-  return {
-    { Background = { Color = color } },
-    { Text = ' ' .. title .. ' ' },
-  }
-end
 )
 
 -- Tab stuff
@@ -33,6 +29,10 @@ config.show_new_tab_button_in_tab_bar = false
 -- Colors
 config.color_scheme = 'Nord (Gogh)'
 config.window_background_opacity = 0.94
+config.inactive_pane_hsb = {
+  saturation = 0.9,
+  brightness = 0.5,
+}
 
 -- Font
 config.font = wezterm.font('Cica')
