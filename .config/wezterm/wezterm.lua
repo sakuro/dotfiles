@@ -6,7 +6,7 @@ file.basename = function(s)
   return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
-if string.find(os.getenv("OS"), "Windows") then
+if string.find(wezterm.target_triple, 'windows') then
   config.default_domain = 'WSL:Ubuntu-22.04'
 end
 
