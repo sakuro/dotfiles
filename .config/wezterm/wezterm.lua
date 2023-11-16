@@ -1,7 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-function basename(s)
+local file = {}
+file.basename = function(s)
   return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
@@ -9,14 +10,11 @@ wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
     local pane = tab.active_pane
-    local title = string.format('[%d:%d] %s', tab.tab_id, pane.pane_id, basename(pane.foreground_process_name))
-    local color = '#8FBCBB'
-    if tab.is_active then
-      color = '#5E81AC'
-    end
+
     return {
-      { Background = { Color = color } },
-      { Text = ' ' .. title .. ' ' },
+      { Background = { Color = tab.is_active and '#81A1C1' or '#5E81AC' } },
+      { Foreground = { Color = '#ECEFF4' } },
+      { Text = string.format(' [%d:%d] %s ', tab.tab_id, pane.pane_id, file.basename(pane.foreground_process_name)) },
     }
   end
 )
