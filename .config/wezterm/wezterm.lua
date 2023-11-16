@@ -89,6 +89,8 @@ config.keys = {
   { key = 'l',   mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Right' },
   { key = 'Tab', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Next' },
   { key = 'Tab', mods = 'LEADER|SHIFT', action = wezterm.action.ActivatePaneDirection 'Prev' },
+  -- other
+  { key = 's',   mods = 'LEADER|SHIFT', action = wezterm.action.ReloadConfiguration },
 }
 
 return config
