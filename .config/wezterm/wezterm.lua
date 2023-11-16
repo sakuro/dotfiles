@@ -6,6 +6,10 @@ file.basename = function(s)
   return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
+if string.find(os.getenv("OS"), "Windows") then
+  config.default_domain = 'WSL:Ubuntu-22.04'
+end
+
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
