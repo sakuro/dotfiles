@@ -8,5 +8,6 @@ config.font = wezterm.font('Cica')
 config.font_size = 24
 
 config.window_background_opacity = 0.9
+config.enable_tab_bar = false
 
 return config

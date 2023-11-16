@@ -11,4 +11,4 @@ if tty --silent; then
   fi
 fi
 
-[[ "$TERM_PROGRAM" = "WezTerm" ]] || interactive-start-tmux-session
+interactive-start-tmux-session
