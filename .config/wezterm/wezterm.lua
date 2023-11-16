@@ -7,7 +7,6 @@ config.font = wezterm.font('Cica')
 config.font_size = 24.0
 
 config.window_background_opacity = 0.94
-config.enable_tab_bar = false
 
 config.audible_bell = 'Disabled'
 config.visual_bell = {
