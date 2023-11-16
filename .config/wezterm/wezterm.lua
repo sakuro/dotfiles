@@ -16,27 +16,17 @@ config.visual_bell = {
     fade_out_function = 'EaseOut',
     fade_out_duration_ms = 50
 }
-config.colors = {
-    visual_bell = '#ffffff'
-}
+config.colors = { visual_bell = '#ffffff' }
 
 config.leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
-    {
-        key = 't',
-        mods = 'LEADER|CTRL',
-        action = wezterm.action.SendKey { key = 't', mods = 'CTRL' }
-    },
-    {
-        key = '|',
-        mods = 'LEADER|SHIFT',
-        action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
-    },
-    {
-        key = '-',
-        mods = 'LEADER',
-        action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
-    }
+    { key = 't', mods = 'LEADER|CTRL',  action = wezterm.action.SendKey { key = 't', mods = 'CTRL' } },
+    { key = '|', mods = 'LEADER|SHIFT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+    { key = '-', mods = 'LEADER',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+    { key = 'h', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Left' },
+    { key = 'j', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Down' },
+    { key = 'k', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Up' },
+    { key = 'l',  mods = 'LEADER',      action = wezterm.action.ActivatePaneDirection 'Right' },
 }
 
 return config
