@@ -49,10 +49,16 @@ config.visual_bell = {
 config.colors = { visual_bell = '#ffffff' }
 
 -- Key bindings
+-- leader is a WezTerm's term used for so-called prefix key
 config.leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   { key = 't',   mods = 'LEADER|CTRL',  action = wezterm.action.SendKey { key = 't', mods = 'CTRL' } },
+  -- tab management
   { key = 'c',   mods = 'LEADER',       action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+  -- tab traversal
+  { key = ']',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(1) },
+  { key = '[',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(-1) },
+  -- pane management
   { key = '|',   mods = 'LEADER|SHIFT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '-',   mods = 'LEADER',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'z',   mods = 'LEADER',       action = wezterm.action.TogglePaneZoomState },
@@ -63,9 +69,6 @@ config.keys = {
   { key = 'l',   mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Right' },
   { key = 'Tab', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Next' },
   { key = 'Tab', mods = 'LEADER|SHIFT', action = wezterm.action.ActivatePaneDirection 'Prev' },
-  -- tab traversal
-  { key = ']',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(1) },
-  { key = '[',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(-1) },
 }
 
 return config
