@@ -48,10 +48,16 @@ config.colors = { visual_bell = '#ffffff' }
 -- Key bindings
 -- leader is a WezTerm's term used for so-called prefix key
 config.leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 1000 }
+
+local MoveToNewTab = wezterm.action_callback(function(window, pane)
+  local tab, window = pane:move_to_new_tab()
+end)
+
 config.keys = {
   { key = 't',   mods = 'LEADER|CTRL',  action = wezterm.action.SendKey { key = 't', mods = 'CTRL' } },
   -- tab management
   { key = 'c',   mods = 'LEADER',       action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+  { key = '!',   mods = 'LEADER',       action = MoveToNewTab },
   -- tab traversal
   { key = ']',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(1) },
   { key = '[',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(-1) },
