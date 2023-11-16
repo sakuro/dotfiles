@@ -69,7 +69,7 @@ config.keys = {
   { key = '}',   mods = 'LEADER',       action = wezterm.action.MoveTabRelative(1) },
   { key = '{',   mods = 'LEADER',       action = wezterm.action.MoveTabRelative(-1) },
   -- pane management
-  { key = '|',   mods = 'LEADER',       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = '|',   mods = 'LEADER|SHIFT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '-',   mods = 'LEADER',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'z',   mods = 'LEADER',       action = wezterm.action.TogglePaneZoomState },
   -- pane traversal
