@@ -21,8 +21,18 @@ wezterm.on(
       { Foreground = { Color = '#ECEFF4' } },
       { Text = string.format(' [%d:%d] %s ', tab.tab_id, pane.pane_id, process_name) },
     }
-  end
-)
+  end)
+
+wezterm.on(
+  'update-right-status',
+  function(window, pane)
+    local date = wezterm.strftime '%Y/%m/%d %H:%M'
+    window:set_right_status(wezterm.format {
+      { Foreground = { AnsiColor = 'Teal' } },
+      { Text = wezterm.nerdfonts.fa_clock_o .. ' ' .. date },
+      { Foreground = { AnsiColor = 'Navy' } },
+    })
+  end)
 
 -- Tab stuff
 config.show_new_tab_button_in_tab_bar = false
