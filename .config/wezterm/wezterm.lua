@@ -92,8 +92,12 @@ config.keys = {
   -- clipboard
   { key = 'v',   mods = 'ALT',          action = wezterm.action.PasteFrom 'Clipboard' },
   { key = 'c',   mods = 'ALT',          action = wezterm.action.CopyTo    'Clipboard' },
+  -- font size
+  { key = '+',   mods = 'ALT|SHIFT',    action = wezterm.action.IncreaseFontSize },
+  { key = '-',   mods = 'ALT',          action = wezterm.action.DecreaseFontSize },
+  { key = '=',   mods = 'ALT',          action = wezterm.action.ResetFontSize },
   -- other
-  { key = 's',   mods = 'LEADER',        action = wezterm.action.ReloadConfiguration },
+  { key = 's',   mods = 'LEADER|SHIFT', action = wezterm.action.ReloadConfiguration },
 }
 
 return config
