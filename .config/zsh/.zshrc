@@ -206,4 +206,10 @@ function git-status-short()
 }
 add-zsh-hook chpwd git-status-short
 
+[[ $HOME/.config/wezterm/wezterm/assets/shell-integration/wezterm.sh ]] && {
+  source $HOME/.config/wezterm/wezterm/assets/shell-integration/wezterm.sh
+}
+
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
+
+
