@@ -13,6 +13,7 @@ end
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
+    local pane = tab.active_pane
     local process_name = file.basename(pane.foreground_process_name)
 
     return {
@@ -88,8 +89,11 @@ config.keys = {
   { key = 'l',   mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Right' },
   { key = 'Tab', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Next' },
   { key = 'Tab', mods = 'LEADER|SHIFT', action = wezterm.action.ActivatePaneDirection 'Prev' },
+  -- clipboard
+  { key = 'v',   mods = 'ALT',          action = wezterm.action.PasteFrom 'Clipboard' },
+  { key = 'c',   mods = 'ALT',          action = wezterm.action.CopyTo    'Clipboard' },
   -- other
-  { key = 's',   mods = 'LEADER|SHIFT', action = wezterm.action.ReloadConfiguration },
+  { key = 's',   mods = 'LEADER',        action = wezterm.action.ReloadConfiguration },
 }
 
 return config
