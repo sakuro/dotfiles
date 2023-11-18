@@ -1,11 +1,6 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-local file = {}
-file.basename = function(s)
-  return string.gsub(s, '(.*[/\\])(.*)', '%2')
-end
-
 if string.find(wezterm.target_triple, 'windows') then
   config.default_domain = 'WSL:Ubuntu-22.04'
 end
@@ -14,7 +9,7 @@ wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
     local pane = tab.active_pane
-    local process_name = file.basename(pane.foreground_process_name)
+    local process_name = pane.user_vars.WEZTERM_PROG or ""
 
     return {
       { Background = { Color = tab.is_active and '#81A1C1' or '#5E81AC' } },

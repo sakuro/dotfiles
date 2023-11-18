@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+[[ "$TERM_PROGRAM" = "WezTerm" ]] || return 0
+
 if [[ $# -ne 2 ]]; then
   echo "Usage: $0 name value"
   return 1

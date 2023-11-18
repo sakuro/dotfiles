@@ -206,5 +206,24 @@ function git-status-short()
 }
 add-zsh-hook chpwd git-status-short
 
-[[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
+function set-program-name()
+{
+  set -- ${=2}
+  if [[ $1 = "env" ]]; then
+    shift
+  fi
+  while [[ $# -gt 0 ]]; do
+    [[ "$1" =~ "^[A-Z0-9_]+=" ]] || break
+    shift
+  done
+  wezterm:set-user-var WEZTERM_PROG "$1"
+}
+add-hook preexec set-program-name
 
+function unset-program-name()
+{
+  wezterm:set-user-var WEZTERM_PROG "$(basename $SHELL)"
+}
+add-hook precmd unset-program-name
+
+[[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
