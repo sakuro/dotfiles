@@ -216,13 +216,13 @@ function set-program-name()
     [[ "$1" =~ "^[A-Z0-9_]+=" ]] || break
     shift
   done
-  wezterm:set-user-var WEZTERM_PROG "$1"
+  wezterm:set-user-var WEZTERM_PROG "${1##*/}"
 }
 add-hook preexec set-program-name
 
 function unset-program-name()
 {
-  wezterm:set-user-var WEZTERM_PROG "$(basename $SHELL)"
+  wezterm:set-user-var WEZTERM_PROG "${SHELL##*/}"
 }
 add-hook precmd unset-program-name
 
