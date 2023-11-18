@@ -92,12 +92,12 @@ config.keys = {
   { key = 'Tab', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Next' },
   { key = 'Tab', mods = 'LEADER|SHIFT', action = wezterm.action.ActivatePaneDirection 'Prev' },
   -- clipboard
-  { key = 'v',   mods = 'ALT',          action = wezterm.action.PasteFrom 'Clipboard' },
-  { key = 'c',   mods = 'ALT',          action = wezterm.action.CopyTo    'Clipboard' },
+  { key = 'v',   mods = 'LEADER',       action = wezterm.action.PasteFrom 'Clipboard' },
+  { key = 'c',   mods = 'LEADER',       action = wezterm.action.CopyTo    'Clipboard' },
   -- font size
-  { key = '+',   mods = 'ALT|SHIFT',    action = wezterm.action.IncreaseFontSize },
-  { key = '-',   mods = 'ALT',          action = wezterm.action.DecreaseFontSize },
-  { key = '=',   mods = 'ALT',          action = wezterm.action.ResetFontSize },
+  { key = '+',   mods = 'LEADER|SHIFT', action = wezterm.action.IncreaseFontSize },
+  { key = '-',   mods = 'LEADER',       action = wezterm.action.DecreaseFontSize },
+  { key = '0',   mods = 'LEADER',       action = wezterm.action.ResetFontSize },
   -- other
   { key = 's',   mods = 'LEADER|SHIFT', action = wezterm.action.ReloadConfiguration },
   -- restore some default bindings
