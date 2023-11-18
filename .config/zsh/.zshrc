@@ -218,12 +218,12 @@ function set-program-name()
   done
   wezterm:set-user-var WEZTERM_PROG "${1##*/}"
 }
-add-hook preexec set-program-name
+add-zsh-hook preexec set-program-name
 
 function unset-program-name()
 {
   wezterm:set-user-var WEZTERM_PROG "${SHELL##*/}"
 }
-add-hook precmd unset-program-name
+add-zsh-hook precmd unset-program-name
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
