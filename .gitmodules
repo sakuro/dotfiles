@@ -4,6 +4,3 @@
 [submodule ".config/themes/nord/tmux"]
 	path = .config/themes/nord/tmux
 	url = https://github.com/goronfreeman/nord-tmux.git
-[submodule ".config/wezterm/wezterm"]
-	path = .config/wezterm/wezterm
-	url = https://github.com/wez/wezterm
