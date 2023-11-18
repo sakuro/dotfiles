@@ -71,8 +71,8 @@ config.keys = {
   { key = 'c',   mods = 'LEADER',       action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
   { key = '!',   mods = 'LEADER',       action = MoveToNewTab },
   -- tab traversal
-  { key = ']',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(1) },
-  { key = '[',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(-1) },
+  { key = 'n',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(1) },
+  { key = 'p',   mods = 'LEADER',       action = wezterm.action.ActivateTabRelative(-1) },
   { key = '}',   mods = 'LEADER',       action = wezterm.action.MoveTabRelative(1) },
   { key = '{',   mods = 'LEADER',       action = wezterm.action.MoveTabRelative(-1) },
   -- pane management
