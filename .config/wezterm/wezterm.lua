@@ -60,6 +60,8 @@ config.visual_bell = {
 config.colors = { visual_bell = '#ffffff' }
 
 -- Key bindings
+
+config.disable_default_key_bindings = true
 -- leader is a WezTerm's term used for so-called prefix key
 config.leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 1000 }
 
@@ -98,6 +100,9 @@ config.keys = {
   { key = '=',   mods = 'ALT',          action = wezterm.action.ResetFontSize },
   -- other
   { key = 's',   mods = 'LEADER|SHIFT', action = wezterm.action.ReloadConfiguration },
+  -- restore some default bindings
+  { key = 'p',   mods = 'CTRL|SHIFT',   action = wezterm.action.ActivateCommandPalette },
+  { key = 'l',   mods = 'CTRL|SHIFT',   action = wezterm.action.ShowDebugOverlay },
 }
 
 return config
