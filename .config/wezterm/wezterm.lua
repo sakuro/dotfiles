@@ -6,6 +6,18 @@ local os =
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
   string.find(wezterm.target_triple, '-linux-') and 'linux' or nil
 
+-- https://www.nordtheme.com/docs/colors-and-palettes
+local nord = {
+  -- polar night
+  nord0 = '#2E3440', nord1 = '#3B4252', nord2 = '#434C5E', nord3 = '#4C566A',
+  -- snow storm
+  nord4 = '#D8DEE9', nord5 = '#E5E9F0', nord6 = '#ECEFF4',
+  -- frost
+  nord7 = '#8FBCBB', nord8 = '#88C0D0', nord9 = '#81A1C1', nord10 = '#5E81AC',
+  -- aurora
+  nord11 = '#BF616A', nord12 = '#D08770', nord13 = '#EBCB8B', nord14 = '#A3BE8C', nord15 = '#B48EAD',
+}
+
 if os == 'windows' then
   config.default_domain = 'WSL:Ubuntu-22.04'
 end
@@ -17,8 +29,8 @@ wezterm.on(
     local process_name = pane.user_vars.WEZTERM_PROG or ""
 
     return {
-      { Background = { Color = tab.is_active and '#81A1C1' or '#5E81AC' } },
-      { Foreground = { Color = '#ECEFF4' } },
+      { Background = { Color = tab.is_active and nord.nord8 or nord.nord9 } },
+      { Foreground = { Color = nord.nord6 } },
       { Text = process_name },
     }
   end)
@@ -28,14 +40,19 @@ wezterm.on(
   function(window, pane)
     local date = wezterm.strftime '%Y/%m/%d %H:%M'
     window:set_right_status(wezterm.format {
-      { Foreground = { AnsiColor = 'Teal' } },
+      { Foreground = { Color = nord.nord10 } },
+      { Background = { Color = nord.nord1 } },
       { Text = wezterm.nerdfonts.fa_clock_o .. ' ' .. date },
-      { Foreground = { AnsiColor = 'Navy' } },
     })
   end)
 
 -- Tab stuff
 config.show_new_tab_button_in_tab_bar = false
+config.window_frame = {
+  font_size = 14.0,
+  active_titlebar_bg = nord.nord1,
+  inactive_titlebar_bg = nord.nord1,
+}
 
 -- Colors
 config.color_scheme = 'Nord (Gogh)'
@@ -57,7 +74,7 @@ config.visual_bell = {
   fade_out_function = 'EaseOut',
   fade_out_duration_ms = 50
 }
-config.colors = { visual_bell = '#ffffff' }
+config.colors = { visual_bell = nord.nord6 }
 
 -- Key bindings
 -- CMD(macOS) or ALT(other)
