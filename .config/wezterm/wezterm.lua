@@ -22,9 +22,7 @@ if os == 'windows' then
   config.default_domain = 'WSL:Ubuntu-22.04'
 end
 
-wezterm.on(
-  'format-tab-title',
-  function(tab, tabs, panes, config, hover, max_width)
+wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
     local pane = tab.active_pane
     local process_name = pane.user_vars.WEZTERM_PROG or ""
 
@@ -35,9 +33,7 @@ wezterm.on(
     }
   end)
 
-wezterm.on(
-  'update-right-status',
-  function(window, pane)
+wezterm.on('update-right-status', function(window, pane)
     local date = wezterm.strftime '%Y/%m/%d %H:%M:%S'
     local separator = { Text = ' ' }
     window:set_right_status(wezterm.format {
