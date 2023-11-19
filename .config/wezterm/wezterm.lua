@@ -38,11 +38,15 @@ wezterm.on(
 wezterm.on(
   'update-right-status',
   function(window, pane)
-    local date = wezterm.strftime '%Y/%m/%d %H:%M'
+    local date = wezterm.strftime '%Y/%m/%d %H:%M:%S'
+    local separator = { Text = ' ' }
     window:set_right_status(wezterm.format {
-      { Foreground = { Color = nord.nord10 } },
       { Background = { Color = nord.nord1 } },
+      { Foreground = { Color = nord.nord10 } },
       { Text = wezterm.nerdfonts.fa_clock_o .. ' ' .. date },
+      separator,
+      { Foreground = { Color = window:leader_is_active() and nord.nord15 or nord.nord1 } },
+      { Text = wezterm.nerdfonts.md_keyboard_variant },
     })
   end)
 
@@ -56,6 +60,10 @@ config.window_frame = {
 
 -- Colors
 config.color_scheme = 'Nord (Gogh)'
+config.colors = {
+  visual_bell = nord.nord6,
+  compose_cursor = nord.nord15
+}
 config.window_background_opacity = 0.94
 config.inactive_pane_hsb = {
   saturation = 0.9,
@@ -74,7 +82,6 @@ config.visual_bell = {
   fade_out_function = 'EaseOut',
   fade_out_duration_ms = 50
 }
-config.colors = { visual_bell = nord.nord6 }
 
 -- Key bindings
 -- CMD(macOS) or ALT(other)
