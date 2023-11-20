@@ -4,7 +4,8 @@ local config = wezterm.config_builder()
 local os =
   string.find(wezterm.target_triple, '-windows-') and 'windows' or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
-  string.find(wezterm.target_triple, '-linux-') and 'linux' or nil
+  string.find(wezterm.target_triple, '-linux-') and 'linux' or
+  error('Unsupported Operating System')
 
 -- https://www.nordtheme.com/docs/colors-and-palettes
 local nord = {
