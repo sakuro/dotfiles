@@ -118,7 +118,7 @@ end)
 -- Tab stuff
 config.show_new_tab_button_in_tab_bar = false
 config.window_frame = {
-  font_size = 14.0,
+  font_size = 16.0,
   active_titlebar_bg = nord.nord1,
   inactive_titlebar_bg = nord.nord1,
 }
