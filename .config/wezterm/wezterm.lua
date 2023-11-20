@@ -56,6 +56,35 @@ local spacer = function()
   }
 end
 
+local volume_status = function()
+  if os ~= "macos" then
+    return {}
+  end
+
+  local process = io.popen("osascript -e 'get volume settings'")
+  local content = process:read("*a")
+
+  local _, _, volume = string.find(content, "output volume:(%d+)")
+  volume = tonumber(volume)
+  local _, _, muted = string.find(content, "output muted:(%S+)")
+  muted = muted == "true"
+
+  local icon
+
+  if muted then
+    icon = "md_volume_variant_off"
+  else
+    if volume < 34 then
+      icon = "md_volume_low"
+    elseif volume < 68 then
+      icon = "md_volume_medium"
+    else
+      icon = "md_volume_high"
+    end
+  end
+  return format_status(icon, muted and nord.nord4 or nord.nord14, muted and "" or volume)
+end
+
 local wifi_status = function()
   if os ~= "macos" then
     return {}
@@ -104,6 +133,8 @@ end
 wezterm.on('update-right-status', function(window, pane)
   status = {}
 
+  table.merge(status, volume_status())
+  table.merge(status, spacer())
   table.merge(status, wifi_status())
   table.merge(status, spacer())
   table.merge(status, battery_status())
