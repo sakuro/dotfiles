@@ -145,7 +145,7 @@ local load_average_status = function()
 end
 
 local clock_status = function()
-  return format_status("fa_clock_o", nord.nord10, wezterm.strftime '%Y/%m/%d %H:%M:%S')
+  return format_status("fa_calendar", nord.nord9, wezterm.strftime '%Y/%m/%d %H:%M:%S')
 end
 
 local leader_status = function(window)
