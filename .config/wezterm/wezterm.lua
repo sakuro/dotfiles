@@ -44,10 +44,35 @@ end)
 local format_status = function(icon_name, icon_color, status_text)
   return {
     { Foreground = { Color = icon_color } },
-    { Text = wezterm.nerdfonts[icon_name] },
+    { Text = ' ' .. wezterm.nerdfonts[icon_name] },
     { Foreground = { Color = nord.nord6 } },
-    { Text = status_text },
+    { Text = ' ' .. status_text },
   }
+end
+
+local spacer = function()
+  return {
+    { Text = ' ' }
+  }
+end
+
+local wifi_status = function()
+  if os ~= "macos" then
+    return {}
+  end
+
+  local process = io.popen("/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I")
+  local content = process:read("*a")
+
+  local off = string.find(content, "AirPort: Off")
+  if off then
+    return format_status('fa_wifi', nord.nord4, "---")
+  end
+
+  local _, _, strength = string.find(content, "agrCtlRSSI: (-%d+)")
+  strength = tonumber(strength)
+  local _, _, ssid = string.find(content, " SSID: (%S+)")
+  return format_status('fa_wifi', nord.nord7, ssid)
 end
 
 local battery_status = function()
@@ -79,10 +104,12 @@ end
 wezterm.on('update-right-status', function(window, pane)
   status = {}
 
+  table.merge(status, wifi_status())
+  table.merge(status, spacer())
   table.merge(status, battery_status())
-  table.merge(status, { Text = ' '})
+  table.merge(status, spacer())
   table.merge(status, clock_status())
-  table.merge(status, { Text = ' '})
+  table.merge(status, spacer())
   table.merge(status, leader_status(window))
 
   window:set_right_status(wezterm.format(status))
