@@ -1,6 +1,13 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+function table.merge(to, from)
+  for _, v in ipairs(from) do
+     table.insert(to, v)
+  end
+  return to
+end
+
 local os =
   string.find(wezterm.target_triple, '-windows-') and 'windows' or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
@@ -34,33 +41,51 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
   }
 end)
 
+local format_status = function(icon_name, icon_color, status_text)
+  return {
+    { Foreground = { Color = icon_color } },
+    { Text = wezterm.nerdfonts[icon_name] },
+    { Foreground = { Color = nord.nord6 } },
+    { Text = status_text },
+  }
+end
+
+local battery_status = function()
+  if os ~= "macos" then
+    return {}
+  end
+
+  local icon = "md_battery"
+
+  local process = io.popen("pmset -g ps")
+  local content = process:read("*a")
+  local _, _, percentage = string.find(content, "(%d+)%%")
+  percentage = tonumber(percentage)
+  icon = charging_state ~= "discharging" and icon .. "_charging" or icon
+  local _, _, charging_state = string.find(content, "; +(.+charg%S+);")
+  icon = percentage < 100 and icon .. "_" .. math.floor(percentage / 10) .. "0" or icon
+
+  return format_status(icon, nord.nord13, percentage .. "%")
+end
+
+local clock_status = function()
+  return format_status("fa_clock_o", nord.nord10, wezterm.strftime '%Y/%m/%d %H:%M:%S')
+end
+
+local leader_status = function(window)
+  return format_status("md_keyboard_variant", window:leader_is_active() and nord.nord15 or nord.nord1, "")
+end
+
 wezterm.on('update-right-status', function(window, pane)
-  local separator = { Text = ' ' }
+  status = {}
 
-  local battery_info = wezterm.battery_info()[1]
-  local state_of_charge = battery_info.state_of_charge
-  local battery_icon = state_of_charge < 1 and "md_battery_" .. math.floor(state_of_charge * 10) .. "0" or "md_battery"
-  local charged_percentage = string.format("%.0f%%", state_of_charge * 100)
+  table.merge(status, battery_status())
+  table.merge(status, { Text = ' '})
+  table.merge(status, clock_status())
+  table.merge(status, { Text = ' '})
+  table.merge(status, leader_status(window))
 
-  local date = wezterm.strftime '%Y/%m/%d %H:%M:%S'
-
-  window:set_right_status(wezterm.format {
-    { Background = { Color = nord.nord1 } },
-
-    { Foreground = { Color = nord.nord13 } },
-    { Text = wezterm.nerdfonts[battery_icon] },
-    { Foreground = { Color = nord.nord6 } },
-    { Text = charged_percentage },
-    separator,
-    { Foreground = { Color = nord.nord10 } },
-    { Text = wezterm.nerdfonts.fa_clock_o },
-    { Foreground = { Color = nord.nord6 } },
-    { Text = date },
-    separator,
-
-    { Foreground = { Color = window:leader_is_active() and nord.nord15 or nord.nord1 } },
-    { Text = wezterm.nerdfonts.md_keyboard_variant },
-  })
+  window:set_right_status(wezterm.format(status))
 end)
 
 -- Tab stuff
