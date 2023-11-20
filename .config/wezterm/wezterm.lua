@@ -56,13 +56,17 @@ local spacer = function()
   }
 end
 
+local read_command_output = function(command)
+  local process = io.popen(command)
+  return process:read("*a")
+end
+
 local volume_status = function()
   if os ~= "macos" then
     return {}
   end
 
-  local process = io.popen("osascript -e 'get volume settings'")
-  local content = process:read("*a")
+  local content = read_command_output("osascript -e 'get volume settings'")
 
   local _, _, volume = string.find(content, "output volume:(%d+)")
   volume = tonumber(volume)
@@ -90,8 +94,7 @@ local wifi_status = function()
     return {}
   end
 
-  local process = io.popen("/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I")
-  local content = process:read("*a")
+  local content = read_command_output("/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I")
 
   local off = string.find(content, "AirPort: Off")
   if off then
@@ -111,8 +114,7 @@ local battery_status = function()
 
   local icon = "md_battery"
 
-  local process = io.popen("pmset -g ps")
-  local content = process:read("*a")
+  local content = read_command_output("pmset -g ps")
   local _, _, percentage = string.find(content, "(%d+)%%")
   percentage = tonumber(percentage)
   icon = charging_state ~= "discharging" and icon .. "_charging" or icon
@@ -120,6 +122,26 @@ local battery_status = function()
   icon = percentage < 100 and icon .. "_" .. math.floor(percentage / 10) .. "0" or icon
 
   return format_status(icon, nord.nord13, percentage .. "%")
+end
+
+local load_average_status = function()
+  if os == "macos" then
+    local content = read_command_output("/usr/sbin/sysctl -n vm.loadavg")
+    local _, _, min1, _, _ = string.find(content, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
+    local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
+    local ncpu = tonumber(content)
+
+    local la = tonumber(min1) / ncpu
+    if la < 0.1 then
+      icon = "md_speedometer"
+    elseif la < 0.3 then
+      icon = "md_speedometer_medium"
+    else
+      icon = "md_speedometer_slow"
+    end
+
+    return format_status(icon, nord.nord12, min1)
+  end
 end
 
 local clock_status = function()
@@ -133,11 +155,13 @@ end
 wezterm.on('update-right-status', function(window, pane)
   status = {}
 
-  table.merge(status, volume_status())
-  table.merge(status, spacer())
   table.merge(status, wifi_status())
   table.merge(status, spacer())
+  table.merge(status, volume_status())
+  table.merge(status, spacer())
   table.merge(status, battery_status())
+  table.merge(status, spacer())
+  table.merge(status, load_average_status())
   table.merge(status, spacer())
   table.merge(status, clock_status())
   table.merge(status, spacer())
