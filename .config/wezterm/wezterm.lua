@@ -141,6 +141,8 @@ local load_average_status = function()
     end
 
     return format_status(icon, nord.nord12, min1)
+  else
+    return {}
   end
 end
 
