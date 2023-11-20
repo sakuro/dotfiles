@@ -36,12 +36,28 @@ end)
 
 wezterm.on('update-right-status', function(window, pane)
   local separator = { Text = ' ' }
+
+  local battery_info = wezterm.battery_info()[1]
+  local state_of_charge = battery_info.state_of_charge
+  local battery_icon = state_of_charge < 1 and "md_battery_" .. math.floor(state_of_charge * 10) .. "0" or "md_battery"
+  local charged_percentage = string.format("%.0f%%", state_of_charge * 100)
+
   local date = wezterm.strftime '%Y/%m/%d %H:%M:%S'
+
   window:set_right_status(wezterm.format {
     { Background = { Color = nord.nord1 } },
-    { Foreground = { Color = nord.nord10 } },
-    { Text = wezterm.nerdfonts.fa_clock_o .. ' ' .. date },
+
+    { Foreground = { Color = nord.nord13 } },
+    { Text = wezterm.nerdfonts[battery_icon] },
+    { Foreground = { Color = nord.nord6 } },
+    { Text = charged_percentage },
     separator,
+    { Foreground = { Color = nord.nord10 } },
+    { Text = wezterm.nerdfonts.fa_clock_o },
+    { Foreground = { Color = nord.nord6 } },
+    { Text = date },
+    separator,
+
     { Foreground = { Color = window:leader_is_active() and nord.nord15 or nord.nord1 } },
     { Text = wezterm.nerdfonts.md_keyboard_variant },
   })
