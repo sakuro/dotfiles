@@ -24,28 +24,28 @@ if os == 'windows' then
 end
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-    local pane = tab.active_pane
-    local process_name = pane.user_vars.WEZTERM_PROG or ""
+  local pane = tab.active_pane
+  local process_name = pane.user_vars.WEZTERM_PROG or ""
 
-    return {
-      { Background = { Color = tab.is_active and nord.nord8 or nord.nord9 } },
-      { Foreground = { Color = nord.nord6 } },
-      { Text = process_name },
-    }
-  end)
+  return {
+    { Background = { Color = tab.is_active and nord.nord8 or nord.nord9 } },
+    { Foreground = { Color = nord.nord6 } },
+    { Text = process_name },
+  }
+end)
 
 wezterm.on('update-right-status', function(window, pane)
-    local date = wezterm.strftime '%Y/%m/%d %H:%M:%S'
-    local separator = { Text = ' ' }
-    window:set_right_status(wezterm.format {
-      { Background = { Color = nord.nord1 } },
-      { Foreground = { Color = nord.nord10 } },
-      { Text = wezterm.nerdfonts.fa_clock_o .. ' ' .. date },
-      separator,
-      { Foreground = { Color = window:leader_is_active() and nord.nord15 or nord.nord1 } },
-      { Text = wezterm.nerdfonts.md_keyboard_variant },
-    })
-  end)
+  local separator = { Text = ' ' }
+  local date = wezterm.strftime '%Y/%m/%d %H:%M:%S'
+  window:set_right_status(wezterm.format {
+    { Background = { Color = nord.nord1 } },
+    { Foreground = { Color = nord.nord10 } },
+    { Text = wezterm.nerdfonts.fa_clock_o .. ' ' .. date },
+    separator,
+    { Foreground = { Color = window:leader_is_active() and nord.nord15 or nord.nord1 } },
+    { Text = wezterm.nerdfonts.md_keyboard_variant },
+  })
+end)
 
 -- Tab stuff
 config.show_new_tab_button_in_tab_bar = false
