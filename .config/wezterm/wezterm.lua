@@ -143,9 +143,9 @@ local load_average_status = function()
     local _, _, min1, _, _ = string.find(content, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
 
     local la = tonumber(min1) / wezterm.GLOBAL.ncpu
-    if la < 0.1 then
+    if la < 1 then
       icon = "md_speedometer"
-    elseif la < 0.3 then
+    elseif la < 2 then
       icon = "md_speedometer_medium"
     else
       icon = "md_speedometer_slow"
