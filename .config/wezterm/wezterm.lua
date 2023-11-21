@@ -156,14 +156,9 @@ local leader_status = function(window)
   return format_status("md_keyboard_variant", window:leader_is_active() and nord.nord15 or nord.nord1, "")
 end
 
-wezterm.on('window-resized', function(window, pane)
-  if not window:get_dimensions().is_full_screen then
-    window:set_right_status("")
-  end
-end)
-
 wezterm.on('update-right-status', function(window, pane)
   if not window:get_dimensions().is_full_screen then
+    window:set_right_status('')
     return
   end
 
