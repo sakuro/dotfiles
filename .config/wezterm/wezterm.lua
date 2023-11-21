@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+config.status_update_interval = 15000
+
 function table.merge(to, from)
   for _, v in ipairs(from) do
      table.insert(to, v)
@@ -147,14 +149,24 @@ local load_average_status = function()
 end
 
 local clock_status = function()
-  return format_status("fa_calendar", nord.nord9, wezterm.strftime '%Y/%m/%d %H:%M:%S')
+  return format_status("fa_calendar", nord.nord9, wezterm.strftime '%Y/%m/%d %H:%M')
 end
 
 local leader_status = function(window)
   return format_status("md_keyboard_variant", window:leader_is_active() and nord.nord15 or nord.nord1, "")
 end
 
+wezterm.on('window-resized', function(window, pane)
+  if not window:get_dimensions().is_full_screen then
+    window:set_right_status("")
+  end
+end)
+
 wezterm.on('update-right-status', function(window, pane)
+  if not window:get_dimensions().is_full_screen then
+    return
+  end
+
   status = {}
 
   table.merge(status, wifi_status())
