@@ -157,17 +157,12 @@ local leader_status = function(window)
 end
 
 wezterm.on('update-right-status', function(window, pane)
-  if not window:get_dimensions().is_full_screen then
-    window:set_right_status('')
-    return
-  end
-
   status = {}
 
   table.merge(status, wifi_status())
   table.merge(status, spacer())
-  table.merge(status, volume_status())
-  table.merge(status, spacer())
+  -- table.merge(status, volume_status())
+  -- table.merge(status, spacer())
   table.merge(status, battery_status())
   table.merge(status, spacer())
   table.merge(status, load_average_status())
