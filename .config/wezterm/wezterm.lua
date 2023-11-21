@@ -114,16 +114,23 @@ local battery_status = function()
     return {}
   end
 
-  local icon = "md_battery"
 
-  local content = read_command_output("pmset -g ps")
-  local _, _, percentage = string.find(content, "(%d+)%%")
-  percentage = tonumber(percentage)
-  icon = charging_state ~= "discharging" and icon .. "_charging" or icon
-  local _, _, charging_state = string.find(content, "; +(.+charg%S+);")
-  icon = percentage < 100 and icon .. "_" .. math.floor(percentage / 10) .. "0" or icon
+  local battery_info = wezterm.battery_info()[1]
+  local percentage = battery_info.state_of_charge * 100
 
-  return format_status(icon, nord.nord13, percentage .. "%")
+  local icon
+  local state = battery_info.state -- "Charging", "Discharging", "Empty", "Full", "Unknown"
+  if state == "Charging" then
+    icon = "md_battery_charging"
+  elseif state == "Empty" or state == "Unknown" then
+    icon = "md_battery_outline"
+  elseif state == "Full" then
+    icon = "md_battery"
+  elseif state == "Discharging" then
+    icon = percentage < 100 and "md_battery_" .. math.floor(percentage / 10) .. "0" or "md_battery"
+  end
+
+  return format_status(icon, nord.nord13, string.format("%.1f%%", percentage))
 end
 
 local load_average_status = function()
