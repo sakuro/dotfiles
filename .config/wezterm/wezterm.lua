@@ -10,7 +10,7 @@ function table.merge(to, from)
   return to
 end
 
-local os =
+wezterm.GLOBAL.os =
   string.find(wezterm.target_triple, '-windows-') and 'windows' or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
   string.find(wezterm.target_triple, '-linux-') and 'linux' or
@@ -28,7 +28,7 @@ local nord = {
   nord11 = '#BF616A', nord12 = '#D08770', nord13 = '#EBCB8B', nord14 = '#A3BE8C', nord15 = '#B48EAD',
 }
 
-if os == 'windows' then
+if wezterm.GLOBAL.os == 'windows' then
   config.default_domain = 'WSL:Ubuntu-22.04'
 end
 
@@ -64,7 +64,7 @@ local read_command_output = function(command)
 end
 
 local volume_status = function()
-  if os ~= "macos" then
+  if wezterm.GLOBAL.os ~= "macos" then
     return {}
   end
 
@@ -92,7 +92,7 @@ local volume_status = function()
 end
 
 local wifi_status = function()
-  if os ~= "macos" then
+  if wezterm.GLOBAL.os ~= "macos" then
     return {}
   end
 
@@ -110,7 +110,7 @@ local wifi_status = function()
 end
 
 local battery_status = function()
-  if os ~= "macos" then
+  if wezterm.GLOBAL.os ~= "macos" then
     return {}
   end
 
@@ -133,14 +133,16 @@ local battery_status = function()
   return format_status(icon, nord.nord13, string.format("%.1f%%", percentage))
 end
 
+-- Initialize once
+local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
+wezterm.GLOBAL.ncpu = tonumber(content)
+
 local load_average_status = function()
-  if os == "macos" then
+  if wezterm.GLOBAL.os == "macos" then
     local content = read_command_output("/usr/sbin/sysctl -n vm.loadavg")
     local _, _, min1, _, _ = string.find(content, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
-    local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
-    local ncpu = tonumber(content)
 
-    local la = tonumber(min1) / ncpu
+    local la = tonumber(min1) / wezterm.GLOBAL.ncpu
     if la < 0.1 then
       icon = "md_speedometer"
     elseif la < 0.3 then
@@ -216,7 +218,7 @@ config.visual_bell = {
 
 -- Key bindings
 -- CMD(macOS) or ALT(other)
-local mod = os == 'macos' and 'CMD' or 'ALT'
+local mod = wezterm.GLOBAL.os == 'macos' and 'CMD' or 'ALT'
 
 config.disable_default_key_bindings = true
 -- leader is a WezTerm's term used for so-called prefix key
