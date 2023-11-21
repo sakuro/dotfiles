@@ -17,7 +17,7 @@ wezterm.GLOBAL.os =
   error('Unsupported Operating System')
 
 -- https://www.nordtheme.com/docs/colors-and-palettes
-local nord = {
+wezterm.GLOBAL.nord = {
   -- polar night
   nord0 = '#2E3440', nord1 = '#3B4252', nord2 = '#434C5E', nord3 = '#4C566A',
   -- snow storm
@@ -37,8 +37,8 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
   local process_name = pane.user_vars.WEZTERM_PROG or ""
 
   return {
-    { Background = { Color = tab.is_active and nord.nord8 or nord.nord9 } },
-    { Foreground = { Color = nord.nord6 } },
+    { Background = { Color = tab.is_active and wezterm.GLOBAL.nord.nord8 or wezterm.GLOBAL.nord.nord9 } },
+    { Foreground = { Color = wezterm.GLOBAL.nord.nord6 } },
     { Text = process_name },
   }
 end)
@@ -47,7 +47,7 @@ local format_status = function(icon_name, icon_color, status_text)
   return {
     { Foreground = { Color = icon_color } },
     { Text = ' ' .. wezterm.nerdfonts[icon_name] },
-    { Foreground = { Color = nord.nord6 } },
+    { Foreground = { Color = wezterm.GLOBAL.nord.nord6 } },
     { Text = ' ' .. status_text },
   }
 end
@@ -88,7 +88,7 @@ local volume_status = function()
       icon = "md_volume_high"
     end
   end
-  return format_status(icon, muted and nord.nord4 or nord.nord14, muted and "" or volume)
+  return format_status(icon, muted and wezterm.GLOBAL.nord.nord4 or wezterm.GLOBAL.nord.nord14, muted and "" or volume)
 end
 
 local wifi_status = function()
@@ -100,20 +100,19 @@ local wifi_status = function()
 
   local off = string.find(content, "AirPort: Off")
   if off then
-    return format_status('fa_wifi', nord.nord4, "---")
+    return format_status('fa_wifi', wezterm.GLOBAL.nord.nord4, "---")
   end
 
   local _, _, strength = string.find(content, "agrCtlRSSI: (-%d+)")
   strength = tonumber(strength)
   local _, _, ssid = string.find(content, " SSID: (%S+)")
-  return format_status('fa_wifi', nord.nord7, ssid)
+  return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
 end
 
 local battery_status = function()
   if wezterm.GLOBAL.os ~= "macos" then
     return {}
   end
-
 
   local battery_info = wezterm.battery_info()[1]
   local percentage = battery_info.state_of_charge * 100
@@ -130,12 +129,14 @@ local battery_status = function()
     icon = percentage < 100 and "md_battery_" .. math.floor(percentage / 10) .. "0" or "md_battery"
   end
 
-  return format_status(icon, nord.nord13, string.format("%.1f%%", percentage))
+  return format_status(icon, wezterm.GLOBAL.nord.nord13, string.format("%.1f%%", percentage))
 end
 
 -- Initialize once
-local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
-wezterm.GLOBAL.ncpu = tonumber(content)
+if wezterm.GLOBAL.os == 'macos' then
+  local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
+  wezterm.GLOBAL.ncpu = tonumber(content)
+end
 
 local load_average_status = function()
   if wezterm.GLOBAL.os == "macos" then
@@ -151,18 +152,18 @@ local load_average_status = function()
       icon = "md_speedometer_slow"
     end
 
-    return format_status(icon, nord.nord12, string.format("%.2f", la))
+    return format_status(icon, wezterm.GLOBAL.nord.nord12, string.format("%.2f", la))
   else
     return {}
   end
 end
 
 local clock_status = function()
-  return format_status("fa_calendar", nord.nord9, wezterm.strftime '%Y/%m/%d %H:%M')
+  return format_status("fa_calendar", wezterm.GLOBAL.nord.nord9, wezterm.strftime '%Y/%m/%d %H:%M')
 end
 
 local leader_status = function(window)
-  return format_status("md_keyboard_variant", window:leader_is_active() and nord.nord15 or nord.nord1, "")
+  return format_status("md_keyboard_variant", window:leader_is_active() and wezterm.GLOBAL.nord.nord15 or wezterm.GLOBAL.nord.nord1, "")
 end
 
 wezterm.on('update-right-status', function(window, pane)
@@ -187,15 +188,15 @@ end)
 config.show_new_tab_button_in_tab_bar = false
 config.window_frame = {
   font_size = 16.0,
-  active_titlebar_bg = nord.nord1,
-  inactive_titlebar_bg = nord.nord1,
+  active_titlebar_bg = wezterm.GLOBAL.nord.nord1,
+  inactive_titlebar_bg = wezterm.GLOBAL.nord.nord1,
 }
 
 -- Colors
 config.color_scheme = 'Nord (Gogh)'
 config.colors = {
-  visual_bell = nord.nord6,
-  compose_cursor = nord.nord15
+  visual_bell = wezterm.GLOBAL.nord.nord6,
+  compose_cursor = wezterm.GLOBAL.nord.nord15
 }
 config.window_background_opacity = 0.94
 config.inactive_pane_hsb = {
