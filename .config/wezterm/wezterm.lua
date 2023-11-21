@@ -151,7 +151,7 @@ local load_average_status = function()
       icon = "md_speedometer_slow"
     end
 
-    return format_status(icon, nord.nord12, min1)
+    return format_status(icon, nord.nord12, string.format("%.2f", la))
   else
     return {}
   end
