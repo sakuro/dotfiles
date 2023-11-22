@@ -215,9 +215,6 @@ config.visual_bell = {
 }
 
 -- Key bindings
--- CMD(macOS) or ALT(other)
-local mod = wezterm.GLOBAL.os == 'macos' and 'CMD' or 'ALT'
-
 config.disable_default_key_bindings = true
 -- leader is a WezTerm's term used for so-called prefix key
 config.leader = { key = 't', mods = 'CTRL', timeout_milliseconds = 1000 }
@@ -263,9 +260,9 @@ config.keys = {
   { key = 'v',   mods = 'LEADER|CTRL',  action = wezterm.action.PasteFrom 'Clipboard' },
   { key = 'c',   mods = 'LEADER|CTRL',  action = wezterm.action.CopyTo    'Clipboard' },
   -- font size
-  { key = '+',   mods = mod..'|SHIFT',  action = wezterm.action.IncreaseFontSize },
-  { key = '-',   mods = mod,            action = wezterm.action.DecreaseFontSize },
-  { key = '0',   mods = mod,            action = wezterm.action.ResetFontSize },
+  { key = ']',   mods = 'LEADER|CTRL',  action = wezterm.action.IncreaseFontSize },
+  { key = '[',   mods = 'LEADER|CTRL',  action = wezterm.action.DecreaseFontSize },
+  { key = '=',   mods = 'LEADER|CTRL',  action = wezterm.action.ResetFontSize },
   -- restore some default bindings
   { key = 'p',   mods = 'CTRL|SHIFT',   action = wezterm.action.ActivateCommandPalette },
   { key = 'l',   mods = 'CTRL|SHIFT',   action = wezterm.action.ShowDebugOverlay },
