@@ -1,8 +1,6 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.status_update_interval = 15000
-
 function table.merge(to, from)
   for _, v in ipairs(from) do
      table.insert(to, v)
@@ -10,11 +8,25 @@ function table.merge(to, from)
   return to
 end
 
+local read_command_output = function(command)
+  local process = io.popen(command)
+  return process:read("*a")
+end
+
 wezterm.GLOBAL.os =
   string.find(wezterm.target_triple, '-windows-') and 'windows' or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
   string.find(wezterm.target_triple, '-linux-') and 'linux' or
   error('Unsupported Operating System')
+
+if wezterm.GLOBAL.os == 'windows' then
+  config.default_domain = 'WSL:Ubuntu-22.04'
+end
+
+if wezterm.GLOBAL.os == 'macos' then
+  local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
+  wezterm.GLOBAL.ncpu = tonumber(content)
+end
 
 -- https://www.nordtheme.com/docs/colors-and-palettes
 wezterm.GLOBAL.nord = {
@@ -27,10 +39,6 @@ wezterm.GLOBAL.nord = {
   -- aurora
   nord11 = '#BF616A', nord12 = '#D08770', nord13 = '#EBCB8B', nord14 = '#A3BE8C', nord15 = '#B48EAD',
 }
-
-if wezterm.GLOBAL.os == 'windows' then
-  config.default_domain = 'WSL:Ubuntu-22.04'
-end
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
   local pane = tab.active_pane
@@ -56,11 +64,6 @@ local spacer = function()
   return {
     { Text = ' ' }
   }
-end
-
-local read_command_output = function(command)
-  local process = io.popen(command)
-  return process:read("*a")
 end
 
 local volume_status = function()
@@ -120,7 +123,7 @@ local battery_status = function()
   local icon
   local state = battery_info.state -- "Charging", "Discharging", "Empty", "Full", "Unknown"
   if state == "Charging" then
-    icon = "md_battery_charging"
+    icon = percentage < 100 and "md_battery_charging_" .. math.floor(percentage / 10) .. "0" or "md_battery_charging"
   elseif state == "Empty" or state == "Unknown" then
     icon = "md_battery_outline"
   elseif state == "Full" then
@@ -130,12 +133,6 @@ local battery_status = function()
   end
 
   return format_status(icon, wezterm.GLOBAL.nord.nord13, string.format("%.1f%%", percentage))
-end
-
--- Initialize once
-if wezterm.GLOBAL.os == 'macos' then
-  local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
-  wezterm.GLOBAL.ncpu = tonumber(content)
 end
 
 local load_average_status = function()
@@ -159,7 +156,7 @@ local load_average_status = function()
 end
 
 local clock_status = function()
-  return format_status("fa_calendar", wezterm.GLOBAL.nord.nord9, wezterm.strftime '%Y/%m/%d %H:%M')
+  return format_status("fa_calendar", wezterm.GLOBAL.nord.nord9, wezterm.strftime '%Y/%m/%d %H:%M:%S')
 end
 
 local leader_status = function(window)
