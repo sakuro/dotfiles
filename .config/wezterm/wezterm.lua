@@ -8,11 +8,6 @@ function table.merge(to, from)
   return to
 end
 
-local read_command_output = function(command)
-  local process = io.popen(command)
-  return process:read("*a")
-end
-
 wezterm.GLOBAL.os = wezterm.GLOBAL.os or
   string.find(wezterm.target_triple, '-windows-') and 'windows' or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
@@ -24,8 +19,8 @@ if wezterm.GLOBAL.os == 'windows' then
 end
 
 if wezterm.GLOBAL.os == 'macos' then
-  local content = read_command_output("/usr/sbin/sysctl -n hw.ncpu")
-  wezterm.GLOBAL.ncpu = tonumber(content)
+  local success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl",  "-n",  "hw.ncpu"}
+  wezterm.GLOBAL.ncpu = tonumber(stdout)
 end
 
 -- https://www.nordtheme.com/docs/colors-and-palettes
@@ -71,11 +66,11 @@ local volume_status = function()
     return {}
   end
 
-  local content = read_command_output("osascript -e 'get volume settings'")
+  local success, stdout, _stderr = wezterm.run_child_process {"osascript", "-e", "get volume settings"}
 
-  local _, _, volume = string.find(content, "output volume:(%d+)")
+  local _, _, volume = string.find(stdout, "output volume:(%d+)")
   volume = tonumber(volume)
-  local _, _, muted = string.find(content, "output muted:(%S+)")
+  local _, _, muted = string.find(stdout, "output muted:(%S+)")
   muted = muted == "true"
 
   local icon
@@ -99,16 +94,16 @@ local wifi_status = function()
     return {}
   end
 
-  local content = read_command_output("/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I")
+  local success, stdout, _stderr = wezterm.run_child_process {"/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport", "-I"}
 
-  local off = string.find(content, "AirPort: Off")
+  local off = string.find(stdout, "AirPort: Off")
   if off then
     return format_status('fa_wifi', wezterm.GLOBAL.nord.nord4, "---")
   end
 
-  local _, _, strength = string.find(content, "agrCtlRSSI: (-%d+)")
+  local _, _, strength = string.find(stdout, "agrCtlRSSI: (-%d+)")
   strength = tonumber(strength)
-  local _, _, ssid = string.find(content, " SSID: (%S+)")
+  local _, _, ssid = string.find(stdout, " SSID: (%S+)")
   return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
 end
 
@@ -137,8 +132,8 @@ end
 
 local load_average_status = function()
   if wezterm.GLOBAL.os == "macos" then
-    local content = read_command_output("/usr/sbin/sysctl -n vm.loadavg")
-    local _, _, min1, _, _ = string.find(content, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
+    local success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl", "-n", "vm.loadavg"}
+    local _, _, min1, _, _ = string.find(stdout, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
 
     local la = tonumber(min1) / wezterm.GLOBAL.ncpu
     if la < 1 then
