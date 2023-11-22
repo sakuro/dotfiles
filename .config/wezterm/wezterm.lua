@@ -13,7 +13,7 @@ local read_command_output = function(command)
   return process:read("*a")
 end
 
-wezterm.GLOBAL.os =
+wezterm.GLOBAL.os = wezterm.GLOBAL.os or
   string.find(wezterm.target_triple, '-windows-') and 'windows' or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
   string.find(wezterm.target_triple, '-linux-') and 'linux' or
@@ -29,7 +29,7 @@ if wezterm.GLOBAL.os == 'macos' then
 end
 
 -- https://www.nordtheme.com/docs/colors-and-palettes
-wezterm.GLOBAL.nord = {
+wezterm.GLOBAL.nord = wezterm.GLOBAL.nord or {
   -- polar night
   nord0 = '#2E3440', nord1 = '#3B4252', nord2 = '#434C5E', nord3 = '#4C566A',
   -- snow storm
