@@ -244,9 +244,9 @@ config.keys = {
   { key = '8',   mods = 'LEADER',       action = wezterm.action.ActivateTab(7) },
   { key = '9',   mods = 'LEADER',       action = wezterm.action.ActivateTab(8) },
   { key = '0',   mods = 'LEADER',       action = wezterm.action.ActivateTab(9) },
-  { key = '$',   mods = 'LEADER|SHIFT', action = wezterm.action.ActivateTab(-1) },
+  { key = '$',   mods = 'LEADER',       action = wezterm.action.ActivateTab(-1) },
   -- pane management
-  { key = '|',   mods = 'LEADER|SHIFT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = '|',   mods = 'LEADER',       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = '-',   mods = 'LEADER',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'z',   mods = 'LEADER',       action = wezterm.action.TogglePaneZoomState },
   -- pane traversal
@@ -264,10 +264,10 @@ config.keys = {
   { key = '[',   mods = 'LEADER|CTRL',  action = wezterm.action.DecreaseFontSize },
   { key = '=',   mods = 'LEADER|CTRL',  action = wezterm.action.ResetFontSize },
   -- restore some default bindings
-  { key = 'p',   mods = 'CTRL|SHIFT',   action = wezterm.action.ActivateCommandPalette },
-  { key = 'l',   mods = 'CTRL|SHIFT',   action = wezterm.action.ShowDebugOverlay },
+  { key = 'P',   mods = 'CTRL',         action = wezterm.action.ActivateCommandPalette },
+  { key = 'L',   mods = 'CTRL',         action = wezterm.action.ShowDebugOverlay },
   -- other
-  { key = 's',   mods = 'LEADER|SHIFT', action = wezterm.action.ReloadConfiguration },
+  { key = 'S',   mods = 'LEADER',       action = wezterm.action.ReloadConfiguration },
 }
 
 return config
