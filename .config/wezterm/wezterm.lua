@@ -124,11 +124,11 @@ local battery_status = function()
   local state = battery_info.state -- "Charging", "Discharging", "Empty", "Full", "Unknown"
   if state == "Charging" then
     icon = percentage < 100 and "md_battery_charging_" .. math.floor(percentage / 10) .. "0" or "md_battery_charging"
-  elseif state == "Empty" or state == "Unknown" then
+  elseif state == "Empty" then
     icon = "md_battery_outline"
   elseif state == "Full" then
     icon = "md_battery"
-  elseif state == "Discharging" then
+  elseif state == "Discharging" or "Unknown" then
     icon = percentage < 100 and "md_battery_" .. math.floor(percentage / 10) .. "0" or "md_battery"
   end
 
