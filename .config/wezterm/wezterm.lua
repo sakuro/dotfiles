@@ -260,8 +260,8 @@ config.keys = {
   { key = 'Tab', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Next' },
   { key = 'Tab', mods = 'LEADER|SHIFT', action = wezterm.action.ActivatePaneDirection 'Prev' },
   -- clipboard
-  { key = 'v',   mods = mod,            action = wezterm.action.PasteFrom 'Clipboard' },
-  { key = 'c',   mods = mod,            action = wezterm.action.CopyTo    'Clipboard' },
+  { key = 'v',   mods = 'LEADER|CTRL',  action = wezterm.action.PasteFrom 'Clipboard' },
+  { key = 'c',   mods = 'LEADER|CTRL',  action = wezterm.action.CopyTo    'Clipboard' },
   -- font size
   { key = '+',   mods = mod..'|SHIFT',  action = wezterm.action.IncreaseFontSize },
   { key = '-',   mods = mod,            action = wezterm.action.DecreaseFontSize },
