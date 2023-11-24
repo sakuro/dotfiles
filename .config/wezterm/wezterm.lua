@@ -155,7 +155,7 @@ local clock_status = function()
 end
 
 local leader_status = function(window)
-  return format_status("md_keyboard_variant", window:leader_is_active() and wezterm.GLOBAL.nord.nord15 or wezterm.GLOBAL.nord.nord1, "")
+  return format_status("md_keyboard_variant", window:leader_is_active() and wezterm.GLOBAL.nord.nord15 or wezterm.GLOBAL.nord.nord4, "")
 end
 
 wezterm.on('update-right-status', function(window, pane)
