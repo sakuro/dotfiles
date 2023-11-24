@@ -159,7 +159,9 @@ local leader_status = function(window)
 end
 
 wezterm.on('update-right-status', function(window, pane)
-  status = {}
+  status = {
+    { Background = { Color = wezterm.GLOBAL.nord.nord1 } }
+  }
 
   table.merge(status, wifi_status())
   table.merge(status, spacer())
