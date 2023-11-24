@@ -73,20 +73,24 @@ local volume_status = function()
   local _, _, muted = string.find(stdout, "output muted:(%S+)")
   muted = muted == "true"
 
-  local icon
+  local icon, icon_color, status_text
 
   if muted then
     icon = "md_volume_variant_off"
+    icon_color = wezterm.GLOBAL.nord.nord4
+    status_text = ""
   else
-    if volume < 34 then
+    if volume < 1 * (100/3) then
       icon = "md_volume_low"
-    elseif volume < 68 then
+    elseif volume < 2 * (100/3) then
       icon = "md_volume_medium"
     else
       icon = "md_volume_high"
     end
+    icon_color = wezterm.GLOBAL.nord.nord14
+    status_text = volume
   end
-  return format_status(icon, muted and wezterm.GLOBAL.nord.nord4 or wezterm.GLOBAL.nord.nord14, muted and "" or volume)
+  return format_status(icon, icon_color, status_text)
 end
 
 local wifi_status = function()
