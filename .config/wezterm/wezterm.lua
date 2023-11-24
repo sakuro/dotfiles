@@ -190,7 +190,10 @@ config.window_frame = {
 config.color_scheme = 'Nord (Gogh)'
 config.colors = {
   visual_bell = wezterm.GLOBAL.nord.nord6,
-  compose_cursor = wezterm.GLOBAL.nord.nord15
+  compose_cursor = wezterm.GLOBAL.nord.nord15,
+  tab_bar = {
+    background = wezterm.GLOBAL.nord.nord1
+  }
 }
 config.window_background_opacity = 0.94
 config.inactive_pane_hsb = {
