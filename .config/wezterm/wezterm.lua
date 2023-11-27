@@ -19,7 +19,7 @@ if wezterm.GLOBAL.os == 'windows' then
 end
 
 if wezterm.GLOBAL.os == 'macos' then
-  local success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl",  "-n",  "hw.ncpu"}
+  local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl",  "-n",  "hw.ncpu"}
   wezterm.GLOBAL.ncpu = tonumber(stdout)
 end
 
@@ -38,9 +38,10 @@ wezterm.GLOBAL.nord = wezterm.GLOBAL.nord or {
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
   local pane = tab.active_pane
   local process_name = pane.user_vars.WEZTERM_PROG or ""
+  local background_color = tab.is_active and wezterm.GLOBAL.nord.nord8 or wezterm.GLOBAL.nord.nord9
 
   return {
-    { Background = { Color = tab.is_active and wezterm.GLOBAL.nord.nord8 or wezterm.GLOBAL.nord.nord9 } },
+    { Background = { Color = background_color } },
     { Foreground = { Color = wezterm.GLOBAL.nord.nord6 } },
     { Text = process_name },
   }
@@ -55,18 +56,12 @@ local format_status = function(icon_name, icon_color, status_text)
   }
 end
 
-local spacer = function()
-  return {
-    { Text = ' ' }
-  }
-end
-
 local volume_status = function()
   if wezterm.GLOBAL.os ~= "macos" then
     return {}
   end
 
-  local success, stdout, _stderr = wezterm.run_child_process {"osascript", "-e", "get volume settings"}
+  local _success, stdout, _stderr = wezterm.run_child_process {"osascript", "-e", "get volume settings"}
 
   local _, _, volume = string.find(stdout, "output volume:(%d+)")
   volume = tonumber(volume)
@@ -98,7 +93,7 @@ local wifi_status = function()
     return {}
   end
 
-  local success, stdout, _stderr = wezterm.run_child_process {"/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport", "-I"}
+  local _success, stdout, _stderr = wezterm.run_child_process {"/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport", "-I"}
 
   local off = string.find(stdout, "AirPort: Off")
   if off then
@@ -136,7 +131,7 @@ end
 
 local load_average_status = function()
   if wezterm.GLOBAL.os == "macos" then
-    local success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl", "-n", "vm.loadavg"}
+    local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl", "-n", "vm.loadavg"}
     local _, _, min1, _, _ = string.find(stdout, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
 
     local la = tonumber(min1) / wezterm.GLOBAL.ncpu
@@ -159,25 +154,29 @@ local clock_status = function()
 end
 
 local leader_status = function(window)
-  return format_status("md_keyboard_variant", window:leader_is_active() and wezterm.GLOBAL.nord.nord15 or wezterm.GLOBAL.nord.nord4, "")
+  local color = window:leader_is_active() and wezterm.GLOBAL.nord.nord15 or wezterm.GLOBAL.nord.nord4
+  return format_status("md_keyboard_variant", color, "")
 end
 
 wezterm.on('update-right-status', function(window, pane)
-  status = {
-    { Background = { Color = wezterm.GLOBAL.nord.nord1 } }
-  }
+  local status = {}
+  local spacer = { { Text = ' ' } }
 
-  table.merge(status, wifi_status())
-  table.merge(status, spacer())
-  table.merge(status, volume_status())
-  table.merge(status, spacer())
-  table.merge(status, battery_status())
-  table.merge(status, spacer())
-  table.merge(status, load_average_status())
-  table.merge(status, spacer())
-  table.merge(status, clock_status())
-  table.merge(status, spacer())
-  table.merge(status, leader_status(window))
+  local add_status = function(add)
+    if next(status) == nil then
+      table.merge(status, { { Background = { Color = wezterm.GLOBAL.nord.nord1 } } })
+    else
+      table.merge(status, spacer)
+    end
+    table.merge(status, add)
+  end
+
+  add_status(wifi_status())
+  add_status(volume_status())
+  add_status(battery_status())
+  add_status(load_average_status())
+  add_status(clock_status())
+  add_status(leader_status(window))
 
   window:set_right_status(wezterm.format(status))
 end)
