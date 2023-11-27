@@ -79,3 +79,22 @@ end)
 switchInputMethodByCommandKey:start()
 switchToEnglishOnActivation:start()
 toggleMuteByRightOptionKey:start()
+
+math.clamp = function(value, min, max)
+  return math.min(math.max(0, value), 100)
+end
+
+local changeVolume = function(device, diff)
+  return function()
+    local current = device:volume()
+    local new = math.clamp(math.floor(current + diff), 0, 100)
+    device:setMuted(new <= 0)
+    hs.alert.closeAll(0.0)
+    hs.alert.show("Volume " .. (new <= 0 and "Muted" or new .. "%"), {}, 0.5)
+    device:setVolume(new)
+  end
+end
+
+local audioDevice = hs.audiodevice.defaultOutputDevice()
+hs.hotkey.bind({'cmd'}, 'F11', changeVolume(audioDevice, -3))
+hs.hotkey.bind({'cmd'}, 'F12', changeVolume(audioDevice, 3))
