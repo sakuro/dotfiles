@@ -96,5 +96,5 @@ local changeVolume = function(device, diff)
 end
 
 local audioDevice = hs.audiodevice.defaultOutputDevice()
-hs.hotkey.bind({'cmd'}, 'F11', changeVolume(audioDevice, -3))
-hs.hotkey.bind({'cmd'}, 'F12', changeVolume(audioDevice, 3))
+hs.hotkey.bind({'alt'}, 'F11', changeVolume(audioDevice, -3))
+hs.hotkey.bind({'alt'}, 'F12', changeVolume(audioDevice, 3))
