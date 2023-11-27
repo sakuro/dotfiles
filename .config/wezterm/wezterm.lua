@@ -163,7 +163,7 @@ wezterm.on('update-right-status', function(window, pane)
   local spacer = { { Text = ' ' } }
 
   local add_status = function(add)
-    if next(status) == nil then
+    if #status == 0 then
       table.merge(status, { { Background = { Color = wezterm.GLOBAL.nord.nord1 } } })
     else
       table.merge(status, spacer)
