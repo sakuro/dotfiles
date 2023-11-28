@@ -48,7 +48,10 @@ function prompt_sakuro_user() {
   print -nP "%n"
 }
 
+
 function prompt_sakuro_host() {
+  local -i ncpu=$(sysctl -n hw.ncpu)
+
   if [[ -r /proc/loadavg ]]; then
     set -- $(< /proc/loadavg)
   elif [[ -x /usr/sbin/sysctl ]]; then
@@ -57,7 +60,7 @@ function prompt_sakuro_host() {
   fi
 
   [[ -n "$1" ]] && {
-    local -i load_average=$1 # round down fraction
+    local -i load_average=$(($1 / $ncpu)) # round down fraction
     local brightness=dark
 
     case "$brightness-$load_average" in
