@@ -111,7 +111,11 @@ local battery_status = function()
     return {}
   end
 
-  local battery_info = wezterm.battery_info()[1]
+  local battery_info = wezterm.battery_info()
+  if #battery_info == 0 then
+    return
+  end
+  battery_info = battery_info[1]
   local percentage = battery_info.state_of_charge * 100
 
   local icon
