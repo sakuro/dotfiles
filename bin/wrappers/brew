@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-remove-path ~/bin/wrappers /opt/homebrew/opt/*/libexec/gnubin # The brew command itself does not expect GNU-extended binaries.
-
-exec brew "$@"
