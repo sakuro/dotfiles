@@ -81,7 +81,7 @@ switchToEnglishOnActivation:start()
 toggleMuteByRightOptionKey:start()
 
 math.clamp = function(value, min, max)
-  return math.min(math.max(0, value), 100)
+  return math.min(math.max(min, value), max)
 end
 
 local changeVolume = function(device, diff)
