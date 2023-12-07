@@ -50,7 +50,13 @@ function prompt_sakuro_user() {
 
 
 function prompt_sakuro_host() {
-  local -i ncpu=$(sysctl -n hw.ncpu)
+  local -i ncpu
+
+  if [[ -f /proc/cpuinfo ]]; then
+    ncpu=$(grep processor /proc/cpuinfo | wc -l)
+  else
+    ncpu=$(sysctl -n hw.ncpu)
+  fi
 
   if [[ -r /proc/loadavg ]]; then
     set -- $(< /proc/loadavg)
