@@ -20,7 +20,7 @@ darwin*)
     export RUBY_CONFIGURE_OPTS="$RUBY_CONFIGURE_OPTS
       --with-readline-dir=$(brew --prefix readline)
       --with-libyaml-dir=$(brew --prefix libyaml)
-      --with-openssl-dir=$(brew --prefix openssl@1.1)"
+      --with-openssl-dir=$(brew --prefix openssl@3)"
   fi
   ;;
 esac
