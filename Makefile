@@ -7,8 +7,8 @@ setup: link-git-hooks link-dotfiles install-locale install-packages change-login
 link-git-hooks: .git/hooks/post-merge
 
 .git/hooks/post-merge:
-	mkdir --parents $$(dirname $@)
-	ln --symbolic --force $(PWD)/scripts/post-merge $$(dirname $@)
+	mkdir -p $$(dirname $@)
+	ln -s -f $(PWD)/scripts/post-merge $$(dirname $@)
 
 link-dotfiles:
 	@scripts/link-dotfiles.sh
