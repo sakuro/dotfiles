@@ -24,6 +24,8 @@ local switchInputMethod = function(inputMethod)
   local currentInputMethod = hs.keycodes.currentMethod()
   if currentInputMethod ~= inputMethod then
     hs.keycodes.setMethod(inputMethod)
+    hs.alert.closeAll(0.0)
+    hs.alert.show(inputMethod, {}, 0.5)
   end
 end
 
