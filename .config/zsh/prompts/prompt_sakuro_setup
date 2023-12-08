@@ -53,7 +53,8 @@ function prompt_sakuro_host() {
   local -i ncpu
 
   if [[ -f /proc/cpuinfo ]]; then
-    ncpu=$(grep processor /proc/cpuinfo | wc -l)
+    set -- ${(M)"${(@f)$(</proc/cpuinfo)}"#processor*:*}
+    ncpu=$#
   else
     ncpu=$(sysctl -n hw.ncpu)
   fi
