@@ -69,21 +69,23 @@ switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, a
   end
 end)
 
--- Toggle Mute
-toggleMuteByRightOptionKey = handleSingleModifier('alt', function(keyCode)
-  if keyCode == map['rightalt'] then
-    local audio = hs.audiodevice.defaultOutputDevice()
-    local muted = audio:outputMuted()
-    audio:setOutputMuted(not muted)
-  end
-end)
-
 switchInputMethodByCommandKey:start()
 switchToEnglishOnActivation:start()
-toggleMuteByRightOptionKey:start()
 
+-- Audio volume management
 math.clamp = function(value, min, max)
   return math.min(math.max(min, value), max)
+end
+
+local notifyCurrentAudioStatus = function(device)
+  local muted = device:outputMuted()
+  local volume = math.floor(device:volume())
+  hs.alert.closeAll(0.0)
+  if muted or volume <= 0 then
+    hs.alert.show("🔇Muted", {}, 0.5)
+  else
+    hs.alert.show("🔈Volume " .. volume .. "%", {}, 0.5)
+  end
 end
 
 local changeVolume = function(device, diff)
@@ -91,12 +93,21 @@ local changeVolume = function(device, diff)
     local current = device:volume()
     local new = math.clamp(math.floor(current + diff), 0, 100)
     device:setMuted(new <= 0)
-    hs.alert.closeAll(0.0)
-    hs.alert.show("Volume " .. (new <= 0 and "Muted" or new .. "%"), {}, 0.5)
     device:setVolume(new)
+    notifyCurrentAudioStatus(device)
   end
 end
 
-local audioDevice = hs.audiodevice.defaultOutputDevice()
-hs.hotkey.bind({'alt'}, 'Down', changeVolume(audioDevice, -3))
-hs.hotkey.bind({'alt'}, 'Up', changeVolume(audioDevice, 3))
+toggleMuteByRightOptionKey = handleSingleModifier('alt', function(keyCode)
+  if keyCode == map['rightalt'] then
+    local device = hs.audiodevice.defaultOutputDevice()
+    device:setOutputMuted(not device:outputMuted())
+    notifyCurrentAudioStatus(device)
+  end
+end)
+
+local device = hs.audiodevice.defaultOutputDevice()
+hs.hotkey.bind({'alt'}, 'Down', changeVolume(device, -3))
+hs.hotkey.bind({'alt'}, 'Up', changeVolume(device, 3))
+
+toggleMuteByRightOptionKey:start()
