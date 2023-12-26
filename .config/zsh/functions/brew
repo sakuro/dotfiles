@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Avoid using GNU's enhanced commands
+local path=( ${path[@]#$(command brew --prefix)/opt/*/libexec/gnubin} )
+command brew "$@"
