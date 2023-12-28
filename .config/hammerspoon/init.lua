@@ -88,8 +88,9 @@ local notifyCurrentAudioStatus = function(device)
   end
 end
 
-local changeVolume = function(device, diff)
+local changeVolume = function(diff)
   return function()
+    local device = hs.audiodevice.defaultOutputDevice()
     local current = device:volume()
     local new = math.clamp(math.floor(current + diff), 0, 100)
     device:setMuted(new <= 0)
@@ -106,8 +107,7 @@ toggleMuteByRightOptionKey = handleSingleModifier('alt', function(keyCode)
   end
 end)
 
-local device = hs.audiodevice.defaultOutputDevice()
-hs.hotkey.bind({'alt'}, 'Down', changeVolume(device, -3))
-hs.hotkey.bind({'alt'}, 'Up', changeVolume(device, 3))
+hs.hotkey.bind({'alt'}, 'Down', changeVolume(-3))
+hs.hotkey.bind({'alt'}, 'Up', changeVolume(3))
 
 toggleMuteByRightOptionKey:start()
