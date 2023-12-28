@@ -22,7 +22,6 @@ ensure
   FileUtils.mkdir_p(File.dirname(history_path))
 end
 
-require 'irb/ext/save-history'
 require 'irb/completion'
 
 IRB.conf[:SAVE_HISTORY] = 10000
