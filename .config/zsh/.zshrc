@@ -184,13 +184,16 @@ limit coredumpsize 0
 is-executable direnv && eval "$(direnv hook zsh)"
 
 () {
-  for script in \
-    /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
-    /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh; do
-    [[ -f $script ]] && source $script
+  local script prefix
+  for script in syntax-highlighting autosuggestions; do
+    for prefix in /opt/homebrew/share /usr/share; do
+      local full_path="$prefix/zsh-$script/zsh-$script.zsh"
+      [[ -f "$full_path" ]] || continue
+      source "$full_path"
+      break
+    done
   done
+
   if [[ -n $ZSH_AUTOSUGGEST_CLEAR_WIDGETS ]]; then
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-with-hooks
   fi
@@ -208,6 +211,7 @@ add-zsh-hook chpwd git-status-short
 
 function set-program-name()
 {
+  # second arg contains the actual command to be executed as a single-line string
   set -- ${=2}
   if [[ $1 = "env" ]]; then
     shift
