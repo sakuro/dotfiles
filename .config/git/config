@@ -30,7 +30,7 @@
   lineNumber = true
   patternType = perl
 [init]
-  templateDir = ~/.config/git/templates
+  templateDir = ~/.config/git/templates/init
   defaultBranch = main
 [log]
   abbrevCommit = true
