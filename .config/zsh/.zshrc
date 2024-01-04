@@ -53,7 +53,7 @@ setopt hist_reduce_blanks
 setopt hist_save_nodups
 setopt share_history
 
-HISTFILE=$XDG_CACHE_HOME/zsh/history
+export HISTFILE=$XDG_CACHE_HOME/zsh/history
 [[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
 typeset -i SAVEHIST=1000000
 typeset -i HISTSIZE=1100000
