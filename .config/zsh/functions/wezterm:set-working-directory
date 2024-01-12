@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+[[ "$TERM_PROGRAM" = "WezTerm" ]] || return 0
+
+if [[ $# -ne 0 ]]; then
+  echo "Usage: $0"
+  return 1
+fi
+
+printf "\033]7;file://$PWD\033\\"
