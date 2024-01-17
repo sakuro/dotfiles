@@ -246,6 +246,13 @@ local MoveToNewTab = wezterm.action_callback(function(window, pane)
   tab:activate()
 end)
 
+local copyPasteMods
+if wezterm.GLOBAL.os == 'macos' then
+  copyPasteMods = 'CMD'
+else
+  copyPasteMods = 'LEADER|CTRL'
+end
+
 config.keys = {
   { key = 't',   mods = 'LEADER|CTRL',  action = wezterm.action.SendKey { key = 't', mods = 'CTRL' } },
   -- tab management
@@ -279,8 +286,8 @@ config.keys = {
   { key = 'Tab', mods = 'LEADER',       action = wezterm.action.ActivatePaneDirection 'Next' },
   { key = 'Tab', mods = 'LEADER|SHIFT', action = wezterm.action.ActivatePaneDirection 'Prev' },
   -- clipboard
-  { key = 'v',   mods = 'LEADER|CTRL',  action = wezterm.action.PasteFrom 'Clipboard' },
-  { key = 'c',   mods = 'LEADER|CTRL',  action = wezterm.action.CopyTo    'Clipboard' },
+  { key = 'v',   mods = copyPasteMods,  action = wezterm.action.PasteFrom 'Clipboard' },
+  { key = 'c',   mods = copyPasteMods,  action = wezterm.action.CopyTo    'Clipboard' },
   -- font size
   { key = ']',   mods = 'LEADER|CTRL',  action = wezterm.action.IncreaseFontSize },
   { key = '[',   mods = 'LEADER|CTRL',  action = wezterm.action.DecreaseFontSize },
