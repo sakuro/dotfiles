@@ -162,6 +162,20 @@ local leader_status = function(window)
   return format_status("md_keyboard_variant", color, "")
 end
 
+local vpn_status = function()
+  if wezterm.GLOBAL.os ~= "macos" then
+    return {}
+  end
+
+  local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/scutil", "--nc", "list"}
+  local _start, _end, status, service_name = string.find(stdout, "* %((%S+)%)%s+[%x%-]+%s+IPSec%s+%p(%S+)%p%s+")
+  if status == "Connected" then
+    return format_status("md_lock", wezterm.GLOBAL.nord.nord12, service_name)
+  else
+    return format_status("md_lock_open_outline", wezterm.GLOBAL.nord.nord13, "")
+  end
+end
+
 wezterm.on('update-right-status', function(window, pane)
   local status = {}
   local spacer = { { Text = ' ' } }
@@ -175,6 +189,7 @@ wezterm.on('update-right-status', function(window, pane)
     table.merge(status, add)
   end
 
+  add_status(vpn_status())
   add_status(wifi_status())
   add_status(volume_status())
   add_status(battery_status())
