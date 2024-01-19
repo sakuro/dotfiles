@@ -230,4 +230,10 @@ function unset-program-name()
 }
 add-zsh-hook precmd unset-program-name
 
+function set-working-directory()
+{
+  wezterm:set-working-directory
+}
+add-zsh-hook chpwd set-working-directory
+
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
