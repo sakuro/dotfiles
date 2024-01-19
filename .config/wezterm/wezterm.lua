@@ -8,6 +8,21 @@ function table.merge(to, from)
   return to
 end
 
+function collect_vpn_service_names()
+  local service_names = {}
+  local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/scutil", "--nc", "list"}
+  local init = 1
+  while init < #stdout do
+    local _from, to, _status, service_name = string.find(stdout, "%*?%S*%((%S+)%)%s+[%x%-]+%s+IPSec%s+%p(%S+)%p%s+%S", init)
+    if service_name == nil then
+      break
+    end
+    init = to + 1
+    table.insert(service_names, service_name)
+  end
+  return service_names
+end
+
 wezterm.GLOBAL.os = wezterm.GLOBAL.os or
   string.find(wezterm.target_triple, '-windows-') and 'windows' or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
@@ -34,6 +49,8 @@ wezterm.GLOBAL.nord = wezterm.GLOBAL.nord or {
   -- aurora
   nord11 = '#BF616A', nord12 = '#D08770', nord13 = '#EBCB8B', nord14 = '#A3BE8C', nord15 = '#B48EAD',
 }
+
+wezterm.GLOBAL.vpn_service_names = wezterm.GLOBAL.vpn_service_names or collect_vpn_service_names()
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
   local pane = tab.active_pane
@@ -162,17 +179,14 @@ local leader_status = function(window)
   return format_status("md_keyboard_variant", color, "")
 end
 
-local vpn_status = function()
-  if wezterm.GLOBAL.os ~= "macos" then
-    return {}
-  end
+local vpn_status = function(service_name)
+  local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/scutil", "--nc", "status", service_name}
+  local _from, _to, status = string.find(stdout, "^([A-Z][a-z]+)")
 
-  local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/scutil", "--nc", "list"}
-  local _start, _end, status, service_name = string.find(stdout, "* %((%S+)%)%s+[%x%-]+%s+IPSec%s+%p(%S+)%p%s+")
   if status == "Connected" then
     return format_status("md_lock", wezterm.GLOBAL.nord.nord12, service_name)
   else
-    return format_status("md_lock_open_outline", wezterm.GLOBAL.nord.nord13, "")
+    return {}
   end
 end
 
@@ -189,7 +203,9 @@ wezterm.on('update-right-status', function(window, pane)
     table.merge(status, add)
   end
 
-  add_status(vpn_status())
+  for _, service_name in ipairs(wezterm.GLOBAL.vpn_service_names) do
+    add_status(vpn_status(service_name))
+  end
   add_status(wifi_status())
   add_status(volume_status())
   add_status(battery_status())
