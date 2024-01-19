@@ -9,6 +9,9 @@ function table.merge(to, from)
 end
 
 function collect_vpn_service_names()
+  if wezterm.GLOBAL.os ~= 'macos' then
+    return {}
+  end
   local service_names = {}
   local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/scutil", "--nc", "list"}
   local init = 1
