@@ -14,14 +14,12 @@ function collect_vpn_service_names()
   end
   local service_names = {}
   local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/scutil", "--nc", "list"}
-  local init = 1
-  while init < #stdout do
-    local _from, to, _status, service_name = string.find(stdout, "%*?%S*%((%S+)%)%s+[%x%-]+%s+IPSec%s+%p(%S+)%p%s+%S", init)
-    if service_name == nil then
-      break
+  local lines = wezterm.split_by_newlines(stdout)
+  for _, l in ipairs(lines) do
+    local _from, _to, service_name = string.find(l, '"(%S+)"')
+    if service_name then
+      table.insert(service_names, service_name)
     end
-    init = to + 1
-    table.insert(service_names, service_name)
   end
   return service_names
 end
