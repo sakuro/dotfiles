@@ -204,8 +204,10 @@ wezterm.on('update-right-status', function(window, pane)
     table.merge(status, add)
   end
 
-  for _, service_name in ipairs(wezterm.GLOBAL.vpn_service_names) do
-    add_status(vpn_status(service_name))
+  if #wezterm.GLOBAL.vpn_service_names > 0 then
+    for _, service_name in ipairs(wezterm.GLOBAL.vpn_service_names) do
+      add_status(vpn_status(service_name))
+    end
   end
   add_status(wifi_status())
   add_status(volume_status())
