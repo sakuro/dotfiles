@@ -9,7 +9,7 @@ function table.merge(to, from)
 end
 
 function collect_vpn_service_names()
-  if wezterm.GLOBAL.os ~= 'macos' then
+  if wezterm.GLOBAL.os ~= "macos" then
     return {}
   end
   local service_names = {}
