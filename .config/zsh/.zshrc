@@ -185,7 +185,7 @@ is-executable direnv && eval "$(direnv hook zsh)"
 
 () {
   local script prefix
-  for script in syntax-highlighting autosuggestions; do
+  for script in syntax-highlighting; do
     for prefix in /opt/homebrew/share /usr/share; do
       local full_path="$prefix/zsh-$script/zsh-$script.zsh"
       [[ -f "$full_path" ]] || continue
