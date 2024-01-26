@@ -124,7 +124,11 @@ function prompt_sakuro_kube() {
   local kube_symbol="\u2388"
   if is-executable kubectl; then
     local kube_context=$(kubectl config current-context 2> /dev/null)
-    [[ -n "$kube_context" ]] && print -nP "%F{cyan}${kube_symbol}$kube_context%f"
+    [[ -n "$kube_context" ]] && {
+      print -nP "%F{cyan}${kube_symbol}$kube_context%f"
+      local kube_namespace=$(kubectl config view --output json | jq -rM '.contexts[] | select(.name == "'$kube_context'").context.namespace')
+      [[ -n "$kube_namespace" ]] && print -nP ":%F{cyan}$kube_namespace%f"
+    }
   fi
 }
 
