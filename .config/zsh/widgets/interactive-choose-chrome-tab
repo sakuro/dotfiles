@@ -19,6 +19,7 @@ function activate-tab()
 
     window.visible = true;
     window.activeTabIndex = tabIndex + 1;
+    window.index = 1;
 
     browser.activate();
   }
