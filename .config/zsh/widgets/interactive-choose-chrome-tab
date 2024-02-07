@@ -10,17 +10,20 @@ EOF
 
 function activate-tab()
 {
-  osascript -l JavaScript -- - "${(s|:|)@}" <<-'EOF'
+  osascript -l JavaScript -- - "$@" <<-'EOF'
   function run(argv) {
     const windowIndex = parseInt(argv[0]);
     const tabIndex = parseInt(argv[1]);
     const browser = Application("Google Chrome");
+    const window = browser.windows[windowIndex]
+
+    window.visible = true;
+    window.activeTabIndex = tabIndex + 1;
+
     browser.activate();
-    browser.windows[windowIndex].visible = true;
-    browser.windows[windowIndex].activeTabIndex = tabIndex + 1;
-    browser.windows[windowIndex].index = 1;
   }
 EOF
 }
 
-activate-tab "$(list-tabs | peco)"
+set -- "${(s|:|)$(list-tabs | peco)}"
+[[ -n "$1" && -n "$2" ]] && activate-tab "$1" "$2"
