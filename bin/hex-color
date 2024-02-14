@@ -8,7 +8,7 @@ const color = app.chooseColor({defaultColor: [0, 1, 0]})
 const hex =
   (Math.trunc(color[0] * 255) << 16) | (Math.trunc(color[1] * 255) << 8) | (Math.trunc(color[2] * 255))
 
-const hexCode = "#" + ("00" + hex.toString(16)).substr(-6)
+const hexCode = "#" + ("000000" + hex.toString(16)).substr(-6)
 hexCode
 SCRIPT
 
