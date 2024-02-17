@@ -41,6 +41,9 @@
   rebase = true
 [push]
   default = simple
+[rebase]
+  autosquash = true
+  autostash = true
 [user]
   name = OZAWA Sakuro
   useConfigOnly = true
