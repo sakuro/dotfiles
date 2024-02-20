@@ -1,6 +1,11 @@
 -- Specify inputs methods for en and ja.
 --   defaults write org.hammerspoon.Hammerspoon input-methods '{ "en" = "英字　　（ATOK）"; "ja" = "ひらがな（ATOK）"; }'
 
+local alert = function(message)
+  hs.alert.closeAll(0.0)
+  hs.alert.show(message, {}, 0.5)
+end
+
 local map = hs.keycodes.map
 local bindings = {
   -- Left ⌘ switches IM to English
@@ -24,8 +29,7 @@ local switchInputMethod = function(inputMethod)
   local currentInputMethod = hs.keycodes.currentMethod()
   if currentInputMethod ~= inputMethod then
     hs.keycodes.setMethod(inputMethod)
-    hs.alert.closeAll(0.0)
-    hs.alert.show(inputMethod, {}, 0.5)
+    alert("🖊️" .. inputMethod)
   end
 end
 
@@ -80,12 +84,7 @@ end
 local notifyCurrentAudioStatus = function(device)
   local muted = device:outputMuted()
   local volume = math.floor(device:volume())
-  hs.alert.closeAll(0.0)
-  if muted or volume <= 0 then
-    hs.alert.show("🔇Muted", {}, 0.5)
-  else
-    hs.alert.show("🔈Volume " .. volume .. "%", {}, 0.5)
-  end
+  alert((muted or volume <= 0) and "🔇Muted" or "🔈Volume " .. volume .. "%")
 end
 
 local changeVolume = function(diff)
