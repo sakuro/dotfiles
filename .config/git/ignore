@@ -1,6 +1,8 @@
 *~
 .*.swp
 .DS_Store
+.env.local
+.env.*.local
 .envrc
 .vscode
 .aws-profile
