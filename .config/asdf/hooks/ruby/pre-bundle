@@ -4,6 +4,8 @@ install|"")
     export BUNDLE_BUILD__GDBM="--with-gdbm-dir=$(brew --prefix gdbm)"
   }
   ;;
+gem)
+  export BUNDLER_EDITOR=post-bundle-gem
 esac
 
 return 0
