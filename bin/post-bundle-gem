@@ -33,7 +33,6 @@ git submodule add "https://github.com/sakuro/rubocop-config" .rubocop
 git submodule init
 rm .rubocop.yml
 bundle exec rake -f .rubocop/Rakefile
-touch .rubocop_todo.yml
 bundle exec rubocop --auto-gen-config
 
 echo "Gemfile.lock" >> .gitignore
