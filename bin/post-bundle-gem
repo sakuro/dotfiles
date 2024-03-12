@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+set -eu
+
+[[ $# = 1 ]] || {
+  echo "Usage: $0:t GEMSPEC"
+  echo ""
+  echo "Run by specifing '-e $0:t' when invoking 'bundle gem'"
+  exit 1
+}
+
+gem_name="${1:t:r}"
+github_user="${USER}"
+repo_url="https://github.com/${github_user}/${gem_name}"
+ruby_version="$(ruby -e "puts RUBY_VERSION")"
+
+sed -i \
+  -e '/allowed_push_host/d' \
+  -e '/required_ruby_version = /s/".*"/">= '${ruby_version}'"/' \
+  -e '/spec\.homepage = /s,".*","'${repo_url}'",' \
+  -e '/spec\.summary = /s/".*"/"'${gem_name}'"/' \
+  -e '/spec\.description = /s/".*"/"'${gem_name}'"/' \
+  -e '/source_code_uri/s/= ".*"/= "#{spec.homepage}.git"/' \
+  -e '/changelog_uri/s,= ".*",= "#{spec.homepage}/blob/main/CHANGELOG.md",' \
+  "$1"
+
+(
+  cd "$gem_name" && \
+  echo "Gemfile.lock" >> .gitignore && \
+  git add . && \
+  git commit -m "$ bundle gem ${gem_name}" && \
+  bundle install
+)
