@@ -24,10 +24,18 @@ sed -i \
   -e '/changelog_uri/s,= ".*",= "#{spec.homepage}/blob/main/CHANGELOG.md",' \
   "$1"
 
-(
-  cd "$gem_name" && \
-  echo "Gemfile.lock" >> .gitignore && \
-  git add . && \
-  git commit -m "$ bundle gem ${gem_name}" && \
-  bundle install
-)
+cd "$gem_name"
+bundle add rubocop-{capybara,performance,rake,rspec} --skip-install
+bundle install
+bundle binstubs --all
+
+git submodule add "https://github.com/sakuro/rubocop-config" .rubocop
+git submodule init
+rm .rubocop.yml
+bundle exec rake -f .rubocop/Rakefile
+touch .rubocop_todo.yml
+bundle exec rubocop --auto-gen-config
+
+echo "Gemfile.lock" >> .gitignore
+git add .
+git commit -m "$ bundle gem ${gem_name}"
