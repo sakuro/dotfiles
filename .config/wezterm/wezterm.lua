@@ -269,7 +269,7 @@ local copyPasteMods
 if wezterm.GLOBAL.os == 'macos' then
   copyPasteMods = 'CMD'
 else
-  copyPasteMods = 'LEADER|CTRL'
+  copyPasteMods = 'CTRL|SHIFT'
 end
 
 config.keys = {
