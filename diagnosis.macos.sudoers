@@ -1,0 +1,2 @@
+Cmnd_Alias DIAGNOSIS = /usr/bin/wdutil
+%admin ALL = (ALL:ALL) NOPASSWD: DIAGNOSIS
