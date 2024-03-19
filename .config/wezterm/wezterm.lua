@@ -111,16 +111,21 @@ local wifi_status = function()
     return {}
   end
 
-  local _success, stdout, _stderr = wezterm.run_child_process {"/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport", "-I"}
+  local _success, stdout, _stderr = wezterm.run_child_process {"sudo",  "wdutil", "info"}
 
-  local off = string.find(stdout, "AirPort: Off")
+  local wifi = string.find(stdout, "WIFI")
+  if not wifi then
+    return {}
+  end
+
+  local off = string.find(stdout, "Power%s-:%s-Off", wifi)
   if off then
     return format_status('fa_wifi', wezterm.GLOBAL.nord.nord4, "---")
   end
 
-  local _, _, strength = string.find(stdout, "agrCtlRSSI: (-%d+)")
+  local _, _, strength = string.find(stdout, "RSSI.-: (-%d+) dBm", wifi)
   strength = tonumber(strength)
-  local _, _, ssid = string.find(stdout, " SSID: (%S+)")
+  local _, _, ssid = string.find(stdout, "SSID.-: ([^\n]+)", wifi)
   return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
 end
 
@@ -209,6 +214,7 @@ wezterm.on('update-right-status', function(window, pane)
       add_status(vpn_status(service_name))
     end
   end
+
   add_status(wifi_status())
   add_status(volume_status())
   add_status(battery_status())
