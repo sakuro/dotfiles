@@ -250,7 +250,7 @@ config.inactive_pane_hsb = {
 
 -- Font
 config.font = wezterm.font('Cica')
-config.font_size = 20.0
+config.font_size = 18.0
 
 -- Bell
 config.audible_bell = 'Disabled'
