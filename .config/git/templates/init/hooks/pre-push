@@ -23,7 +23,7 @@ while [[ $# -gt 0 ]]; do
   hook=$GIT_HOOKS_DIR/pre-push-$1
   shift
   [[ -x $hook ]] || continue
-  echo "Running ${hook:t} hook..."
+  echo "Running ${hook:t} hook ..."
   $hook $remote $url
 done
 
