@@ -8,7 +8,7 @@ function is-at-least {
   [ "$least" = "$1" ]
 }
 
-if [ -f Gemfile.lock ] || [ -f gems.locked ]; then
+if [ -f Gemfile.lock ] ; then
   for bin in vendor/bundle/bin bin; do
     [ -d $bin ] && [ ! -x $bin/ls ] && PATH_add $bin || :
   done
