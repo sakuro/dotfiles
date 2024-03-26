@@ -25,8 +25,8 @@ sed -i \
   "$1"
 
 cd "$gem_name"
-bundle add rubocop-{capybara,performance,rake,rspec} --skip-install
-bundle install
+
+bundle add rubocop-{capybara,performance,rake,rspec}
 bundle binstubs --all
 
 git submodule add "https://github.com/sakuro/rubocop-config" .rubocop.d
@@ -34,6 +34,7 @@ rm .rubocop.yml
 bundle exec rake -f .rubocop.d/Rakefile
 bundle exec rubocop --auto-gen-config \
 	--no-exclude-limit --no-offense-counts --no-auto-gen-timestamp
+
 echo "Gemfile.lock" >> .gitignore
 git add .
 git commit -m "$ bundle gem ${gem_name}"
