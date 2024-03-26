@@ -29,12 +29,10 @@ bundle add rubocop-{capybara,performance,rake,rspec} --skip-install
 bundle install
 bundle binstubs --all
 
-git submodule add "https://github.com/sakuro/rubocop-config" .rubocop
-git submodule init
+git submodule add "https://github.com/sakuro/rubocop-config" .rubocop.d
 rm .rubocop.yml
-bundle exec rake -f .rubocop/Rakefile
 bundle exec rubocop --auto-gen-config
-
+bundle exec rake -f .rubocop.d/Rakefile
 echo "Gemfile.lock" >> .gitignore
 git add .
 git commit -m "$ bundle gem ${gem_name}"
