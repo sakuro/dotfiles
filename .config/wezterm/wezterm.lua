@@ -234,7 +234,8 @@ config.window_frame = {
 }
 
 -- Colors
-config.color_scheme = 'Nord (Gogh)'
+-- config.color_scheme = 'Nord (Gogh)'
+config.color_scheme = 'Nord Light (Gogh)'
 config.colors = {
   visual_bell = wezterm.GLOBAL.nord.nord6,
   compose_cursor = wezterm.GLOBAL.nord.nord15,
