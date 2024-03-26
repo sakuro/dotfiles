@@ -1,3 +1,5 @@
+export THOR_SILENCE_DEPRECATION=1
+
 case "$1" in
 install|"")
   [[ -d /opt/homebrew ]] && {
