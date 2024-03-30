@@ -13,3 +13,5 @@
 /.vscode/
 /node_modules/
 /vendor/bundle/
+desktop.ini
+Thumbs.db
