@@ -40,3 +40,6 @@ bundle exec rubocop --auto-gen-config \
 echo "Gemfile.lock" >> .gitignore
 git add .
 git commit -m "$ bundle gem ${gem_name}"
+
+touch .envrc
+direnv allow .
