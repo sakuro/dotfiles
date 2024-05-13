@@ -12,6 +12,7 @@ libssl-dev
 neovim
 peco
 postgresql-client
+ripgrep
 rsync
 sqlite3
 tmux
