@@ -26,6 +26,8 @@ sed -i \
 
 cd "$gem_name"
 
+rm -f "spec/${gem_name}_spec.rb"
+
 bundle add rubocop-{capybara,performance,rake,rspec}
 bundle binstubs --all
 
