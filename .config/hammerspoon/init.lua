@@ -1,9 +1,9 @@
 -- Specify inputs methods for en and ja.
 --   defaults write org.hammerspoon.Hammerspoon input-methods '{ "en" = "英字　　（ATOK）"; "ja" = "ひらがな（ATOK）"; }'
 
-local alert = function(message)
+local alert = function(message, duration)
   hs.alert.closeAll(0.0)
-  hs.alert.show(message, {}, 0.5)
+  hs.alert.show(message, {}, duration or 0.5)
 end
 
 local map = hs.keycodes.map
@@ -110,3 +110,8 @@ hs.hotkey.bind({'alt'}, 'Down', changeVolume(-3))
 hs.hotkey.bind({'alt'}, 'Up', changeVolume(3))
 
 toggleMuteByRightOptionKey:start()
+
+hs.hotkey.bind({'alt'}, 't', function()
+  local time = os.date("%Y-%m-%d %H:%M")
+  alert(time, 3)
+end)
