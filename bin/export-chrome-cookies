@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+COOKIES_DB="$HOME/Library/Application Support/Google/Chrome/Default/Cookies"
+
+sqlite3 -batch -json "${COOKIES_DB}" 'select * from cookies'
