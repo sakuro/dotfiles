@@ -11,6 +11,8 @@
   log1 = log --oneline
 [branch]
   autosetuprebase = always
+[clean]
+  requireForce = true
 [color]
   branch = auto
   diff = auto
