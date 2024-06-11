@@ -1,4 +1,5 @@
 [alias]
+  aliases = !"git config --list | sed -n 's/^alias\\.\\([^=][^=]*\\)=/\\1 = /p'"
   amend = commit --no-edit --amend
   bd = !git branch --merged | grep --fixed-strings --invert-match '*' | grep --extended-regexp --invert-match '\\<master\\>' | xargs -I % git branch --delete %
   new-branch = switch -c
