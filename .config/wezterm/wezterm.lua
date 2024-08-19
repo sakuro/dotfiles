@@ -196,7 +196,7 @@ local vpn_status = function(service_name)
   end
 end
 
-wezterm.on('update-right-status', function(window, pane)
+wezterm.on('update-right-status', function(window, _pane)
   local status = {}
   local spacer = { { Text = ' ' } }
 
