@@ -16,16 +16,15 @@ add-hook accept_line accept-line-uri-download
 add-hook accept_line accept-line-uri-github-clone
 add-hook accept_line accept-line-uri-open
 bindkey '^r' interactive-history-search
+bindkey '^x^b' interactive-choose-git-branch # replaces vi-match-bracket
+bindkey '^x^c' interactive-compare-git-commits
 bindkey '^x^d' interactive-chdir-dirs
-bindkey '^x^p' interactive-chdir-projects
 bindkey '^x^g' interactive-open-bundled-gem
-bindkey '^x^t' interactive-choose-rake-task
-bindkey '^x^b' interactive-choose-git-branch
-bindkey '^x^w' interactive-choose-chrome-tab
 bindkey '^x^i' interactive-choose-k8s-ingress
 bindkey '^x^l' interactive-choose-git-managed-file
-bindkey '^x^c' interactive-compare-git-commits
-
+bindkey '^x^p' interactive-chdir-projects
+bindkey '^x^t' interactive-choose-rake-task
+bindkey '^x^w' interactive-choose-chrome-tab
 
 fpath=(
   $ZDOTDIR/widgets
