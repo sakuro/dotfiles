@@ -2,9 +2,6 @@
 
 [[ "$TERM_PROGRAM" = "WezTerm" ]] || return 0
 
-if [[ $# -ne 2 ]]; then
-  echo "Usage: $0 name value"
-  return 1
-fi
+[[ $# -eq 2 ]] || usage "name value" || return 1
 
 printf "\033]1337;SetUserVar=%s=%s\007" "$1" "$(echo -n "$2" | base64)"

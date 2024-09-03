@@ -1,9 +1,6 @@
 #!/bin/zsh
 
-[[ $# = 2 ]] || {
-  echo Usage: add-hook hook-name hook-function
-  return 1
-}
+[[ $# = 2 ]] || usage "hook-name hook-function" || return 1
 
 local hook="${1}_functions"
 local f=$2

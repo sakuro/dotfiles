@@ -4,7 +4,7 @@ DOTDIR=$HOME/.dotfiles
 
 function error_usage()
 {
-  echo "dotfiles [edit | update | dump]"
+  echo "dotfiles "
 }
 
 case $# in
@@ -16,13 +16,10 @@ case $# in
     edit)
       ${(z)EDITOR} $DOTDIR ;;
     update)
-      make up-to-date -C $DOTDIR ;;
+      make up-to-date -C $DOTDIR && return 0 ;;
     dump)
-      make dump-brewfile -C $DOTDIR ;;
-    *)
-      error_usage ;;
+      make dump-brewfile -C $DOTDIR && return 0 ;;
   esac
-  ;;
-*)
-  error_usage ;;
 esac
+
+usage "[edit | update | dump]" || return 1

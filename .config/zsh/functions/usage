@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+local usage="$1"
+local message="$2"
+
+[[ -n "$message" ]] && echo "$message"
+
+echo "Usage: ${funcstack[2]} $usage"
+return 1

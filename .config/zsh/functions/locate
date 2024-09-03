@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-if [[ $# -ne 1 ]]; then
-  printf "Usage: $0 filename\n"
-  return 1
-fi
+[[ $# -eq 1 ]] || usage "filename" || return 1
 
 mdfind -name $*

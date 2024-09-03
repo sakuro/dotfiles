@@ -9,10 +9,7 @@ if [[ $1 = "-q" ]]; then
   shift
 fi
 
-if [[ $# -ne 1 ]];then
-  echo "$0 [-q] FILE_NAME"
-  return 1
-fi
+[[ $# -eq 1 ]] || usage "[-q] file_name" || return 1
 
 while [[ -d $current && $current != $previous ]]; do
   local target_path=$current/$1

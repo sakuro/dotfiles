@@ -2,9 +2,6 @@
 
 [[ "$TERM_PROGRAM" = "WezTerm" ]] || return 0
 
-if [[ $# -ne 0 ]]; then
-  echo "Usage: $0"
-  return 1
-fi
+[[ $# -eq 0 ]] || usage "(no argument)" || return 1
 
 printf "\033]7;file://$(hostname)/$(pwd)\033\\"
