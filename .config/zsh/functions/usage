@@ -1,9 +1,15 @@
 #!/bin/zsh
 
-local usage="$1"
-local message="$2"
+case $# in
+2)
+  echo "$2"
+  ;&
+1)
+  echo "Usage: ${funcstack[2]} $1"
+  ;;
+*)
+  usage "usage_message [leading_message]"
+  ;;
+esac
 
-[[ -n "$message" ]] && echo "$message"
-
-echo "Usage: ${funcstack[2]} $usage"
 return 1
