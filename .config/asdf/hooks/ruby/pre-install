@@ -11,6 +11,12 @@ case $1 in
 2.6.7)
   export CFLAGS="${CFLAGS} -Wno-error=implicit-function-declaration"
   ;;
+3.3.0)
+  case "$(arch)" in
+  aarch64)
+    export ASFLAGS="$ASFLAGS -mbranch-protection=pac-ret"
+    ;;
+  esac
 esac
 
 
@@ -26,3 +32,4 @@ esac
 
 echo "Configure options: $RUBY_CONFIGURE_OPTS"
 echo "CFLAGS: $CFLAGS"
+echo "ASFLAGS: $ASFLAGS"
