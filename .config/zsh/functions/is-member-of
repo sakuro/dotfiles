@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+[[ $# -ge 2 ]] || usage "test_value" "values..." || return 1
+
+local value=$1
+shift
+
+(( $@[(Ie)$value] > 0 )) && return 0 || return 1
