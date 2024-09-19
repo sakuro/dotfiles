@@ -14,6 +14,7 @@ EXCLUDED_PATHSPECS=(
   ':!/*.txt'
   ':!/.gitignore'
   ':!/.gitmodules'
+  ':!/diagnosis.macos.sudoers'
 )
 
 [[ -d "$DOTDEST" ]] || mkdir -p "$DOTDEST"
