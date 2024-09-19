@@ -1,0 +1,61 @@
+#!/bin/zsh
+
+: ${HANAMI_VERSION:=">= 2.2.0.beta1"}
+set -eu
+
+clean_work_dir()
+{
+  [[ -d "${WORK_DIR}" ]] && {
+    rm -rf "${WORK_DIR}"
+  }
+}
+
+APP_NAME="$1"
+shift
+
+[[ -d "./$APP_NAME" ]] && {
+  echo "Directory $APP_NAME exists"
+  exit 1
+}
+
+WORK_DIR="$(mktemp -d)"
+trap clean_work_dir EXIT HUP INT QUIT KILL TERM
+mkdir -vp "${WORK_DIR}"
+
+(
+  cd "${WORK_DIR}"
+  bundle init
+  bundle add hanami --version "${HANAMI_VERSION}"
+  bundle
+  # other options are: --skip-db, --database=sqlite|mysql|postgres --skip-assets
+  bundle exec hanami new "${APP_NAME}" --skip-install "$@"
+)
+
+mv "${WORK_DIR}/${APP_NAME}" .
+
+(
+  cd "./$APP_NAME"
+  touch .envrc
+  direnv allow .
+
+  bundle add --group development foreman
+  bundle add fiddle logger ostruct
+
+  sed -i -e '/^if/,/^fi/d' bin/dev
+
+  # Install gems necesssary for running hanami install
+  bundle install
+  bundle exec hanami install
+  # Install gems added by hanami install
+  bundle install
+
+  bundle binstub foreman hanami-cli rake rspec-core
+
+  npm install
+
+  git init
+  echo "vendor/bundle/" >> .gitignore
+  echo "db/*.sqlite" >> .gitignore
+  git add .
+  git commit -m "Initial commit"
+)
