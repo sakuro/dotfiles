@@ -1,6 +1,0 @@
-legacy_version_file = yes
-pre_asdf_install_ruby = source $XDG_CONFIG_HOME/asdf/hooks/ruby/pre-install "$@"
-post_asdf_install_ruby = source $XDG_CONFIG_HOME/asdf/hooks/ruby/post-install "$@"
-pre_ruby_bundle = source $XDG_CONFIG_HOME/asdf/hooks/ruby/pre-bundle "$@"
-pre_asdf_install_nodejs = source $XDG_CONFIG_HOME/asdf/hooks/nodejs/pre-install "$@"
-post_asdf_install_nodejs = source $XDG_CONFIG_HOME/asdf/hooks/nodejs/post-install "$@"

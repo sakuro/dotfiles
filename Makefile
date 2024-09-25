@@ -22,9 +22,6 @@ install-packages:
 change-login-shell:
 	@scripts/change-login-shell.sh
 
-install-asdf-plugins:
-	@scripts/install-asdf-plugins.sh
-
 dump-brewfile: Brewfile.$(HOSTNAME)
 
 diff-brewfile: Brewfile.$(HOSTNAME)
