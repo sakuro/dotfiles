@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-exec > >(sed --unbuffered --expression "s/^/[nodejs-$1][pre-install] /")
-
-export NODEJS_CHECK_SIGNATURES=no
