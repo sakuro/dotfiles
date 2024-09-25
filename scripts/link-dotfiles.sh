@@ -29,7 +29,7 @@ EXCLUDED_PATHSPECS=(
 done
 
 # Remove dangling symlinks
-for dir in $(cd "$DOTROOT" && find ./* -maxdepth 0 -type d); do
+for dir in $(cd "$DOTROOT" && find .config -maxdepth 0 -type d); do
   [[ -d $DOTDEST/$dir ]] && find "$DOTDEST/$dir" -xtype l -exec rm -v '{}' +
 done
 
