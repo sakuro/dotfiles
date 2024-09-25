@@ -9,5 +9,3 @@ if tty --silent; then
     ssh-add 2>/dev/null
   fi
 fi
-
-[[ "$TERM_PROGRAM" = "WezTerm" ]] || interactive-start-tmux-session

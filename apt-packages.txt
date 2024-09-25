@@ -15,7 +15,6 @@ postgresql-client
 ripgrep
 rsync
 sqlite3
-tmux
 unzip
 xdg-utils
 zlib1g-dev

@@ -65,11 +65,7 @@ fpath=(
 
 autoload -U promptinit
 promptinit
-if [[ -n "$TMUX" ]]; then
-  prompt tmux
-else
-  prompt sakuro
-fi
+prompt sakuro
 
 autoload -Uz select-word-style
 select-word-style default

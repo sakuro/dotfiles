@@ -1,6 +1,3 @@
 [submodule ".config/themes/nord/dircolors"]
 	path = .config/themes/nord/dircolors
 	url = https://github.com/arcticicestudio/nord-dircolors.git
-[submodule ".config/themes/nord/tmux"]
-	path = .config/themes/nord/tmux
-	url = https://github.com/goronfreeman/nord-tmux.git
