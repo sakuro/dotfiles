@@ -175,9 +175,6 @@ export QUOTING_STYLE=literal
 
 limit coredumpsize 0
 
-# direnv
-is-executable direnv && eval "$(direnv hook zsh)"
-
 () {
   local script prefix
   for script in syntax-highlighting autosuggestions; do
