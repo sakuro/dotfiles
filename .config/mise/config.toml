@@ -2,3 +2,8 @@
 deno = "1.46.3"
 node = "22.9.0"
 ruby = "3.3.5"
+
+[settings.ruby]
+verbose_install = true
+default_packages_file = "~/.config/mise/default-gems"
+ruby_install_opts = "--disable-install-doc"
