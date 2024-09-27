@@ -35,8 +35,6 @@ mv "${WORK_DIR}/${APP_NAME}" .
 
 (
   cd "./$APP_NAME"
-  touch .envrc
-  direnv allow .
 
   bundle add --group development foreman
   bundle add fiddle logger ostruct
