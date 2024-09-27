@@ -68,7 +68,7 @@ EOF
   # Install gems added by hanami install
   bundle install
 
-  bundle binstub guard hanami-cli rake rspec-core
+  bundle binstub --all
 
   npm install
 
