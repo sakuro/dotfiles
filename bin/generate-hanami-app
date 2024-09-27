@@ -36,10 +36,20 @@ mv "${WORK_DIR}/${APP_NAME}" .
 (
   cd "./$APP_NAME"
 
-  bundle add --group development foreman
+  # These gems will require explicit "require"
   bundle add fiddle logger ostruct
 
-  sed -i -e '/^if/,/^fi/d' bin/dev
+  rm bin/dev Procfile.dev
+  cat <<EOF > mise.toml
+[tasks.default]
+depends = ["web", "assets"]
+
+[tasks.web]
+run = "bundle exec hanami server"
+
+[tasks.assets]
+run = "bundle exec hanami assets watch"
+EOF
 
   # Install gems necesssary for running hanami install
   bundle install
@@ -47,7 +57,7 @@ mv "${WORK_DIR}/${APP_NAME}" .
   # Install gems added by hanami install
   bundle install
 
-  bundle binstub foreman hanami-cli rake rspec-core
+  bundle binstub guard hanami-cli rake rspec-core
 
   npm install
 
