@@ -40,16 +40,27 @@ mv "${WORK_DIR}/${APP_NAME}" .
   bundle add fiddle logger ostruct
 
   rm bin/dev Procfile.dev
-  cat <<EOF > mise.toml
-[tasks.default]
-depends = ["web", "assets"]
+  cat <<-EOF > mise.toml
+	[env]
+	_.path = ["bin", "node_modules/.bin"]
 
-[tasks.web]
-run = "bundle exec hanami server"
+	[tasks.default]
+	depends = ["dev"]
 
-[tasks.assets]
-run = "bundle exec hanami assets watch"
+	[tasks.dev]
+	depends = ["web", "assets"]
+
+	[tasks.web]
+	run = "bundle exec hanami server"
+
+	[tasks.assets]
+	run = "bundle exec hanami assets watch"
 EOF
+  cat <<-EOF > bin/dev
+	#!/bin/sh
+	mise run dev
+EOF
+  chmod +x bin/dev
 
   # Install gems necesssary for running hanami install
   bundle install
