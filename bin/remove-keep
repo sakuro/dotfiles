@@ -1,0 +1,54 @@
+#!/bin/zsh
+
+KEEP_FILE="${KEEP_FILE:-.keep}"
+
+[[ -d .git ]] || {
+  echo "Run in the root directory of a git repository"
+  exit 1
+}
+
+typeset -A opts=()
+zparseopts -D -E -A opts v
+
+keeps=( "${(ps:\0:)$(git ls-files -z ':**/'"${KEEP_FILE}")}" )
+keeps=( "${keeps[@]:#}" )
+removed_keeps=0
+
+(( ${+opts[-v]} )) && {
+  echo "Removing unnecessary $KEEP_FILE files ..."
+}
+
+[[ ${#keeps[@]} = 0 ]] && {
+  (( ${+opts[-v]} )) && {
+    echo "No $KEEP_FILE files were found."
+  }
+  exit 0
+}
+
+for keep in "${keeps[@]}"; do
+  other_files=( "${(ps:\0:)$(git ls-files -z "${keep:h}" ':!'"${keep}" ':!'"${keep:h}/**/${KEEP_FILE}")}" )
+  other_files=( "${other_files[@]:#}" )
+
+  [[ ${#other_files[@]} -gt 0 ]] || continue
+
+  if (( ${+opts[-v]} )); then
+    git rm "$keep"
+  else
+    git rm --quiet "$keep"
+  fi
+
+  (( removed_keeps++ ))
+done
+
+if [[ "${removed_keeps}" -eq 0 ]]; then
+  (( ${+opts[-v]} )) && {
+    echo "No unnecessary $KEEP_FILE files were found."
+  }
+  exit 0
+else
+  (( ${+opts[-v]} )) && {
+    echo "Removed unnecessary $KEEP_FILE files."
+    git status -s
+  }
+  exit 1
+fi
