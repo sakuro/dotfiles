@@ -1,0 +1,60 @@
+#!/bin/zsh
+
+set -eu
+
+zparseopts -D -E -A opts d:
+
+generate_config()
+{
+  local dest="$1"
+  shift
+  local cores=( style layout lint metrics naming security bundler gemspec )
+  local additionals=( "$@" )
+  if [[ $# -gt 0 ]] && is-member-of rspec "$@"; then
+    is-member-of capybara "$@" && additionals=( $additionals rspec_capybara )
+    is-member-of rails "$@" && additionals=( $additionals rspec_rails )
+  fi
+
+  local target_ruby_version=$(ruby -rrbconfig -e 'puts RbConfig::CONFIG["RUBY_API_VERSION"]')
+
+  echo "inherit_from:"
+  for dept in "${(o)cores[@]}" "${(o)additionals[@]}"; do
+    local dep_config_path="${dest}/${dept}.yml"
+    echo "  - ${dest}/${dept}.yml"
+  done
+  echo ""
+
+  if [[ $# -gt 0 ]]; then
+	  echo "require:"
+    for dept in "${(o)@}"; do
+      echo "  - rubocop-${dept}"
+    done
+    echo ""
+  fi
+
+  cat <<-EOF
+	inherit_mode:
+	  merge:
+	    - Exclude
+
+	AllCops:
+	  DisplayCopNames: true
+	  DisplayStyleGuide: true
+	  EnabledByDefault: true
+	  ExtraDetails: true
+	  Exclude:
+	    - bin/**/*
+	    - vendor/**/*
+	    - spec/spec_helper.rb
+	    - spec/support/rspec.rb
+	    - "*.gemspec"
+	  TargetRubyVersion: ${target_ruby_version}
+EOF
+}
+
+dest=".rubocop.d"
+(( ${+opts[-d]} )) && dest="${opts[-d]}"
+
+git submodule add https://github.com/sakuro/rubocop-config "${dest}"
+generate_config "${dest}" "$@" > .rubocop.yml
+bundle add --skip-install --group develop rubocop "rubocop-${^@}"

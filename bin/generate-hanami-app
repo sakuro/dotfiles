@@ -35,6 +35,7 @@ mv "${WORK_DIR}/${APP_NAME}" .
 
 (
   cd "./$APP_NAME"
+  git init
 
   # These gems will require explicit "require"
   bundle add fiddle logger ostruct
@@ -65,16 +66,16 @@ EOF
   # Install gems necesssary for running hanami install
   bundle install
   bundle exec hanami install
-  # Install gems added by hanami install
-  bundle install
 
+  is-executable install-rubocop && install-rubocop -d .rubocop capybara performance rspec
+  bundle install
   bundle binstub --all
+
+  echo "vendor/bundle/" >> .gitignore
+  echo "db/*.sqlite" >> .gitignore
 
   npm install
 
-  git init
-  echo "vendor/bundle/" >> .gitignore
-  echo "db/*.sqlite" >> .gitignore
   git add .
   git commit -m "Initial commit"
 )
