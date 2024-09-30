@@ -4,9 +4,13 @@ missing="$1"
 shift
 
 exe="${missing}.exe"
+app_bundled="/Applications/${missing}.app/Contents/MacOS/$missing"
+
 if is-executable -p "${exe}"; then
   # try invoking .exe version
   exec "${exe}" "$@"
+elif is-executable -p "${app_bundled}"; then
+  exec "${app_bundled}" "$@"
 else
   # emulate original zsh behavior
   echo "$SHELL:t: command not found: ${missing}"
