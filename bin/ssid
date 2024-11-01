@@ -1,0 +1,5 @@
+#!/bin/sh
+
+interface=$(networksetup -listallhardwareports |sed -ne '/Wi-Fi/{n;s/Device: //;p}')
+ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p'
+
