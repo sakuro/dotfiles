@@ -251,6 +251,8 @@ config.inactive_pane_hsb = {
 -- Font
 config.font = wezterm.font('Cica')
 config.font_size = 18.0
+config.bold_brightens_ansi_colors = "BrightAndBold"
+--config.bold_brightens_ansi_colors = "BrightOnly"
 
 -- Bell
 config.audible_bell = 'Disabled'
