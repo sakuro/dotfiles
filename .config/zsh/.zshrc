@@ -85,11 +85,9 @@ zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/compcache
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
-if is-executable -p code; then
-  EDITOR="code --wait"
-elif is-executable -p nvim; then
+if is-executable -p nvim; then
   EDITOR=nvim
-elif is-executable -p vim; then
+elif is-executable -p nvim; then
   EDITOR=vim
 else
   EDITOR=vi
