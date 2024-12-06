@@ -25,7 +25,6 @@
   verbose = true
 [core]
   commentchar = ";"
-  editor = code -w
 [diff]
   algorithm = histogram
 [fetch]
