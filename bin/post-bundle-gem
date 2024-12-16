@@ -31,8 +31,12 @@ rm -f "spec/${gem_name}_spec.rb"
 bundle
 bundle binstubs --all
 echo "Gemfile.lock" >> .gitignore
+
+cat <<-EOF > mise.toml
+[env]
+_.path = ["bin", "exe"]
+EOF
+mise trust
+
 git add .
 git commit -m "$ bundle gem ${gem_name}"
-
-touch .envrc
-direnv allow .
