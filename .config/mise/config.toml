@@ -1,7 +1,7 @@
 [tools]
 deno = "2.0.6"
 node = "23.2.0"
-ruby = "3.3.6"
+ruby = "3.4.1"
 
 [settings]
 experimental = true
