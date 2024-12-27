@@ -1,9 +1,9 @@
 #!/bin/zsh
 
 function prompt_sakuro_setup() {
-  zstyle ':vcs_info:*'     formats       '%F{blue}%b%f' '%S'
-  zstyle ':vcs_info:*'     actionformats '%b%F{cyan}:%F{red}%a%f'
-  zstyle ':vcs_info:svn:*' branchformat  '%F{blue}%b%F{cyan}:%fr%r'
+  zstyle ':vcs_info:*'     formats       '%{%F{blue}%}%b%{%f%}' '%S'
+  zstyle ':vcs_info:*'     actionformats '%{%b%F{cyan}%}%{%F{red}%}%a%{%f%}'
+  zstyle ':vcs_info:svn:*' branchformat  '%{%F{blue}%}%b%%{F{cyan}%}:%{%f%%}r%{%r%}'
   zstyle ':vcs_info:*' enable git svn hg bzr cvs
 
   prompt_sakuro_load_default_styles
@@ -24,9 +24,9 @@ function prompt_sakuro_precmd() {
 
   psvar=()
 
-  [[ -n "$prompt_duration" ]] && print -P "%F{yellow}$prompt_duration%f"
+  [[ -n "$prompt_duration" ]] && print -P "%{%F{yellow}%}$prompt_duration%{%f%}"
 
-  local -a main_line=(
+  local -a info_line_elements=(
     "$(prompt_sakuro_user)@$(prompt_sakuro_host)"
     "$(prompt_sakuro_pwd)"
     "$(prompt_sakuro_vcs)"
@@ -34,12 +34,12 @@ function prompt_sakuro_precmd() {
     "$(prompt_sakuro_kube)"
     "$(prompt_sakuro_aws)"
   )
-  local -a final_line=(
+  local -a prompt_line=(
     "$(prompt_sakuro_prompt $last_status)"
   )
 
-  psvar+="${(j: :)main_line}"
-  psvar+="${(j: :)final_line}"' '
+  psvar+="${(j: :)info_line_elements}"
+  psvar+="${prompt_line} "
 
   PROMPT=${(F)psvar}
 }
@@ -71,12 +71,12 @@ function prompt_sakuro_host() {
     local brightness=dark
 
     case "$brightness-$load_average" in
-    *-0)     print -nP '%F{gray}%m%f'    ;;
-    light-1) print -nP '%F{cyan}%m%f'    ;;
-    dark-1)  print -nP '%F{yellow}%m%f'  ;;
-    light-2) print -nP '%F{green}%m%f'   ;;
-    dark-2)  print -nP '%F{magenta}%m%f' ;;
-    *)       print -nP '%F{red}%m%f'     ;;
+    *-0)     print -nP '%{%F{gray}%}%m%{%f%}'    ;;
+    light-1) print -nP '%{%F{cyan}%}%m%{%f%}'    ;;
+    dark-1)  print -nP '%{%F{yellow}%}%m%{%f%}'  ;;
+    light-2) print -nP '%{%F{green}%}%m%{%f%}'   ;;
+    dark-2)  print -nP '%{%F{magenta}%}%m%{%f%}' ;;
+    *)       print -nP '%{%F{red}%}%m%{%f%}'     ;;
     esac
   }
 }
@@ -101,8 +101,8 @@ function prompt_sakuro_pwd() {
     base_path="$first/"${(j:/:)$(print -P '%2>.>'${^${(@)path_elements[2,-2]}})}/"$last"
   fi
 
-  result="%F{magenta}${pwd_symbol} $base_path%f"
-  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/%F{cyan}$vcs_info_msg_1_%f"
+  result="%{%F{magenta}%}${pwd_symbol} $base_path%{%f%}"
+  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/%{%F{cyan}%}$vcs_info_msg_1_%{%f%}"
 
   print -n "${result}"
 }
@@ -112,12 +112,12 @@ function prompt_sakuro_vcs() {
   local vcs_info_msg_0_
   LANG=C vcs_info
 
-  [[ -n "$vcs_info_msg_0_" ]] && print -n "%F{blue}${vcs_symbol}%f $vcs_info_msg_0_"
+  [[ -n "$vcs_info_msg_0_" ]] && print -n "%{%F{blue}%}${vcs_symbol}%{%f%} $vcs_info_msg_0_"
 }
 
 function prompt_sakuro_aws() {
   local aws_symbol="\uf270"
-  [[ -n "$AWS_PROFILE" ]] && print -nP "%F{yellow}${aws_symbol} $AWS_PROFILE%f"
+  [[ -n "$AWS_PROFILE" ]] && print -nP "%{%F{yellow}%}${aws_symbol} $AWS_PROFILE%{%f%}"
 }
 
 function prompt_sakuro_kube() {
@@ -125,9 +125,9 @@ function prompt_sakuro_kube() {
   if is-executable kubectl; then
     local kube_context=$(kubectl config current-context 2> /dev/null)
     [[ -n "$kube_context" ]] && {
-      print -nP "%F{cyan}${kube_symbol}$kube_context%f"
+      print -nP "%{%F{cyan}%}${kube_symbol}$kube_context%{%f%}"
       local kube_namespace=$(kubectl config view --output json | jq -rM '.contexts[] | select(.name == "'$kube_context'").context.namespace')
-      [[ -n "$kube_namespace" ]] && print -nP ":%F{cyan}$kube_namespace%f"
+      [[ -n "$kube_namespace" ]] && print -nP ":%{%F{cyan}%}$kube_namespace%{%f%}"
     }
   fi
 }
@@ -137,7 +137,7 @@ function prompt_sakuro_ruby() {
 
   local ruby_symbol="\ue23e"
   local ruby_version=$(mise list --current --json ruby | jq -Mr '.[0].version')
-  [[ $? == 0 ]] && print -nP "%F{red}${ruby_symbol} ${ruby_version}%f"
+  [[ $? == 0 ]] && print -nP "%{%F{red}%}${ruby_symbol} ${ruby_version}%{%f%}"
 }
 
 function prompt_sakuro_style_for() {
@@ -169,7 +169,7 @@ function prompt_sakuro_prompt() {
     style=$(prompt_sakuro_style_for prompt failure_style style red)
   fi
 
-  print -nP "%F{$style}$symbol%f"
+  print -nP "%{%F{$style}%}$symbol%{%f%}"
 }
 
 prompt_sakuro_setup "$@"
