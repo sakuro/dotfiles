@@ -1,6 +1,6 @@
 [tools]
-deno = "2.0.6"
-node = "23.2.0"
+deno = "2.1.4"
+node = "23.5.0"
 ruby = "3.4.1"
 
 [settings]
