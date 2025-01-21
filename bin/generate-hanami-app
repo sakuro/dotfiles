@@ -67,7 +67,7 @@ EOF
   bundle install
   bundle exec hanami install
 
-  install-rubocop -d .rubocop capybara performance rake rspec
+  install-rubocop-config -d .rubocop capybara performance rake rspec
   bundle install
   bundle binstub --all
 
