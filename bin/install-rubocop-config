@@ -56,7 +56,7 @@ EOF
 config_root=".rubocop.d"
 (( ${+opts[-d]} )) && config_root="${opts[-d]}"
 
-(( $# > 0 )) && bundle add "rubocop-${^@}"
+(( $# > 0 )) && bundle add "rubocop-${^@}" --group development
 
 git submodule add https://github.com/sakuro/rubocop-config "${config_root}"
 generate_config "${config_root}" "$@" > .rubocop.yml
