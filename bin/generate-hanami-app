@@ -66,9 +66,6 @@ EOF
   # Install gems necesssary for running hanami install
   bundle install
   bundle exec hanami install
-
-  install-rubocop-config -d .rubocop capybara performance rake rspec
-  bundle install
   bundle binstub --all
 
   echo "vendor/bundle/" >> .gitignore
@@ -78,4 +75,6 @@ EOF
 
   git add .
   git commit -m "Initial commit"
+
+  install-rubocop-config -d .rubocop capybara performance rake rspec
 )
