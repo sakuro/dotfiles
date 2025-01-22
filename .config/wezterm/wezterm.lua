@@ -111,21 +111,29 @@ local wifi_status = function()
     return {}
   end
 
-  local _success, stdout, _stderr = wezterm.run_child_process {"sudo",  "wdutil", "info"}
-
-  local wifi = string.find(stdout, "WIFI")
+  -- interface=$(networksetup -listallhardwareports |sed -ne '/Wi-Fi/{n;s/Device: //;p}')
+  local _success, stdout, _stderr = wezterm.run_child_process {"networksetup", "-listallhardwareports"}
+  local wifi = string.find(stdout, "Wi%-Fi")
   if not wifi then
     return {}
   end
 
-  local off = string.find(stdout, "Power%s-:%s-Off", wifi)
-  if off then
-    return format_status('fa_wifi', wezterm.GLOBAL.nord.nord4, "---")
+  local _, _, device = string.find(stdout, "Device: ([^\n]+)", wifi)
+  if not device then
+    return {}
   end
 
-  local _, _, strength = string.find(stdout, "RSSI.-: (-%d+) dBm", wifi)
-  strength = tonumber(strength)
-  local _, _, ssid = string.find(stdout, "SSID.-: ([^\n]+)", wifi)
+  -- ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p'
+  local _success, stdout, _stderr = wezterm.run_child_process {"ipconfig", "getsummary", device}
+  local wifi = string.find(stdout, "WiFi")
+  if not wifi then
+    return {}
+  end
+  local _, _, ssid = string.find(stdout, "SSID%s-:%s-([^\n]+)", wifi)
+  if not ssid then
+    return {}
+  end
+
   return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
 end
 
