@@ -130,11 +130,12 @@ local wifi_status = function()
     return {}
   end
   local _, _, ssid = string.find(stdout, "SSID%s-:%s-([^\n]+)", wifi)
-  if not ssid then
-    return {}
+  if ssid then
+    return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
+  else
+    return format_status('fa_wifi', wezterm.GLOBAL.nord.nord4)
   end
 
-  return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
 end
 
 local battery_status = function()
