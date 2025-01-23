@@ -180,6 +180,7 @@ local load_average_status = function()
     local _, _, min1, _, _ = string.find(stdout, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
 
     local la = tonumber(min1) / wezterm.GLOBAL.ncpu
+    local icon
     if la < 1 then
       icon = "md_speedometer"
     elseif la < 2 then
