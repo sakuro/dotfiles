@@ -66,12 +66,21 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
 end)
 
 local format_status = function(icon_name, icon_color, status_text)
-  return {
-    { Foreground = { Color = icon_color } },
-    { Text = ' ' .. wezterm.nerdfonts[icon_name] },
-    { Foreground = { Color = wezterm.GLOBAL.nord.nord6 } },
-    { Text = ' ' .. status_text },
-  }
+  if status_text ~= nil then
+    return {
+      { Foreground = { Color = icon_color } },
+      { Text = ' ' .. wezterm.nerdfonts[icon_name] },
+      { Foreground = { Color = wezterm.GLOBAL.nord.nord6 } },
+      { Text = ' ' .. status_text },
+    }
+  else
+    return {
+      { Foreground = { Color = icon_color } },
+      { Text = ' ' .. wezterm.nerdfonts[icon_name] },
+    }
+  end
+
+  return status_elements
 end
 
 local volume_status = function()
