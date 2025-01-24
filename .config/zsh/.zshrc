@@ -191,7 +191,8 @@ limit coredumpsize 0
   if [[ -n ZSH_HIGHLIGHT_REGEXP ]]; then
     ZSH_HIGHLIGHT_REGEXP+=('(https?://([^ ]+[.])+([^ ]+))' fg=cyan)
   fi
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bg=white'
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=white,bg=cyan'
+  ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 }
 
 function git-status-short()
