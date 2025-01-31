@@ -12,9 +12,6 @@ case $# in
   esac
 esac
 
-usage <<USAGE
-$0 - chdir to dotfiles directory
-$0 edit - open dotfiles directory in editor
-USAGE
+usage "[edit]"
 
 return 1
