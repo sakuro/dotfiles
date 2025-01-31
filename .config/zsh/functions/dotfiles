@@ -2,24 +2,19 @@
 
 DOTDIR=$HOME/.dotfiles
 
-function error_usage()
-{
-  echo "dotfiles "
-}
-
 case $# in
 0)
-  [[ -d $DOTDIR ]] && cd $DOTDIR
-  ;;
+  [[ -d $DOTDIR ]] && cd $DOTDIR && return 0 ;;
 1)
   case $1 in
-    edit)
-      ${(z)EDITOR} $DOTDIR ;;
-    update)
-      make up-to-date -C $DOTDIR && return 0 ;;
-    dump)
-      make dump-brewfile -C $DOTDIR && return 0 ;;
+  edit)
+    ${(z)EDITOR} $DOTDIR && return 0 ;;
   esac
 esac
 
-usage "[edit | update | dump]" || return 1
+usage <<USAGE
+$0 - chdir to dotfiles directory
+$0 edit - open dotfiles directory in editor
+USAGE
+
+return 1
