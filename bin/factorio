@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+MACOS_EXECUTABLE="$HOME/Library/Application Support/Steam/steamapps/common/Factorio/factorio.app/Contents/MacOS/factorio"
+WSL_EXECUTABLE=""
+LINUX_EXECUTABLE=""
+
+case "$OSTYPE" in
+darwin*)
+  exec "$MACOS_EXECUTABLE" "$@"
+  ;;
+esac
+
+
