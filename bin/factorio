@@ -1,13 +1,25 @@
 #!/bin/zsh
 
 MACOS_EXECUTABLE="$HOME/Library/Application Support/Steam/steamapps/common/Factorio/factorio.app/Contents/MacOS/factorio"
-WSL_EXECUTABLE=""
+WSL_EXECUTABLE="/mnt/c/Program Files (x86)/Steam/steamapps/common/Factorio/bin/x64/factorio.exe"
 LINUX_EXECUTABLE=""
 
 case "$OSTYPE" in
 darwin*)
   exec "$MACOS_EXECUTABLE" "$@"
   ;;
+linux*)
+  if [[ -n "$WSL_DISTRO_NAME" ]]; then
+    # EOL conversion
+    exec > >(tr -d '\r')
+    exec "$WSL_EXECUTABLE" "$@"
+  else
+    exec "$LINUX_EXECUTABLE" "$@"
+  fi
+  ;;
 esac
+
+echo "Unsupported OS: $OSTYPE"
+exit 1
 
 
