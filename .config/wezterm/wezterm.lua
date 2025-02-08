@@ -79,8 +79,6 @@ local format_status = function(icon_name, icon_color, status_text)
       { Text = ' ' .. wezterm.nerdfonts[icon_name] },
     }
   end
-
-  return status_elements
 end
 
 local volume_status = function()
