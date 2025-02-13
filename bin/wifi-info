@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+interface="$(networksetup -listallhardwareports | sed -ne '/Wi-Fi/{n;s/Device: //;p}')"
+
+if [[ -n "$interface" ]]; then
+  ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p'
+else
+  exit 1
+fi
