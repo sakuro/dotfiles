@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+set - $(osascript -e "get volume settings" | tr , "\n" | awk -F: '
+$0 ~ /output volume/ { print $2 }
+$0 ~ /output muted/ { print $2 }')
+
+echo $1 $2
