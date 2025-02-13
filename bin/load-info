@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+set -- $(/usr/sbin/sysctl -n hw.ncpu vm.loadavg | tr -d '{}')
+echo $(( $2 / $1 ))
