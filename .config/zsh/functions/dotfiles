@@ -2,16 +2,25 @@
 
 DOTDIR=$HOME/.dotfiles
 
+[[ -d "${DOTDIR}" ]] || {
+  echo "$0: ${DOTDIR} does not exist"
+  return 1
+}
+
 case $# in
 0)
-  [[ -d $DOTDIR ]] && cd $DOTDIR && return 0 ;;
+  cd "${DOTDIR}" && return 0 ;;
 1)
-  case $1 in
+  command="$1"
+  shift
+  case "${command}" in
   edit)
-    ${(z)EDITOR} $DOTDIR && return 0 ;;
+    (cd "${DOTDIR}" && ${(z)EDITOR} .) && return 0 ;;
+  diff)
+    (cd "${DOTDIR}" && git diff "$@" -- .) && return 0 ;;
   esac
 esac
 
-usage "[edit]"
+usage "[edit|diff [options]]"
 
 return 1
