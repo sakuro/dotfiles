@@ -61,6 +61,7 @@ config_root=".rubocop.d"
 git submodule add https://github.com/sakuro/rubocop-config "${config_root}"
 generate_config "${config_root}" "$@" > .rubocop.yml
 touch .rubocop_todo.yml
-bundle exec rubocop --auto-gen-config --no-exclude-limit --no-offense-counts --no-auto-gen-timestamp
+bundle binstub rubocop
+./bin/rubocop --auto-gen-config --no-exclude-limit --no-offense-counts --no-auto-gen-timestamp
 git add .
 git commit -m "Generate RuboCop configuration"
