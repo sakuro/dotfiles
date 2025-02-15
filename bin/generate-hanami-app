@@ -39,6 +39,7 @@ mv "${WORK_DIR}/${APP_NAME}" .
 
   # These gems will require explicit "require"
   bundle add fiddle logger ostruct
+  bundle add irb repl_type_completor --group development test
 
   rm bin/dev Procfile.dev
   cat <<-EOF > mise.toml
