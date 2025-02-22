@@ -12,4 +12,4 @@ config_root=".rubocop.d"
 git submodule add https://github.com/sakuro/rubocop-config "${config_root}"
 [[ -f .rubocop.yml ]] || bundle exec rake -f "${config_root}/Rakefile" .rubocop.yml
 [[ -f Rakefile ]] && bundle exec rake -f "${config_root}/Rakefile" "rake_task"
-bundle exec rake rubocop:regenerate_todo
+bundle exec rubocop --auto-gen-config --no-exclude-limit --no-offense-counts --no-auto-gen-timestamp
