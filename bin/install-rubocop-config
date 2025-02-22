@@ -7,12 +7,9 @@ zparseopts -D -E -A opts d:
 config_root=".rubocop.d"
 (( ${+opts[-d]} )) && config_root="${opts[-d]}"
 
-bundle add rubocop "rubocop-${(o)^@}" --group development
+(( $# > 0 )) && bundle add "rubocop-${(o)^@}" --group development
 
 git submodule add https://github.com/sakuro/rubocop-config "${config_root}"
 [[ -f .rubocop.yml ]] || bundle exec rake -f "${config_root}/Rakefile" .rubocop.yml
-[[ -f Rakefile ]] && bundle exec rake -f "${config_root}/Rakefile" "rake_task[Rakefile]"
-bundle exec rubocop --auto-gen-config --no-exclude-limit --no-offense-counts --no-auto-gen-timestamp
-
-git add .
-git commit -m "Generate RuboCop configuration"
+[[ -f Rakefile ]] && bundle exec rake -f "${config_root}/Rakefile" "rake_task"
+bundle exec rake rubocop:regenerate_todo
