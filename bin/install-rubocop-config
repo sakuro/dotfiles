@@ -10,11 +10,9 @@ config_root=".rubocop.d"
 bundle add rubocop "rubocop-${(o)^@}" --group development
 
 git submodule add https://github.com/sakuro/rubocop-config "${config_root}"
-bundle exec rake -f "${config_root}/Rakefile" .rubocop.yml
-touch .rubocop_todo.yml
-bundle exec rubocop --auto-gen-config --no-exclude-limit --no-offense-counts --no-auto-gen-timestamp
-
+[[ -f .rubocop.yml ]] || bundle exec rake -f "${config_root}/Rakefile" .rubocop.yml
 [[ -f Rakefile ]] && bundle exec rake -f "${config_root}/Rakefile" "rake_task[Rakefile]"
+bundle exec rubocop --auto-gen-config --no-exclude-limit --no-offense-counts --no-auto-gen-timestamp
 
 git add .
 git commit -m "Generate RuboCop configuration"
