@@ -27,6 +27,8 @@ while [[ $# -gt 0 ]]; do
   $hook $remote $url
 done
 
-command-in-path remove-keep && remove-keep -v
-
-exit 0
+if command-in-path remove-keep; then
+  remove-keep -v
+else
+  exit 0
+fi
