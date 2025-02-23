@@ -41,7 +41,7 @@ mv "${WORK_DIR}/${APP_NAME}" .
   # bundle add fiddle logger ostruct
 
   # irb
-  bundle add irb repl_type_completor --group development test
+  bundle add irb repl_type_completor --group development,test
 
   rm bin/dev Procfile.dev
   cat <<-EOF > mise.toml
@@ -81,7 +81,7 @@ EOF
   git add .
   git commit -m "Initial commit"
 
-  bundle add rubocop
+  bundle add rubocop --group development
   bundle binstub rubocop
   install-rubocop-config -d .rubocop capybara i18n performance rake rspec sequel thread_safety
   git add .
