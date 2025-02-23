@@ -8,18 +8,26 @@ KEEP_FILE="${KEEP_FILE:-.keep}"
 }
 
 typeset -A opts=()
-zparseopts -D -E -A opts v
+zparseopts -D -E -A opts c n v
 
 keeps=( "${(ps:\0:)$(git ls-files -z ':**/'"${KEEP_FILE}")}" )
 keeps=( "${keeps[@]:#}" )
 removed_keeps=0
 
-(( ${+opts[-v]} )) && {
+commit=$(( ${+opts[-c]} ))
+dry_run=$(( ${+opts[-n]} ))
+verbose=$(( ${+opts[-v]} || dry_run ))
+
+(( dry_run )) && {
+  exec > >(sed 's/^/[DRY RUN] /')
+}
+
+(( verbose )) && {
   echo "Removing unnecessary $KEEP_FILE files ..."
 }
 
 [[ ${#keeps[@]} = 0 ]] && {
-  (( ${+opts[-v]} )) && {
+  verbose && {
     echo "No $KEEP_FILE files were found."
   }
   exit 0
@@ -31,7 +39,9 @@ for keep in "${keeps[@]}"; do
 
   [[ ${#other_files[@]} -gt 0 ]] || continue
 
-  if (( ${+opts[-v]} )); then
+  if (( dry_run)); then
+    echo git rm "$keep"
+  elif (( verbose )); then
     git rm "$keep"
   else
     git rm --quiet "$keep"
@@ -41,14 +51,26 @@ for keep in "${keeps[@]}"; do
 done
 
 if [[ "${removed_keeps}" -eq 0 ]]; then
-  (( ${+opts[-v]} )) && {
+  (( verbose )) && {
     echo "No unnecessary $KEEP_FILE files were found."
   }
   exit 0
 else
-  (( ${+opts[-v]} )) && {
+  (( verbose )) && {
     echo "Removed unnecessary $KEEP_FILE files."
-    git status -s
+    git status --short
   }
-  exit 1
+  if (( commit )); then
+    if (( dry_run )); then
+      echo "git commit -m \"Remove unnecessary $KEEP_FILE files\""
+      exit 0
+    else
+      git commit -m "Remove unnecessary $KEEP_FILE files"
+    fi
+  else
+    if (( verbose )); then
+      echo "Run 'git commit -m \"Remove unnecessary $KEEP_FILE files\"' to commit the changes."
+    fi
+    exit 1
+  fi
 fi
