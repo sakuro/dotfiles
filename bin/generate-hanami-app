@@ -38,7 +38,9 @@ mv "${WORK_DIR}/${APP_NAME}" .
   git init
 
   # These gems will require explicit "require"
-  bundle add fiddle logger ostruct
+  # bundle add fiddle logger ostruct
+
+  # irb
   bundle add irb repl_type_completor --group development test
 
   rm bin/dev Procfile.dev
@@ -72,10 +74,8 @@ EOF
   echo "vendor/bundle/" >> .gitignore
   echo "db/*.sqlite" >> .gitignore
 
-  cat <<-EOF >> Rakefile
+  echo 'Dir["lib/tasks/*.rake"].each { load it }' >> Rakefile
 
-  Dir["lib/tasks/*.rake"].each { load it }
-EOF
   npm install
 
   git add .
