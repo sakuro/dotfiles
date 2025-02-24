@@ -79,11 +79,11 @@ EOF
   npm install
 
   git add .
-  git commit -m "Initial commit"
+  git commit -m ":tada: Initial commit"
 
   bundle add rubocop --group development
   bundle binstub rubocop
   install-rubocop-config -d .rubocop capybara i18n performance rake rspec sequel thread_safety
   git add .
-  git commit -m "Install rubocop"
+  git commit -m ":gem: Install rubocop"
 )
