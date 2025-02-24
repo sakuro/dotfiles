@@ -19,6 +19,7 @@ bindkey '^r' interactive-history-search
 bindkey '^x^b' interactive-choose-git-branch # replaces vi-match-bracket
 bindkey '^x^c' interactive-compare-git-commits
 bindkey '^x^d' interactive-chdir-dirs
+bindkey '^x^e' interactive-choose-gemoji
 bindkey '^x^g' interactive-open-bundled-gem
 bindkey '^x^i' interactive-choose-k8s-ingress
 bindkey '^x^l' interactive-choose-git-managed-file
@@ -125,6 +126,8 @@ alias -g Q='1>/dev/null 2>&1'
 alias -g J="| jq"
 alias -g C="| pbcopy"
 alias -g P="| pbpaste"
+alias -g GF="| gemoji filter"
+alias -g GFL="| gemoji filter | $PAGER"
 
 if is-executable -p nvim; then
   alias vim=nvim
