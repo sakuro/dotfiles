@@ -1,0 +1,11 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE="$1"
+COMMIT_MSG="$(cat $COMMIT_MSG_FILE)"
+
+if ! echo "$COMMIT_MSG" | head -n 1 | grep -qE "^:\w+: "; then
+  echo "Error: Commit message must start with an emoji (e.g., :emoji_name:)."
+  exit 1
+fi
+
+exit 0
