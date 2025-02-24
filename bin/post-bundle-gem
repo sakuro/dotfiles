@@ -41,6 +41,6 @@ mise trust
 git add .
 git commit -m ":computer: bundle gem ${gem_name}"
 
-bundle add irb repl_type_completor --group development
+bundle add irb repl_type_completor --group development,test
 git add Gemfile
 git commit -m ":gem: Add irb and repl_type_completor"
