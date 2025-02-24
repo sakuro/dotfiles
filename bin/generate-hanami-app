@@ -83,7 +83,7 @@ EOF
 
   bundle add rubocop --group development
   bundle binstub rubocop
-  install-rubocop-config -d .rubocop capybara i18n performance rake rspec sequel thread_safety
+  install-rubocop-config -d .rubocop capybara performance rake rspec sequel thread_safety
   git add .
   git commit -m ":gem: Install rubocop"
 )
