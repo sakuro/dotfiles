@@ -27,7 +27,7 @@ verbose=$(( ${+opts[-v]} || dry_run ))
 }
 
 [[ ${#keeps[@]} = 0 ]] && {
-  verbose && {
+  (( verbose )) && {
     echo "No $KEEP_FILE files were found."
   }
   exit 0
