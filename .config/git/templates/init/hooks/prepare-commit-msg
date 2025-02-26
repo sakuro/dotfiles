@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+COMMIT_MSG_FILE="$1"
+
+if [ "$2" = "merge" ]; then
+  DEFAULT_MSG=$(cat "$COMMIT_MSG_FILE")
+  NEW_MSG=":inbox_tray: $DEFAULT_MSG"
+  echo "$NEW_MSG" > "$COMMIT_MSG_FILE"
+fi
+
