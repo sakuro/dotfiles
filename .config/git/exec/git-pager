@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if is-executable gemoji; then
+  gemoji filter | "${PAGER:-less}"
+else
+  "${PAGER:-less}"
+fi

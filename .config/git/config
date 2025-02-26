@@ -25,6 +25,7 @@
   verbose = true
 [core]
   commentchar = ";"
+  pager = ~/.config/git/exec/git-pager
 [diff]
   algorithm = histogram
 [fetch]
