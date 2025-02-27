@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if is-executable gemoji; then
+if whence gemoji >/dev/null; then
   gemoji filter | "${PAGER:-less}"
 else
   "${PAGER:-less}"
