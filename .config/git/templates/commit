@@ -10,6 +10,7 @@
 ; - :new:          🆕 New feature – Adding a new feature or capability
 ; - :beetle:       🪲 Bug fix – Fixing an issue or bug
 ; - :memo:         📝 Documentation – Writing or updating documentation
+; - :policeman     👮 RuboCop – Addressing RuboCop suggestions (style, naming, best practices, etc.)
 ; - :lipstick:     💄 Style – Code style changes (formatting, linting)
 ; - :hammer:       🔨 Refactor – Code changes that neither fix a bug nor add a feature
 ; - :zap:          ⚡ Performance – Improving performance
