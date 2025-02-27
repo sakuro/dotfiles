@@ -4,5 +4,5 @@ is-executable gemoji && exec > >(gemoji filter)
 
 # Link this script from .git/hooks
 echo ":computer: Running post-merge hook..."
-echo ":arrow_right: :link: Updating symlinks"
+echo ":link: Updating symlinks"
 make link-dotfiles
