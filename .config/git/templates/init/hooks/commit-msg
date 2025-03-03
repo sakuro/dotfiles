@@ -3,8 +3,16 @@
 COMMIT_MSG_FILE="$1"
 COMMIT_MSG="$(cat $COMMIT_MSG_FILE)"
 
+#!/bin/sh
+
+# Allow messages starting with "fixup!" or "squash!"
+if echo "$COMMIT_MSG" | grep -qE "^(fixup|squash)!"; then
+  exit 0
+fi
+
+# Disallow messages without GitHub emoji
 if ! echo "$COMMIT_MSG" | head -n 1 | grep -qE "^:\w+: "; then
-  echo "Error: Commit message must start with an emoji (e.g., :emoji_name:)."
+  echo "Error: Commit message must start with a GitHub :emoji:"
   exit 1
 fi
 
