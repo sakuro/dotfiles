@@ -22,7 +22,17 @@ ZDOTDIR=$XDG_CONFIG_HOME/zsh
 typeset -aU path
 
 () {
-  local winpath=( ${(M)path##/mnt*} )
+  local -aU winpath=( ${(M)path##/mnt/*} )
+  # cursor also defines code. It must come after code.
+  local code_path="/mnt/c/Users/sakuro/AppData/Local/Programs/Microsoft VS Code/bin"
+  local cursor_path="/mnt/c/Users/sakuro/AppData/Local/Programs/cursor/resources/app/bin"
+
+  winpath=(
+    ${(M)winpath:#"$code_path"}
+    ${(M)winpath:#"$cursor_path"}
+    ${(@)winpath:#"$code_path"~"$cursor_path"}
+  )
+
   set -A path ${^${~${(@fe)"$(<$ZDOTDIR/paths)"}}}(N)
   path=($path $winpath)
 }
