@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+local home_bin = wezterm.home_dir .. "/bin"
+
 function table.merge(to, from)
   for _, v in ipairs(from) do
      table.insert(to, v)
@@ -32,11 +34,6 @@ wezterm.GLOBAL.os = wezterm.GLOBAL.os or
 
 if wezterm.GLOBAL.os == 'windows' then
   config.default_domain = 'WSL:Ubuntu-22.04'
-end
-
-if wezterm.GLOBAL.os == 'macos' then
-  local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl",  "-n",  "hw.ncpu"}
-  wezterm.GLOBAL.ncpu = tonumber(stdout)
 end
 
 -- https://www.nordtheme.com/docs/colors-and-palettes
@@ -86,12 +83,13 @@ local volume_status = function()
     return {}
   end
 
-  local _success, stdout, _stderr = wezterm.run_child_process {"osascript", "-e", "get volume settings"}
-
-  local _, _, volume = string.find(stdout, "output volume:(%d+)")
-  volume = tonumber(volume)
-  local _, _, muted = string.find(stdout, "output muted:(%S+)")
-  muted = muted == "true"
+  local _success, stdout, _stderr = wezterm.run_child_process {home_bin .."/volume-info"}
+  local volume_info = wezterm.json_parse(stdout)
+  if volume_info == nil then
+    return {}
+  end
+  local volume = volume_info.volume
+  local muted = volume_info.muted == true
 
   local icon, icon_color, status_text
 
@@ -118,31 +116,18 @@ local wifi_status = function()
     return {}
   end
 
-  -- interface=$(networksetup -listallhardwareports |sed -ne '/Wi-Fi/{n;s/Device: //;p}')
-  local _success, stdout, _stderr = wezterm.run_child_process {"networksetup", "-listallhardwareports"}
-  local wifi = string.find(stdout, "Wi%-Fi")
-  if not wifi then
+  local _success, stdout, _stderr = wezterm.run_child_process {home_bin .. "/wifi-info"}
+  local wifi_info = wezterm.json_parse(stdout)
+  if wifi_info == nil then
     return {}
   end
 
-  local _, _, device = string.find(stdout, "Device: ([^\n]+)", wifi)
-  if not device then
-    return {}
-  end
-
-  -- ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p'
-  local _success, stdout, _stderr = wezterm.run_child_process {"ipconfig", "getsummary", device}
-  local wifi = string.find(stdout, "WiFi")
-  if not wifi then
-    return {}
-  end
-  local _, _, ssid = string.find(stdout, "SSID%s-:%s-([^\n]+)", wifi)
+  local ssid = wifi_info.ssid
   if ssid then
     return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
   else
     return format_status('fa_wifi', wezterm.GLOBAL.nord.nord4)
   end
-
 end
 
 local battery_status = function()
@@ -173,24 +158,29 @@ local battery_status = function()
 end
 
 local load_average_status = function()
-  if wezterm.GLOBAL.os == "macos" then
-    local _success, stdout, _stderr = wezterm.run_child_process {"/usr/sbin/sysctl", "-n", "vm.loadavg"}
-    local _, _, min1, _, _ = string.find(stdout, "%{ (%d+%.%d+) (%d+%.%d+) (%d+%.%d+) %}")
-
-    local la = tonumber(min1) / wezterm.GLOBAL.ncpu
-    local icon
-    if la < 1 then
-      icon = "md_speedometer"
-    elseif la < 2 then
-      icon = "md_speedometer_medium"
-    else
-      icon = "md_speedometer_slow"
-    end
-
-    return format_status(icon, wezterm.GLOBAL.nord.nord12, string.format("%.2f", la))
-  else
+  if wezterm.GLOBAL.os ~= "macos" then
     return {}
   end
+
+  local _success, stdout, _stderr = wezterm.run_child_process {home_bin .. "/load-info"}
+  local load_info = wezterm.json_parse(stdout)
+  if load_info == nil then
+    return {}
+  end
+
+  local loadag = load_info.loadavg
+  local ncpu = load_info.ncpu
+  local la = loadag / ncpu
+  local icon
+  if la < 1 then
+    icon = "md_speedometer"
+  elseif la < 2 then
+    icon = "md_speedometer_medium"
+  else
+    icon = "md_speedometer_slow"
+  end
+
+  return format_status(icon, wezterm.GLOBAL.nord.nord12, string.format("%.2f", la))
 end
 
 local clock_status = function()
