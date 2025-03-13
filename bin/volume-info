@@ -1,7 +1,13 @@
 #!/bin/zsh
 
-set - $(osascript -e "get volume settings" | tr , "\n" | awk -F: '
-$0 ~ /output volume/ { print $2 }
-$0 ~ /output muted/ { print $2 }')
+set - $(
+  osascript -e "get volume settings" | tr , "\n" | awk -F: '
+    $0 ~ /output volume/ { print $2 }
+    $0 ~ /output muted/ { print $2 }
+  '
+)
 
-echo $1 $2
+jq -n \
+  --arg volume_key volume --arg volume_value $1 \
+  --arg mute_key mute --argjson mute_value $2 \
+  '{($volume_key): $volume_value, ($mute_key): $mute_value}'

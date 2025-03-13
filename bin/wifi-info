@@ -3,7 +3,9 @@
 interface="$(networksetup -listallhardwareports | sed -ne '/Wi-Fi/{n;s/Device: //;p}')"
 
 if [[ -n "$interface" ]]; then
-  ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p'
+  ssid=$(ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p')
 else
   exit 1
 fi
+
+jq -n --arg key "ssid" --arg value "$ssid" '{($key): $value}'

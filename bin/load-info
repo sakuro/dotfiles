@@ -3,14 +3,18 @@
 case "${OSTYPE}" in
   darwin*)
     set -- $(/usr/sbin/sysctl -n hw.ncpu vm.loadavg | tr -d '{}')
-    echo $(( $2 / $1 ))
     ;;
   linux*)
     set -- $(nproc) $(cat /proc/loadavg)
-    echo $(( $2 / $1 ))
     ;;
   *)
     echo "Unsupported OS: ${OSTYPE}"
     exit 1
     ;;
 esac
+
+jq -n \
+  --arg ncpu_key "ncpu" --arg ncpu_value "$1" \
+  --arg la_key "loadavg" --arg la_value "$2" \
+  '{($ncpu_key): $ncpu_value, ($la_key): $la_value}'
+
