@@ -9,5 +9,5 @@ set - $(
 
 jq -n \
   --arg volume_key volume --arg volume_value $1 \
-  --arg mute_key mute --argjson mute_value $2 \
+  --arg mute_key muted --argjson mute_value $2 \
   '{($volume_key): $volume_value, ($mute_key): $mute_value}'
