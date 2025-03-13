@@ -6,7 +6,7 @@
   pb = !git push --verbose --set-upstream origin $(git symbolic-ref --short HEAD)
   st = status --short --branch
   wdiff = diff --word-diff=color --color=auto --word-diff-regex=[[:alnum:]_]
-  wip = commit --message wip
+  wip = commit --message ':construction: wip'
   current-branch = symbolic-ref --short HEAD
   grep-context = grep -h -P '^ *(?:class|module|def|(?:RSpec.)?(?:shared_(?:examples|context)|context|describe|it))(?=\\s)'
   log1 = log --oneline
