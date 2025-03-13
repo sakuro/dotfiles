@@ -14,7 +14,7 @@ case "${OSTYPE}" in
 esac
 
 jq -n \
-  --arg ncpu_key "ncpu" --arg ncpu_value "$1" \
-  --arg la_key "loadavg" --arg la_value "$2" \
+  --arg ncpu_key "ncpu" --argjson ncpu_value "$1" \
+  --arg la_key "loadavg" --argjson la_value "$2" \
   '{($ncpu_key): $ncpu_value, ($la_key): $la_value}'
 
