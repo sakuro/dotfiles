@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-gem update --system && gem uninstall --executables rubygems-update
+gem update --system --no-post-install-message --no-document && gem uninstall --executables rubygems-update
 gem update && gem clean
