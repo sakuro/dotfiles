@@ -30,7 +30,10 @@ done
 
 # Remove dangling symlinks
 for dir in $(cd "$DOTROOT" && find .config -maxdepth 0 -type d); do
-  [[ -d $DOTDEST/$dir ]] && find "$DOTDEST/$dir" -xtype l -exec rm -v '{}' +
+  [[ -d $DOTDEST/$dir ]] && {
+    find "$DOTDEST/$dir" -xtype l -exec rm -v '{}' +
+    find "$DOTDEST/$dir" -type d -empty -exec rmdir -v '{}' +
+  }
 done
 
 # Handle .config/git/include/credentials
