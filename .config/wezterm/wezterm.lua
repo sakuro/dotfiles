@@ -123,10 +123,26 @@ local wifi_status = function()
   end
 
   local ssid = wifi_info.ssid
-  if ssid then
-    return format_status('fa_wifi', wezterm.GLOBAL.nord.nord7, ssid)
+  local rssi = wifi_info.rssi
+  local rssi_icon
+  if not rssi or rssi == 0 then
+    rssi_icon = "md_wifi_strength_off_outline"
+  elseif rssi > -50 then
+    rssi_icon = "md_wifi_strength_4"
+  elseif rssi > -60 then
+    rssi_icon = "md_wifi_strength_3"
+  elseif rssi < -70 then
+    rssi_icon = "md_wifi_strength_2"
+  elseif rssi > -80 then
+    rssi_icon = "md_wifi_strength_1"
   else
-    return format_status('fa_wifi', wezterm.GLOBAL.nord.nord4)
+    rssi_icon = "md_wifi_strength_outline"
+  end
+
+  if ssid ~= "" then
+    return format_status(rssi_icon, wezterm.GLOBAL.nord.nord7, ssid)
+  else
+    return format_status(rssi_icon, wezterm.GLOBAL.nord.nord4)
   end
 end
 

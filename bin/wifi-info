@@ -2,10 +2,15 @@
 
 interface="$(networksetup -listallhardwareports | sed -ne '/Wi-Fi/{n;s/Device: //;p}')"
 
-if [[ -n "$interface" ]]; then
-  ssid=$(ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p')
-else
-  exit 1
-fi
+[[ -z "$interface" ]] && exit 1
 
-jq -n --arg key "ssid" --arg value "$ssid" '{($key): $value}'
+ssid=$(ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p')
+
+rssi=$(
+  osascript -l JavaScript \
+    -e 'ObjC.import("CoreWLAN")' \
+    -e 'const wifi = $.CWWiFiClient.sharedWiFiClient.performSelector("interface")' \
+    -e 'wifi ? wifi.rssiValue : ""'
+)
+
+jq -n --arg ssid "$ssid" --arg rssi "$rssi" '{ssid: $ssid, rssi: ($rssi | tonumber)}'
