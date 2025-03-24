@@ -17,6 +17,17 @@ url="$2"
 GIT_HOOKS_DIR=$XDG_CONFIG_HOME/git/hooks
 . $GIT_HOOKS_DIR/support.zsh
 
+# Remove unnecessary .keep files
+if command-in-path remove-keep; then
+  remove-keep -v
+fi
+
+# Check if there are duplicated file names with different case
+git ls-files | tr '[:upper:]' '[:lower:]' | sort | uniq -d | while read file; do
+  echo "Error: Found duplicated file names with different case: $file"
+  exit 1
+done
+
 set -- $(detect-languages)
 
 while [[ $# -gt 0 ]]; do
@@ -24,11 +35,7 @@ while [[ $# -gt 0 ]]; do
   shift
   [[ -x $hook ]] || continue
   echo "Running ${hook:t} hook ..."
-  $hook $remote $url
+  $hook $remote $url || exit 1
 done
 
-if command-in-path remove-keep; then
-  remove-keep -v
-else
-  exit 0
-fi
+exit 0
