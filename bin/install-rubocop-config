@@ -4,7 +4,7 @@ set -eu
 
 zparseopts -D -E -A opts d:
 
-config_root=".rubocop.d"
+config_root=".rubocop"
 (( ${+opts[-d]} )) && config_root="${opts[-d]}"
 
 (( $# > 0 )) && bundle add "rubocop-${(o)^@}" --group development
