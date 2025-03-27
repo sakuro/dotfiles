@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-while [[ $# -gt 0 ]]; do
-  path=(${path:#$1})
-  shift
-done
