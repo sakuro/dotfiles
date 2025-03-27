@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+# Clean up broken symlinks in the given directory
+# Usage: clean-symlinks <directory>
+# Example: clean-symlinks ~/dotfiles
+
+set -eu -o pipefail
+
+dir="$1"
+
+[[ -d $dir ]] || {
+  echo "Usage: $0:t directory"
+  exit 1
+}
+
+find "$dir" -xtype l -exec rm -v '{}' +
+find "$dir" -depth -type d -empty -exec rmdir -v '{}' +
