@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+tool="$1"
+shift
+
+for v in $(mise ls --json "$tool" | jq -r '.[]|.version'); do
+  mise exec "$tool@$v" -- "$@"
+done
