@@ -30,7 +30,7 @@ done
 
 # Remove dangling symlinks
 for dir in $(cd "$DOTROOT" && find .config bin -maxdepth 0 -type d); do
-  $DOTROOT/bin/clean-symlinks "$dir"
+  $DOTROOT/bin/clean-symlinks "$DOTDEST/$dir"
 done
 
 # Handle .config/git/include/credentials
