@@ -4,11 +4,13 @@ direnv
 gdb
 gh
 jq
+kubectl
 less
 libc6-dbg
 libgdbm-dev
 libpq-dev
 libssl-dev
+mise
 neovim
 peco
 postgresql-client
