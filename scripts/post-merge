@@ -6,3 +6,8 @@ is-executable gemoji && exec > >(gemoji filter)
 echo ":computer: Running post-merge hook..."
 echo ":link: Updating symlinks"
 make link-dotfiles
+
+if is-executable mise; then
+  echo ":wrench: Updating tools"
+  mise install
+fi
