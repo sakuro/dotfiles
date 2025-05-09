@@ -19,7 +19,7 @@ function install-packages-linux-debian()
   sudo apt install --yes $(cat apt-packages.txt)
 }
 
-funciton install-signing-key()
+function install-signing-key()
 {
   local name="$1"
   local url="$2"
