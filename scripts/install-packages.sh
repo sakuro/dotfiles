@@ -7,7 +7,7 @@ function install-packages-darwin()
   eval "$(/usr/libexec/path_helper)"
   PATH=/opt/homebrew/bin:$PATH
   [[ -x /opt/homebrew/bin/brew ]] || scripts/install-homebrew.sh
-  brew bundle --no-lock
+  brew bundle
   chmod go-w "$(brew --prefix)/share"
 }
 
