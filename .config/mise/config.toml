@@ -2,7 +2,7 @@
 age = "latest"
 deno = "2.2.1"
 node = "23.11.0"
-ruby = "3.4.3"
+ruby = "3.4.4"
 slsa-verifier = "latest"
 sops = "latest"
 
