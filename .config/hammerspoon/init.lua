@@ -26,8 +26,11 @@ local keyCodeToInputMethod = function(keyCode)
 end
 
 local switchInputMethod = function(inputMethod)
-  hs.keycodes.setMethod(inputMethod)
-  alert("🖊️" .. inputMethod)
+  local currentInputMethod = hs.keycodes.currentMethod()
+  if currentInputMethod ~= inputMethod then
+    hs.keycodes.setMethod(inputMethod)
+    alert("🖊️" .. inputMethod)
+  end
 end
 
 local isAsModifier = {}
