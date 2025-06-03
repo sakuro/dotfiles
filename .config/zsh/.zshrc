@@ -17,9 +17,9 @@ add-hook accept_line accept-line-uri-github-clone
 add-hook accept_line accept-line-uri-open
 bindkey '^r' interactive-history-search
 bindkey '^x^b' interactive-choose-git-branch # replaces vi-match-bracket
-bindkey '^x^c' interactive-compare-git-commits
 bindkey '^x^d' interactive-chdir-dirs
 bindkey '^x^e' interactive-choose-gemoji
+bindkey '^x^f' interactive-compare-git-commits # replaces vi-find-next-char
 bindkey '^x^g' interactive-open-bundled-gem
 bindkey '^x^i' interactive-choose-k8s-ingress
 bindkey '^x^l' interactive-choose-git-managed-file

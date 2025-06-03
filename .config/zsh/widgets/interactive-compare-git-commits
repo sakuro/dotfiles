@@ -1,12 +1,16 @@
 #!/bin/zsh
 
+echo "XXX"
+set -x
 upfind -q .git || { bell && return 1 }
 
-local from=$(git log --pretty=oneline | peco)
-local to=$(git log --pretty=oneline | peco)
-[[ -n "$from" ]] && [[ -n "$to" ]] || { bell & return }
+local from=$(git log --pretty=oneline | peco | awk '{print $1}')
+[[ -n "$from" ]] || { bell & return }
+local to=$(git log --pretty=oneline | peco | awk '{print $1}')
+[[ -n "$to" ]] || { bell & return }
 
 local repo=$(gh repo view --json owner,name --jq '.owner.login + "/" + .name')
 
 BUFFER="https://github.com/$repo/compare/$from..$to"
+set +x
 zle accept-line
