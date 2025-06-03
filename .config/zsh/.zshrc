@@ -134,7 +134,7 @@ if is-executable -p nvim; then
   alias vi=nvim
   alias view='nvim -R'
 elif is-executable -p vim; then
-  alias vi=nvim
+  alias vi=vim
   alias view='vim -R'
 fi
 
