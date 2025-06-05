@@ -31,7 +31,7 @@ clean-brewfile:
 	@rm -v Brewfile.$(HOSTNAME).*
 
 Brewfile.$(HOSTNAME):
-	@scripts/rotate-brewfiles.sh
+	-[ -f $@ ] && ./bin/rotate-suffix $@
 	brew bundle dump --file=$@
 
 shellcheck:

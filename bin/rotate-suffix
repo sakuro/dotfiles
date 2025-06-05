@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+[[ $# -eq 1 ]] || {
+  echo "Usage: ${0} basename"
+  exit 1
+}
+
+base="$1"
+
+[[ -f "${base}" ]] || {
+  echo "${base}: File not found"
+  exit 1
+}
+
+setopt nullglob nonomatch
+old_files=("${base}".<->)
+
+if [[ $#old_files -gt 0 ]]; then
+  for b in "${(On)old_files[@]}"; do
+    mv -v $b ${b:r}.$((${b:e} + 1))
+  done
+fi
+
+mv -v "${base}" "${base}.1"
