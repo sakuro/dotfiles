@@ -18,6 +18,5 @@ packages:
 - name: Wilfred/difftastic@0.63.0
 - name: kubernetes/kubernetes/kubectl@v1.33.1
 - name: BurntSushi/ripgrep@14.1.1
-- name: peco/peco@v0.5.11
 - name: junegunn/fzf@v0.62.0
 - name: sharkdp/bat@v0.25.0
