@@ -15,7 +15,6 @@ bindkey '^M' accept-line-with-hooks
 add-hook accept_line accept-line-uri-download
 add-hook accept_line accept-line-uri-github-clone
 add-hook accept_line accept-line-uri-open
-bindkey '^r' interactive-history-search
 bindkey '^x^b' interactive-choose-git-branch # replaces vi-match-bracket
 bindkey '^x^d' interactive-chdir-dirs
 bindkey '^x^e' interactive-choose-gemoji
@@ -26,6 +25,23 @@ bindkey '^x^l' interactive-choose-git-managed-file
 bindkey '^x^p' interactive-chdir-projects
 bindkey '^x^t' interactive-choose-rake-task
 bindkey '^x^w' interactive-choose-chrome-tab
+
+is-executable fzf && {
+  eval "$(fzf --zsh)"
+
+  export FZF_DEFAULT_OPTS="--layout=reverse --border"
+
+  export FZF_CTRL_T_OPTS="
+    --walker-skip .git,node_modules,target,vendor/bundle
+    --preview "$ZDOTDIR"'/libexec/fzf-preview {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+  # Unbind unwanted default fzf bindings
+  bindkey -r '^t' # fzf-file-widget
+  bindkey -r '^[c'
+  # And rebind them
+  bindkey '^x^f' fzf-file-widget
+}
 
 fpath=(
   $ZDOTDIR/widgets

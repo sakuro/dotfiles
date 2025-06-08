@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ -f "$1" ]]; then
+  bat -n --color=always "$1"
+elif [[ -d "$1" ]]; then
+  ls -l
+fi
