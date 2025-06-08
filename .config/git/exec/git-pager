@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+if whence mise >/dev/null && [[ $i != *i* ]]; then
+  eval "$(mise env)"
+fi
+
 if whence gemoji >/dev/null; then
   gemoji filter | "${PAGER:-less}"
 else
