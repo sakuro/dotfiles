@@ -33,7 +33,7 @@ is-executable fzf && {
 
   export FZF_CTRL_T_OPTS="
     --walker-skip .git,node_modules,target,vendor/bundle
-    --preview "$ZDOTDIR"'/libexec/fzf-preview {}'
+    --preview "$ZDOTDIR"'/exec/fzf-preview {}'
     --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
   # Unbind unwanted default fzf bindings
