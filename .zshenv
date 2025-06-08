@@ -44,6 +44,9 @@ fpath=(
 )
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
 
+# aqua
+export AQUA_GLOBAL_CONFIG=${XDG_CONFIG_HOME}/aqua.yaml
+
 # mise
 is-executable mise && {
   case "$-" in
@@ -55,7 +58,6 @@ is-executable mise && {
     ;;
   esac
 }
-
 
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 export RUBYOPT="-W:deprecated -W:experimental"

@@ -1,6 +1,7 @@
 ~/bin/wrappers
 ~/bin
 $ZDOTDIR/bin
+$XDG_DATA_HOME/aquaproj-aqua/bin
 /Applications/RubyMine.app/Contents/MacOS
 /opt/homebrew/bin
 /opt/homebrew/sbin
