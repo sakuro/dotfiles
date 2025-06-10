@@ -48,16 +48,7 @@ autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
 export AQUA_GLOBAL_CONFIG=${XDG_CONFIG_HOME}/aqua.yaml
 
 # mise
-is-executable mise && {
-  case "$-" in
-  *i*)
-    eval "$(mise activate)"
-    ;;
-  *)
-    eval "$(mise activate --shims)"
-    ;;
-  esac
-}
+is-executable mise && eval "$(mise activate)"
 
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 export RUBYOPT="-W:deprecated -W:experimental"
