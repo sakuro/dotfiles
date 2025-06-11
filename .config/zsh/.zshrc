@@ -93,6 +93,9 @@ setopt always_to_end
 setopt no_list_beep
 setopt list_packed
 
+autoload -U compinit
+compinit -u -d $XDG_CACHE_HOME/zsh/compdump
+
 zstyle ':completion:*' completer _expand _complete _correct
 zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*' squeeze-slashes true
