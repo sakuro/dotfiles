@@ -1,9 +1,11 @@
 #!/bin/zsh
 
-is-executable gemoji && exec > >(gemoji filter)
+script_name="$0:t"
+
+is-executable gemoji && exec > >(sed "s/^/[${script_name}] /" | gemoji filter)
 
 # Link this script from .git/hooks
-echo ":computer: Running post-merge hook..."
+echo ":computer: Running ${script_name} hook..."
 echo ":link: Updating symlinks"
 make link-dotfiles
 
