@@ -5,6 +5,7 @@
 .env.*.local
 .env.local
 .envrc
+.fseventsd/
 .mise.*.local.toml
 .mise.local.toml
 /*.code-workspace
