@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# 引数があればその日、なければ今日
+if [ -n "$1" ]; then
+  date_str="$1"
+else
+  date_str=$(date +%Y-%m-%d)
+fi
+
+year=$(date -d "$date_str" +%Y)
+month=$(date -d "$date_str" +%m)
+
+if [ "$month" -ge 4 ] && [ "$month" -lt 10 ]; then
+  echo "${year}-04-01"
+else
+  [ "$month" -lt 4 ] && year=$((year - 1))
+  echo "${year}-10-01"
+fi
+
