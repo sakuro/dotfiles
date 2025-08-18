@@ -19,7 +19,7 @@ function install-aqua-linux-debian()
 
   cd $aqua_installer_tmp_dir
 
-  curl -sSfL ${AQUA_INSTALLER_URL}
+  curl -sSfLO ${AQUA_INSTALLER_URL}
   echo "9a5afb16da7191fbbc0c0240a67e79eecb0f765697ace74c70421377c99f0423  aqua-installer" | sha256sum -c -
   chmod +x aqua-installer
   ./aqua-installer
