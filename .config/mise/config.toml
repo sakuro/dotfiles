@@ -1,7 +1,7 @@
 [tools]
 age = "latest"
-deno = "2.4.2"
-node = "24.4.1"
+deno = "2.4.5"
+node = "24.6.0"
 ruby = "3.4.5"
 slsa-verifier = "latest"
 sops = "latest"
