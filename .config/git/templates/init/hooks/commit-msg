@@ -20,7 +20,7 @@ fi
 
 # Disallow raw emoji sequences, use :emoji: notation
 if command -v ruby >/dev/null 2>&1; then
-  if ruby -e 'exit(STDIN.read =~ /\p{Emoji}/ ? 1 : 0)' < "$COMMIT_MSG_FILE" 2>/dev/null; then
+  if ruby -e 'exit(STDIN.read =~ /\p{Emoji}/ ? 0 : 1)' < "$COMMIT_MSG_FILE" 2>/dev/null; then
     echo "Error: Commit message contains raw emojis. Use :emoji: notation instead"
     exit 1
   fi
