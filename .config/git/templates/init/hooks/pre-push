@@ -18,7 +18,7 @@ GIT_HOOKS_DIR=$XDG_CONFIG_HOME/git/hooks
 . $GIT_HOOKS_DIR/support.zsh
 
 # Remove unnecessary .keep files
-if command-in-path remove-keep; then
+if (( $+commands[remove-keep] )); then
   remove-keep -v
 fi
 

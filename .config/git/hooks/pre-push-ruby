@@ -28,7 +28,7 @@ if need-bundle-update; then
 fi
 
 for command in rubocop rspec; do
-  command-in-path $command || continue
+  (( $+commands[$command] )) || continue
   $command-ready || continue
   echo "Running $command ..."
   run-$command || return 1

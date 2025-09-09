@@ -4,7 +4,3 @@ function detect-languages() {
     return 0
 }
 
-function command-in-path() {
-  (( $# )) || return 1
-  (( $+commands[$1] ))
-}
