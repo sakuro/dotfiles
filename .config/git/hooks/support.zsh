@@ -4,3 +4,7 @@ function detect-languages() {
     return 0
 }
 
+# Enable tools managed by mise if mise is executable
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+fi
