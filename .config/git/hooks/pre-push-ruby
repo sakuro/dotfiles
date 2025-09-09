@@ -22,21 +22,12 @@ function run-rspec() {
   command bundle exec rspec --format progress
 }
 
-function yard-ready() {
-  true
-}
-
-function run-yard() {
-  command bundle exec yard
-}
-
-
 if need-bundle-update; then
   echo "Gemfile.lock is not up to date.  Run bundle install"
   return 1
 fi
 
-for command in rubocop rspec yard; do
+for command in rubocop rspec; do
   command-in-path $command || continue
   $command-ready || continue
   echo "Running $command ..."
