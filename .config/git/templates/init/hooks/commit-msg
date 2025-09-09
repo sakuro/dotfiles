@@ -3,10 +3,6 @@
 COMMIT_MSG_FILE="$1"
 COMMIT_MSG="$(cat $COMMIT_MSG_FILE)"
 
-if echo "$COMMIT_MSG" | grep -qE "^checkpoint"; then
-  exit 0
-fi
-
 # Allow messages starting with "fixup!" or "squash!"
 if echo "$COMMIT_MSG" | grep -qE "^(fixup|squash)!"; then
   exit 0
