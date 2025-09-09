@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 COMMIT_MSG_FILE="$1"
 COMMIT_MSG="$(cat $COMMIT_MSG_FILE)"
