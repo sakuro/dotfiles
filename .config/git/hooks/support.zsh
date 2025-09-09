@@ -5,5 +5,6 @@ function detect-languages() {
 }
 
 function command-in-path() {
-  whence -p $* > /dev/null
+  (( $# )) || return 1
+  (( $+commands[$1] ))
 }
