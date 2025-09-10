@@ -27,7 +27,7 @@ function prompt_sakuro_precmd() {
   [[ -n "$prompt_duration" ]] && print -P "%{%F{yellow}%}$prompt_duration%{%f%}"
 
   local -a info_line_elements=(
-    "$(prompt_sakuro_user)@$(prompt_sakuro_host)"
+#    "$(prompt_sakuro_user)@$(prompt_sakuro_host)"
     "$(prompt_sakuro_pwd)"
     "$(prompt_sakuro_vcs)"
     "$(prompt_sakuro_ruby)"
