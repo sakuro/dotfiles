@@ -1,1 +1,4 @@
 /Brewfile.*
+/.config/claude/*
+!/.config/claude/settings.json
+!/.config/claude/statusline-command.zsh
