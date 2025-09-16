@@ -1,10 +1,6 @@
 #!/bin/zsh
 
-interface="$(networksetup -listallhardwareports | sed -ne '/Wi-Fi/{n;s/Device: //;p}')"
-
-[[ -z "$interface" ]] && exit 1
-
-ssid=$(ipconfig getsummary "${interface}" | sed -n 's/^  SSID : //p')
+ssid=$(system_profiler SPAirPortDataType | sed -n '/Current Network Information/{n;s/://;s/^ *//;p;q}')
 
 rssi=$(
   osascript -l JavaScript \
