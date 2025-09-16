@@ -177,8 +177,8 @@ is-executable -p powershell.exe && alias pbpaste='powershell.exe -Command Get-Cl
   fi
 }
 
-if is-executable zcal; then
-  alias cal=zcal
+if is-executable fasti; then
+  alias cal=fasti
 elif is-executable gcal; then
   alias cal='gcal --starting-day=1 --type=standard --cc-holidays=JP'
 fi
