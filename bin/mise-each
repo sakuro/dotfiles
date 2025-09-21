@@ -3,6 +3,13 @@
 tool="$1"
 shift
 
+# Duplicate FD#1 to any free FD({...})
+exec {orig_stdout}>&1
+
 for v in $(mise ls --json "$tool" | jq -r '.[]|.version'); do
+  # First restore original FD#1, without this, prefix from previous iteration would persist
+  exec 1>&${orig_stdout}
+  # Then redirect FD#1 to sed which prefixes each line with the tool name and version
+  exec > >(sed "s/^/[$tool@$v] /")
   mise exec "$tool@$v" -- "$@"
 done
