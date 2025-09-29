@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [[ $((uname -r; echo 25.0.0) | sort -V | head -n1) = 25.0.0 ]]; then
-  ssid="<redacted>"
+  ssid=$(sudo ipconfig getsummary en0 | grep -Po '(?<=\bSSID\b : ).*')
 else
   ssid=$(system_profiler -json -detailLevel basic SPAirPortDataType | jq -rM '.SPAirPortDataType[0].spairport_airport_interfaces[0].spairport_current_network_information._name')
 fi
