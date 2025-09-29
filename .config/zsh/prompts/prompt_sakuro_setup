@@ -3,8 +3,7 @@
 function prompt_sakuro_setup() {
   zstyle ':vcs_info:*'     formats       '%{%F{blue}%}%b%{%f%}' '%S'
   zstyle ':vcs_info:*'     actionformats '%{%b%F{cyan}%}%{%F{red}%}%a%{%f%}'
-  zstyle ':vcs_info:svn:*' branchformat  '%{%F{blue}%}%b%%{F{cyan}%}:%{%f%%}r%{%r%}'
-  zstyle ':vcs_info:*' enable git svn hg bzr cvs
+  zstyle ':vcs_info:*' enable git
 
   prompt_sakuro_load_default_styles
 
