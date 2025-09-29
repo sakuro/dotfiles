@@ -201,7 +201,7 @@ limit coredumpsize 0
 
 () {
   local script prefix
-  for script in syntax-highlighting autosuggestions; do
+  for script in autosuggestions; do # syntax-highlighting
     for prefix in /opt/homebrew/share /usr/share; do
       local full_path="$prefix/zsh-$script/zsh-$script.zsh"
       [[ -f "$full_path" ]] || continue
