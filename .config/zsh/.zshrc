@@ -11,10 +11,6 @@ setopt numeric_glob_sort
 
 autoload run-help
 bindkey -e
-bindkey '^M' accept-line-with-hooks
-add-hook accept_line accept-line-uri-download
-add-hook accept_line accept-line-uri-github-clone
-add-hook accept_line accept-line-uri-open
 bindkey '^x^b' interactive-choose-git-branch # replaces vi-match-bracket
 bindkey '^x^d' interactive-chdir-dirs
 bindkey '^x^e' interactive-choose-gemoji
