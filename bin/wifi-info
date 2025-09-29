@@ -1,6 +1,10 @@
 #!/bin/zsh
 
-ssid=$(system_profiler SPAirPortDataType | sed -n '/Current Network Information/{n;s/://;s/^ *//;p;q}')
+if [[ $((uname -r; echo 25.0.0) | sort -V | head -n1) = 25.0.0 ]]; then
+  ssid="<redacted>"
+else
+  ssid=$(system_profiler -json -detailLevel basic SPAirPortDataType | jq -rM '.SPAirPortDataType[0].spairport_airport_interfaces[0].spairport_current_network_information._name')
+fi
 
 rssi=$(
   osascript -l JavaScript \
