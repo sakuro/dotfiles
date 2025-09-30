@@ -73,8 +73,8 @@ switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, a
   end
 end)
 
-switchInputMethodByCommandKey:start()
-switchToEnglishOnActivation:start()
+-- switchInputMethodByCommandKey:start()
+-- switchToEnglishOnActivation:start()
 
 -- Audio volume management
 math.clamp = function(value, min, max)
