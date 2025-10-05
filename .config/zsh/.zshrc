@@ -22,7 +22,7 @@ bindkey '^x^p' interactive-chdir-projects
 bindkey '^x^t' interactive-choose-rake-task
 bindkey '^x^w' interactive-choose-chrome-tab
 
-is-executable fzf && {
+(( $+commands[fzf] )) && {
   eval "$(fzf --zsh)"
 
   export FZF_DEFAULT_OPTS="--layout=reverse --border"
@@ -101,17 +101,17 @@ zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/compcache
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
-if is-executable aqua; then
+if (( $+commands[aqua] )); then
   eval "$(aqua completion zsh)"
 fi
 
-if is-executable mise; then
+if (( $+commands[mise] )); then
   eval "$(mise completion zsh)"
 fi
 
-if is-executable -p nvim; then
+if (( $+commands[nvim] )); then
   EDITOR=nvim
-elif is-executable -p nvim; then
+elif (( $+commands[vim] )); then
   EDITOR=vim
 else
   EDITOR=vi
@@ -119,7 +119,7 @@ fi
 
 export EDITOR
 
-if is-executable -p less; then
+if (( $+commands[less] )); then
   PAGER=less
   export LESS="--ignore-case --line-numbers --long-prompt --no-init --quit-if-one-screen --RAW-CONTROL-CHARS --window=-4"
   export LESSHISTFILE=/dev/null
@@ -152,30 +152,30 @@ alias -g P="| pbpaste"
 alias -g GF="| gemoji filter"
 alias -g GFL="| gemoji filter | $PAGER"
 
-if is-executable -p nvim; then
+if (( $+commands[nvim] )); then
   alias vim=nvim
   alias vi=nvim
   alias view='nvim -R'
-elif is-executable -p vim; then
+elif (( $+commands[vim] )); then
   alias vi=vim
   alias view='vim -R'
 fi
 
 # Aliases for Windows
-is-executable -p clip.exe && alias pbcopy=clip.exe
-is-executable -p powershell.exe && alias pbpaste='powershell.exe -Command Get-Clipboard'
+(( $+commands[clip.exe] )) && alias pbcopy=clip.exe
+(( $+commands[powershell.exe] )) && alias pbpaste='powershell.exe -Command Get-Clipboard'
 
 () {
   local dircolors_path=$XDG_CONFIG_HOME/themes/nord/dircolors/src/dir_colors
-  if is-executable dircolors && [[ -f $dircolors_path ]]; then
+  if (( $+commands[dircolors] )) && [[ -f $dircolors_path ]]; then
     eval $(dircolors -b $dircolors_path)
     alias ls='ls --classify --color=auto'
   fi
 }
 
-if is-executable fasti; then
+if (( $+commands[fasti] )); then
   alias cal=fasti
-elif is-executable gcal; then
+elif (( $+commands[gcal] )); then
   alias cal='gcal --starting-day=1 --type=standard --cc-holidays=JP'
 fi
 

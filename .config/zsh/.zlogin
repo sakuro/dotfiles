@@ -1,11 +1,11 @@
 #!/bin/zsh
 
 [[ "$SHLVL" -le 1 ]] && {
-  if is-executable fasti; then
+  if (( $+commands[fasti] )); then
     echo
     fasti
     echo
-  elif is-executable cal; then
+  elif (( $+commands[cal] )); then
     echo
     cal
     echo

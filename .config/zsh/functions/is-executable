@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-whence $* > /dev/null

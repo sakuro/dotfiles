@@ -2,14 +2,14 @@
 
 script_name="$0:t"
 
-is-executable gemoji && exec > >(sed "s/^/[${script_name}] /" | gemoji filter)
+(( $+commands[gemoji] )) && exec > >(sed "s/^/[${script_name}] /" | gemoji filter)
 
 # Link this script from .git/hooks
 echo ":computer: Running ${script_name} hook..."
 echo ":link: Updating symlinks"
 make link-dotfiles
 
-if is-executable mise; then
+if (( $+commands[mise] )); then
   echo ":wrench: Updating tools"
   mise install
 fi

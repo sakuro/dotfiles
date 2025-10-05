@@ -7,13 +7,13 @@ exe="${missing}.exe"
 com="${missing}.com"
 app_bundled="/Applications/${missing}.app/Contents/MacOS/$missing"
 
-if is-executable -p "${exe}"; then
+if (( $+commands[${exe}] )); then
   # try invoking .exe version
   exec "${exe}" "$@"
-elif is-executable -p "${com}"; then
+elif (( $+commands[${com}] )); then
   # try invoking .com version
   exec "${com}" "$@"
-elif is-executable -p "${app_bundled}"; then
+elif (( $+commands[${app_bundled}] )); then
   exec "${app_bundled}" "$@"
 else
   # emulate original zsh behavior

@@ -121,7 +121,7 @@ function prompt_sakuro_aws() {
 
 function prompt_sakuro_kube() {
   local kube_symbol="\u2388"
-  if is-executable kubectl; then
+  if (( $+commands[kubectl] )); then
     local kube_context=$(kubectl config current-context 2> /dev/null)
     [[ -n "$kube_context" ]] && {
       print -nP "%{%F{cyan}%}${kube_symbol}$kube_context%{%f%}"
@@ -132,7 +132,7 @@ function prompt_sakuro_kube() {
 }
 
 function prompt_sakuro_ruby() {
-  is-executable mise || return
+  (( $+commands[mise] )) || return
 
   local ruby_symbol="\ue23e"
   local ruby_version=$(mise list --current --json ruby | jq -Mr '.[0].version')
