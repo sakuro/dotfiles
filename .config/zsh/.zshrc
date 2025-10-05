@@ -210,9 +210,6 @@ limit coredumpsize 0
     done
   done
 
-  if [[ -n $ZSH_AUTOSUGGEST_CLEAR_WIDGETS ]]; then
-    ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=accept-line-with-hooks
-  fi
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main regexp)
   if [[ -n ZSH_HIGHLIGHT_REGEXP ]]; then
     ZSH_HIGHLIGHT_REGEXP+=('(https?://([^ ]+[.])+([^ ]+))' fg=cyan)
