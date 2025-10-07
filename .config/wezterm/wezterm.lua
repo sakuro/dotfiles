@@ -184,9 +184,9 @@ local load_average_status = function()
     return {}
   end
 
-  local loadag = load_info.loadavg
+  local loadavg1 = load_info.loadavg[1]
   local ncpu = load_info.ncpu
-  local la = loadag / ncpu
+  local la = loadavg1 / ncpu
   local icon
   if la < 1 then
     icon = "md_speedometer"

@@ -15,6 +15,6 @@ esac
 
 jq -n \
   --arg ncpu_key "ncpu" --argjson ncpu_value "$1" \
-  --arg la_key "loadavg" --argjson la_value "$2" \
+  --arg la_key "loadavg" --argjson la_value "[$2, $3, $4]" \
   '{($ncpu_key): $ncpu_value, ($la_key): $la_value}'
 
