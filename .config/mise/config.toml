@@ -1,6 +1,6 @@
 [tools]
 deno = "2.5"
-node = "24.8"
+node = "24.9"
 ruby = "3.4"
 rust = "1.90"
 
