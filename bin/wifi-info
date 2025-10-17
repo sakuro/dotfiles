@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 iface=$(networksetup -listallhardwareports | sed -n -e '/Wi-Fi/{n;s/Device: //;p;q}')
-ssid=$(ipconfig getsummary en0 | grep -Po '(?<=\bSSID\b : ).*')
+ssid=$(ipconfig getsummary "${iface}" | grep -Po '(?<=\bSSID\b : ).*')
 
 rssi=$(
   osascript -l JavaScript \
