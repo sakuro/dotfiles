@@ -182,7 +182,7 @@ rake
 **Commit message format**:
 ```bash
 git commit -m "$(cat <<'EOF'
-:lipstick: Fix Style/StringLiterals violations in lib/foxtail
+:police_officer: Fix Style/StringLiterals violations in lib/foxtail
 
 Convert single quotes to double quotes for consistency.
 
@@ -194,9 +194,7 @@ EOF
 ```
 
 **Commit message patterns**:
-- `:lipstick:` - Safe autocorrect, style fixes
-- `:rotating_light:` - Fix Lint cops
-- `:zap:` - Fix Performance cops
+- `:police_officer:` - All RuboCop fixes (style, lint, performance)
 - `:wrench:` - Update RuboCop configuration
 
 ## Common Scenarios
@@ -227,7 +225,7 @@ bundle exec docquet regenerate-todo
 
 # 7. Commit
 git add .
-git commit -m ":lipstick: Fix Style/CommentedKeyword violations"
+git commit -m ":police_officer: Fix Style/CommentedKeyword violations"
 ```
 
 ### Scenario 2: Fix All Offenses in One File
@@ -252,7 +250,7 @@ rake spec
 bundle exec docquet regenerate-todo
 
 # 7. Commit
-git commit -m ":lipstick: Fix all RuboCop violations in date_time_format.rb"
+git commit -m ":police_officer: Fix all RuboCop violations in date_time_format.rb"
 ```
 
 ### Scenario 3: Fix Specific Cop Across Entire Codebase
@@ -268,12 +266,12 @@ bundle exec rubocop -A --only Style/StringLiterals lib/foxtail/helpers/
 # 3. Verify incrementally
 rake spec
 git add lib/foxtail/helpers/
-git commit -m ":lipstick: Fix Style/StringLiterals in helpers"
+git commit -m ":police_officer: Fix Style/StringLiterals in helpers"
 
 # 4. Continue with other directories
 bundle exec rubocop -A --only Style/StringLiterals lib/foxtail/models/
 rake spec
-git commit -m ":lipstick: Fix Style/StringLiterals in models"
+git commit -m ":police_officer: Fix Style/StringLiterals in models"
 
 # 5. Final regenerate
 bundle exec docquet regenerate-todo
