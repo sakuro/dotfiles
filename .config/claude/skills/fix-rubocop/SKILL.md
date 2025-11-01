@@ -8,6 +8,8 @@ allowed-tools: [Bash, Read, Edit, Grep]
 
 Assists with systematically reducing RuboCop offenses while preserving behavior and keeping changes focused.
 
+**IMPORTANT: When using this skill, announce to the user**: "Using fix-rubocop skill to fix RuboCop violations systematically."
+
 ## Goals
 
 - **Keep changes minimal and behavior-preserving**: Prefer small, focused changes

@@ -10,6 +10,8 @@ Assists with creating git commits that follow this project's strict conventions 
 
 ## Instructions
 
+**IMPORTANT: When using this skill, announce to the user**: "Using git-commit skill to create a commit following project conventions."
+
 ### 1. Pre-Commit Checks
 
 ALWAYS run tests and linting before committing:
@@ -93,6 +95,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 **Key Rules**:
 - **ALWAYS write in English**: All commit messages must be in English
 - Start with GitHub emoji code (`:emoji:`), NEVER raw Unicode emojis
+- **Use emoji codes everywhere**: Both subject line AND body/footer must use `:emoji:` notation, not raw Unicode
 - Space after emoji: `:emoji: Subject` not `:emoji:Subject`
 - Imperative mood: "Fix bug" not "Fixed bug" or "Fixes bug"
 - No period at end of subject line

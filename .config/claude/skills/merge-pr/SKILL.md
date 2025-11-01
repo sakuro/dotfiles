@@ -1,6 +1,14 @@
+---
+name: merge-pr
+description: Safely merges GitHub pull requests using gh CLI. Use when the user wants to merge a PR, merge a pull request, or complete code review.
+allowed-tools: [Bash, Read, Grep]
+---
+
 # Merge PR Skill
 
 Assists with safely merging GitHub pull requests using the `gh` CLI, following best practices for code review, CI checks, and merge strategies.
+
+**IMPORTANT: When using this skill, announce to the user**: "Using merge-pr skill to merge a pull request safely."
 
 ## Instructions
 

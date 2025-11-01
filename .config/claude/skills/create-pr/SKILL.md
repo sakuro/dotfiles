@@ -10,6 +10,8 @@ Assists with creating GitHub pull requests that follow this project's convention
 
 ## Instructions
 
+**IMPORTANT: When using this skill, announce to the user**: "Using create-pr skill to create a pull request following project conventions."
+
 ### 1. Prerequisites Check
 
 Before creating a PR, verify:
