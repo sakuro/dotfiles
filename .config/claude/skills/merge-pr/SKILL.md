@@ -48,8 +48,8 @@ If checks fail:
 - **ALWAYS specify merge commit subject** in this format: `:inbox_tray: Merge pull request #[PR_NUMBER] from [BRANCH_NAME]`
 
 ```bash
-# Get PR branch name
-BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRefName --jq -r .headRefName)
+# Get PR branch name with owner (e.g., "owner/branch-name")
+BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 
 # Merge with custom subject
 gh pr merge [PR_NUMBER] --merge --subject ":inbox_tray: Merge pull request #[PR_NUMBER] from $BRANCH_NAME"
@@ -85,7 +85,7 @@ After merging a PR, ALWAYS update your local default branch:
 
 ```bash
 # 1. Get the repository's default branch name
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 
 # 2. Switch to the default branch
 git checkout "$DEFAULT_BRANCH"
@@ -117,8 +117,8 @@ gh pr view [PR_NUMBER]
 # 2. Verify all checks pass
 gh pr checks [PR_NUMBER]
 
-# 3. Get PR branch name for merge commit subject
-BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRefName --jq -r .headRefName)
+# 3. Get PR branch name with owner for merge commit subject
+BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 
 # 4. Merge with default strategy (merge commit) and custom subject
 gh pr merge [PR_NUMBER] --merge --subject ":inbox_tray: Merge pull request #[PR_NUMBER] from $BRANCH_NAME"
@@ -128,7 +128,7 @@ gh pr view [PR_NUMBER]
 # Should show status: MERGED
 
 # 6. Update local repository
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 git pull
 
@@ -158,7 +158,7 @@ git branch --merged | grep -v "\*" | grep -v "$DEFAULT_BRANCH" | xargs -n 1 git 
 
 ```bash
 # Basic merge commit (DEFAULT) - with custom subject
-BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRefName --jq -r .headRefName)
+BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge [PR_NUMBER] --merge --subject ":inbox_tray: Merge pull request #[PR_NUMBER] from $BRANCH_NAME"
 
 # Squash merge (only when needed)
@@ -168,11 +168,11 @@ gh pr merge [PR_NUMBER] --squash
 gh pr merge [PR_NUMBER] --rebase
 
 # Auto-merge (merge when checks pass) - with custom subject
-BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRefName --jq -r .headRefName)
+BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge [PR_NUMBER] --auto --merge --subject ":inbox_tray: Merge pull request #[PR_NUMBER] from $BRANCH_NAME"
 
 # Merge current branch's PR
-BRANCH_NAME=$(gh pr view --json headRefName --jq -r .headRefName)
+BRANCH_NAME=$(gh pr view --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge --merge --subject ":inbox_tray: Merge pull request #[PR_NUMBER] from $BRANCH_NAME"
 
 # Disable auto-merge
@@ -185,8 +185,8 @@ If you're on a branch with an open PR:
 
 ```bash
 # Get current PR number and branch name
-PR_NUMBER=$(gh pr view --json number --jq -r .number)
-BRANCH_NAME=$(gh pr view --json headRefName --jq -r .headRefName)
+PR_NUMBER=$(gh pr view --json number -q .number)
+BRANCH_NAME=$(gh pr view --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 
 # Merge the PR for current branch
 gh pr merge --merge --subject ":inbox_tray: Merge pull request #$PR_NUMBER from $BRANCH_NAME"
@@ -210,11 +210,11 @@ gh pr view 42
 gh pr checks 42
 
 # Get branch name and merge with custom subject
-BRANCH_NAME=$(gh pr view 42 --json headRefName --jq -r .headRefName)
+BRANCH_NAME=$(gh pr view 42 --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge 42 --merge --subject ":inbox_tray: Merge pull request #42 from $BRANCH_NAME"
 
 # Update local default branch
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 git pull
 ```
@@ -226,11 +226,11 @@ gh pr view 42
 gh pr checks 42
 
 # Get branch name and merge
-BRANCH_NAME=$(gh pr view 42 --json headRefName --jq -r .headRefName)
+BRANCH_NAME=$(gh pr view 42 --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge 42 --merge --subject ":inbox_tray: Merge pull request #42 from $BRANCH_NAME"
 
 # Update and clean up
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 git pull
 git branch --merged | grep -v "\*" | grep -v "$DEFAULT_BRANCH" | xargs -n 1 git branch -d
@@ -240,13 +240,13 @@ git branch --merged | grep -v "\*" | grep -v "$DEFAULT_BRANCH" | xargs -n 1 git 
 
 ```bash
 # Get branch name and set PR to auto-merge when checks pass
-BRANCH_NAME=$(gh pr view 99 --json headRefName --jq -r .headRefName)
+BRANCH_NAME=$(gh pr view 99 --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge 99 --auto --merge --subject ":inbox_tray: Merge pull request #99 from $BRANCH_NAME"
 
 # Wait for merge, then update
 gh pr view 99  # Check if merged
 
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 git pull
 ```
@@ -258,12 +258,12 @@ git pull
 gh pr view  # Verify it's the right PR
 
 # Get PR number and branch name
-PR_NUMBER=$(gh pr view --json number --jq -r .number)
-BRANCH_NAME=$(gh pr view --json headRefName --jq -r .headRefName)
+PR_NUMBER=$(gh pr view --json number -q .number)
+BRANCH_NAME=$(gh pr view --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge --merge --subject ":inbox_tray: Merge pull request #$PR_NUMBER from $BRANCH_NAME"
 
 # Update default branch
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 git pull
 ```
@@ -289,20 +289,20 @@ git pull
 # Update branch with base
 gh pr checkout [PR_NUMBER]
 git fetch origin
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git merge "origin/$DEFAULT_BRANCH"
 # Resolve conflicts
 git push
 
 # Then retry merge with custom subject
-BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRefName --jq -r .headRefName)
+BRANCH_NAME=$(gh pr view [PR_NUMBER] --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
 gh pr merge [PR_NUMBER] --merge --subject ":inbox_tray: Merge pull request #[PR_NUMBER] from $BRANCH_NAME"
 ```
 
 ### If accidentally merged wrong PR:
 ```bash
 # Revert the merge commit
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 git pull
 git log  # Find the merge commit hash
@@ -316,7 +316,7 @@ git push
 git branch
 
 # Ensure you're on the default branch
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 
 # If you have uncommitted changes
@@ -330,7 +330,7 @@ git stash pop
 ### Check repository default branch:
 ```bash
 # Get default branch name
-gh repo view --json defaultBranchRef --jq .defaultBranchRef.name
+gh repo view --json defaultBranchRef -q .defaultBranchRef.name
 
 # Get full default branch info
 gh repo view --json defaultBranchRef
@@ -350,13 +350,13 @@ gh pr checks [PR_NUMBER] --watch
 # Use a loop (be careful!)
 for pr in 42 43 44; do
   if gh pr checks $pr; then
-    BRANCH_NAME=$(gh pr view $pr --json headRefName --jq -r .headRefName)
+    BRANCH_NAME=$(gh pr view $pr --json headRepositoryOwner,headRefName -q '.headRepositoryOwner.login + "/" + .headRefName')
     gh pr merge $pr --merge --subject ":inbox_tray: Merge pull request #$pr from $BRANCH_NAME"
   fi
 done
 
 # Update local once after all merges
-DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef --jq .defaultBranchRef.name)
+DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
 git checkout "$DEFAULT_BRANCH"
 git pull
 ```
