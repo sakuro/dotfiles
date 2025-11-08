@@ -54,8 +54,12 @@
   name = OZAWA Sakuro
   useConfigOnly = true
   email = 10973+sakuro@users.noreply.github.com
-[include]
-  path = include/credential.gh
+[credential "https://github.com"]
+   helper =
+   helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+   helper =
+   helper = !gh auth git-credential
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
