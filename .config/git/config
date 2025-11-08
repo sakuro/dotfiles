@@ -55,7 +55,7 @@
   useConfigOnly = true
   email = 10973+sakuro@users.noreply.github.com
 [include]
-  path = include/credential
+  path = include/credential.gh
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
