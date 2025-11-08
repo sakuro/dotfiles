@@ -1,9 +1,12 @@
 build-essential
+clang
 less
 libc6-dbg
+libffi-dev
 libgdbm-dev
 libpq-dev
 libssl-dev
+libyaml-dev
 neovim
 postgresql-client
 rsync
