@@ -33,7 +33,7 @@ wezterm.GLOBAL.os = wezterm.GLOBAL.os or
   error('Unsupported Operating System')
 
 if wezterm.GLOBAL.os == 'windows' then
-  config.default_domain = 'WSL:Ubuntu-22.04'
+  config.default_domain = 'WSL:Ubuntu-24.04'
 end
 
 -- https://www.nordtheme.com/docs/colors-and-palettes
