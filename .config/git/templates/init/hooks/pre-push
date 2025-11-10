@@ -10,6 +10,7 @@
 #   <local ref> <local sha1> <remote ref> <remote sha1>
 
 set -ue
+set -o errexit -o nounset -o pipefail
 
 remote="$1"
 url="$2"
@@ -28,6 +29,28 @@ git ls-files | tr '[:upper:]' '[:lower:]' | sort | uniq -d | while read file; do
   exit 1
 done
 
+
+# Check LF at EOF
+typeset -a missing_eol=()
+while :; do
+  IFS= read -r -d '' file || break
+  IFS= read -r -d '' attr || break
+  IFS= read -r -d '' value || break
+  [[ $attr == text ]] || continue
+  [[ $value == set || $value == unspecified ]] || continue
+  [[ -s $file ]] || continue
+  tail -c 1 -- "$file" | grep -q $'\n' || missing_eol+=("$file")
+done < <(git ls-files -z | git check-attr -z --stdin text)
+
+if (( ${#missing_eol} )); then
+  print -- "No newline at end of file:"
+  for file in "${missing_eol[@]}"; do
+    print -r -- "- $file"
+  done
+  exit 1
+fi
+
+# Run language specific hooks
 set -- $(detect-languages)
 
 while [[ $# -gt 0 ]]; do
