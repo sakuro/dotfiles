@@ -1,6 +1,7 @@
 /Brewfile.*
 /.config/claude/*
 !/.config/claude/agents
+!/.config/claude/commands
 !/.config/claude/settings.json
 !/.config/claude/skills
 !/.config/claude/statusline-command.zsh
