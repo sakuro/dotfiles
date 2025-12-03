@@ -17,6 +17,6 @@ elif (( $+commands[${app_bundled}] )); then
   exec "${app_bundled}" "$@"
 else
   # emulate original zsh behavior
-  echo "$SHELL:t: command not found: ${missing}"
+  echo "$SHELL:t: command not found: ${missing}" >&2
   exit 127
 fi
