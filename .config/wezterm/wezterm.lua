@@ -265,7 +265,7 @@ config.colors = {
     background = wezterm.GLOBAL.nord.nord1
   }
 }
-config.window_background_opacity = 0.94
+config.window_background_opacity = 1.0
 config.inactive_pane_hsb = {
   saturation = 0.9,
   brightness = 0.5,
