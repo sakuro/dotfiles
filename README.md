@@ -1,3 +1,3 @@
 ```
-curl -fsSL https://dot.2238club.org | bash
+curl -fsSL https://dot.2238.club | bash
 ```
