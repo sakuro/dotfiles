@@ -23,3 +23,5 @@ packages:
 - name: git-lfs/git-lfs@v3.7.0
 - name: awslabs/git-secrets@1.3.0
 - name: astral-sh/uv@0.8.12
+- name: hashicorp/terraform@v1.14.3
+- name: aws/aws-cli@2.32.22
