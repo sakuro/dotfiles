@@ -30,10 +30,6 @@ git commit -m "$(cat <<'EOF'
 Brief explanation (optional)
 - Key impact 1
 - Key impact 2
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
 )"
 

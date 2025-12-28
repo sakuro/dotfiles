@@ -187,10 +187,6 @@ git commit -m "$(cat <<'EOF'
 :police_officer: Fix Style/StringLiterals violations in lib/foxtail
 
 Convert single quotes to double quotes for consistency.
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
 )"
 ```

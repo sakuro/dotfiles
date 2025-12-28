@@ -67,8 +67,6 @@ Brief 1-2 sentence description of what this PR does
 
 ## Test Plan
 How to verify the changes work correctly
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 
 # Create PR using temp file
@@ -88,8 +86,6 @@ Brief description
 ## Changes
 - Change 1
 - Change 2
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 )"
 ```
@@ -125,11 +121,6 @@ Steps to verify the changes:
 ## Related Issues
 Fixes #123
 Related to #456
-```
-
-**Always end with**:
-```markdown
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
 ### 6. Content Guidelines
