@@ -1,11 +1,14 @@
 {
-  "attributeion": {
-    "commit": "",
-    "pr": ""
-  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.zsh"
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  }
 }
