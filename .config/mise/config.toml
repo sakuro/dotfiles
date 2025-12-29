@@ -1,7 +1,7 @@
 [tools]
 node = "24.10"
 ruby = "4.0"
-rust = "1.90"
+rust = "1.92"
 
 [settings]
 experimental = true
