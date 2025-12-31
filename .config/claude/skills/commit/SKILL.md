@@ -29,15 +29,17 @@ git add path/to/another.ext
 # 4. Review staged changes
 git diff --cached
 
-# 5. Commit with heredoc format (MUST use <<'EOF' with single quotes)
-git commit -m "$(cat <<'EOF'
+# 5. Commit with temporary file (MUST use <<'EOF' with single quotes)
+cat > /tmp/commit_msg.txt <<'EOF'
 :emoji: Subject line in imperative mood
 
 Brief explanation (optional)
 - Key impact 1
 - Key impact 2
 EOF
-)"
+
+git commit -F /tmp/commit_msg.txt
+rm /tmp/commit_msg.txt
 
 # 6. Push if needed
 git push

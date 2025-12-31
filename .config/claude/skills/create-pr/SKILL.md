@@ -76,18 +76,10 @@ gh pr create --title ":emoji: Clear descriptive title" --body-file /tmp/pr_body.
 rm /tmp/pr_body.md
 ```
 
-#### Method 2: Heredoc with Command Substitution
+#### Method 2: Inline (simple content only)
 
 ```bash
-gh pr create --title ":emoji: Update feature" --body "$(cat <<'EOF'
-## Summary
-Brief description
-
-## Changes
-- Change 1
-- Change 2
-EOF
-)"
+gh pr create --title ":emoji: Update feature" --body "Brief description of changes"
 ```
 
 ### 5. PR Body Structure
@@ -240,9 +232,7 @@ rm /tmp/pr_body.md
 ### Example 3: Documentation Update
 
 ```bash
-gh pr create \
-  --title ":memo: Update API documentation" \
-  --body "$(cat <<'EOF'
+cat > /tmp/pr_body.md <<'EOF'
 ## Summary
 Update API documentation with new authentication endpoints
 
@@ -253,7 +243,12 @@ Update API documentation with new authentication endpoints
 
 :robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
-)"
+
+gh pr create \
+  --title ":memo: Update API documentation" \
+  --body-file /tmp/pr_body.md
+
+rm /tmp/pr_body.md
 ```
 
 ### Example 4: Performance Improvement
@@ -326,12 +321,6 @@ Your content here with `backticks` and markdown
 EOF
 gh pr create --title "Title" --body-file /tmp/pr_body.md
 rm /tmp/pr_body.md
-
-# ✅ OR use quoted heredoc with command substitution
-gh pr create --title "Title" --body "$(cat <<'EOF'
-Your content here
-EOF
-)"
 ```
 
 ## Error Recovery

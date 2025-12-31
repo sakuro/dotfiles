@@ -183,12 +183,14 @@ rake
 
 **Commit message format**:
 ```bash
-git commit -m "$(cat <<'EOF'
+cat > /tmp/commit_msg.txt <<'EOF'
 :police_officer: Fix Style/StringLiterals violations in lib/foxtail
 
 Convert single quotes to double quotes for consistency.
 EOF
-)"
+
+git commit -F /tmp/commit_msg.txt
+rm /tmp/commit_msg.txt
 ```
 
 **Commit message patterns**:
