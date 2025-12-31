@@ -5,3 +5,9 @@
 !/.config/claude/settings.json
 !/.config/claude/skills
 !/.config/claude/statusline-command.zsh
+
+# MCP
+/.mcp.json
+## Ignore serena stuff except project.yml
+/.serena/
+!/.serena/project.yml
