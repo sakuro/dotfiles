@@ -27,3 +27,4 @@ packages:
 - name: aws/aws-cli@2.32.22
 - name: terraform-linters/tflint@v0.60.0
 - name: mikefarah/yq@v4.50.1
+- name: rhysd/actionlint@v1.7.10
