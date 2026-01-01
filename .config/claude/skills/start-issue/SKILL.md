@@ -39,6 +39,7 @@ Determine prefix based on labels:
 |-------|--------|
 | `enhancement` | `feature/` |
 | `bug` | `fix/` |
+| `refactor` | `refactor/` |
 | other | `chore/` |
 
 Branch naming: `prefix/issue-title-in-kebab-case`
