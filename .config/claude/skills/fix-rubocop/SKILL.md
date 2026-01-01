@@ -416,8 +416,6 @@ Fix Style/StringLiterals violations in formatter classes
 - All tests pass (rake spec)
 - RuboCop clean for these files
 - Regenerated .rubocop_todo.yml
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
 **Link rule changes to rationale**:

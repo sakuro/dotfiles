@@ -160,8 +160,6 @@ Add user authentication with JWT tokens
 - Check token validation
 
 Fixes #42
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 
 # 4. Create PR
@@ -191,8 +189,6 @@ Fix memory leak in cache invalidation logic
 - Verify no memory growth after 1000 cache clears
 
 Fixes #123
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 
 gh pr create \
@@ -218,8 +214,6 @@ Add dark mode support to the application
 1. Toggle dark mode in settings
 2. Verify all pages render correctly
 3. Check theme persistence across sessions
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 
 gh pr create \
@@ -240,8 +234,6 @@ Update API documentation with new authentication endpoints
 - Document JWT authentication flow
 - Add examples for login/logout endpoints
 - Update authentication section
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 
 gh pr create \
@@ -274,8 +266,6 @@ Optimize database queries to reduce response time
 ## Test Plan
 - Run benchmark suite: `npm run benchmark`
 - Verify all integration tests pass
-
-:robot: Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 
 gh pr create \
