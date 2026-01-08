@@ -1,0 +1,52 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+if [[ $# != 1 ]]; then
+  echo "Usage: $0:t owner/repo"
+  exit 1
+fi
+
+TEMPLATE_REPO="$1"
+TEMPLATE_OWNER="${TEMPLATE_REPO%%/*}"
+TEMPLATE_NAME="${TEMPLATE_REPO#*/}"
+
+TEMPLATE_ID="$(
+  gh api graphql \
+    -F owner="$TEMPLATE_OWNER" -F name="$TEMPLATE_NAME" \
+    -f query='
+      query($owner: String!, $name: String!) {
+        repository(owner: $owner, name: $name) { id nameWithOwner }
+      }
+    ' \
+  | jq -r '.data.repository.id'
+)"
+
+gh api graphql --paginate --slurp \
+  -f query='
+    query($endCursor: String) {
+      viewer {
+        repositories(first: 100, after: $endCursor, ownerAffiliations: OWNER) {
+          pageInfo { hasNextPage endCursor }
+          nodes {
+            nameWithOwner
+            url
+            templateRepository { id nameWithOwner url }
+          }
+        }
+      }
+    }
+  ' \
+| jq --arg tid "$TEMPLATE_ID" '
+  [
+    .[]
+    | .data.viewer.repositories.nodes[]
+    | select(.templateRepository != null and .templateRepository.id == $tid)
+    | {
+        nameWithOwner,
+        url,
+        template: .templateRepository
+      }
+  ]
+'
+
