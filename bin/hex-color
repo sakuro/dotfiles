@@ -1,14 +1,12 @@
-#!/bin/sh
+#!/usr/bin/osascript -l JavaScript
 
-osascript -l JavaScript <<SCRIPT 2>/dev/null
-const app = Application.currentApplication()
-app.includeStandardAdditions = true
+const colorToHex = (color) => {
+  const hexValue = (Math.trunc(color[0] * 255) << 16) | (Math.trunc(color[1] * 255) << 8) | (Math.trunc(color[2] * 255));
+  return `#${("000000" + hexValue.toString(16)).slice(-6)}`;
+}
 
-const color = app.chooseColor({defaultColor: [0, 1, 0]})
-const hex =
-  (Math.trunc(color[0] * 255) << 16) | (Math.trunc(color[1] * 255) << 8) | (Math.trunc(color[2] * 255))
-
-const hexCode = "#" + ("000000" + hex.toString(16)).substr(-6)
-hexCode
-SCRIPT
-
+function run(_argv) {
+  const app = Application.currentApplication();
+  app.includeStandardAdditions = true;
+  return colorToHex(app.chooseColor({defaultColor: [0, 1, 0]}));
+}
