@@ -1,4 +1,23 @@
 #!/bin/zsh
+#
+# repos-from-template - List repositories created from a specific template
+#
+# Queries GitHub GraphQL API to find all repositories owned by you
+# that were created from the specified template repository.
+# Output is JSON array with nameWithOwner, url, and template info.
+#
+# Usage:
+#   repos-from-template owner/template-repo
+#
+# Examples:
+#   repos-from-template sakuro/gem-scaffold
+#   repos-from-template my-org/project-template | jq -r '.[].nameWithOwner'
+#
+# Combined with update-secret to set secrets across all derived repositories:
+#   echo "SECRET_VALUE" | update-secret SECRET_NAME \
+#     $(repos-from-template owner/template | jq -r '.[].nameWithOwner')
+#
+# Requires: gh (GitHub CLI), jq
 
 set -euo pipefail
 
