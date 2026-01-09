@@ -10,10 +10,15 @@ fi
 year=$(date -d "$date_str" +%Y)
 month=$(date -d "$date_str" +%m)
 
-if [ "$month" -ge 4 ] && [ "$month" -lt 10 ]; then
-  echo "${year}-04-01"
-else
-  [ "$month" -lt 4 ] && year=$((year - 1))
-  echo "${year}-10-01"
-fi
+case $month in
+  0[123])
+    echo "$((year - 1))-10-01"
+    ;;
+  0[4-9])
+    echo "${year}-04-01"
+    ;;
+  *)
+    echo "${year}-10-01"
+    ;;
+esac
 
