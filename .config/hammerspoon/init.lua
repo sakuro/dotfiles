@@ -48,7 +48,7 @@ local handleSingleModifier = function(modifier, handler)
       end
     elseif eventType == flagsChanged then
       if not isFlag then
-        if isAsModifier[modifier] == false then
+        if not isAsModifier[modifier] then
           local keyCode = event:getKeyCode()
           handler(keyCode)
         end
@@ -73,7 +73,7 @@ switchToEnglishOnActivation = hs.application.watcher.new(function(name, event, a
   end
 end)
 
--- switchInputMethodByCommandKey:start()
+switchInputMethodByCommandKey:start()
 switchToEnglishOnActivation:start()
 
 -- Audio volume management
