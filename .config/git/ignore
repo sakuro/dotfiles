@@ -8,6 +8,7 @@
 .fseventsd/
 .mise.*.local.toml
 .mise.local.toml
+.mise.toml
 /*.code-workspace
 /.bundle/config
 /.claude/CLAUDE.md
