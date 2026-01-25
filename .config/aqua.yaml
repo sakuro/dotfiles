@@ -28,3 +28,4 @@ packages:
 - name: terraform-linters/tflint@v0.60.0
 - name: mikefarah/yq@v4.50.1
 - name: rhysd/actionlint@v1.7.10
+- name: ByteNess/aws-vault@v7.9.2
