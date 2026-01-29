@@ -10,5 +10,9 @@
   },
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "env": {
+   "DISABLE_AUTOUPDATER": "1",
+   "DISABLE_INSTALLATION_CHECKS": "1"
   }
 }
