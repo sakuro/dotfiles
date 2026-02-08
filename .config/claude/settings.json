@@ -14,5 +14,9 @@
   "env": {
    "DISABLE_AUTOUPDATER": "1",
    "DISABLE_INSTALLATION_CHECKS": "1"
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": ["ざわ…ざわ……ざわ", "ざわ…ざわ", "ざわざわ", "ざわ"]
   }
 }
