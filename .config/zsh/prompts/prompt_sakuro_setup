@@ -15,7 +15,7 @@ function prompt_sakuro_precmd() {
 
   psvar=()
 
-  [[ -n "$prompt_duration" ]] && print -P "$prompt_duration"
+  [[ -n "$prompt_duration" ]] && print -P "%{%F{yellow}%}$prompt_duration%{%f%}"
 
   local -a info_line_elements=(
 #    "$(prompt_sakuro_user)@$(prompt_sakuro_host)"
@@ -133,7 +133,7 @@ function prompt_sakuro_prompt() {
     style='red'
   fi
 
-  print -n "$symbol"
+  print -n "%{%F{$style}%}$symbol%{%f%}"
 }
 
 prompt_sakuro_setup "$@"
