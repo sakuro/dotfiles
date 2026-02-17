@@ -19,11 +19,11 @@ pwd=$(print -P "%~")
 branch=$(git symbolic-ref --short HEAD 2>/dev/null)
 [[ -z "$branch" ]] && branch=$(git rev-parse --short HEAD 2>/dev/null)
 
-print -Pn "%F{magenta}${folder_emoji} ${pwd}%f"
+print -n "${folder_emoji} ${pwd}"
 [[ -n "$branch" ]] && {
-  print -Pn " %F{cyan}${branch_emoji} ${branch}%f"
+  print -n " ${branch_emoji} ${branch}"
   # Check if repository is dirty
   if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null || [[ -n $(git ls-files --others --exclude-standard 2>/dev/null) ]]; then
-    print -Pn "%B*%b"
+    print -n "*"
   fi
 }
