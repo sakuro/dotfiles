@@ -19,6 +19,8 @@
 /.vscode/
 /node_modules/
 /vendor/bundle/
+/.mcp.json
+/.serena/
 Thumbs.db
 desktop.ini
 
