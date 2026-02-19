@@ -68,6 +68,6 @@
 
 Describes files that exist in most projects.
 
-- README.md: プロジェクトの概要
-- AGENTS.md: AIへの指示
-- CLAUDE.md: AGENTS.mdへのシンボリックリンク。このファイルの修正は AGENTS.md の修正と同義である。このファイルの修正を行いたい場合は、代わりに AGENTS.md を修正する。
+- README.md: Project overview
+- AGENTS.md: Instructions for AI
+- CLAUDE.md: A symbolic link to AGENTS.md. Editing this file is equivalent to editing AGENTS.md. To make changes, edit AGENTS.md instead.
