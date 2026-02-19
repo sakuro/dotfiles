@@ -12,6 +12,7 @@
   log1 = log --oneline
   has-changes = !"git diff-index --quiet HEAD; test $? -eq 1"
   my-activities = "!f() { since=$(term-start); git log --author=\"$(git config user.name)\" --since=\"$since\" --reverse --no-merges \"$@\"; }; f"
+  untrack = "rm --cached"
 
 [branch]
   autosetuprebase = always
