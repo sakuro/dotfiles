@@ -5,7 +5,7 @@ export DOTROOT="${DOTROOT:=$HOME/.dotfiles}"
 export DOTDEST="${DOTDEST:=$HOME}"
 
 eval "$(curl https://dot.2238.club/scripts/util.sh)"
-eval "$(curl https://dot.2238.club/scripts/bootstrap/$(os).sh)"
+eval "$(curl https://dot.2238.club/scripts/$(os)/bootstrap.sh)"
 
 if [[ ! -d "${DOTROOT}" ]]; then
   git clone "${DOTREPO}" "${DOTROOT}"
