@@ -1,2 +1,1 @@
-Cmnd_Alias DIAGNOSIS = /usr/bin/wdutil, /usr/sbin/ipconfig
-%admin ALL = (ALL:ALL) NOPASSWD: DIAGNOSIS
+%admin ALL = (ALL:ALL) NOPASSWD: /usr/sbin/ipconfig
