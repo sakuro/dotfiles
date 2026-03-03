@@ -9,7 +9,6 @@ EXCLUDED_PATHSPECS=(
   ':!/Brewfile'
   ':!/Makefile'
   ':!/README.md'
-  ':!/bootstrap.sh'
   ':!/scripts/'
   ':!/*.txt'
   ':!/.gitignore'
