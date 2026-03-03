@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "zlib"
+
+$stdout.write(Zlib::Deflate.deflate($stdin.read, 9))

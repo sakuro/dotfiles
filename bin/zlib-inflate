@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "zlib"
+
+$stdout.write(Zlib::Inflate.inflate($stdin.read))
