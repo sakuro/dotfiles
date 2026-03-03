@@ -16,6 +16,14 @@ EXCLUDED_PATHSPECS=(
   ':!/sudoers'
 )
 
+case "$OSTYPE" in
+darwin*)
+  ;;
+*)
+  EXCLUDED_PATHSPECS+=(':!/Library/')
+  ;;
+esac
+
 [[ -d "$DOTDEST" ]] || mkdir -p "$DOTDEST"
 
 (cd "$DOTROOT" && git ls-files . "${EXCLUDED_PATHSPECS[@]}") | while read -r file; do
