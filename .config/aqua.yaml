@@ -29,3 +29,4 @@ packages:
 - name: mikefarah/yq@v4.52.2
 - name: rhysd/actionlint@v1.7.10
 - name: ByteNess/aws-vault@v7.9.3
+- name: rhysd/actionlint@v1.7.11
