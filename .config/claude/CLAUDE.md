@@ -5,6 +5,8 @@
 
 # Communication
 
+- Always respond in Japanese when interacting with the user.
+- Use English for all other outputs: GitHub issues, pull requests, commit messages, code comments, documentation, etc.
 - A question is not a correction. If you only receive a question, provide an answer rather than making code changes.
 
 # Ruby
@@ -50,14 +52,14 @@
 - Fundamental rule: Do not write what is obvious from reading the code.
 - Criterion: If removing the comment still conveys the code's intent, it is unnecessary.
 
-## Comments to write
+### Comments to write
 
 - Why the implementation was done this way (Why / Why not)
 - Non-obvious business rules
 - External factors and constraints
 - Warnings for code readers
 
-## Comments not to write
+### Comments *NOT* to write
 
 - Literal translations of code
 - Things obvious from function/variable names
