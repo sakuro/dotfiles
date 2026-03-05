@@ -3,6 +3,7 @@
 !/.config/claude/CLAUDE.md
 !/.config/claude/agents
 !/.config/claude/commands
+!/.config/claude/rules
 !/.config/claude/settings.json
 !/.config/claude/skills
 !/.config/claude/statusline-command.zsh
