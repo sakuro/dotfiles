@@ -2,6 +2,7 @@
 
 - The purpose of a task is to achieve the original goal, not just to complete it. Do not arbitrarily change (simplify) the goal for the sake of completion.
 - Backward compatibility considerations are only required from version 1.0 onwards.
+- Avoid implicit argument type coercion.
 
 # Communication
 
@@ -9,8 +10,7 @@
 - Use English for all other outputs: GitHub issues, pull requests, commit messages, code comments, documentation, etc.
 - A question is not a correction. If you only receive a question, provide an answer rather than making code changes.
 
-
-# Other commands
+# Shell commands
 
 ## sed
 
