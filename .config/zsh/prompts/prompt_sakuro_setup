@@ -83,8 +83,8 @@ function prompt_sakuro_pwd() {
   # remove repository_part($vcs_info_msg_1_)
   [[ -n "$vcs_info_msg_0_" && $vcs_info_msg_1_ != '.' ]] && base_path="${base_path%/$vcs_info_msg_1_}"
 
-  result="${pwd_symbol} $base_path"
-  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/$vcs_info_msg_1_"
+  result="%{%F{magenta}%}${pwd_symbol} $base_path%{%f%}"
+  [[ -n "$vcs_info_msg_1_" && "$vcs_info_msg_1_" != '.' ]] && result+="/%{%F{cyan}%}$vcs_info_msg_1_%{%f%}"
 
   print -n "${result}"
 }
@@ -94,12 +94,12 @@ function prompt_sakuro_vcs() {
   local vcs_info_msg_0_
   LANG=C vcs_info
 
-  [[ -n "$vcs_info_msg_0_" ]] && print -n "${vcs_symbol} $vcs_info_msg_0_"
+  [[ -n "$vcs_info_msg_0_" ]] && print -n "%{%F{blue}%}${vcs_symbol} $vcs_info_msg_0_%{%f%}"
 }
 
 function prompt_sakuro_aws() {
   local aws_symbol="\uf270"
-  [[ -n "$AWS_PROFILE" ]] && print -n "${aws_symbol} $AWS_PROFILE"
+  [[ -n "$AWS_PROFILE" ]] && print -n "%{%F{yellow}%}${aws_symbol} $AWS_PROFILE%{%f%}"
 }
 
 function prompt_sakuro_kube() {
@@ -107,9 +107,9 @@ function prompt_sakuro_kube() {
   if (( $+commands[kubectl] )); then
     local kube_context=$(kubectl config current-context 2> /dev/null)
     [[ -n "$kube_context" ]] && {
-      print -n "${kube_symbol}$kube_context"
+      print -n "%{%F{cyan}%}${kube_symbol}$kube_context%{%f%}"
       local kube_namespace=$(kubectl config view --output json | jq -rM '.contexts[] | select(.name == "'$kube_context'").context.namespace')
-      [[ -n "$kube_namespace" ]] && print -n ":$kube_namespace"
+      [[ -n "$kube_namespace" ]] && print -n ":%{%F{cyan}%}$kube_namespace%{%f%}"
     }
   fi
 }
@@ -119,7 +119,7 @@ function prompt_sakuro_ruby() {
 
   local ruby_symbol="\ue23e"
   local ruby_version=$(mise list --current --json ruby | jq -Mr '.[0].version')
-  [[ $? == 0 ]] && print -n "${ruby_symbol} ${ruby_version}"
+  [[ $? == 0 ]] && print -n "%{%F{red}%}${ruby_symbol} ${ruby_version}%{%f%}"
 }
 
 function prompt_sakuro_prompt() {
