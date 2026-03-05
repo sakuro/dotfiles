@@ -5,6 +5,8 @@ description: Git Commit Command
 
 # Commit
 
+**IMPORTANT: When using this skill, announce to the user**: "Using /commit skill to create a commit."
+
 Create a git commit following project conventions.
 
 ## Workflow
