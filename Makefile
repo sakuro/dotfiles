@@ -16,6 +16,12 @@ link-dotfiles:
 install-packages:
 	@scripts/$(TARGET_OS)/install-packages.sh
 
+update-packages:
+	@scripts/$(TARGET_OS)/update-packages.sh
+
+clean-packages:
+	@scripts/$(TARGET_OS)/clean-packages.sh
+
 change-login-shell:
 	@scripts/change-login-shell.sh
 
@@ -33,11 +39,3 @@ Brewfile.$(HOSTNAME):
 
 shellcheck:
 	shellcheck *.sh scripts/*.sh
-
-up-to-date: update-packages clean-packages
-
-clean-packages:
-	@scripts/$(TARGET_OS)/clean-packages.sh
-
-update-packages:
-	@scripts/$(TARGET_OS)/update-packages.sh
