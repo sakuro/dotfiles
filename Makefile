@@ -1,6 +1,6 @@
 HOSTNAME=$(shell hostname)
-
-setup: link-git-hooks link-dotfiles install-locale install-packages change-login-shell
+TARGET_OS=$(shell ./scripts/detect-target-os.sh)
+setup: link-git-hooks link-dotfiles install-packages change-login-shell
 
 .PHONY: Brewfile.$(HOSTNAME)
 
@@ -13,11 +13,8 @@ link-git-hooks: .git/hooks/post-merge
 link-dotfiles:
 	@scripts/link-dotfiles.sh
 
-install-locale:
-	@scripts/install-locale.sh
-
 install-packages:
-	@scripts/install-packages.sh
+	@scripts/$(TARGET_OS)/install-packages.sh
 
 change-login-shell:
 	@scripts/change-login-shell.sh
@@ -40,7 +37,7 @@ shellcheck:
 up-to-date: update-packages clean-packages
 
 clean-packages:
-	@scripts/clean-packages.sh
+	@scripts/$(TARGET_OS)/clean-packages.sh
 
 update-packages:
-	@scripts/update-packages.sh
+	@scripts/$(TARGET_OS)/update-packages.sh
