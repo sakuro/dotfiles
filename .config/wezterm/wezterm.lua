@@ -1,8 +1,6 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-local home_bin = wezterm.home_dir .. "/bin"
-
 function table.merge(to, from)
   for _, v in ipairs(from) do
      table.insert(to, v)
@@ -31,6 +29,8 @@ wezterm.GLOBAL.os = wezterm.GLOBAL.os or
   string.find(wezterm.target_triple, '-apple-') and 'macos' or
   string.find(wezterm.target_triple, '-linux-') and 'linux' or
   error('Unsupported Operating System')
+
+local exec_dir = wezterm.config_dir .. "/exec/" .. wezterm.GLOBAL.os
 
 if wezterm.GLOBAL.os == 'windows' then
   config.default_domain = 'WSL:Ubuntu-24.04'
@@ -83,7 +83,7 @@ local volume_status = function()
     return {}
   end
 
-  local _success, stdout, _stderr = wezterm.run_child_process {home_bin .."/volume-info"}
+  local _success, stdout, _stderr = wezterm.run_child_process {exec_dir .."/volume-info"}
   local volume_info = wezterm.json_parse(stdout)
   if volume_info == nil then
     return {}
@@ -116,7 +116,7 @@ local wifi_status = function()
     return {}
   end
 
-  local _success, stdout, _stderr = wezterm.run_child_process {home_bin .. "/wifi-info"}
+  local _success, stdout, _stderr = wezterm.run_child_process {exec_dir .. "/wifi-info"}
   local wifi_info = wezterm.json_parse(stdout)
   if wifi_info == nil then
     return {}
@@ -178,7 +178,7 @@ local load_average_status = function()
     return {}
   end
 
-  local _success, stdout, _stderr = wezterm.run_child_process {home_bin .. "/load-info"}
+  local _success, stdout, _stderr = wezterm.run_child_process {exec_dir .. "/load-info"}
   local load_info = wezterm.json_parse(stdout)
   if load_info == nil then
     return {}
