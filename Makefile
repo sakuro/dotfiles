@@ -38,4 +38,4 @@ Brewfile.$(HOSTNAME):
 	brew bundle dump --file=$@
 
 shellcheck:
-	shellcheck *.sh scripts/*.sh
+	shellcheck scripts/*.sh scripts/*/*.sh
