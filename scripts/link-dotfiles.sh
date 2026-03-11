@@ -6,14 +6,12 @@
 : "${DOTDEST:=$HOME}"
 
 EXCLUDED_PATHSPECS=(
-  ':!/Brewfile'
   ':!/Makefile'
   ':!/README.md'
+  ':!/files/'
   ':!/scripts/'
-  ':!/*.txt'
   ':!/.gitignore'
   ':!/.gitmodules'
-  ':!/sudoers'
 )
 
 case "$OSTYPE" in

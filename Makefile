@@ -2,7 +2,7 @@ HOSTNAME=$(shell hostname)
 TARGET_OS=$(shell ./scripts/detect-target-os.sh)
 setup: link-git-hooks link-dotfiles install-packages change-login-shell
 
-.PHONY: Brewfile.$(HOSTNAME)
+.PHONY: files/Brewfile.$(HOSTNAME)
 
 link-git-hooks: .git/hooks/post-merge
 
@@ -25,15 +25,15 @@ clean-packages:
 change-login-shell:
 	@scripts/change-login-shell.sh
 
-dump-brewfile: Brewfile.$(HOSTNAME)
+dump-brewfile: files/Brewfile.$(HOSTNAME)
 
-diff-brewfile: Brewfile.$(HOSTNAME)
-	diff --unified Brewfile $< || exit 0
+diff-brewfile: files/Brewfile.$(HOSTNAME)
+	diff --unified files/Brewfile $< || exit 0
 
 clean-brewfile:
-	@rm -v Brewfile.$(HOSTNAME).*
+	@rm -v files/Brewfile.$(HOSTNAME).*
 
-Brewfile.$(HOSTNAME):
+files/Brewfile.$(HOSTNAME):
 	-[ -f $@ ] && ./bin/rotate-suffix $@
 	brew bundle dump --file=$@
 

@@ -6,4 +6,4 @@ if [[ ! -e /Library/Developer/CommandLineTools/usr/bin/git ]]; then
   sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 fi
 
-sudo install -m400 sudoers /etc/sudoers.d/sakuro
+sudo install -m400 files/sudoers /etc/sudoers.d/sakuro

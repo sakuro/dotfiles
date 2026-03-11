@@ -1,4 +1,4 @@
-/Brewfile.*
+/files/Brewfile.*
 /.config/claude/*
 !/.config/claude/CLAUDE.md
 !/.config/claude/agents
