@@ -25,4 +25,4 @@ fi
 
 # using sudo in case the user's password is not known
 sudo chsh -s "${shell_path}" "$USER"
-echo "The login shell is set to $(current_shell)"
+echo "The login shell is set to $(./scripts/$(scripts/detect-target-os.sh)/current-shell.sh)"
