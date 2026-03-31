@@ -13,7 +13,6 @@ rsync
 sqlite3
 unzip
 xdg-utils
-wslu
 zlib1g-dev
 zsh-autosuggestions
 zsh-syntax-highlighting
