@@ -45,7 +45,7 @@ fpath=(
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
 
 # aqua
-export AQUA_GLOBAL_CONFIG=${XDG_CONFIG_HOME}/aqua.yaml
+export AQUA_GLOBAL_CONFIG=${XDG_CONFIG_HOME}/aquaproj-aqua/aqua.yaml
 
 # mise
 (( $+commands[mise] )) && eval "$(mise activate)"
