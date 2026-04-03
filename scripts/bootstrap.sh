@@ -12,4 +12,4 @@ if [[ ! -d "${DOTROOT}" ]]; then
   (cd "$DOTROOT" && git submodule init && git submodule update)
 fi
 
-make -d "$DOTROOT" setup
+make -C "$DOTROOT" setup
