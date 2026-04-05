@@ -2,7 +2,9 @@ HOSTNAME=$(shell hostname)
 TARGET_OS=$(shell ./scripts/detect-target-os.sh)
 setup: link-git-hooks link-dotfiles install-packages change-login-shell
 
-.PHONY: files/Brewfile.$(HOSTNAME)
+.PHONY: setup link-git-hooks link-dotfiles install-packages update-packages clean-packages change-login-shell
+.PHONY: dump-brewfile diff-brewfile clean-brewfile files/Brewfile.$(HOSTNAME)
+.PHONY: shellcheck
 
 link-git-hooks: .git/hooks/post-merge
 
