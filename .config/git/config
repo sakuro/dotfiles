@@ -5,7 +5,7 @@
   new-branch = switch -c
   pb = !git push --verbose --set-upstream origin $(git symbolic-ref --short HEAD)
   st = status --short --branch
-  wdiff = diff --word-diff=color --color=auto --word-diff-regex=[[:alnum:]_]
+  wdiff = diff --word-diff=color --color=auto --word-diff-regex="[a-zA-Z0-9_]+|[ぁ-ん]+|[ァ-ヶー]+|[一-龥々〇〆]+|."
   wip = commit --message ':construction: wip'
   current-branch = symbolic-ref --short HEAD
   grep-context = grep -h -P '^ *(?:class|module|def|(?:RSpec.)?(?:shared_(?:examples|context)|context|describe|it))(?=\\s)'
