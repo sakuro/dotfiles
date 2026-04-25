@@ -18,6 +18,10 @@
 - For GNU sed, use the `-i` option without specifying an extension.
 - Use the `-e` option for edit commands to avoid ambiguity in command-line option parsing.
 
+## python
+
+- Our python setup is minimum.  Avoid importing non-standard libraries such as PIL (Pillow).
+
 # Documentation
 
 - Do not write everything you know. Be selective about content.
