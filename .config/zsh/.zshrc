@@ -108,10 +108,6 @@ zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/compcache
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*' matcher-list 'r:|[:]=* m:{a-z}={A-Z} m:{A-Z}={a-z}'
 
-if (( $+commands[aqua] )); then
-  eval "$(aqua completion zsh)"
-fi
-
 if (( $+commands[mise] )); then
   eval "$(mise completion zsh)"
 fi
