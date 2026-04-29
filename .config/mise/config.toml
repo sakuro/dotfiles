@@ -18,6 +18,7 @@ rust = "1.93"
 "aqua:mikefarah/yq" = "v4.52.2"
 "aqua:rhysd/actionlint" = "v1.7.11"
 "aqua:ByteNess/aws-vault" = "v7.9.3"
+op = "latest"
 
 [settings]
 experimental = true
