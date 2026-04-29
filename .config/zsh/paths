@@ -1,7 +1,7 @@
+~/.local/bin
 ~/bin/wrappers
 ~/bin
 $ZDOTDIR/bin
-/Applications/RubyMine.app/Contents/MacOS
 /opt/homebrew/bin
 /opt/homebrew/sbin
 /opt/homebrew/opt/ccache/libexec
