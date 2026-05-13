@@ -2,6 +2,7 @@
 
 - The purpose of a task is to achieve the original goal, not just to complete it. Do not arbitrarily change (simplify) the goal for the sake of completion.
 - Backward compatibility considerations are only required from version 1.0 onwards.
+- Prioritize long-term design and type safety over ad-hoc workarounds that merely minimize the amount of change.
 - Avoid implicit argument type coercion.
 
 # Communication
