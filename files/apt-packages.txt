@@ -1,5 +1,6 @@
 build-essential
 clang
+dnsutils
 less
 libc6-dbg
 libffi-dev
