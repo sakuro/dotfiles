@@ -7,6 +7,11 @@
     "commit": "",
     "pr": ""
   },
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)"
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.zsh"
@@ -27,5 +32,6 @@
     ]
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "theme": "dark"
 }
