@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+set -ue
+set -o errexit -o nounset -o pipefail
+
+GIT_HOOKS_DIR=$XDG_CONFIG_HOME/git/hooks
+. $GIT_HOOKS_DIR/support.zsh
+
+if ! (( $+commands[gitleaks] )); then
+  echo "pre-commit: gitleaks not found, skipping secret scan" >&2
+elif [[ ! -f .gitleaks.toml ]]; then
+  echo "pre-commit: .gitleaks.toml not found, skipping secret scan" >&2
+else
+  gitleaks protect --staged --no-banner --log-level warn
+fi
+
+exit 0
