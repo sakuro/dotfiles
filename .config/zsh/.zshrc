@@ -169,7 +169,7 @@ fi
 (( $+commands[powershell.exe] )) && alias pbpaste='powershell.exe -Command Get-Clipboard'
 
 () {
-  local dircolors_path=$XDG_CONFIG_HOME/themes/nord/dir_colors
+  local dircolors_path=$XDG_CONFIG_HOME/dircolors
   if (( $+commands[dircolors] )) && [[ -f $dircolors_path ]]; then
     eval $(dircolors -b $dircolors_path)
     alias ls='ls --classify --color=auto'
