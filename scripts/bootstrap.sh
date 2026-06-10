@@ -9,7 +9,6 @@ eval "$(curl https://dot.2238.club/scripts/${TARGET_OS}/bootstrap.sh)"
 
 if [[ ! -d "${DOTROOT}" ]]; then
   git clone "${DOTREPO}" "${DOTROOT}"
-  (cd "$DOTROOT" && git submodule init && git submodule update)
 fi
 
 make -C "$DOTROOT" setup
