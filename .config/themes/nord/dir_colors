@@ -189,6 +189,7 @@ STICKY 04;37;44
 .swp 02;37
 
 #+--- Images ---+
+.avif 32
 .bmp 32
 .cgm 32
 .dl 32
@@ -196,9 +197,12 @@ STICKY 04;37;44
 .emf 32
 .eps 32
 .gif 32
+.heic 32
+.heif 32
 .jpeg 32
 .jpg 32
 .JPG 32
+.jxl 32
 .mng 32
 .pbm 32
 .pcx 32
@@ -214,6 +218,7 @@ STICKY 04;37;44
 .tga 32
 .tif 32
 .tiff 32
+.webp 32
 .xbm 32
 .xcf 32
 .xpm 32
@@ -222,6 +227,8 @@ STICKY 04;37;44
 .yuv 32
 
 #+--- Video ---+
+.3g2 32
+.3gp 32
 .anx 32
 .asf 32
 .avi 32
@@ -230,10 +237,12 @@ STICKY 04;37;44
 .fli 32
 .flv 32
 .gl 32
+.m2ts 32
 .m2v 32
 .m4v 32
 .mkv 32
 .mov 32
+.mts 32
 .MOV 32
 .mp4 32
 .mpeg 32
