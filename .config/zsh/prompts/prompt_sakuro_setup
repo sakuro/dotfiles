@@ -95,7 +95,7 @@ function prompt_sakuro_vcs() {
   [[ -n "$vcs_info_msg_0_" ]] && print -n "%{%F{blue}%}${vcs_symbol} $vcs_info_msg_0_%{%f%}"
   if [[ -n "$vcs_info_msg_1_" && -d "${vcs_info_msg_1_}/.git" ]]; then
     local visibility
-    visibility=$(gh api repos/:owner/:repo --cache 24h -q .visibility 2>/dev/null)
+    visibility=$(gh api repos/:owner/:repo --cache 168h -q .visibility 2>/dev/null)
     if [[ -n "$visibility" ]]; then
       if [[ "$visibility" = "private" ]]; then
         print -n "\uf023 "
