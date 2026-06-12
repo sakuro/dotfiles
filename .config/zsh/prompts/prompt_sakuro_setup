@@ -17,6 +17,8 @@ function prompt_sakuro_precmd() {
 
   [[ -n "$prompt_duration" ]] && print -P "%{%F{yellow}%}$prompt_duration%{%f%}"
 
+  LANG=C vcs_info
+
   local -a info_line_elements=(
 #    "$(prompt_sakuro_user)@$(prompt_sakuro_host)"
     "$(prompt_sakuro_pwd)"
@@ -76,8 +78,6 @@ function prompt_sakuro_host() {
 function prompt_sakuro_pwd() {
   local pwd_symbol="\uf115"
   local result
-  local vcs_info_msg_0_ vcs_info_msg_1_
-  LANG=C vcs_info
 
   local base_path="$(print -P '%~')"
   # remove repository_part($vcs_info_msg_1_)
@@ -91,8 +91,6 @@ function prompt_sakuro_pwd() {
 
 function prompt_sakuro_vcs() {
   local vcs_symbol="\ue725"
-  local vcs_info_msg_0_
-  LANG=C vcs_info
 
   [[ -n "$vcs_info_msg_0_" ]] && print -n "%{%F{blue}%}${vcs_symbol} $vcs_info_msg_0_%{%f%}"
   if [[ -n "$vcs_info_msg_1_" && -d "${vcs_info_msg_1_}/.git" ]]; then
