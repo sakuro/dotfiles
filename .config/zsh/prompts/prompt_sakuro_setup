@@ -126,7 +126,8 @@ function prompt_sakuro_ruby() {
   (( $+commands[mise] )) || return
 
   local ruby_symbol="\ue23e"
-  local ruby_version=$(mise list --current --json ruby | jq -Mr '.[0].version')
+  local ruby_version
+  ruby_version=$(mise list --current --json ruby | jq -Mr '.[0].version')
   [[ $? == 0 ]] && print -n "%{%F{red}%}${ruby_symbol} ${ruby_version}%{%f%}"
 }
 
