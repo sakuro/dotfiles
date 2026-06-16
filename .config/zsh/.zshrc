@@ -258,6 +258,4 @@ add-zsh-hook chpwd set-working-directory
   eval "$(factorix completion)"
 }
 
-[[ -f $XDG_CONFIG_HOME/op/plugins.sh ]] && source $XDG_CONFIG_HOME/op/plugins.sh
-
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
