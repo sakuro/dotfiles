@@ -165,8 +165,13 @@ elif (( $+commands[vim] )); then
 fi
 
 # Aliases for Windows
-(( $+commands[clip.exe] )) && alias pbcopy=clip.exe
-(( $+commands[powershell.exe] )) && alias pbpaste='powershell.exe -Command Get-Clipboard'
+(( $+commands[powershell.exe] )) && {
+  to_ps='[Console]::InputEncoding=[Text.Encoding]::GetEncoding(932); Set-Clipboard ([Console]::In.ReadToEnd())'
+  alias pbcopy="iconv -f UTF-8 -t CP932 | powershell.exe -NoProfile -Command '$to_ps'"
+
+  from_ps='[Console]::OutputEncoding=[Text.Encoding]::GetEncoding(932); Get-Clipboard'
+  alias pbpaste="powershell.exe -Command '$from_ps' | iconv -f CP932 -t UTF-8"
+}
 
 () {
   local dircolors_path=$XDG_CONFIG_HOME/dircolors
