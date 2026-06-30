@@ -1,0 +1,6 @@
+#!/bin/sh
+powershell.exe -NoProfile -Command '
+  $s = Get-Clipboard -Raw
+  $b = [Text.UTF8Encoding]::new($false).GetBytes($s)
+  [Console]::OpenStandardOutput().Write($b, 0, $b.Length)
+'

@@ -164,14 +164,8 @@ elif (( $+commands[vim] )); then
   alias view='vim -R'
 fi
 
-# Aliases for Windows
-(( $+commands[powershell.exe] )) && {
-  to_ps='[Console]::InputEncoding=[Text.Encoding]::GetEncoding(932); Set-Clipboard ([Console]::In.ReadToEnd())'
-  alias pbcopy="iconv -f UTF-8 -t CP932 | powershell.exe -NoProfile -Command '$to_ps'"
-
-  from_ps='[Console]::OutputEncoding=[Text.Encoding]::GetEncoding(932); Get-Clipboard'
-  alias pbpaste="powershell.exe -Command '$from_ps' | iconv -f CP932 -t UTF-8"
-}
+# WSL-specific powershell.exe interpreted commands
+(( $+commands[powershell.exe] )) && path=($HOME/bin/wsl $path)
 
 () {
   local dircolors_path=$XDG_CONFIG_HOME/dircolors

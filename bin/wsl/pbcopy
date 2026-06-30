@@ -1,0 +1,6 @@
+#!/bin/sh
+powershell.exe -NoProfile -Command '
+  [Console]::InputEncoding = [Text.UTF8Encoding]::new($false)
+  $r = [IO.StreamReader]::new([Console]::OpenStandardInput(), [Console]::InputEncoding)
+  Set-Clipboard -Value $r.ReadToEnd()
+'
