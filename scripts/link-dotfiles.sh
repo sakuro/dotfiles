@@ -12,6 +12,7 @@ EXCLUDED_PATHSPECS=(
   ':!/scripts/'
   ':!/.gitignore'
   ':!/.gitmodules'
+  ':!/renovate.json'
 )
 
 case "$OSTYPE" in
