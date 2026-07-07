@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+source "${0:h}/support.zsh"
+
+function need-mod-tidy() {
+  ! go mod tidy -diff >/dev/null 2>&1
+}
+
+function golangci-lint-ready() {
+  [[ -f .golangci.yml || -f .golangci.yaml || -f .golangci.toml ]]
+}
+
+function run-golangci-lint() {
+  command golangci-lint run
+}
+
+if need-mod-tidy; then
+  echo "go.mod/go.sum is not tidy.  Run go mod tidy"
+  return 1
+fi
+
+unformatted=$(gofmt -l .)
+if [[ -n $unformatted ]]; then
+  echo "gofmt required:"
+  print -l -- ${(f)unformatted}
+  return 1
+fi
+
+echo "Running go vet ..."
+go vet ./... || return 1
+
+if (( $+commands[golangci-lint] )) && golangci-lint-ready; then
+  echo "Running golangci-lint ..."
+  run-golangci-lint || return 1
+fi
+
+echo "Running go test ..."
+go test ./... || return 1

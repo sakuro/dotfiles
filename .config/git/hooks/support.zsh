@@ -1,5 +1,6 @@
 function detect-languages() {
     [[ -f Gemfile ]] && echo ruby || :
+    [[ -f go.mod ]] && echo go || :
     [[ -f package.json ]] && echo nodejs || :
     return 0
 }
