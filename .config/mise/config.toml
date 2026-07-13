@@ -1,6 +1,6 @@
 [tools]
 actionlint = "1.7.12"
-aws-cli = "2.35.16"
+aws-cli = "2.35.20"
 aws-vault = "7.12.5"
 bat = "0.26.1"
 difftastic = "0.69.0"
