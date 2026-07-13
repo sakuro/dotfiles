@@ -9,7 +9,6 @@ ripgrep = "15.1.0"
 ruby = "4.0"
 "gem:fasti" = "latest"
 "gem:gemoji-cli" = "latest"
-"github:sakuro/factorix" = "0.20.0"
 
 
 [settings]
