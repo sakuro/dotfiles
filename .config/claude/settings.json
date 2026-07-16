@@ -22,7 +22,8 @@
     "context7@claude-plugins-official": true,
     "serena@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true
+    "gopls-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
   },
   "spinnerVerbs": {
     "mode": "replace",
