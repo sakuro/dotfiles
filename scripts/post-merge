@@ -12,4 +12,5 @@ make link-dotfiles
 if (( $+commands[mise] )); then
   echo ":wrench: Updating tools"
   mise install
+  mise prune --yes
 fi
