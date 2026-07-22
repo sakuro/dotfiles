@@ -1,7 +1,6 @@
 /files/Brewfile.*
 /.config/claude/*
 !/.config/claude/CLAUDE.md
-!/.config/claude/agents
 !/.config/claude/rules
 !/.config/claude/settings.json
 !/.config/claude/skills
