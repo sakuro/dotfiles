@@ -5,5 +5,3 @@ if [[ ! -e /Library/Developer/CommandLineTools/usr/bin/git ]]; then
   echo -n "Press ENTER when the installation has completed"; read -r < /dev/tty
   sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
 fi
-
-sudo install -m400 files/sudoers "/etc/sudoers.d/$USER"

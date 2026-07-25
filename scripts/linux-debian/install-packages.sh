@@ -7,6 +7,11 @@ sudo apt install --yes locales
 sudo sed -i -e '/ja_JP.UTF-8/s/^# *//' /etc/locale.gen
 sudo locale-gen --keep-existing
 
+if command -V mise >/dev/null 2>&1; then
+  echo "mise is already installed"
+  exit 0
+fi
+
 curl https://mise.run | sh
 
 PATH=$HOME/.local/bin:$PATH

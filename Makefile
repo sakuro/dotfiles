@@ -1,6 +1,8 @@
 HOSTNAME=$(shell hostname)
 TARGET_OS=$(shell ./scripts/detect-target-os.sh)
-setup: link-git-hooks link-dotfiles install-packages change-login-shell
+export TARGET_OS
+
+setup: link-git-hooks link-dotfiles install-packages change-login-shell install-sudoers
 
 .PHONY: setup link-git-hooks link-dotfiles install-packages update-packages clean-packages change-login-shell
 .PHONY: dump-brewfile diff-brewfile clean-brewfile files/Brewfile.$(HOSTNAME)
@@ -26,6 +28,9 @@ clean-packages:
 
 change-login-shell:
 	@scripts/change-login-shell.sh
+
+install-sudoers:
+	@scripts/install-sudoers.sh
 
 dump-brewfile: files/Brewfile.$(HOSTNAME)
 

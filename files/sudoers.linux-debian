@@ -1,0 +1,1 @@
+%nopasswd ALL = (ALL:ALL) NOPASSWD: /usr/bin/sudo, /usr/bin/apt

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+: ${TARGET_OS:?}
 LOGIN_SHELL=${LOGIN_SHELL:=zsh}
 
 # shellcheck disable=SC2046
@@ -16,7 +17,7 @@ esac
 
 : "${USER:=$(id --u -n)}"
 
-current_shell="$(./scripts/$(scripts/detect-target-os.sh)/current-shell.sh)"
+current_shell="$(scripts/${TARGET_OS}/current-shell.sh)"
 
 if [[ "${shell_path##*/}" = "${current_shell##*/}" ]]; then
   echo "The login shell is already $current_shell"
@@ -25,4 +26,4 @@ fi
 
 # using sudo in case the user's password is not known
 sudo chsh -s "${shell_path}" "$USER"
-echo "The login shell is set to $(./scripts/$(scripts/detect-target-os.sh)/current-shell.sh)"
+echo "The login shell is set to $(scripts/${TARGET_OS}/current-shell.sh)"
