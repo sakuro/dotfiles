@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+
+# Usage:
+#   notify "Title" "Body"
+#   notify "Title"                 # body omitted
+
+title="${1:-Notification}"
+body="${2:-}"
+
+if command -v notify-send >/dev/null 2>&1; then
+  if [[ -n "${body}" ]]; then
+    notify-send "${title}" "${body}"
+  else
+    notify-send "${title}"
+  fi
+  exit 0
+fi
+
+printf "\a%s: %s\n" "${title}" "${body}" >&2
+exit 2

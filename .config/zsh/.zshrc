@@ -164,7 +164,18 @@ elif (( $+commands[vim] )); then
   alias view='vim -R'
 fi
 
-# WSL-specific powershell.exe interpreted commands
+# Platform-specific commands (e.g. notify)
+case "$OSTYPE" in
+darwin*)
+  path=($HOME/bin/darwin $path)
+  ;;
+linux*)
+  path=($HOME/bin/linux $path)
+  ;;
+esac
+
+# WSL-specific powershell.exe interpreted commands; takes precedence over
+# $HOME/bin/linux for names that exist in both (e.g. notify).
 (( $+commands[powershell.exe] )) && path=($HOME/bin/wsl $path)
 
 () {

@@ -1,0 +1,47 @@
+#!/bin/bash
+set -euo pipefail
+
+# Usage:
+#   notify "Title" "Body"
+#   notify "Title"                 # body omitted
+
+title="${1:-Notification}"
+body="${2:-}"
+
+# Minimal escaping for PowerShell single-quoted strings: ' -> ''
+ps_escape() {
+  local s="${1}"
+  s="${s//\'/\'\'}"
+  printf "%s" "${s}"
+}
+
+if command -v powershell.exe >/dev/null 2>&1; then
+  t="$(ps_escape "${title}")"
+  b="$(ps_escape "${body}")"
+
+  # WinRT toast (no external module).
+  # Note: Some environments require an AppID; "PowerShell" is commonly used but may vary.
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "
+    [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] > \$null
+    [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime] > \$null
+    \$xml = New-Object Windows.Data.Xml.Dom.XmlDocument
+    \$xml.LoadXml('<toast><visual><binding template=\"ToastText02\"><text id=\"1\">${t}</text><text id=\"2\">${b}</text></binding></visual></toast>')
+    \$toast = [Windows.UI.Notifications.ToastNotification]::new(\$xml)
+    \$notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('PowerShell')
+    \$notifier.Show(\$toast)
+  " >/dev/null
+  exit 0
+fi
+
+# Fall back to a Linux notifier if one happens to be available inside WSL.
+if command -v notify-send >/dev/null 2>&1; then
+  if [[ -n "${body}" ]]; then
+    notify-send "${title}" "${body}"
+  else
+    notify-send "${title}"
+  fi
+  exit 0
+fi
+
+printf "\a%s: %s\n" "${title}" "${body}" >&2
+exit 2
