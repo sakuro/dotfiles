@@ -20,8 +20,6 @@
 "brew-cask:1password" = "latest"
 "brew-cask:1password-cli" = "latest"
 "brew-cask:claude-code" = "latest"
-"brew-cask:cursor" = "latest"
-"brew-cask:emacs-app" = "latest"
 "brew-cask:font-cica" = "latest"
 "brew-cask:font-ricty-diminished" = "latest"
 "brew-cask:google-chrome" = "latest"
