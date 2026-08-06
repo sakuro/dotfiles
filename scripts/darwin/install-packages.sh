@@ -7,3 +7,5 @@ PATH=/opt/homebrew/bin:$PATH
 }
 brew bundle --file files/Brewfile
 chmod go-w "$(brew --prefix)/share"
+
+MISE_AUTO_ENV=true mise bootstrap packages apply --yes
