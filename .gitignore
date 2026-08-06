@@ -1,4 +1,5 @@
 /files/Brewfile.*
+/docs/superpowers/
 /.config/claude/*
 !/.config/claude/CLAUDE.md
 !/.config/claude/rules
