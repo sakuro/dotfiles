@@ -1,5 +1,4 @@
 [bootstrap.packages]
-"brew:1password-cli" = "latest"
 "brew:coreutils" = "latest"
 "brew:diffutils" = "latest"
 "brew:findutils" = "latest"
@@ -19,6 +18,7 @@
 "brew:zsh-completions" = "latest"
 "brew:zsh-syntax-highlighting" = "latest"
 "brew-cask:1password" = "latest"
+"brew-cask:1password-cli" = "latest"
 "brew-cask:claude-code" = "latest"
 "brew-cask:cursor" = "latest"
 "brew-cask:emacs-app" = "latest"
