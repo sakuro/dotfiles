@@ -1,4 +1,5 @@
--- Specify inputs methods for en and ja.
+-- 1. Run `hs.inspect(hs.keycodes.methods())` in the Hammerspoon Console to list available input methods.
+-- 2. Specify input methods for en and ja.
 --   defaults write org.hammerspoon.Hammerspoon input-methods '{ "en" = "英字　　（ATOK）"; "ja" = "ひらがな（ATOK）"; }'
 
 local alert = function(message, duration)
