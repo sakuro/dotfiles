@@ -23,5 +23,6 @@
 /.serena/
 Thumbs.db
 desktop.ini
+docs/superpowers/
 
 **/.claude/settings.local.json
