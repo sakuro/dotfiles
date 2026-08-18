@@ -2,11 +2,11 @@
 
 BOOTSTRAP_TOML_URL="https://dot.2238.club/bootstrap.toml"
 DOTROOT="$HOME/.dotfiles"
+MISE_INSTALL_PATH="$HOME/bin"
 
 set -euo pipefail
 
 curl https://mise.run | sh
-export PATH="$HOME/.local/bin:$PATH"
 
 bootstrap_config="$(mktemp)"
 trap 'rm -f "$bootstrap_config"' EXIT
