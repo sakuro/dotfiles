@@ -1,2 +1,2 @@
 [bootstrap.repos]
-"~/.dotfiles" = { url = "https://github.com/sakuro/dotfiles.git", ref = "mise-bootstrap" }
+"~/.dotfiles" = "https://github.com/sakuro/dotfiles.git"
