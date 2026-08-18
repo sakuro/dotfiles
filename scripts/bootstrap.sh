@@ -7,6 +7,7 @@ PATH="$HOME/bin:$PATH"
 set -euo pipefail
 
 curl -fsSL https://mise.run | MISE_INSTALL_PATH="$HOME/bin/mise" bash
+eval "$(mise activate)"
 
 bootstrap_config="$(mktemp)"
 trap 'rm -f "$bootstrap_config"' EXIT
