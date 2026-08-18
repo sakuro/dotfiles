@@ -8,6 +8,7 @@ PATH="$MISE_INSTALL_PATH:$PATH"
 set -euo pipefail
 
 curl https://mise.run | sh
+rehash
 
 bootstrap_config="$(mktemp)"
 trap 'rm -f "$bootstrap_config"' EXIT
