@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BOOTSTRAP_TOML_URL="https://dot.2238.club/bootstrap.toml"
+BOOTSTRAP_TOML_URL="https://dot.2238.club/.config/mise/bootstrap.toml"
 DOTROOT="$HOME/.dotfiles"
 MISE_INSTALL_PATH="$HOME/bin"
 
