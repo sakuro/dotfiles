@@ -2,7 +2,8 @@
 
 BOOTSTRAP_TOML_URL="https://dot.2238.club/.config/mise/bootstrap.toml"
 DOTROOT="$HOME/.dotfiles"
-MISE_INSTALL_PATH="$HOME/bin"
+export MISE_INSTALL_PATH="$HOME/bin"
+PATH="$MISE_INSTALL_PATH:$PATH"
 
 set -euo pipefail
 
