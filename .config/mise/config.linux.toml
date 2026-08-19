@@ -6,6 +6,7 @@
 "apt:postgresql-client" = "latest"
 "apt:rsync" = "latest"
 "apt:sqlite3" = "latest"
+"apt:sudo" = "latest"
 "apt:unzip" = "latest"
 "apt:xdg-utils" = "latest"
 "apt:zsh" = "latest"
