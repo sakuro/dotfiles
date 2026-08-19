@@ -1,5 +1,6 @@
 [bootstrap.packages]
 "apt:dnsutils" = "latest"
+"apt:git" = "latest"
 "apt:less" = "latest"
 "apt:neovim" = "latest"
 "apt:postgresql-client" = "latest"
