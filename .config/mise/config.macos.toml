@@ -28,3 +28,9 @@
 "brew-cask:keycastr" = "latest"
 "brew-cask:visual-studio-code" = "latest"
 "brew-cask:wezterm" = "latest"
+
+[bootstrap.files."/etc/sudoers.d/nopasswd"]
+source = "files/sudoers.macos"
+owner = "root"
+group = "root"
+mode = "0444"

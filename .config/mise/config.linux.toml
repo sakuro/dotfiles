@@ -7,5 +7,12 @@
 "apt:sqlite3" = "latest"
 "apt:unzip" = "latest"
 "apt:xdg-utils" = "latest"
+"apt:zsh" = "latest"
 "apt:zsh-autosuggestions" = "latest"
 "apt:zsh-syntax-highlighting" = "latest"
+
+[bootstrap.files."/etc/sudoers.d/nopasswd"]
+source = "files/sudoers.linux"
+owner = "root"
+group = "root"
+mode = "0444"

@@ -1,3 +1,17 @@
+# [bootstrap.packages] section is separated in os specific config files.
+
+[bootstrap.repos]
+"~/.dotfiles" = { url = "https://github.com/sakuro/dotfiles.git" }
+
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
+[tasks.link-dotfiles]
+run = "scripts/link-dotfiles.sh"
+
+[tasks.link-git-hooks]
+run = "scripts/link-git-hooks.sh"
+
 [tools]
 bat = "0.26.1"
 difftastic = "0.70.0"
@@ -11,7 +25,6 @@ ruby = "4.0"
 "gem:gemoji-cli" = "latest"
 "github:sakuro/factorix" = "0.22.0"
 
-
 [settings]
 experimental = true
 idiomatic_version_file_enable_tools = ["ruby"]
@@ -22,5 +35,6 @@ verbose_install = true
 default_packages_file = "~/.config/mise/default-gems"
 ruby_build_opts = "--disable-install-doc"
 
-[bootstrap.user]
-login_shell = "/bin/zsh"
+
+#install-sudoers:
+#	@scripts/install-sudoers.sh
