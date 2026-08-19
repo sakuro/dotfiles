@@ -39,3 +39,6 @@ source = "./files/sudoers.macos"
 owner = "root"
 group = "wheel"
 mode = "0444"
+
+[tasks.post-setup]
+depends = []

@@ -2,6 +2,7 @@
 "apt:dnsutils" = "latest"
 "apt:git" = "latest"
 "apt:less" = "latest"
+"apt:locales" = "latest"
 "apt:neovim" = "latest"
 "apt:postgresql-client" = "latest"
 "apt:rsync" = "latest"
@@ -18,3 +19,9 @@ source = "./files/sudoers.linux"
 owner = "root"
 group = "root"
 mode = "0444"
+
+[tasks.post-setup]
+depends = ["configure-locales"]
+
+[tasks.configure-locales]
+run = "sudo sed -i '/ja_JP.UTF-8/s/^#//' /etc/locale-gen && sudo /usr/sbin/locale-gen"

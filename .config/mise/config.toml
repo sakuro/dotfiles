@@ -6,6 +6,9 @@
 [bootstrap.user]
 login_shell = "/bin/zsh"
 
+[tasks.setup]
+depends = ["link-dotfiles", "link-git-hooks", "post-setup"]
+
 [tasks.link-dotfiles]
 run = "~/.dotfiles/scripts/link-dotfiles.sh"
 
