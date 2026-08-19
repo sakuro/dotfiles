@@ -6,6 +6,9 @@
 [bootstrap.user]
 login_shell = "/bin/zsh"
 
+[dotfiles]
+"~/.config" = { source = "~/.dotfiles/.config", mode = "symlink-each" }
+
 [tasks.setup]
 depends = ["link-dotfiles", "link-git-hooks", "post-setup"]
 

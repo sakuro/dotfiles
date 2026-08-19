@@ -1,9 +1,2 @@
-/files/Brewfile.*
 /docs/superpowers/
 /.superpowers/
-/.config/claude/*
-!/.config/claude/CLAUDE.md
-!/.config/claude/rules
-!/.config/claude/settings.json
-!/.config/claude/skills
-!/.config/claude/statusline-command.zsh
