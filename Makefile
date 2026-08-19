@@ -2,11 +2,9 @@ HOSTNAME=$(shell hostname)
 TARGET_OS=$(shell ./scripts/detect-target-os.sh)
 export TARGET_OS
 
-setup: link-git-hooks link-dotfiles install-packages change-login-shell install-sudoers
+setup: link-git-hooks link-dotfiles
 
-.PHONY: setup link-git-hooks link-dotfiles install-packages update-packages clean-packages change-login-shell
-.PHONY: dump-brewfile diff-brewfile clean-brewfile files/Brewfile.$(HOSTNAME)
-.PHONY: shellcheck
+.PHONY: setup link-git-hooks link-dotfiles
 
 link-git-hooks: .git/hooks/post-merge
 
@@ -16,33 +14,3 @@ link-git-hooks: .git/hooks/post-merge
 
 link-dotfiles:
 	@scripts/link-dotfiles.sh
-
-install-packages:
-	@scripts/$(TARGET_OS)/install-packages.sh
-
-update-packages:
-	@scripts/$(TARGET_OS)/update-packages.sh
-
-clean-packages:
-	@scripts/$(TARGET_OS)/clean-packages.sh
-
-change-login-shell:
-	@scripts/change-login-shell.sh
-
-install-sudoers:
-	@scripts/install-sudoers.sh
-
-dump-brewfile: files/Brewfile.$(HOSTNAME)
-
-diff-brewfile: files/Brewfile.$(HOSTNAME)
-	diff --unified files/Brewfile $< || exit 0
-
-clean-brewfile:
-	@rm -v files/Brewfile.$(HOSTNAME).*
-
-files/Brewfile.$(HOSTNAME):
-	-[ -f $@ ] && ./bin/rotate-suffix $@
-	brew bundle dump --file=$@
-
-shellcheck:
-	shellcheck scripts/*.sh scripts/*/*.sh
