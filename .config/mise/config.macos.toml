@@ -29,6 +29,11 @@
 "brew-cask:visual-studio-code" = "latest"
 "brew-cask:wezterm" = "latest"
 
+[bootstrap.macos.launchd.agents.ipconfig-verbose]
+program = "/usr/bin/sudo"
+args = ["/usr/sbin/ipconfig", "setverbose", "1"]
+run_at_load = true
+
 [bootstrap.files."/etc/sudoers.d/nopasswd"]
 source = "./files/sudoers.macos"
 owner = "root"
