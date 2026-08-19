@@ -20,5 +20,5 @@ trap 'rm -rf "$bootstrap_config_dir"' EXIT
 
 export MISE_GLOBAL_CONFIG_FILE="${bootstrap_config_dir}/config.toml"
 curl -fsSL -o "${MISE_GLOBAL_CONFIG_FILE}" "${BOOTSTRAP_TOML_URL}"
-curl -fsSL -o "${MISE_GLOBAL_CONFIG_FILE/.toml/.${OS}.toml}" "${BOOTSTRAP_TOML_URL/.toml/.${OS}.toml}"
-MISE_AUTO_ENV=true mise bootstrap --yes
+curl -fsSL "${BOOTSTRAP_TOML_URL/.toml/.${OS}.toml}" >> "${MISE_GLOBAL_CONFIG_FILE}"
+mise bootstrap --yes
