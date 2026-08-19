@@ -6,12 +6,9 @@
 : "${DOTDEST:=$HOME}"
 
 EXCLUDED_PATHSPECS=(
-  ':!/Makefile'
   ':!/README.md'
-  ':!/files/'
   ':!/scripts/'
   ':!/.gitignore'
-  ':!/.gitmodules'
   ':!/renovate.json'
 )
 
