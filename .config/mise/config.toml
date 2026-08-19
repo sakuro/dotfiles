@@ -14,7 +14,7 @@ login_shell = "/bin/zsh"
 "~/.dotfiles/.git/hooks/post-merge" = { source = "~/.dotfiles/scripts/post-merge" }
 
 [tasks.setup]
-depends = ["post-setup"]
+depends_post = ["os-specific-setup"]
 
 [tools]
 bat = "0.26.1"

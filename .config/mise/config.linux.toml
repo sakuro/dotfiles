@@ -20,7 +20,7 @@ owner = "root"
 group = "root"
 mode = "0444"
 
-[tasks.post-setup]
+[tasks.os-specific-setup]
 depends = ["configure-locales", "link-git-credential-config"]
 
 [tasks.configure-locales]
