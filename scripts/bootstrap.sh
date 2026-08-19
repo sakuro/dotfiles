@@ -33,3 +33,5 @@ export MISE_AUTO_ENV=true
 cd "$DOTROOT"
 mise trust --all --yes
 mise bootstrap --yes
+mise run link-git-hooks
+mise run link-dotfiles

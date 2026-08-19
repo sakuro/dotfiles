@@ -7,10 +7,10 @@
 login_shell = "/bin/zsh"
 
 [tasks.link-dotfiles]
-run = "scripts/link-dotfiles.sh"
+run = "~/.dotfiles/scripts/link-dotfiles.sh"
 
 [tasks.link-git-hooks]
-run = "scripts/link-git-hooks.sh"
+run = "~/.dotfiles/scripts/link-git-hooks.sh"
 
 [tools]
 bat = "0.26.1"
@@ -34,7 +34,3 @@ minimum_release_age = "3d"
 verbose_install = true
 default_packages_file = "~/.config/mise/default-gems"
 ruby_build_opts = "--disable-install-doc"
-
-
-#install-sudoers:
-#	@scripts/install-sudoers.sh
