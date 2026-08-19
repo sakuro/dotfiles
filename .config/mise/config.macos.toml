@@ -30,7 +30,7 @@
 "brew-cask:wezterm" = "latest"
 
 [bootstrap.files."/etc/sudoers.d/nopasswd"]
-source = "files/sudoers.macos"
+source = "./files/sudoers.macos"
 owner = "root"
 group = "root"
 mode = "0444"
