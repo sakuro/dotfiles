@@ -24,7 +24,7 @@ mode = "0444"
 depends = ["configure-locales", "link-git-credential-config"]
 
 [tasks.configure-locales]
-run = "sudo sed -i '/ja_JP.UTF-8/s/^#//' /etc/locale-gen && sudo /usr/sbin/locale-gen --keep-existing"
+run = "sudo sed -i '/ja_JP.UTF-8/s/^#//' /etc/locale.gen && sudo /usr/sbin/locale-gen --keep-existing"
 
 [tasks.link-git-credential-config]
 run = '''
