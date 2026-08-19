@@ -32,5 +32,5 @@
 [bootstrap.files."/etc/sudoers.d/nopasswd"]
 source = "./files/sudoers.macos"
 owner = "root"
-group = "root"
+group = "wheel"
 mode = "0444"
