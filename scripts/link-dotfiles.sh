@@ -46,20 +46,3 @@ while read -r link; do
   rm -v "$link"
   prune_empty_ancestors "$(dirname "$link")"
 done < <(find "$DOTDEST/.config" "$DOTDEST/bin" -type l -lname "$DOTROOT/*" 2>/dev/null)
-
-# Handle .config/git/include/credentials
-CREDENTIAL_CONFIG_FILE="$DOTDEST/.config/git/include/credential"
-if [[ ! -f "$CREDENTIAL_CONFIG_FILE" ]]; then
-  case "$OSTYPE" in
-  darwin*)
-    ln -sv "$DOTROOT/.config/git/include/credential.darwin" "$CREDENTIAL_CONFIG_FILE"
-    ;;
-  linux*)
-    if [[ -n "$WSL_DISTRO_NAME" ]]; then
-      if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
-        ln -sv "$DOTROOT/.config/git/include/credential.windows" "$CREDENTIAL_CONFIG_FILE"
-      fi
-    fi
-    ;;
-  esac
-fi
