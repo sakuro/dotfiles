@@ -7,16 +7,14 @@
 login_shell = "/bin/zsh"
 
 [dotfiles]
-"~/.config" = { source = "~/.dotfiles/.config", mode = "symlink-each" }
+"~/bin" = { mode = "symlink-each" }
+"~/.config" = { mode = "symlink-each" }
+"~/.claude" = { source = "~/.config/claude" }
+"~/.zshenv" = { }
+"~/.dotfiles/.git/hooks/post-merge" = { source = "~/.dotfiles/scripts/post-merge" }
 
 [tasks.setup]
-depends = ["link-dotfiles", "link-git-hooks", "post-setup"]
-
-[tasks.link-dotfiles]
-run = "~/.dotfiles/scripts/link-dotfiles.sh"
-
-[tasks.link-git-hooks]
-run = "~/.dotfiles/scripts/link-git-hooks.sh"
+depends = ["post-setup"]
 
 [tools]
 bat = "0.26.1"
