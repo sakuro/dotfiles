@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-if whence gemoji >/dev/null; then
-  gemoji filter | "${PAGER:-less}"
+if whence emojify >/dev/null; then
+  emojify | "${PAGER:-less}"
 else
   "${PAGER:-less}"
 fi

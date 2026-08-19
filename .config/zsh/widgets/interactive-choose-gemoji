@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-gemoji list --format csv | sed -e 1d | peco --prompt "Choose emoji to copy:" | cut -d, -f2 | pbcopy

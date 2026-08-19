@@ -25,7 +25,7 @@ op = "2.34.1"
 ripgrep = "15.2.0"
 ruby = "4.0"
 #"gem:fasti" = "latest"
-"gem:gemoji-cli" = "latest"
+"github:damienbutt/emojify-go" = "latest"
 "github:sakuro/factorix" = "0.22.0"
 
 [settings]
