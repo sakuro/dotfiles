@@ -6,8 +6,8 @@ script_name="$0:t"
 
 # Link this script from .git/hooks
 echo ":computer: Running ${script_name} hook..."
-echo ":link: Updating symlinks"
-mise run link-dotfiles
+echo ":link: Updating symlinks to dotfiles"
+mise bootstrap dotfiles apply
 
 if (( $+commands[mise] )); then
   echo ":wrench: Updating tools"
