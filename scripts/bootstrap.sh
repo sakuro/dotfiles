@@ -18,6 +18,7 @@ eval "$(mise activate)"
 bootstrap_config_dir="$(mktemp -d)"
 trap 'rm -rf "$bootstrap_config_dir"' EXIT
 
-curl -fsSL -o "$bootstrap_config_dir/mise.toml" "${BOOTSTRAP_TOML_URL}"
-curl -fsSL -o  "$bootstrap_config_dir/mise.${OS}.toml" "${BOOTSTRAP_TOML_URL/.toml/.${OS}.toml}"
+export MISE_GLOBAL_CONFIG_FILE="${bootstrap_config_dir}/config.toml"
+curl -fsSL -o "${MISE_GLOBAL_CONFIG_FILE}" "${BOOTSTRAP_TOML_URL}"
+curl -fsSL -o "${MISE_GLOBAL_CONFIG_FILE/.toml/.${OS}.toml}" "${BOOTSTRAP_TOML_URL/.toml/.${OS}.toml}"
 MISE_AUTO_ENV=true mise bootstrap --yes
