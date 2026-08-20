@@ -71,6 +71,8 @@ setopt hist_reduce_blanks
 setopt hist_save_nodups
 setopt share_history
 
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
+
 export HISTFILE=$XDG_CACHE_HOME/zsh/history
 [[ -d $HISTFILE:h ]] || mkdir -p $HISTFILE:h
 typeset -i SAVEHIST=1000000

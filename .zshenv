@@ -50,7 +50,6 @@ autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
   eval "$(mise activate)"
 }
 
-export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 export RUBYOPT="-W:deprecated -W:experimental"
 export BUNDLE_USER_HOME=$XDG_CONFIG_HOME/bundle
 export BUNDLE_CACHE_PATH=$XDG_CACHE_HOME/bundle
