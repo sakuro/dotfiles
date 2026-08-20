@@ -43,5 +43,5 @@ mode = "0444"
 [tasks.link-git-credential-config]
 run = "ln -fsv {{ xdg_config_home }}/git/include/credential.darwin {{ xdg_config_home }}/git/include/credential"
 
-[tasks.os-specific-setup]
+[tasks.os-specific-bootstrap]
 depends = ["link-git-credential-config"]

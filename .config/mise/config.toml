@@ -13,8 +13,8 @@ login_shell = "/bin/zsh"
 "~/.zshenv" = { }
 "~/.dotfiles/.git/hooks/post-merge" = { source = "~/.dotfiles/scripts/post-merge" }
 
-[tasks.setup]
-depends_post = ["os-specific-setup"]
+[tasks.bootstrap]
+depends_post = ["os-specific-bootstrap"]
 
 [tools]
 bat = "0.26.1"
