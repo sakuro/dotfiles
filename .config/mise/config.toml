@@ -34,7 +34,10 @@ experimental = true
 idiomatic_version_file_enable_tools = ["ruby"]
 minimum_release_age = "3d"
 
+[settings.node]
+default_packages_file = "~/.config/mise/files/default-npm-packages"
+
 [settings.ruby]
 verbose_install = true
-default_packages_file = "~/.config/mise/default-gems"
+default_packages_file = "~/.config/mise/files/default-gems"
 ruby_build_opts = "--disable-install-doc"
