@@ -35,7 +35,7 @@ args = ["/usr/sbin/ipconfig", "setverbose", "1"]
 run_at_load = true
 
 [bootstrap.files."/etc/sudoers.d/nopasswd"]
-source = "./files/sudoers.macos"
+source = "./files/sudoers.nopasswd.macos"
 owner = "root"
 group = "wheel"
 mode = "0444"

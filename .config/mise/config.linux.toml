@@ -15,7 +15,7 @@
 "apt:zsh-syntax-highlighting" = "latest"
 
 [bootstrap.files."/etc/sudoers.d/nopasswd"]
-source = "./files/sudoers.linux"
+source = "./files/sudoers.nopasswd.linux"
 owner = "root"
 group = "root"
 mode = "0444"
