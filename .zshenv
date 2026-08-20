@@ -45,7 +45,10 @@ fpath=(
 autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
 
 # mise
-(( $+commands[mise] )) && eval "$(mise activate)"
+(( $+commands[mise] )) && {
+  export MISE_AUTO_ENV=true
+  eval "$(mise activate)"
+}
 
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 export RUBYOPT="-W:deprecated -W:experimental"
