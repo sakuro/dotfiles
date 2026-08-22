@@ -27,6 +27,7 @@ depends = ["configure-locales", "link-git-credential-config"]
 run = "sudo sed -i '/ja_JP.UTF-8/s/^# *//' /etc/locale.gen && sudo /usr/sbin/locale-gen --keep-existing"
 
 [tasks.link-git-credential-config]
+shell = 'bash'
 run = '''
     if [[ -n "$WSL_DISTRO_NAME" ]]; then
       if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
