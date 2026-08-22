@@ -29,9 +29,9 @@ run = "sudo sed -i '/ja_JP.UTF-8/s/^# *//' /etc/locale.gen && sudo /usr/sbin/loc
 [tasks.link-git-credential-config]
 shell = 'bash'
 run = '''
-    if [[ -n "$WSL_DISTRO_NAME" ]]; then
-      if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
-        ln -fsv "{{ xdg_config_home }}/git/include/credential.windows" "{{ xdg_config_home }}/git/include/credential"
-      fi
-    fi
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
+    ln -fsv "{{ xdg_config_home }}/git/include/credential.windows" "{{ xdg_config_home }}/git/include/credential"
+  fi
+fi
 '''
