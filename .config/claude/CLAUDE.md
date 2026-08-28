@@ -22,6 +22,7 @@
 ## python
 
 - Our python setup is minimum.  Avoid importing non-standard libraries such as PIL (Pillow).
+- When running python scripts, use the `-I` (isolated mode) option to ignore PYTHONPATH/user site-packages and prevent unsafe path insertion.
 
 # Documentation
 
