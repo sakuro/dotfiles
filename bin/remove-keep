@@ -2,7 +2,7 @@
 
 KEEP_FILE="${KEEP_FILE:-.keep}"
 
-[[ -d .git ]] || {
+[[ "$PWD" == "$(git rev-parse --show-toplevel 2>/dev/null)" ]] || {
   echo "Run in the root directory of a git repository"
   exit 1
 }
