@@ -25,4 +25,15 @@ hooks {
       ["newlines"] = Builtins.newlines
     }
   }
+  ["post-merge"] {
+    steps {
+      ["sync-dotfiles"] {
+        check = #"""
+          mise bootstrap dotfiles apply
+          mise install
+          mise prune --yes
+          """#
+      }
+    }
+  }
 }
