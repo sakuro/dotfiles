@@ -1,3 +1,15 @@
+# Ubuntu's own repos top out below git 2.54, which hk's config-based hooks
+# (`hk install --global`) require, so pull git from git-core/ppa instead.
+[bootstrap.hooks.pre-packages]
+run = '''
+# apt index may be stale or empty, so refresh before installing software-properties-common
+sudo apt-get update -q
+sudo apt-get install -y --no-install-recommends software-properties-common
+sudo add-apt-repository -y ppa:git-core/ppa
+# refresh again to pick up the newly added PPA's index
+sudo apt-get update -q
+'''
+
 [bootstrap.packages]
 "apt:dnsutils" = "latest"
 "apt:git" = "latest"
