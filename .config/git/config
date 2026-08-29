@@ -54,29 +54,29 @@
   name = OZAWA Sakuro
   useConfigOnly = true
 [credential "https://github.com"]
-   helper =
-   helper = !gh auth git-credential
+  helper =
+  helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-   helper =
-   helper = !gh auth git-credential
+  helper =
+  helper = !gh auth git-credential
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [includeIf "gitdir:~/github.com/"]
   path = ~/.config/git/include/github.com.config
 [includeIf "gitdir:~/codeberg.org/"]
   path = ~/.config/git/include/codeberg.org.config
 [hook "hk-commit-msg"]
-	command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run commit-msg --from-hook
-	event = commit-msg
+  command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run commit-msg --from-hook
+  event = commit-msg
 [hook "hk-pre-commit"]
-	command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run pre-commit --from-hook --staged
-	event = pre-commit
+  command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run pre-commit --from-hook --staged
+  event = pre-commit
 [hook "hk-pre-push"]
-	command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run pre-push --from-hook
-	event = pre-push
+  command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run pre-push --from-hook
+  event = pre-push
 [hook "hk-prepare-commit-msg"]
-	command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run prepare-commit-msg --from-hook
-	event = prepare-commit-msg
+  command = test \"${HK:-1}\" = \"0\" || ~/bin/mise x hk -- hk run prepare-commit-msg --from-hook
+  event = prepare-commit-msg
