@@ -43,5 +43,30 @@ mode = "0444"
 [tasks.link-git-credential-config]
 run = "ln -fsv {{ xdg_config_home }}/git/include/credential.darwin {{ xdg_config_home }}/git/include/credential"
 
+[tasks.set-hammerspoon-config-path]
+run = "defaults write org.hammerspoon.Hammerspoon MJConfigFile '~/.config/hammerspoon/init.lua'"
+
+[tasks.set-hammerspoon-input-methods]
+run = '''
+defaults write org.hammerspoon.Hammerspoon input-methods '{"en" = "英字　　（ATOK）"; "ja" = "ひらがな（ATOK）";}'
+'''
+
+[tasks.remove-legacy-hammerspoon-config]
+run = '''
+#!/usr/bin/env zsh
+if [[ -f $HOME/.hammerspoon/init.lua ]]; then
+  rm --verbose $HOME/.hammerspoon/init.lua
+fi
+
+if [[ -d $HOME/.hammerspoon ]]; then
+  rmdir --verbose --parents $HOME/.hammerspoon
+fi
+'''
+
 [tasks.os-specific-bootstrap]
-depends = ["link-git-credential-config"]
+depends = [
+  "link-git-credential-config",
+  "set-hammerspoon-config-path",
+  "set-hammerspoon-input-methods",
+  "remove-legacy-hammerspoon-config",
+]
