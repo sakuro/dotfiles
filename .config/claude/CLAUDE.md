@@ -11,6 +11,11 @@
 - Use English for all other outputs: GitHub issues, pull requests, commit messages, code comments, documentation, etc.
 - A question is not a correction. If you only receive a question, provide an answer rather than making code changes.
 
+# Git
+
+- Do not append a `Claude-Session` URL (or any similar session link) to commit messages, pull request descriptions, or issue bodies.
+- Do not add AI attribution such as `Co-Authored-By: Claude` trailers.
+
 # Shell commands
 
 ## sed
