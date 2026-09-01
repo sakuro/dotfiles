@@ -52,13 +52,15 @@ wezterm.GLOBAL.vpn_service_names = wezterm.GLOBAL.vpn_service_names or collect_v
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
   local pane = tab.active_pane
-  local process_name = pane.user_vars.WEZTERM_PROG or ""
+  local zmx_session = pane.user_vars.ZMX_SESSION or ""
+  -- Prefer the zmx session name over the foreground process when attached.
+  local title = zmx_session ~= "" and 'z:' .. zmx_session or (pane.user_vars.WEZTERM_PROG or "")
   local background_color = tab.is_active and wezterm.GLOBAL.nord.nord8 or wezterm.GLOBAL.nord.nord9
 
   return {
     { Background = { Color = background_color } },
     { Foreground = { Color = wezterm.GLOBAL.nord.nord6 } },
-    { Text = process_name },
+    { Text = title },
   }
 end)
 

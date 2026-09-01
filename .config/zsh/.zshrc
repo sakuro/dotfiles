@@ -259,6 +259,14 @@ function unset-program-name()
 }
 add-zsh-hook precmd unset-program-name
 
+function set-zmx-session()
+{
+  # zmx injects ZMX_SESSION only inside a session; reset to empty otherwise so
+  # the tab title falls back once a client detaches.
+  wezterm:set-user-var ZMX_SESSION "${ZMX_SESSION:-}"
+}
+add-zsh-hook precmd set-zmx-session
+
 function set-working-directory()
 {
   wezterm:set-working-directory
