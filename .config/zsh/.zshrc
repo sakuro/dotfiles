@@ -42,12 +42,6 @@ fpath=(
   $ZDOTDIR/widgets
   $fpath
 )
-(( $+commands[brew] )) && {
-  fpath=(
-    $fpath
-    $(brew --prefix)/share/zsh-completions
-  )
-}
 
 for w in $ZDOTDIR/widgets/*(@,.); do
   autoload $w:t
