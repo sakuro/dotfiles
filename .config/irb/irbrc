@@ -15,4 +15,3 @@ IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:COMPLETOR] = :type
 # common typos
 alias rquire require
-
