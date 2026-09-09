@@ -27,7 +27,7 @@ ripgrep = "15.2"
 ruby = "4.0"
 "gem:fasti" = "latest"
 "github:damienbutt/emojify-go" = "latest"
-"github:sakuro/factorix" = "0.23.0"
+"github:sakuro/factorix" = "0.24.0"
 node = "latest"
 zmx = "latest"
 
