@@ -22,14 +22,14 @@ fzf = "0.74"
 gh = "2.100.0"
 hk = "1.58.1"
 jq = "1.8"
+node = "latest"
 op = "2.39"
 ripgrep = "15.2"
 ruby = "4.0"
+zmx = "latest"
 "gem:fasti" = "latest"
 "github:damienbutt/emojify-go" = "latest"
 "github:sakuro/factorix" = "0.24.0"
-node = "latest"
-zmx = "latest"
 
 [settings]
 experimental = true
