@@ -6,7 +6,7 @@
   "minimumReleaseAge": "3 days",
   "ignoreDeps": ["op"],
   "automerge": true,
-  "platformAutomerge": true,
+  "platformAutomerge": false,
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
