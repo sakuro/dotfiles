@@ -21,9 +21,14 @@ its own save in a fresh temp directory and its own server on its own port.
 - `factorix` is installed and configured (`factorix path --json` should
   succeed and show a valid `executable_path`).
 - A licensed copy of Factorio is installed at that path.
+- Either `jq` or `python3`, to read that JSON.
 
-If either is missing, tell the user instead of trying to work around it --
+If any is missing, tell the user instead of trying to work around it --
 this skill does not install Factorio or factorix.
+
+No Factorio may be running: a second instance cannot share the user
+directory. `start-server.sh` refuses to start while the lock is held and
+says so; relay that rather than trying to work around it.
 
 ## Workflow
 
@@ -49,16 +54,20 @@ this skill does not install Factorio or factorix.
    prototypes, call `game`/`helpers`/other runtime APIs, poke at mod state,
    try out control-stage logic. For a pure math/formula check specifically,
    wrap it in `rcon.print(helpers.evaluate_expression(...))` -- see the
-   reference below for exactly how to call it.
+   reference below for exactly how to call it. One snippet is capped at 511
+   bytes on the wire, so split a long probe across several calls instead of
+   packing it into one.
 
 3. **Stop the server**:
    ```
    bash ~/.claude/skills/factorio-rcon-eval/scripts/stop-server.sh <state-dir>
    ```
-   Always run this when done -- including when a step above failed -- so no
-   orphaned Factorio process or temp save is left behind. It quits the
-   server, force-kills it if `/quit` didn't take effect, and deletes the
-   state directory (temp save included).
+   Always run this when done -- including when a step above failed, and even
+   if `start-server.sh` never got far enough to print connection details --
+   so no orphaned Factorio process or temp save is left behind. It quits the
+   server, waits for it to go away, and deletes the state directory (temp
+   save included). If the server outlives `/quit` it is killed where that is
+   possible and reported otherwise, so read this script's stderr.
 
 ### Why a script, and why the liveness checks inside it
 
@@ -78,11 +87,28 @@ this by hand:
   command's own stdio -- including a background-task runner reporting a run
   as "completed" -- can be telling you the *launcher* finished, not that the
   *server* exited. The only trustworthy check is looking for the process
-  itself (`pgrep -f "factorio --start-server <save>"`), which is what
-  `start-server.sh` polls on, and what `stop-server.sh` re-checks after
-  sending `/quit`. If you ever bypass the scripts and drive `factorix
-  launch`/`factorix rcon` by hand, keep using `ps`/`pgrep` for liveness, not
-  a background task's completion status.
+  itself (`pgrep -f "factorio --start-server <save>"`), or, where Factorio
+  runs outside this process namespace, whether RCON still answers -- which
+  is what the scripts poll on. If you ever bypass them and drive `factorix
+  launch`/`factorix rcon` by hand, keep using those for liveness, not a
+  background task's completion status.
+
+### When Factorio is a Windows binary
+
+`factorix` may point at the Windows desktop build while the scripts run
+under WSL (or Cygwin/MSYS). `scripts/lib.sh` detects that from the
+executable name and adapts; the workflow above does not change. Two traps
+it absorbs, both worth knowing before driving `factorix` by hand there:
+
+- A Unix path handed to that binary is **not** rejected. It is resolved
+  against the UNC share root with the share component dropped, so
+  `/tmp/x.zip` is logged as saved to `\\wsl.localhost/tmp/x.zip` -- no
+  distro name -- and the file never appears. Convert with `wslpath -w`
+  first.
+- RCON listens on the Windows host, not on this namespace's loopback, so
+  under WSL2's default networking `--host` has to be the gateway address
+  from `ip route`. A probe to a host that has stopped listening hangs
+  instead of being refused, so bound every RCON call with `timeout`.
 
 ## Reference: math/formula checks via `LuaHelpers.evaluate_expression`
 
