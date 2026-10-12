@@ -54,6 +54,7 @@ export RUBYOPT="-W:deprecated -W:experimental"
 export BUNDLE_USER_HOME=$XDG_CONFIG_HOME/bundle
 export BUNDLE_CACHE_PATH=$XDG_CACHE_HOME/bundle
 export CLAUDE_CONFIG_DIR=$XDG_CONFIG_HOME/claude
+export CODEX_HOME=$XDG_CONFIG_HOME/codex
 
 () {
   local rundll32="/mnt/c/Windows/System32/rundll32.exe"
