@@ -1,0 +1,9 @@
+default_provider = "op"
+
+[providers.op]
+type = "1password"
+vault = "Environments"
+
+[secrets]
+FACTORIO_API_KEY = { value = "FACTORIO_API_KEY/notesPlain" }
+CLAUDE_CODE_OAUTH_TOKEN = { value = "CLAUDE_CODE_OAUTH_TOKEN/notesPlain" }
