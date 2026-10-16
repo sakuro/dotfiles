@@ -1,6 +1,7 @@
 [bootstrap.packages]
 "brew:bash" = "latest"
 "brew:coreutils" = "latest"
+"brew:curl" = "latest"
 "brew:diffutils" = "latest"
 "brew:findutils" = "latest"
 "brew:gawk" = "latest"

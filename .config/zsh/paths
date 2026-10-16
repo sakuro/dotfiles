@@ -3,6 +3,7 @@ $ZDOTDIR/bin
 /opt/homebrew/bin
 /opt/homebrew/sbin
 /opt/homebrew/opt/ccache/libexec
+/opt/homebrew/opt/curl/bin
 /opt/homebrew/opt/sqlite3/bin
 /opt/homebrew/opt/*/libexec/gnubin
 /opt/homebrew/Cellar/postgresql@*/*/bin
