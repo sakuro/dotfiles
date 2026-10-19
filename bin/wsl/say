@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# WSL say: UTF-8 text -> Windows PowerShell 5.1 -> System.Speech.
+# Usage: say [--] [text ...]  |  printf 'text' | say
+# Requires Bash, GNU base64, WSL interop, and a suitable Windows voice.
+set -euo pipefail
+
+case "${1-}" in
+    -h|--help)
+        printf '%s\n' 'Usage: say [--] [text ...]' \
+            'With no arguments, read UTF-8 text from stdin until EOF.' \
+            'Uses the default Windows speech voice; waits until speech ends.'
+        exit 0
+        ;;
+    --) shift ;;
+    -*) printf 'say: unsupported option: %s\n' "$1" >&2; exit 2 ;;
+esac
+
+if ! command -v powershell.exe >/dev/null 2>&1; then
+    printf '%s\n' 'say: powershell.exe not found; enable WSL interop and Windows PATH.' >&2
+    exit 127
+fi
+
+input_text() {
+    if (( $# )); then
+        local IFS=" "
+        printf '%s' "$*"
+    else
+        cat
+    fi
+}
+
+# Send data separately from code. Base64 avoids console encoding differences,
+# preserves newlines, and keeps arbitrary text out of PowerShell source code.
+input_text "$@" | base64 -w 0 | powershell.exe -NoLogo -NoProfile -NonInteractive -Command '
+$ErrorActionPreference = "Stop"
+$synth = $null
+try {
+    $encoded = [Console]::In.ReadToEnd()
+    $text = [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($encoded))
+    if ($text.Length -gt 0) {
+        Add-Type -AssemblyName System.Speech
+        $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer
+        $synth.SetOutputToDefaultAudioDevice()
+        $synth.Speak($text)
+    }
+} catch {
+    [Console]::Error.WriteLine("say: " + $_.Exception.Message)
+    exit 1
+} finally {
+    if ($null -ne $synth) { $synth.Dispose() }
+}
+'
