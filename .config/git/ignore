@@ -9,6 +9,7 @@
 .mise.*.local.toml
 .mise.local.toml
 .mise.toml
+mise.local.toml
 /*.code-workspace
 /.bundle/config
 /.claude/CLAUDE.md
