@@ -6,9 +6,6 @@
 [bootstrap.user]
 login_shell = "/bin/zsh"
 
-[bootstrap.packages]
-"brew:curl" = "latest"
-
 [dotfiles]
 "~/bin" = { mode = "symlink-each" }
 "~/.config" = { mode = "symlink-each" }
