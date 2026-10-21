@@ -6,8 +6,6 @@ allowed-tools: [Bash, Read, Grep]
 
 # Create Pull Request Skill
 
-**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
-
 Assists with creating GitHub pull requests that follow this project's conventions for PR titles, descriptions, and submission workflow.
 
 ## Instructions

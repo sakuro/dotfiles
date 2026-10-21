@@ -5,8 +5,6 @@ description: Start working on a GitHub issue. Use when the user wants to work on
 
 # Start Issue
 
-**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
-
 Begin work on a GitHub issue by viewing its details and creating a working branch.
 
 ## Workflow
