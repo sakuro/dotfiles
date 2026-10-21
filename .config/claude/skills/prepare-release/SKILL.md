@@ -6,6 +6,8 @@ argument-hint: VERSION
 
 # Prepare Release
 
+**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
+
 Prepare release for version $ARGUMENTS.
 
 ## Pre-flight Checks
