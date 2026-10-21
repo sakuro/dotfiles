@@ -5,6 +5,8 @@ description: Git Commit Command
 
 # Commit
 
+**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
+
 **IMPORTANT: When using this skill, announce to the user**: "Using /commit skill to create a commit."
 
 Create a git commit following project conventions.

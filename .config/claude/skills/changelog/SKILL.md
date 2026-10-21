@@ -6,6 +6,8 @@ allowed-tools: [Bash, Read, Edit, Grep]
 
 # Changelog Generation Skill
 
+**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
+
 Analyzes commits since the last release and adds user-facing changes to CHANGELOG.md.
 
 ## Instructions
