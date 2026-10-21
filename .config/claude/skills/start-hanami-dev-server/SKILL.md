@@ -5,8 +5,6 @@ description: Start Hanami dev server (bin/dev) in background. Use proactively at
 
 # Start Hanami Dev
 
-**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
-
 Run `bin/dev` in the background using the Bash tool with `run_in_background: true`.
 
 After launching, wait a few seconds, read the output file, and report the status of `[web]` and `[assets]` (always required). If other processes are present (e.g. `[islands]`), report their status as well.

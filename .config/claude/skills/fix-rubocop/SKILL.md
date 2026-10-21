@@ -6,8 +6,6 @@ allowed-tools: [Bash, Read, Edit, Grep]
 
 # Fix RuboCop Violations Skill
 
-**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
-
 Assists with systematically reducing RuboCop offenses while preserving behavior and keeping changes focused.
 
 **IMPORTANT: When using this skill, announce to the user**: "Using fix-rubocop skill to fix RuboCop violations systematically."

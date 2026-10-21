@@ -6,8 +6,6 @@ allowed-tools: [Bash, Read, Grep]
 
 # Merge PR Skill
 
-**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
-
 Safely merges GitHub pull requests using the `gh` CLI.
 
 **Announce when using this skill**: "Using merge-pr skill to merge a pull request safely."

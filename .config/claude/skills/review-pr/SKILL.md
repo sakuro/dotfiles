@@ -6,8 +6,6 @@ allowed-tools: [Bash, Read, Grep, Glob]
 
 # Review Pull Request Skill
 
-**Usage condition:** Use this skill only for repositories whose owner is the same as the owner of the repository containing this skill. Do not use it for other repositories.
-
 Reviews GitHub pull requests by analyzing the diff and providing feedback.
 
 ## Instructions
