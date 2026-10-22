@@ -18,7 +18,7 @@ depends_post = ["os-specific-bootstrap"]
 [tools]
 bat = "0.26"
 difftastic = "0.71.0"
-fnox = "1.40.0"
+fnox = "1.41.0"
 fzf = "0.74"
 gh = "2.102.0"
 hk = "2.7.0"
