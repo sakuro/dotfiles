@@ -29,7 +29,7 @@ hooks {
     steps {
       ["sync-dotfiles"] {
         check = #"""
-          mise bootstrap dotfiles apply --quiet
+          mise bootstrap --yes
           mise install
           mise prune --yes
           """#
