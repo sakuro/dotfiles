@@ -18,7 +18,8 @@ Create a git commit following project conventions.
 
 ## Commit Message Rules
 
-- Write in English, imperative mood ("Fix" not "Fixed")
+- Language follows the repository license (see global CLAUDE.md): English for open source, Japanese otherwise
+- In English, use imperative mood ("Fix" not "Fixed")
 - Start with `:emoji:` code (not raw Unicode), followed by a space
 - No period at end of subject line
 - Body: focus on WHAT and WHY, 2-3 bullet points max
