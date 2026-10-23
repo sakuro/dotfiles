@@ -8,7 +8,8 @@
 # Communication
 
 - Always respond in Japanese when interacting with the user.
-- Use English for all other outputs: GitHub issues, pull requests, commit messages, code comments, documentation, etc.
+- Use English for all other outputs: code comments, documentation, etc.
+- Commit messages, GitHub issues, and pull requests (title and body): use English if the repository is licensed under an open source license (e.g. MIT, Apache-2.0, GPL); otherwise (proprietary or no license) use Japanese. Determine the license from the LICENSE file or `gh repo view --json licenseInfo`.
 - A question is not a correction. If you only receive a question, provide an answer rather than making code changes.
 
 # Git

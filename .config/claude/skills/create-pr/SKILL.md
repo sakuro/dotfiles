@@ -40,9 +40,9 @@ git push -u origin branch-name
 
 PR titles MUST follow the same format as commit messages:
 
-- **ALWAYS write in English**
+- Language follows the repository license (see "Language" below)
 - Start with GitHub emoji code (`:emoji:`)
-- Use imperative mood
+- Use imperative mood (in English)
 - Be clear and descriptive
 - No period at end
 
@@ -118,7 +118,7 @@ Related to #456
 ### 6. Content Guidelines
 
 **Language**:
-- **ALWAYS write in English** (both title and body)
+- Follow the repository license (see global CLAUDE.md): **English** for open source, **Japanese** otherwise (both title and body)
 
 **Brevity**:
 - Summary: 1-2 sentences maximum
@@ -277,7 +277,7 @@ rm /tmp/pr_body.md
 
 ## Common Pitfalls to Avoid
 
-1. **Don't use non-English**: All PR content must be in English
+1. **Don't ignore the license-based language rule**: English for open source repositories, Japanese otherwise
 2. **Don't use inline --body with complex content**: Always use temp file or heredoc
 3. **Don't use unquoted heredoc**: Always use `<<'EOF'` not `<<EOF`
 4. **Don't use raw emojis in title**: Use `:bug:` not 🐛
