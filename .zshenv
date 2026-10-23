@@ -63,3 +63,5 @@ export CODEX_HOME=$XDG_CONFIG_HOME/codex
     export BROWSER="$rundll32 url.dll,FileProtocolHandler"
   }
 }
+
+[[ -f $ZDOTDIR/.zshenv.local ]] && source $ZDOTDIR/.zshenv.local || :
