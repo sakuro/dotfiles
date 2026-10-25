@@ -8,6 +8,7 @@
 "brew:git" = "latest"
 "brew:gnu-sed" = "latest"
 "brew:grep" = "latest"
+"brew:imagemagick" = "latest"
 "brew:inetutils" = "latest"
 "brew:libyaml" = "latest"
 "brew:neovim" = "latest"
