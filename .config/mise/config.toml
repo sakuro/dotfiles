@@ -44,3 +44,6 @@ default_packages_file = "~/.config/mise/files/default-npm-packages"
 verbose_install = true
 default_packages_file = "~/.config/mise/files/default-gems"
 ruby_build_opts = "--disable-install-doc"
+
+[settings.self_update]
+auto = true
