@@ -15,7 +15,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline-command.zsh"
+    "command": "~/.config/claude/statusline-command.zsh"
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
@@ -62,7 +62,7 @@
       "**Source control**: github.com/sakuro and its repositories only; no other orgs are trusted by default.",
       "**Repository visibility**: Varies per repository, many are public. Check visibility (e.g. via gh) before pushing or publishing anything that is not the repository's own work.",
       "**Host containment**: None configured. Assume Claude Code runs on an ordinary macOS developer machine with open internet.",
-      "**Primary use of Claude Code**: Software development, plus maintaining personal dotfiles (~/.dotfiles, linked into ~/.config and ~/.claude).",
+      "**Primary use of Claude Code**: Software development, plus maintaining personal dotfiles (~/.dotfiles, linked into ~/.config).",
       "**Org-specific CLIs**: mise (toolchain manager), gh (GitHub CLI), hk (git hook manager); routine invocations within a repository's working directory are expected developer workflow."
     ]
   }
