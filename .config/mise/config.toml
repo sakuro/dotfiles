@@ -9,7 +9,6 @@ login_shell = "/bin/zsh"
 [dotfiles]
 "~/bin" = { mode = "symlink-each" }
 "~/.config" = { mode = "symlink-each" }
-"~/.claude" = { source = "~/.config/claude" }
 "~/.zshenv" = { }
 
 [tasks.bootstrap]
