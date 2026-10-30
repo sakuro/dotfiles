@@ -15,8 +15,20 @@
     {
       "matchDepNames": ["hk", "jdx/hk"],
       "groupName": "hk"
+    },
+    {
+      "matchDepNames": ["1password-cli"],
+      "minimumReleaseAge": null
     }
   ],
+  "customDatasources": {
+    "onepassword-cli": {
+      "defaultRegistryUrlTemplate": "https://app-updates.agilebits.com/check/1/0/CLI2/en/2.0.0/N",
+      "transformTemplates": [
+        "{\"releases\": [{\"version\": version, \"changelogUrl\": relnotes}]}"
+      ]
+    }
+  },
   "customManagers": [
     {
       "customType": "regex",
@@ -35,6 +47,14 @@
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "sakuro/git-hooks"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^\\.config/mise/config\\.toml$/"],
+      "matchStrings": ["(?m)^op = \"(?<currentValue>[^\"]+)\"$"],
+      "datasourceTemplate": "custom.onepassword-cli",
+      "depNameTemplate": "1password-cli",
+      "versioningTemplate": "semver-coerced"
     }
   ]
 }
