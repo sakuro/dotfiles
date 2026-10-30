@@ -1,5 +1,5 @@
 [tools]
-gitleaks = "8.30"
+gitleaks = "8.30.1"
 
 [hooks]
 postinstall = "hk install --mise --quiet"
