@@ -1,1 +1,1 @@
-%nopasswd ALL = (ALL:ALL) NOPASSWD: /usr/bin/sudo, /usr/bin/apt, /usr/bin/apt-get
+%nopasswd ALL = (ALL:ALL) NOPASSWD: /usr/bin/add-apt-repository, /usr/bin/apt, /usr/bin/apt-get
