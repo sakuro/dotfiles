@@ -7,3 +7,4 @@ vault = "Environments"
 [secrets]
 FACTORIO_API_KEY = { value = "FACTORIO_API_KEY/notesPlain" }
 CLAUDE_CODE_OAUTH_TOKEN = { value = "CLAUDE_CODE_OAUTH_TOKEN/notesPlain" }
+GANDI_PERSONAL_ACCESS_TOKEN = { value = "GANDI_PERSONAL_ACCESS_TOKEN/notesPlain" }
