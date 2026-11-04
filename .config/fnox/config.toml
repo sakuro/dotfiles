@@ -7,3 +7,9 @@ vault = "Environments"
 [secrets]
 FACTORIO_API_KEY = { value = "FACTORIO_API_KEY/notesPlain" }
 CLAUDE_CODE_OAUTH_TOKEN = { value = "CLAUDE_CODE_OAUTH_TOKEN/notesPlain" }
+GANDI_PERSONAL_ACCESS_TOKEN = { value = "GANDI_PERSONAL_ACCESS_TOKEN/notesPlain" }
+
+[profiles.aws.secrets]
+AWS_ACCESS_KEY_ID = { value = "AWS terraform/access key id" }
+AWS_SECRET_ACCESS_KEY = { value = "AWS terraform/secret access key" }
+AWS_TOTP = { value = "AWS terraform/one-time password?attribute=otp" }
