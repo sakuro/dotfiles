@@ -37,7 +37,13 @@ mode = "0444"
 depends = ["configure-locales", "link-git-credential-config"]
 
 [tasks.configure-locales]
-run = "sudo sed -i '/ja_JP.UTF-8/s/^# *//' /etc/locale.gen && sudo /usr/sbin/locale-gen --keep-existing"
+run = '''
+#!/usr/bin/env bash
+# Skip when already generated so that non-interactive runs (no sudo password prompt) succeed.
+locale -a | grep -qix 'ja_JP.utf-\?8' && exit 0
+sudo sed -i -e '/ja_JP.UTF-8/s/^# *//' /etc/locale.gen
+sudo /usr/sbin/locale-gen --keep-existing
+'''
 
 [tasks.link-git-credential-config]
 run = '''
