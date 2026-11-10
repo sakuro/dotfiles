@@ -11,6 +11,7 @@
 "brew:imagemagick" = "latest"
 "brew:inetutils" = "latest"
 "brew:libyaml" = "latest"
+"brew:ncurses" = "latest"
 "brew:neovim" = "latest"
 "brew:netpbm" = "latest"
 "brew:pkgconf" = "latest"
