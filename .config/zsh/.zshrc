@@ -268,7 +268,7 @@ function set-working-directory()
 add-zsh-hook chpwd set-working-directory
 
 (( $+commands[factorix] )) && {
-  eval "$(factorix completion $SHELL:t)"
+  eval "$(factorix completion zsh)"
 }
 
 [[ -f $ZDOTDIR/.zshrc.local ]] && source $ZDOTDIR/.zshrc.local || :
