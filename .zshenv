@@ -47,7 +47,7 @@ autoload -Uz ${(e)${^$(echo $ZDOTDIR/{functions,hooks}/*(@,.N))}:t}
 # mise
 (( $+commands[mise] )) && {
   export MISE_AUTO_ENV=true
-  eval "$(mise activate)"
+  eval "$(mise activate zsh)"
 }
 
 export RUBYOPT="-W:deprecated -W:experimental"
