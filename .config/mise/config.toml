@@ -32,7 +32,7 @@ zmx = "1.0.1"
 "gem:fasti" = "1.0.1"
 "github:damienbutt/emojify-go" = "1.0.1"
 "github:sakuro/factorix" = "0.24.0"
-"claude" = "2.1.319"
+"claude" = "2.1.321"
 "codex" = "0.167.0"
 
 [settings]
