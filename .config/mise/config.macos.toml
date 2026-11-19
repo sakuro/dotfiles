@@ -23,6 +23,7 @@
 "brew:zsh-syntax-highlighting" = "latest"
 "brew-cask:1password" = "latest"
 "brew-cask:claude-code" = "latest"
+"brew-cask:docker-desktop" = "latest"
 "brew-cask:font-cica" = "latest"
 "brew-cask:font-ricty-diminished" = "latest"
 "brew-cask:google-chrome" = "latest"
