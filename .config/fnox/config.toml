@@ -8,6 +8,7 @@ vault = "Environments"
 FACTORIO_API_KEY = { value = "FACTORIO_API_KEY/notesPlain" }
 CLAUDE_CODE_OAUTH_TOKEN = { value = "CLAUDE_CODE_OAUTH_TOKEN/notesPlain" }
 GANDI_PERSONAL_ACCESS_TOKEN = { value = "GANDI_PERSONAL_ACCESS_TOKEN/notesPlain" }
+TF_TOKEN_app_terraform_io = { value = "HCP Terraform/notesPlain" }
 
 [profiles.aws.secrets]
 AWS_ACCESS_KEY_ID = { value = "AWS terraform/access key id" }
