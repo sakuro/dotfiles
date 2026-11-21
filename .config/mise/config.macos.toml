@@ -31,7 +31,7 @@
 "brew-cask:keyboard-cleaner" = "latest"
 "brew-cask:keycastr" = "latest"
 "brew-cask:visual-studio-code" = "latest"
-"brew-cask:wezterm" = "latest"
+"brew-cask:wezterm@nightly" = "latest"
 
 [bootstrap.macos.launchd.agents.ipconfig-verbose]
 program = "/usr/bin/sudo"
