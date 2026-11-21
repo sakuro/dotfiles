@@ -63,4 +63,3 @@ Describes files that exist in most projects.
 
 - README.md: Project overview
 - AGENTS.md: Instructions for AI
-- CLAUDE.md: A symbolic link to AGENTS.md. Editing this file is equivalent to editing AGENTS.md. To make changes, edit AGENTS.md instead.
