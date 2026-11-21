@@ -65,5 +65,10 @@
       "**Primary use of Claude Code**: Software development, plus maintaining personal dotfiles (~/.dotfiles, linked into ~/.config).",
       "**Org-specific CLIs**: mise (toolchain manager), gh (GitHub CLI), hk (git hook manager); routine invocations within a repository's working directory are expected developer workflow."
     ]
+  },
+  "voiceEnabled": true,
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
   }
 }
