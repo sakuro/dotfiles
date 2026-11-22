@@ -17,7 +17,6 @@ sudo apt-get update -q
 "apt:less" = "latest"
 "apt:locales" = "latest"
 "apt:neovim" = "latest"
-"apt:postgresql-client" = "latest"
 "apt:rsync" = "latest"
 "apt:sqlite3" = "latest"
 "apt:sudo" = "latest"
