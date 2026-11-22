@@ -26,6 +26,7 @@ jq = "1.8.2"
 node = "26.13.1"
 op = "2.42.0"
 pnpm = "12.21.0"
+postgres = "18.7"
 ripgrep = "15.2.0"
 ruby = { version = "4.0.10", postinstall = "gem install repl_type_completor" }
 zmx = "1.0.1"
