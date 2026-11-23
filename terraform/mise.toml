@@ -1,0 +1,13 @@
+[tools]
+terraform = "1.17.2"
+aws-cli = "2.41.1"
+"aqua:terraform-linters/tflint" = { version = "0.66.0", postinstall = "tflint --init" }
+fnox = "1.50.0"
+
+[plugins]
+fnox-env = "https://github.com/jdx/mise-env-fnox"
+
+# Scoped to this directory so that the Gandi token is not loaded elsewhere in the dotfiles.
+[env]
+_.fnox-env = { tools = true }
+AWS_PROFILE = "terraform"
