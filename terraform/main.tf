@@ -1,8 +1,9 @@
 # dot.2238.club - Dotfiles hosting proxy
 #
 # Rewrites:
-#   /           -> https://raw.githubusercontent.com/sakuro/dotfiles/refs/heads/main/bootstrap.sh
-#   /path/file  -> https://raw.githubusercontent.com/sakuro/dotfiles/refs/heads/main/path/file
+#   /                            -> https://raw.githubusercontent.com/sakuro/dotfiles/refs/heads/main/bootstrap.sh
+#   /.config/mise/config*.toml   -> the same path under the repository (allowlisted in the function)
+#   anything else                -> 404
 
 locals {
   zone_name = "2238.club"
@@ -59,16 +60,24 @@ resource "aws_cloudfront_function" "rewrite" {
   runtime = "cloudfront-js-2.0"
   publish = true
   code    = <<-EOF
+    // Only the files that bootstrap.sh fetches through this site. Everything
+    // else in the repository is not meant to be served from here.
+    var allowed = [
+      '/.config/mise/config.toml',
+      '/.config/mise/config.linux.toml',
+      '/.config/mise/config.macos.toml'
+    ];
+
     function handler(event) {
       var request = event.request;
       var uri = request.uri;
 
-      // Rewrite root path to bootstrap.sh
       if (uri === '/' || uri === '') {
         request.uri = '/sakuro/dotfiles/refs/heads/main/bootstrap.sh';
-      } else {
-        // Prepend the repository path
+      } else if (allowed.indexOf(uri) !== -1) {
         request.uri = '/sakuro/dotfiles/refs/heads/main' + uri;
+      } else {
+        return { statusCode: 404, statusDescription: 'Not Found' };
       }
 
       return request;
