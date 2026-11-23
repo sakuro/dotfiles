@@ -34,7 +34,7 @@ group = "root"
 mode = "0444"
 
 [tasks.os-specific-bootstrap]
-depends = ["configure-locales", "link-git-credential-config"]
+depends = ["configure-locales", "link-git-credential-config", "link-git-signing-config"]
 
 [tasks.configure-locales]
 run = '''
@@ -51,6 +51,17 @@ run = '''
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
   if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
     ln -fsv "{{ xdg_config_home }}/git/include/credential.windows" "{{ xdg_config_home }}/git/include/credential"
+  fi
+fi
+'''
+
+[tasks.link-git-signing-config]
+run = '''
+#!/usr/bin/env bash
+# Signing goes through the 1Password SSH signer on the Windows side.
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  if [[ -x "/mnt/c/Users/$USER/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe" ]]; then
+    ln -fsv "{{ xdg_config_home }}/git/include/signing.windows" "{{ xdg_config_home }}/git/include/signing"
   fi
 fi
 '''

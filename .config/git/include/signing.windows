@@ -1,0 +1,8 @@
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /mnt/c/Users/sakuro/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe
+[user]
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEhuF0f4BM/x/1DTf257cL7thMbu4h+mWL7tVQs3bIFa

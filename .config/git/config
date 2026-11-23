@@ -64,6 +64,8 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[include]
+  path = include/signing
 [includeIf "gitdir:~/github.com/"]
   path = ~/.config/git/include/github.com.config
 [includeIf "gitdir:~/codeberg.org/"]
