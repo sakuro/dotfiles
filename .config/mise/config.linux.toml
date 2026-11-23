@@ -17,6 +17,7 @@ sudo apt-get update -q
 "apt:less" = "latest"
 "apt:locales" = "latest"
 "apt:neovim" = "latest"
+"apt:nethack-console" = "latest"
 "apt:rsync" = "latest"
 "apt:sqlite3" = "latest"
 "apt:sudo" = "latest"
