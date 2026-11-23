@@ -1,0 +1,44 @@
+name: Validate Terraform
+
+on:
+  pull_request:
+    paths: [terraform/**]
+  push:
+    branches: [main]
+    paths: [terraform/**]
+
+permissions:
+  contents: read
+
+# No cloud credentials are provided on purpose: the Gandi token cannot be
+# scoped to read-only, so this workflow must not run `terraform plan`.
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: jdx/mise-action@90f833d396d0cc3674b631d2d225e306476c303a # v5.2.10
+        with:
+          working_directory: terraform
+
+      - name: Check formatting
+        run: terraform fmt -check -recursive
+
+      - name: Validate
+        run: |
+          terraform init -backend=false -input=false
+          terraform validate
+
+      - name: Lint
+        env:
+          # Avoids GitHub API rate limits when downloading the AWS ruleset.
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          tflint --init
+          tflint
