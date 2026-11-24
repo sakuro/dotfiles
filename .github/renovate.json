@@ -5,7 +5,7 @@
   ],
   "minimumReleaseAge": "3 days",
   "ignoreDeps": ["op"],
-  "ignorePaths": [".config/mise/config.macos.toml"],
+  "ignorePaths": ["mise.macos.toml"],
   "automerge": true,
   "platformAutomerge": false,
   "packageRules": [
