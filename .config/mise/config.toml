@@ -13,7 +13,6 @@ login_shell = "/bin/zsh"
 
 [tools]
 bat = "0.26.1"
-biome = "2.6.6"
 difftastic = "0.72.0"
 fnox = "1.50.0"
 fzf = "0.75.0"
@@ -22,8 +21,6 @@ hk = "2.13.0"
 jq = "1.8.2"
 node = "26.13.1"
 op = "2.42.0"
-pnpm = "12.22.0"
-postgres = "18.7"
 ripgrep = "15.2.0"
 ruby = { version = "4.0.10", postinstall = "gem install repl_type_completor" }
 zmx = "1.0.1"
