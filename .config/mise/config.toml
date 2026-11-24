@@ -13,21 +13,21 @@ login_shell = "/bin/zsh"
 
 [tools]
 bat = "0.26.1"
+claude = "2.1.330"
+codex = "0.167.0"
 difftastic = "0.72.0"
 fnox = "1.50.0"
 fzf = "0.75.0"
+"gem:fasti" = "1.0.1"
 gh = "2.105.0"
+"github:damienbutt/emojify-go" = "1.0.1"
+"github:sakuro/factorix" = "0.24.0"
 jq = "1.8.2"
 node = "26.13.1"
 op = "2.42.0"
 ripgrep = "15.2.0"
 ruby = { version = "4.0.10", postinstall = "gem install repl_type_completor" }
 zmx = "1.0.1"
-"gem:fasti" = "1.0.1"
-"github:damienbutt/emojify-go" = "1.0.1"
-"github:sakuro/factorix" = "0.24.0"
-"claude" = "2.1.330"
-"codex" = "0.167.0"
 
 [settings]
 experimental = true
