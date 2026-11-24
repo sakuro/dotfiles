@@ -1,0 +1,32 @@
+[tasks.os-specific-bootstrap]
+depends = ["configure-locales", "link-git-credential-config", "link-git-signing-config"]
+
+[tasks.configure-locales]
+run = '''
+#!/usr/bin/env bash
+# Skip when already generated so that non-interactive runs (no sudo password prompt) succeed.
+locale -a | grep -qix 'ja_JP.utf-\?8' && exit 0
+sudo sed -i -e '/ja_JP.UTF-8/s/^# *//' /etc/locale.gen
+sudo /usr/sbin/locale-gen --keep-existing
+'''
+
+[tasks.link-git-credential-config]
+run = '''
+#!/usr/bin/env bash
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  if [[ -x "/mnt/c/Program Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" ]]; then
+    ln -fsv "{{ xdg_config_home }}/git/include/credential.windows" "{{ xdg_config_home }}/git/include/credential"
+  fi
+fi
+'''
+
+[tasks.link-git-signing-config]
+run = '''
+#!/usr/bin/env bash
+# Signing goes through the 1Password SSH signer on the Windows side.
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  if [[ -x "/mnt/c/Users/$USER/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe" ]]; then
+    ln -fsv "{{ xdg_config_home }}/git/include/signing.windows" "{{ xdg_config_home }}/git/include/signing"
+  fi
+fi
+'''

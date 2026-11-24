@@ -3,3 +3,6 @@ gitleaks = "8.30.1"
 
 [hooks]
 postinstall = "hk install --mise --quiet"
+
+[tasks.bootstrap]
+depends_post = ["os-specific-bootstrap"]
