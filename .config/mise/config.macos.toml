@@ -1,8 +1,9 @@
 [env]
 DOCKER_CONFIG = "{{ xdg_config_home }}/docker"
 
-#[dotfiles]
-#"~/.config/docker/config.json" = { source = "dotfiles/docker/config.json", mode = "copy" }
+# Docker and colima rewrite this file (auths, currentContext), so seed it once instead of linking it.
+[dotfiles]
+"~/.config/docker/config.json" = { source = "../docker/config.json", mode = "copy", create_if_missing = true }
 
 [bootstrap.packages]
 "brew:bash" = "latest"
@@ -51,7 +52,7 @@ keep_alive_on_failure = true
 throttle_interval = 30
 process_type = "Background"
 working_directory = "~"
-environment = { PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin", DOCKER_CONFIG = "{{ xdg_config_home }}/docker" }
+environment = { PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin", XDG_CONFIG_HOME = "{{ xdg_config_home }}", DOCKER_CONFIG = "{{ xdg_config_home }}/docker" }
 stdout_path = "~/Library/Logs/colima.log"
 stderr_path = "~/Library/Logs/colima.err.log"
 
