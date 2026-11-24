@@ -11,9 +11,6 @@ login_shell = "/bin/zsh"
 "~/.config" = { mode = "symlink-each", exclude = ["docker/config.json"] }
 "~/.zshenv" = { }
 
-[tasks.bootstrap]
-depends_post = ["os-specific-bootstrap"]
-
 [tools]
 bat = "0.26.1"
 biome = "2.6.6"
