@@ -1,8 +1,20 @@
+[env]
+DOCKER_CONFIG = "{{ xdg_config_home }}/docker"
+
+# Docker and colima rewrite this file (auths, currentContext), so seed it once instead of linking it.
+[dotfiles]
+"~/.config/docker/config.json" = { source = "../docker/config.json", mode = "copy", create_if_missing = true }
+
 [bootstrap.packages]
 "brew:bash" = "latest"
+"brew:colima" = "latest"
 "brew:coreutils" = "latest"
 "brew:curl" = "latest"
 "brew:diffutils" = "latest"
+"brew:docker" = "latest"
+"brew:docker-buildx" = "latest"
+"brew:docker-compose" = "latest"
+"brew:docker-credential-helper" = "latest"
 "brew:findutils" = "latest"
 "brew:gawk" = "latest"
 "brew:git" = "latest"
@@ -23,7 +35,6 @@
 "brew:zsh-syntax-highlighting" = "latest"
 "brew-cask:1password" = "latest"
 "brew-cask:claude-code" = "latest"
-"brew-cask:docker-desktop" = "latest"
 "brew-cask:font-cica" = "latest"
 "brew-cask:font-ricty-diminished" = "latest"
 "brew-cask:google-chrome" = "latest"
@@ -32,6 +43,18 @@
 "brew-cask:keycastr" = "latest"
 "brew-cask:visual-studio-code" = "latest"
 "brew-cask:wezterm@nightly" = "latest"
+
+[bootstrap.macos.launchd.agents.colima]
+program = "/opt/homebrew/bin/colima"
+args = ["start", "--foreground"]
+run_at_load = true
+keep_alive_on_failure = true
+throttle_interval = 30
+process_type = "Background"
+working_directory = "~"
+environment = { PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin", XDG_CONFIG_HOME = "{{ xdg_config_home }}", DOCKER_CONFIG = "{{ xdg_config_home }}/docker" }
+stdout_path = "~/Library/Logs/colima.log"
+stderr_path = "~/Library/Logs/colima.err.log"
 
 [bootstrap.macos.launchd.agents.ipconfig-verbose]
 program = "/usr/bin/sudo"
