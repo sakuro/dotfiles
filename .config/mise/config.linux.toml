@@ -1,14 +1,19 @@
-# Ubuntu's own repos top out below git 2.54, which hk's config-based hooks
-# (`hook.<name>.command`, used by `hk install` whether global or per-repo)
-# require, so pull git from git-core/ppa instead.
 [bootstrap.hooks.pre-packages]
 run = '''
-# apt index may be stale or empty, so refresh before installing software-properties-common
+# apt index may be stale or empty, so refresh before installing any package
 sudo apt-get update -q
-sudo apt-get install -y --no-install-recommends software-properties-common
-sudo add-apt-repository -y ppa:git-core/ppa
-# refresh again to pick up the newly added PPA's index
-sudo apt-get update -q
+. /etc/os-release
+# Distro-specific package setup
+case " $ID ${ID_LIKE:-} " in
+*" ubuntu "*)
+  sudo apt-get install -y --no-install-recommends software-properties-common
+  # git-core/ppa provides a git new enough for config-based hooks
+  # (`hook.<name>.command`, git 2.54+).
+  sudo add-apt-repository -y ppa:git-core/ppa
+  # refresh again to pick up the newly added PPA's index
+  sudo apt-get update -q
+  ;;
+esac
 '''
 
 [bootstrap.packages]
