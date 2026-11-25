@@ -121,7 +121,7 @@ resource "aws_cloudfront_distribution" "dot" {
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = local.origin_id
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "https-only"
     compress               = true
 
     cache_policy_id          = data.aws_cloudfront_cache_policy.caching_disabled.id
