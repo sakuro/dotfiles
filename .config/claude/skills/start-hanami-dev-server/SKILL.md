@@ -10,7 +10,7 @@ description: Start the Hanami dev services (pitchfork daemons, or bin/dev in bac
 The pitchfork supervisor keeps the daemons running, so start them with pitchfork instead of running `bin/dev` in the background.
 
 1. Run `pitchfork start --local -q` in the foreground (`-q` suppresses the startup logs, which can be hundreds of KB). It returns once every daemon is ready and fails if one of them does not become ready; daemons already running are left as they are.
-2. Run `pitchfork list` and report the state of each daemon of the project.
+2. Run `pitchfork list --project` and report the state of each daemon (without `--project` it lists the daemons of every project).
 3. For a daemon that failed, read its log with `pitchfork logs <daemon> -n 100 --no-pager` and report the cause.
 
 Stop the daemons with `pitchfork stop --local` only when the user asks.
