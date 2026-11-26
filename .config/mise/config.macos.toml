@@ -3,7 +3,7 @@ DOCKER_CONFIG = "{{ xdg_config_home }}/docker"
 
 # Docker and colima rewrite this file (auths, currentContext), so seed it once instead of linking it.
 [dotfiles]
-"~/.config/docker/config.json" = { source = "../docker/config.json", mode = "copy", create_if_missing = true }
+"~/.config/docker/config.json" = { source = "../docker/config.macos.json", mode = "copy", create_if_missing = true }
 
 [bootstrap.packages]
 "brew:bash" = "latest"
