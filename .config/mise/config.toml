@@ -13,7 +13,7 @@ login_shell = "/bin/zsh"
 
 [tools]
 bat = "0.26.1"
-claude = "2.1.330"
+claude = "2.1.331"
 codex = "0.167.0"
 difftastic = "0.72.0"
 fnox = "1.50.0"
