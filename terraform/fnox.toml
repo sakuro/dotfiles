@@ -1,0 +1,3 @@
+[secrets]
+GANDI_PERSONAL_ACCESS_TOKEN = { value = "GANDI_PERSONAL_ACCESS_TOKEN/credential" }
+TF_TOKEN_app_terraform_io = { value = "HCP Terraform/credential" }

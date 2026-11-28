@@ -4,13 +4,6 @@ default_provider = "op"
 type = "1password"
 vault = "Environments"
 
-[secrets]
-FACTORIO_API_KEY = { value = "FACTORIO_API_KEY/credential" }
-CLAUDE_CODE_OAUTH_TOKEN = { value = "CLAUDE_CODE_OAUTH_TOKEN/credential" }
-GANDI_PERSONAL_ACCESS_TOKEN = { value = "GANDI_PERSONAL_ACCESS_TOKEN/credential" }
-TF_TOKEN_app_terraform_io = { value = "HCP Terraform/credential" }
-TF_VAR_alarm_email= { provider = "op", value = "pasta-atlas-alarm-email/notesPlain" }
-
 [profiles.aws.secrets]
 AWS_ACCESS_KEY_ID = { value = "AWS terraform/access key id" }
 AWS_SECRET_ACCESS_KEY = { value = "AWS terraform/secret access key" }
