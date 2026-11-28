@@ -4,10 +4,22 @@ aws-cli = "2.42.3"
 "aqua:terraform-linters/tflint" = { version = "0.66.0", postinstall = "tflint --init" }
 fnox = "1.50.0"
 
-[plugins]
-fnox-env = "https://github.com/jdx/mise-env-fnox"
-
-# Scoped to this directory so that the Gandi token is not loaded elsewhere in the dotfiles.
 [env]
-_.fnox-env = { tools = true }
 AWS_PROFILE = "terraform"
+
+# Secrets are resolved by these tasks instead of in [env], where every shell prompt in this directory
+# would wait for 1Password.
+[tasks.init]
+description = "Run terraform init with secrets from fnox"
+raw = true
+run = "fnox exec -- terraform init"
+
+[tasks.plan]
+description = "Run terraform plan with secrets from fnox"
+raw = true
+run = "fnox exec -- terraform plan"
+
+[tasks.apply]
+description = "Run terraform apply with secrets from fnox"
+raw = true
+run = "fnox exec -- terraform apply"

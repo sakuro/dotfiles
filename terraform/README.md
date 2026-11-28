@@ -17,7 +17,7 @@ When `bootstrap.sh` starts fetching another file through this site, add its path
 ## Prerequisites
 
 - Run `mise install` in this directory to install the tools.
-- mise loads the following secrets from fnox (see `.config/fnox/config.toml`):
+- The `init`, `plan` and `apply` mise tasks run terraform through `fnox exec`, which exports the following secrets (see `.config/fnox/config.toml`). 1Password must be signed in when they run.
   - `GANDI_PERSONAL_ACCESS_TOKEN`
   - `TF_TOKEN_app_terraform_io` (HCP Terraform, where the state is stored)
 - mise sets `AWS_PROFILE=terraform`. Define the profile in `~/.aws/config`:
@@ -32,9 +32,9 @@ When `bootstrap.sh` starts fetching another file through this site, add its path
 ## Usage
 
 ```sh
-terraform init
-terraform plan
-terraform apply
+mise run init
+mise run plan
+mise run apply
 tflint
 ```
 
