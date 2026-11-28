@@ -27,7 +27,7 @@ node = "26.13.1"
 op = "2.42.0"
 ripgrep = "16.0.0"
 ruby = { version = "4.0.10", postinstall = "gem install repl_type_completor" }
-zmx = "1.0.1"
+zmx = "1.0.2"
 
 [settings]
 experimental = true
