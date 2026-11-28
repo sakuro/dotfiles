@@ -27,7 +27,7 @@ When `bootstrap.sh` starts fetching another file through this site, add its path
   credential_process = aws-terraform-credential-process
   ```
 
-  `bin/aws-terraform-credential-process` assumes `TerraformExecutionRole` with MFA.
+  `bin/aws-terraform-credential-process` reads the IAM user credentials from 1Password through `.config/fnox/aws.toml` and assumes `TerraformExecutionRole` with MFA.
 
 ## Usage
 
